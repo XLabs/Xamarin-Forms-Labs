@@ -1,5 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="hello">Hello World, Click Me!</string>
-	<string name="app_name">XForms.Toolkit.Sample.Droid</string>
+	<string name="library_name">xforms.toolkit.droid</string>
+  <string name="day_name_format">ddd</string>
+  <string name="invalid_date">Date must be between {0} and {1}.</string>
+  <string name="month_name_format">MMMM yyyy</string>
+<string name="full_date_format"></string>
 </resources>

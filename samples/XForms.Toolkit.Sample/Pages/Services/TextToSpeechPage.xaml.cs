@@ -12,7 +12,7 @@ namespace XForms.Toolkit.Sample
 			InitializeComponent ();
 			btnSpeak.Clicked += (s,e) =>{
 
-				DependencyService.Get<ITextToSpeechService>().Speak("Hellp XForms Toolkit");
+				DependencyService.Get<ITextToSpeechService>().Speak("Hello from XForms Toolkit");
 			};
 		}
 	}
