@@ -1,26 +1,26 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="XForms.Toolkit.Droid/Controls/Calendar/CalendarViewRenderer.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="XForms.Toolkit.Droid\Controls\Calendar\CalendarViewRenderer.cs">
     <Files>
-      <File FileName="XForms.Toolkit.Droid/packages.config" Line="1" Column="1" />
-      <File FileName="XForms.Toolkit.Droid/Resources/drawable/calendar_bg_selector.xml" Line="1" Column="1" />
-      <File FileName="XForms.Toolkit.Droid/Resources/color/calendar_text_selector.xml" Line="1" Column="1" />
-      <File FileName="XForms.Toolkit.Droid/Controls/Calendar/CalendarViewRenderer.cs" Line="32" Column="1" />
-      <File FileName="../../samples/XForms.Toolkit.Sample/Pages/Controls/CalendarPage.xaml" Line="1" Column="1" />
-      <File FileName="../../samples/XForms.Toolkit.Sample/Pages/Controls/CalendarPage.xaml.cs" Line="14" Column="1" />
-      <File FileName="../../samples/XForms.Toolkit.Sample/Pages/MainPage.xaml.cs" Line="23" Column="1" />
-      <File FileName="../../samples/XForms.Toolkit.Sample/App.cs" Line="11" Column="1" />
-      <File FileName="../../samples/XForms.Toolkit.Sample.Droid/MainActivity.cs" Line="24" Column="1" />
-      <File FileName="XForms.Toolkit.Droid/Controls/Calendar/MonoDroid.TimesSquare/CalendarCellView.cs" Line="11" Column="58" />
-      <File FileName="XForms.Toolkit.Droid/Controls/Calendar/MonoDroid.TimesSquare/CalendarGridView.cs" Line="1" Column="1" />
-      <File FileName="XForms.Toolkit.Droid/Controls/Calendar/MonoDroid.TimesSquare/CalendarPickerView.cs" Line="1" Column="1" />
-      <File FileName="XForms.Toolkit.Droid/Controls/Calendar/MonoDroid.TimesSquare/CalendarRowView.cs" Line="1" Column="1" />
-      <File FileName="XForms.Toolkit.Droid/Controls/Calendar/MonoDroid.TimesSquare/License.txt" Line="1" Column="1" />
-      <File FileName="XForms.Toolkit.Droid/Controls/Calendar/MonoDroid.TimesSquare/Logr.cs" Line="1" Column="1" />
-      <File FileName="XForms.Toolkit.Droid/Controls/Calendar/MonoDroid.TimesSquare/MonthAdapter.cs" Line="1" Column="1" />
-      <File FileName="XForms.Toolkit.Droid/Controls/Calendar/MonoDroid.TimesSquare/MonthCellDescriptor.cs" Line="1" Column="1" />
-      <File FileName="XForms.Toolkit.Droid/Controls/Calendar/MonoDroid.TimesSquare/MonthDescriptor.cs" Line="1" Column="1" />
-      <File FileName="XForms.Toolkit.Droid/Controls/Calendar/MonoDroid.TimesSquare/MonthView.cs" Line="1" Column="1" />
+      <File FileName="XForms.Toolkit.Droid\packages.config" Line="1" Column="1" />
+      <File FileName="XForms.Toolkit.Droid\Resources\drawable\calendar_bg_selector.xml" Line="1" Column="1" />
+      <File FileName="XForms.Toolkit.Droid\Resources\color\calendar_text_selector.xml" Line="1" Column="1" />
+      <File FileName="XForms.Toolkit.Droid\Controls\Calendar\CalendarViewRenderer.cs" Line="32" Column="1" />
+      <File FileName="..\..\samples\XForms.Toolkit.Sample\Pages\Controls\CalendarPage.xaml" Line="1" Column="1" />
+      <File FileName="..\..\samples\XForms.Toolkit.Sample\Pages\Controls\CalendarPage.xaml.cs" Line="1" Column="1" />
+      <File FileName="..\..\samples\XForms.Toolkit.Sample\Pages\MainPage.xaml.cs" Line="1" Column="1" />
+      <File FileName="..\..\samples\XForms.Toolkit.Sample\App.cs" Line="1" Column="1" />
+      <File FileName="..\..\samples\XForms.Toolkit.Sample.Droid\MainActivity.cs" Line="1" Column="1" />
+      <File FileName="XForms.Toolkit.Droid\Controls\Calendar\MonoDroid.TimesSquare\CalendarCellView.cs" Line="1" Column="1" />
+      <File FileName="XForms.Toolkit.Droid\Controls\Calendar\MonoDroid.TimesSquare\CalendarGridView.cs" Line="1" Column="1" />
+      <File FileName="XForms.Toolkit.Droid\Controls\Calendar\MonoDroid.TimesSquare\CalendarPickerView.cs" Line="1" Column="1" />
+      <File FileName="XForms.Toolkit.Droid\Controls\Calendar\MonoDroid.TimesSquare\CalendarRowView.cs" Line="1" Column="1" />
+      <File FileName="XForms.Toolkit.Droid\Controls\Calendar\MonoDroid.TimesSquare\License.txt" Line="1" Column="1" />
+      <File FileName="XForms.Toolkit.Droid\Controls\Calendar\MonoDroid.TimesSquare\Logr.cs" Line="1" Column="1" />
+      <File FileName="XForms.Toolkit.Droid\Controls\Calendar\MonoDroid.TimesSquare\MonthAdapter.cs" Line="1" Column="1" />
+      <File FileName="XForms.Toolkit.Droid\Controls\Calendar\MonoDroid.TimesSquare\MonthCellDescriptor.cs" Line="1" Column="1" />
+      <File FileName="XForms.Toolkit.Droid\Controls\Calendar\MonoDroid.TimesSquare\MonthDescriptor.cs" Line="1" Column="1" />
+      <File FileName="XForms.Toolkit.Droid\Controls\Calendar\MonoDroid.TimesSquare\MonthView.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
@@ -34,6 +34,6 @@
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.XForms.Toolkit.Droid MonoForAntroid.PreferredDevice="3.7&quot; WVGA (Nexus One)" />
   <MonoDevelop.Ide.ItemProperties.Samples.XForms.Toolkit.Sample.Droid AndroidDeviceId-Debug="192.168.56.101:5555" />
+  <MonoDevelop.Ide.ItemProperties.XForms.Toolkit.Droid MonoForAntroid.PreferredDevice="3.7&quot; WVGA (Nexus One)" />
 </Properties>

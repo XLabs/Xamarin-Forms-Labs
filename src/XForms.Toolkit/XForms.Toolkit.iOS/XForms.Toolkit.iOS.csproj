@@ -59,7 +59,6 @@
     <Compile Include="Controls\Calendar\CalendarViewRenderer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
-  <Import Project="../packages/Xamarin.Forms.1.0.6188/build/portable-win+net45+wp80+MonoAndroid10+MonoTouch10/Xamarin.Forms.targets" />
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="XForms.Toolkit.iOS.nuspec" />
