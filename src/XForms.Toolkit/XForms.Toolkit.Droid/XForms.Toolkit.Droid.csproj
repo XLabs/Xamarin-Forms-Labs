@@ -69,13 +69,16 @@
     <Compile Include="Controls\Calendar\MonoDroid.TimesSquare\MonthCellDescriptor.cs" />
     <Compile Include="Controls\Calendar\MonoDroid.TimesSquare\MonthDescriptor.cs" />
     <Compile Include="Controls\Calendar\MonoDroid.TimesSquare\MonthView.cs" />
+    <Compile Include="Controls\ImageButton\ImageButtonRenderer.cs" />
     <Compile Include="Services\TextToSpeechService.cs" />
     <Compile Include="Controls\Calendar\CalendarViewRenderer.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Controls\Calendar\MonoDroid.TimesSquare\License.txt" />
     <None Include="XForms.Toolkit.Droid.nuspec" />
   </ItemGroup>
@@ -93,7 +96,6 @@
     <AndroidResource Include="Resources\layout\calendar_picker.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
-  <Import Project="../packages/Xamarin.Forms.1.0.6188/build/portable-win+net45+wp80+MonoAndroid10+MonoTouch10/Xamarin.Forms.targets" />
   <ItemGroup>
     <ProjectReference Include="..\XForms.Toolkit\XForms.Toolkit.csproj">
       <Project>{4D10DF5E-883D-468B-A854-4A53C7FE75AC}</Project>

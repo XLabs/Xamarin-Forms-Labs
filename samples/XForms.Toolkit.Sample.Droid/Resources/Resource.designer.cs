@@ -198,7 +198,16 @@ namespace XForms.Toolkit.Sample.Droid
 			public const int Icon = 2130837505;
 			
 			// aapt resource value: 0x7f020002
-			public const int monoandroidsplash = 2130837506;
+			public const int icon_facebook = 2130837506;
+			
+			// aapt resource value: 0x7f020003
+			public const int icon_google = 2130837507;
+			
+			// aapt resource value: 0x7f020004
+			public const int icon_microsoft = 2130837508;
+			
+			// aapt resource value: 0x7f020005
+			public const int icon_twitter = 2130837509;
 			
 			static Drawable()
 			{
@@ -299,9 +308,6 @@ namespace XForms.Toolkit.Sample.Droid
 			
 			// aapt resource value: 0x7f070000
 			public const int CalendarTitle = 2131165184;
-			
-			// aapt resource value: 0x7f070004
-			public const int Mono_Android_Theme_Splash = 2131165188;
 			
 			static Style()
 			{

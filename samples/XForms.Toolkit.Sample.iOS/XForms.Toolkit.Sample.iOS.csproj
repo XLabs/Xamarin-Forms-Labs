@@ -117,7 +117,6 @@
     <Compile Include="AppDelegate.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
-  <Import Project="../../src/XForms.Toolkit/packages/Xamarin.Forms.1.0.6188/build/portable-win+net45+wp80+MonoAndroid10+MonoTouch10/Xamarin.Forms.targets" />
   <ItemGroup>
     <ProjectReference Include="..\XForms.Toolkit.Sample\XForms.Toolkit.Sample.csproj">
       <Project>{DC133A2F-E49E-49E3-B43D-BFB957CB5482}</Project>
