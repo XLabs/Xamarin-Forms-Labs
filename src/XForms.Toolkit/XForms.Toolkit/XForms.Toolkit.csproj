@@ -35,6 +35,7 @@
   <ItemGroup>
     <Compile Include="Controls\ExtendedTabbedPage.cs" />
     <Compile Include="Controls\ImageButton.cs" />
+    <Compile Include="Controls\XCheckBox.cs" />
     <Compile Include="Device\DisplayExtensions.cs" />
     <Compile Include="Device\IDevice.cs" />
     <Compile Include="Device\IDisplay.cs" />
@@ -75,9 +76,7 @@
     <Error Condition="!Exists('..\packages\Xamarin.Forms.1.0.6197\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.Forms.1.0.6197\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets'))" />
   </Target>
   <Import Project="..\packages\Xamarin.Forms.1.0.6197\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.0.6197\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets')" />
-  <ItemGroup>
-    <Folder Include="Mvvm\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Controls\AutoCompleteView.xaml">
       <Generator>MSBuild:Compile</Generator>

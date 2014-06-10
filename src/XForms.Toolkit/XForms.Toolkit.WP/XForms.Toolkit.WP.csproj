@@ -86,6 +86,7 @@
   <ItemGroup>
     <Compile Include="Controls\Calendar\CalendarViewRenderer.cs" />
     <Compile Include="Controls\ImageButton\ImageButtonRenderer.cs" />
+    <Compile Include="Controls\XCheckBox\XCheckboxRenderer.cs" />
     <Compile Include="Device\Display.cs" />
     <Compile Include="Device\WindowsPhoneDevice.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
