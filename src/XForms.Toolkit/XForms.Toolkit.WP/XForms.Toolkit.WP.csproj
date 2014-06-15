@@ -98,6 +98,7 @@
       <DependentUpon>HybridWebViewRenderer.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\ImageButton\ImageButtonRenderer.cs" />
+    <Compile Include="Controls\XCheckBox\XCheckboxRenderer.cs" />
     <Compile Include="Device\Accelerometer.cs" />
     <Compile Include="Device\Battery.cs" />
     <Compile Include="Device\Display.cs" />
