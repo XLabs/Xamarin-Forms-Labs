@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
 			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:XForms.Toolkit.Controls;assembly=XForms.Toolkit"
-			 x:Class="XForms.Toolkit.Sample.Pages.Controls.ButtonPage">
+			 x:Class="XForms.Toolkit.Sample.Pages.Controls.ButtonPage"
+			 Title="Buttons"
+			 >
     <StackLayout x:Name="PageLayout">
         <controls:ImageButton x:Name="TwitterButton" Text="Twitter" BackgroundColor="#01abdf" TextColor="#ffffff" HeightRequest="75" WidthRequest="175" Image="icon_twitter" Orientation="ImageToLeft"  ImageHeightRequest="50" ImageWidthRequest="50" />
         <controls:ImageButton x:Name="FacebookButton" Text="Facebook" BackgroundColor="#3d509f" TextColor="#ffffff" HeightRequest="75" WidthRequest="175" Image="icon_facebook" Orientation="ImageToRight"  ImageHeightRequest="50" ImageWidthRequest="50" />

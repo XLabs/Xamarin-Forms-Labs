@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using WPControls;
+using Xamarin.Forms;
 using Xamarin.Forms.Platform.WinPhone;
 using XForms.Toolkit.Controls;
 using XForms.Toolkit.WP.Controls.Calendar;
@@ -12,14 +13,15 @@ namespace XForms.Toolkit.WP.Controls.Calendar
         {
 
         }
-        protected override void OnModelSet()
+
+        protected override void OnElementChanged(ElementChangedEventArgs<CalendarView> e)
         {
-            base.OnModelSet();
+            base.OnElementChanged(e);
             var calendar = new WPControls.Calendar();
             calendar.DateClicked +=
-                (object sender, WPControls.SelectionChangedEventArgs e) =>
+                (object sender, SelectionChangedEventArgs es) =>
                 {
-                    Model.NotifyDateSelected(e.SelectedDate);
+                    Element.NotifyDateSelected(es.SelectedDate);
                 };
             this.SetNativeControl(calendar);
         }

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<toolkit:BaseView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="XForms.Toolkit.Sample.CanvasWebHybrid"
+    xmlns:toolkit="clr-namespace:XForms.Toolkit.Mvvm;assembly=XForms.Toolkit"
+    xmlns:controls="clr-namespace:XForms.Toolkit.Controls;assembly=XForms.Toolkit"
+    Title="CanvasJS hybrid view"
+    >
+    <toolkit:BaseView.Content>
+	     <StackLayout x:Name="container" Padding="0,40,0,0">
+	     <Label Text="{Binding Title}"></Label>
+			<ListView ItemsSource="{Binding DataPoints}">
+					<ListView.ItemTemplate>
+						<DataTemplate>
+											<ViewCell>
+						<ViewCell.View>
+							<StackLayout>
+							<Label Text="{Binding Label}"></Label>
+							<Slider Value="{Binding Y, Mode=TwoWay}"></Slider>
+<!--							<Slider Maximum="{Binding Max}"></Slider>-->
+							</StackLayout>
+						</ViewCell.View>
+						</ViewCell>
+						
+						</DataTemplate>
+					</ListView.ItemTemplate>
+				</ListView>
+				<controls:HybridWebView x:Name="hybridWebView">
+				</controls:HybridWebView>
+		</StackLayout>
+    </toolkit:BaseView.Content>
+</toolkit:BaseView>
+

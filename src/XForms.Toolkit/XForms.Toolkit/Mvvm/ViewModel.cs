@@ -23,6 +23,9 @@ namespace XForms.Toolkit.Mvvm
     /// </example>
     public abstract class ViewModel : INotifyPropertyChanged
     {
+		public ViewModelNavigation Navigation { get; set; }
+
+
         #region INotifyPropertyChanged implementation
         /// <summary>
         /// Occurs when property is changed.

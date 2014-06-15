@@ -3,6 +3,9 @@ using System.ComponentModel;
 
 namespace XForms.Toolkit
 {
+    /// <summary>
+    /// Apple iPod.
+    /// </summary>
     public class Pod: AppleDevice
     {
         public enum PodVersion
@@ -19,6 +22,11 @@ namespace XForms.Toolkit
             FifthGeneration
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="XForms.Toolkit.Pod"/> class.
+        /// </summary>
+        /// <param name="majorVersion">Major version.</param>
+        /// <param name="minorVersion">Minor version.</param>
         internal Pod (int majorVersion, int minorVersion)
             : base()
         {
@@ -41,14 +49,15 @@ namespace XForms.Toolkit
             }
         }
 
+        /// <summary>
+        /// Gets the version of iPod.
+        /// </summary>
+        /// <value>The version.</value>
         public PodVersion Version
         {
             get;
             private set;
         }
-
-        #region IDevice implementation
-        #endregion
     }
 }
 

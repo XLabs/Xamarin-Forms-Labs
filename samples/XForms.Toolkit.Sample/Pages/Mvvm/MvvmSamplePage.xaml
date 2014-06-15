@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<toolkit:BaseView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="XForms.Toolkit.Sample.MvvmSamplePage"
+    xmlns:toolkit="clr-namespace:XForms.Toolkit.Mvvm;assembly=XForms.Toolkit"
+    Title="MVVM"
+    >
+    <toolkit:BaseView.Content>
+        <StackLayout>
+        	<Button Text="{Binding NavigateToViewModelButtonText}" Command="{Binding NavigateToViewModel}"></Button>
+        </StackLayout>
+    </toolkit:BaseView.Content>
+</toolkit:BaseView>
+

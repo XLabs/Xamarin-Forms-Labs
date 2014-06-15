@@ -6,6 +6,8 @@ using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using Xamarin.Forms;
 using XForms.Toolkit.iOS.Controls.Calendar;
+using XForms.Toolkit.Services;
+using XForms.Toolkit.Services.Serialization;
 
 namespace XForms.Toolkit.Sample.iOS
 {
@@ -27,6 +29,8 @@ namespace XForms.Toolkit.Sample.iOS
 		//
 		public override bool FinishedLaunching (UIApplication app, NSDictionary options)
 		{
+            SetIoc();
+
 			new CalendarViewRenderer (); //added so the assembly is included
 
 			Forms.Init();
@@ -40,6 +44,16 @@ namespace XForms.Toolkit.Sample.iOS
 			return true;
 
 		}
+
+        private static void SetIoc()
+        {
+            var resolverContainer = new SimpleContainer();
+
+            resolverContainer.Register<IDevice>(t => AppleDevice.CurrentDevice)
+                .Register<IJsonSerializer, Services.Serialization.ServiceStackV3.JsonSerializer>();
+
+            Resolver.SetResolver(resolverContainer.GetResolver());
+        }
 	}
 }
 

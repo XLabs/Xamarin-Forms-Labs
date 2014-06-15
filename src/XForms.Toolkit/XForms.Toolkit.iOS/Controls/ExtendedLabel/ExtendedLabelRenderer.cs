@@ -13,12 +13,10 @@ namespace XForms.Toolkit.iOS
 		public ExtendedLabelRenderer ()
 		{
 		}
-
-		protected override void OnModelSet(VisualElement model)
+		protected override void OnElementChanged (ElementChangedEventArgs<Label> e)
 		{
-			base.OnModelSet (model);
-
-			var view = (ExtendedLabel)model;
+			base.OnElementChanged (e);
+			var view = (ExtendedLabel)Element;
 			var control = (UILabel) Control;
 
 			UpdateUi (view, control);

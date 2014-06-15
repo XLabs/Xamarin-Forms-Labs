@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<toolkit:BaseView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="clr-namespace:XForms.Toolkit.Mvvm;assembly=XForms.Toolkit"
+  x:Class="XForms.Toolkit.Sample.GeolocatorPage">
+  <StackLayout>
+  	<Button Text="Get Position" Command="{Binding GetPositionCommand}"></Button>
+  	<Entry Text="{Binding PositionStatus}"></Entry>
+    <Entry Text="{Binding PositionLatitude}"></Entry>
+    <Entry Text="{Binding PositionLongitude}"></Entry>
+  </StackLayout>
+</toolkit:BaseView>
+
