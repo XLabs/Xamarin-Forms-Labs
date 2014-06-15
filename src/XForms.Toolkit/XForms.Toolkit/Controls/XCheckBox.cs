@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 #endregion
 
-namespace XForms.Toolkit.Controls
+namespace XControls
 {
     public class XCheckBox : View
     {
@@ -27,24 +27,28 @@ namespace XForms.Toolkit.Controls
         {
         }
 
-        public void OnClicked(object sender, MyCbEventArgs e)
+        public void OnClicked(object sender, XCheckBoxClickedEventArgs e)
         {
             IsChecked = e.Checked;
             Text = e.Text;
-            Clicked(sender, e);
+
+            //Fire the event if there's a subscription
+            if(Clicked!=null) 
+                Clicked(sender, e);
         }
 
-        public static BindableProperty TextProperty = BindableProperty.Create("TextProperty", typeof (string),
-            typeof (string), string.Empty,
-            BindingMode.TwoWay);
+        public static BindableProperty TextProperty = BindableProperty.Create<XCheckBox, string>(box => box.Text,
+            string.Empty, BindingMode.TwoWay);
 
-        public static BindableProperty IsCheckedProperty = BindableProperty.Create("IsCheckedProperty", typeof (bool),
-            typeof (bool), false, BindingMode.TwoWay);
+
+        public static BindableProperty IsCheckedProperty = BindableProperty.Create<XCheckBox, bool>(
+            box => box.IsChecked, false, BindingMode.TwoWay);
+
     }
 
-    public delegate void OnClicked(object sender, MyCbEventArgs args);
+    public delegate void OnClicked(object sender, XCheckBoxClickedEventArgs args);
 
-    public class MyCbEventArgs : EventArgs
+    public class XCheckBoxClickedEventArgs : EventArgs
     {
         public bool Checked;
         public string Text;

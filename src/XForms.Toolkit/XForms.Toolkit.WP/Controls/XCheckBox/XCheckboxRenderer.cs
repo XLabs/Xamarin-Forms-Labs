@@ -1,58 +1,62 @@
 ﻿#region
 
 using System;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.WinPhone;
-using XForms.Toolkit.Controls;
-using XForms.Toolkit.WP.Controls.XCheckBox;
+using XControls.WinPhone;
+using XControls;
 
 #endregion
 
 [assembly: ExportRenderer(typeof (XCheckBox), typeof (XCheckBoxRenderer))]
-
-namespace XForms.Toolkit.WP.Controls.XCheckBox
+namespace XControls.WinPhone
 {
-    internal class XCheckBoxRenderer : ViewRenderer
+    public class XCheckBoxRenderer : ViewRenderer
     {
-        /*private bool isChecked;
-        private string _text;
-*/
-        public event OnClicked Clicked;
 
-        private CheckBox cb = new CheckBox();
+        public event OnClicked Clicked;
+        public event OnCheckChanged CheckChanged;
+
+        private CheckBox nativeCheckBox = new CheckBox();
 
         public XCheckBoxRenderer()
         {
         }
 
-        protected override void OnModelSet()
+        protected override void OnElementChanged(ElementChangedEventArgs<View> e)
         {
-            base.OnModelSet();
-            var y = Model;
-            cb.IsChecked = (y as XForms.Toolkit.Controls.XCheckBox).IsChecked;
-            cb.Content = (y as XForms.Toolkit.Controls.XCheckBox).Text;
-            cb.Checked += cb_CheckChanged;
-            cb.Unchecked += cb_CheckChanged;
+            base.OnElementChanged(e);
+            var xElement = Element;
+            nativeCheckBox.IsChecked = (xElement as XCheckBox).IsChecked;
+            nativeCheckBox.Content = (xElement as XCheckBox).Text;
+            nativeCheckBox.Checked += NativeCheckBoxCheckChanged;
+            nativeCheckBox.Unchecked += NativeCheckBoxCheckChanged;
 
-            SetNativeControl(cb);
+            SetNativeControl(nativeCheckBox);
         }
 
-        private void cb_CheckChanged(object sender, RoutedEventArgs args
+        private void NativeCheckBoxCheckChanged(object sender, RoutedEventArgs args
             )
         {
-            var x = Model as XForms.Toolkit.Controls.XCheckBox;
-            var y = sender as CheckBox;
-            //(Model as XCheckBox).IsChecked = y.IsChecked.Value;
-            var e = new MyCbEventArgs();
-            e.Checked = y.IsChecked.Value;
-            e.Text = y.Content.ToString();
-            e.Context = y.DataContext;
-            (Model as XForms.Toolkit.Controls.XCheckBox).OnClicked(this, e);
+            var nativeCheckbox = sender as CheckBox;
+
+            var clickedEventArgs = new XCheckBoxClickedEventArgs();
+            clickedEventArgs.Checked = nativeCheckbox.IsChecked.Value;
+            clickedEventArgs.Text = nativeCheckbox.Content.ToString();
+            clickedEventArgs.Context = nativeCheckbox.DataContext;
+            
+            //Fire the event if there's a subscription
+            if(CheckChanged!=null)
+                CheckChanged(sender, args);
+            
+            (Element as XControls.XCheckBox).OnClicked(this, clickedEventArgs);
         }
     }
+
+    public delegate void OnCheckChanged(object sender, RoutedEventArgs args);
 
     public delegate void OnClicked(object sender, EventArgs args);
 }
