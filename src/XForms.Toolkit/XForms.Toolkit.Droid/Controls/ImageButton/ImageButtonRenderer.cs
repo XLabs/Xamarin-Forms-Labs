@@ -5,6 +5,7 @@ using Xamarin.Forms.Platform.Android;
 using XForms.Toolkit.Controls;
 using XForms.Toolkit.Droid.Controls.ImageButton;
 using XForms.Toolkit.Enums;
+using System.ComponentModel;
 
 [assembly: ExportRenderer(typeof(ImageButton), typeof(ImageButtonRenderer))]
 namespace XForms.Toolkit.Droid.Controls.ImageButton
@@ -13,21 +14,25 @@ namespace XForms.Toolkit.Droid.Controls.ImageButton
     /// Draws a button on the Android platform with the image shown in the right 
     /// position with the right size.
     /// </summary>
-    public class ImageButtonRenderer : ButtonRenderer
+	public class ImageButtonRenderer : ButtonRenderer
     {
-        protected override void OnModelChanged(VisualElement oldModel, VisualElement newModel)
-        {
-            base.OnModelChanged(oldModel, newModel);
 
-            var targetButton = (Android.Widget.Button)Control;
+		private  XForms.Toolkit.Controls.ImageButton ImageButton { get { return (XForms.Toolkit.Controls.ImageButton) Element; } }
+		protected override void OnElementChanged (ElementChangedEventArgs<Button> e)
+		{
+			base.OnElementChanged (e);
 
-            var model = newModel as Toolkit.Controls.ImageButton;
-            if (model != null && !string.IsNullOrEmpty(model.Image))
-            {
+			if (e.OldElement == null) {
+				var targetButton = (Android.Widget.Button)Control;
 
-                SetImageSource(targetButton, model);
-            }
-        }
+				if (Element != null && !string.IsNullOrEmpty(this.ImageButton.Image))
+				{
+
+					SetImageSource(targetButton, this.ImageButton);
+				}
+			}
+		}
+	
 
         /// <summary>
         /// Sets the image source.
@@ -68,24 +73,24 @@ namespace XForms.Toolkit.Droid.Controls.ImageButton
             }
         }
 
+		/// <summary>
+		/// Called when the underlying model's properties are changed
+		/// </summary>
+		/// <param name="sender">Model</param>
+		/// <param name="e">Event arguments</param>
+		protected override void OnElementPropertyChanged (object sender, PropertyChangedEventArgs e)
+		{
+			base.OnElementPropertyChanged (sender, e);
 
-        /// <summary>
-        /// Called when the underlying model's properties are changed
-        /// </summary>
-        /// <param name="sender">Model</param>
-        /// <param name="e">Event arguments</param>
-        protected override void OnHandlePropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
-            base.OnHandlePropertyChanged(sender, e);
+			if (e.PropertyName == XForms.Toolkit.Controls.ImageButton.ImageProperty.PropertyName)
+			{
+				var targetButton = (Android.Widget.Button)Control;
+				SetImageSource(targetButton, this.ImageButton);
+			}
+		}
 
-            XForms.Toolkit.Controls.ImageButton btn = (XForms.Toolkit.Controls.ImageButton)this.Model;
-            if (e.PropertyName == XForms.Toolkit.Controls.ImageButton.ImageProperty.PropertyName)
-            {
-                  var targetButton = (Android.Widget.Button)Control;
-                  SetImageSource(targetButton, btn);
-            }
-           
-        }
+ 
+       
 
         /// <summary>
         /// Returns a <see cref="Drawable"/> with the correct dimensions from an 

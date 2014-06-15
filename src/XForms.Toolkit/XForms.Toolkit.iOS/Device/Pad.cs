@@ -3,6 +3,9 @@ using System.ComponentModel;
 
 namespace XForms.Toolkit
 {
+    /// <summary>
+    /// Apple iPad.
+    /// </summary>
     public class Pad : AppleDevice
     {
         public enum iPadVersion
@@ -44,6 +47,11 @@ namespace XForms.Toolkit
             iPadAirCDMA,
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="XForms.Toolkit.Pad"/> class.
+        /// </summary>
+        /// <param name="majorVersion">Major version.</param>
+        /// <param name="minorVersion">Minor version.</param>
         internal Pad (int majorVersion, int minorVersion)
             : base()
         {
@@ -77,6 +85,9 @@ namespace XForms.Toolkit
             this.Name = this.HardwareVersion = this.Version.GetDescription ();
         }
 
+        /// <summary>
+        /// Gets the version of the iPad.
+        /// </summary>
         public iPadVersion Version
         {
             get;

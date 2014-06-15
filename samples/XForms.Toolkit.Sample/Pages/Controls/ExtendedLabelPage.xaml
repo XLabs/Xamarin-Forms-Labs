@@ -3,7 +3,9 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:XForms.Toolkit.Controls;assembly=XForms.Toolkit"
-	x:Class="XForms.Toolkit.Sample.ExtendedLabelPage">
+	x:Class="XForms.Toolkit.Sample.ExtendedLabelPage"
+	 Title="Labels"
+	>
     <ContentPage.Content>
         <StackLayout x:Name="stkRoot" Padding="0,40,0,0">
         	<controls:ExtendedLabel Text="This uses a custom font set xaml" 

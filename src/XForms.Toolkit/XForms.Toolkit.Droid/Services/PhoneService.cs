@@ -7,8 +7,14 @@ using Xamarin.Forms;
 [assembly: Dependency(typeof(XForms.Toolkit.Services.PhoneService))]
 namespace XForms.Toolkit.Services
 {
+    /// <summary>
+    /// Android Phone service implements <see cref="IPhoneService"/>.
+    /// </summary>
     public class PhoneService : IPhoneService
     {
+        /// <summary>
+        /// Gets the telephony manager for Android.
+        /// </summary>
         public static TelephonyManager Manager
         {
             get
@@ -18,7 +24,9 @@ namespace XForms.Toolkit.Services
         }
 
         #region IPhone implementation
-
+        /// <summary>
+        /// Gets the cellular provider.
+        /// </summary>
         public string CellularProvider
         {
             get
@@ -27,6 +35,9 @@ namespace XForms.Toolkit.Services
             }
         }
 
+        /// <summary>
+        /// Gets the ISO Country Code
+        /// </summary>
         public string ICC
         {
             get
@@ -35,6 +46,9 @@ namespace XForms.Toolkit.Services
             }
         }
 
+        /// <summary>
+        /// Gets the Mobile Country Code
+        /// </summary>
         public string MCC
         {
             get
@@ -43,6 +57,9 @@ namespace XForms.Toolkit.Services
             }
         }
 
+        /// <summary>
+        /// Gets the Mobile Network Code
+        /// </summary>
         public string MNC
         {
             get
@@ -51,6 +68,9 @@ namespace XForms.Toolkit.Services
             }
         }
 
+        /// <summary>
+        /// Gets a value indicating whether this instance has cellular data enabled.
+        /// </summary>
         public bool? IsCellularDataEnabled
         {
             get
@@ -59,6 +79,9 @@ namespace XForms.Toolkit.Services
             }
         }
 
+        /// <summary>
+        /// Gets a value indicating whether this instance has cellular data roaming enabled.
+        /// </summary>
         public bool? IsCellularDataRoamingEnabled
         {
             get
@@ -67,6 +90,9 @@ namespace XForms.Toolkit.Services
             }
         }
 
+        /// <summary>
+        /// Gets a value indicating whether this instance is network available.
+        /// </summary>
         public bool? IsNetworkAvailable
         {
             get
@@ -75,6 +101,10 @@ namespace XForms.Toolkit.Services
             }
         }
 
+        /// <summary>
+        /// Opens native dialog to dial the specified number
+        /// </summary>
+        /// <param name="number">Number to dial.</param>
         public void DialNumber(string number)
         {
             number.StartActivity(new Intent(Intent.ActionDial, Uri.Parse("tel:" + number)));

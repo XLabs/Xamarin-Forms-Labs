@@ -11,18 +11,34 @@ Call for action for all Xamarin Developers, embrace this project and share your 
  - ExtendedTabbedPage  
  - ImageButton (beta)
  - ExtendedLabel (alpha)
- - AutoComplete (alpha)
+ - AutoComplete (doesn't work on android)
+ - HybridWebView (alpha)
 
 **Available services (Beta)**
 
  - TextToSpeech 
- - Device
+ - Device (battery info, device info)
+ - Phone Service (cellular network info, make phonecalls)
+ - Geolocator
 
 **Available Mvvm helpers (Beta)**
 
  - ViewModelBase 
  - RelayCommand ; RelayCommand< T >
+ - ViewFactory
+ - IOC
  
+_________________
+
+Using the MVVM Helpers
+-----------
+
+**ViewFactory**
+Coming soon
+
+**RelayCommand**
+Coming soon
+
 _________________
 
 Using the controls
@@ -52,6 +68,29 @@ Or from your codebehind:
 	stacker.Children.Add (button);
 	
 _________________
+
+Using the Services
+-----------
+**TextToSpeechService** 
+
+	DependencyService.Get<ITextToSpeechService>().Speak(TextToSpeak);
+	
+**Device** 
+
+	     var device = Resolver.Resolve<IDevice>();
+	     device.Display; //display information
+	     device.Battery; //battery information
+
+	
+**PhoneService** 
+
+	     var device = Resolver.Resolve<IDevice>();
+	     // not all devices have phone service, f.e. iPod and Android tablets
+	     // so we need to check if phone service is available
+	     if (device.PhoneService != null)
+	     {
+	         device.PhoneService.DialNumber("+1 (855) 926-2746");
+	     }
 
 _______________
 
@@ -96,5 +135,6 @@ __________________
  - ThomasLebrun 
  - Sami M. Kallio 
  - Kevin E. Ford @Bowman74
+ - Jason Smith @jassmith87 
 
   [1]: https://github.com/XForms/XForms-Toolkit/blob/master/LICENSE

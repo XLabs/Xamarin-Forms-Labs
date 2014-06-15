@@ -8,26 +8,39 @@ using System;
 [assembly: ExportRenderer(typeof(CalendarView), typeof(CalendarViewRenderer))]
 namespace XForms.Toolkit.iOS.Controls.Calendar
 {
-	public class CalendarViewRenderer : NativeRenderer
+	public class CalendarViewRenderer : ViewRenderer<CalendarView,CalendarMonthView>
 	{
 		CalendarView _view;
 		public CalendarViewRenderer()
 		{
 		}
-
-		protected override void OnModelSet(VisualElement model)
+		protected override void OnElementChanged (ElementChangedEventArgs<CalendarView> e)
 		{
-			_view = (CalendarView)model;
-			base.OnModelSet(model);
-
-			var calendarView = new CalendarMonthView(DateTime.Now, true);
-
-			calendarView.OnDateSelected += (date) =>
-			{
-				_view.NotifyDateSelected(date);
-			};
-
-			base.SetNativeControl(calendarView);
+			base.OnElementChanged (e);
+			_view = Element;
+					
+						var calendarView = new CalendarMonthView(DateTime.Now, true);
+			
+						calendarView.OnDateSelected += (date) =>
+						{
+							_view.NotifyDateSelected(date);
+						};
+			
+						base.SetNativeControl(calendarView);
 		}
+//		protected override void OnModelSet(VisualElement model)
+//		{
+//			_view = (CalendarView)model;
+//			base.OnModelSet(model);
+//
+//			var calendarView = new CalendarMonthView(DateTime.Now, true);
+//
+//			calendarView.OnDateSelected += (date) =>
+//			{
+//				_view.NotifyDateSelected(date);
+//			};
+//
+//			base.SetNativeControl(calendarView);
+//		}
 	}
 }

@@ -3,8 +3,14 @@ using MonoTouch.UIKit;
 
 namespace XForms.Toolkit
 {
+    /// <summary>
+    /// Apple device Simulator.
+    /// </summary>
     public class Simulator : AppleDevice
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="XForms.Toolkit.Simulator"/> class.
+        /// </summary>
         internal Simulator ()
         {
             var b = UIScreen.MainScreen.Bounds;

@@ -8,8 +8,14 @@ using Microsoft.Phone.Info;
 
 namespace XForms.Toolkit
 {
+    /// <summary>
+    /// Windows Phone 8 Display.
+    /// </summary>
     public class Display : IDisplay
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="XForms.Toolkit.Display"/> class.
+        /// </summary>
         public Display()
         {
             object physicalScreenResolutionObject;
@@ -67,5 +73,14 @@ namespace XForms.Toolkit
         }
 
         #endregion
+
+        /// <summary>
+        /// Returns a <see cref="System.String"/> that represents the current <see cref="XForms.Toolkit.Display"/>.
+        /// </summary>
+        /// <returns>A <see cref="System.String"/> that represents the current <see cref="XForms.Toolkit.Display"/>.</returns>
+        public override string ToString()
+        {
+            return string.Format("[Screen: Height={0}, Width={1}, Xdpi={2:0.0}, Ydpi={3:0.0}]", Height, Width, Xdpi, Ydpi);
+        }
     }
 }

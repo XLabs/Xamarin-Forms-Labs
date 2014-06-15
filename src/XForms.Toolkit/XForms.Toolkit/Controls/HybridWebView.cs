@@ -4,18 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using XForms.Toolkit.Services;
 using XForms.Toolkit.Services.Serialization;
 
 namespace XForms.Toolkit.Controls
 {
     public class HybridWebView : WebView
     {
-        private IJsonConvert jsonConvert;
+        private IStringSerializer jsonSerializer;
         private Dictionary<string, Action<string>> registeredActions;
 
-        public HybridWebView(IJsonConvert jsonConvert)
+        public HybridWebView() : this(Resolver.Resolve<IJsonSerializer>())
         {
-            this.jsonConvert = jsonConvert;
+        }
+
+        public HybridWebView(IJsonSerializer jsonSerializer)
+        {
+            this.jsonSerializer = jsonSerializer;
             this.registeredActions = new Dictionary<string, Action<string>>();
         }
 
@@ -60,7 +65,7 @@ namespace XForms.Toolkit.Controls
 
             for (var n = 0; n < parameters.Length; n++)
             {
-                builder.Append(this.jsonConvert.ToJson(parameters[n]));
+                builder.Append(this.jsonSerializer.Serialize(parameters[n]));
                 if (n < parameters.Length - 1)
                 {
                     builder.Append(", ");

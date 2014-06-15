@@ -4,6 +4,9 @@ using XForms.Toolkit.Services;
 
 namespace XForms.Toolkit
 {
+    /// <summary>
+    /// Apple iPhone.
+    /// </summary>
     public class Phone : AppleDevice
     {
         public enum PhoneType
@@ -36,6 +39,11 @@ namespace XForms.Toolkit
             iPhone5S_GSM,
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="XForms.Toolkit.Phone"/> class.
+        /// </summary>
+        /// <param name="majorVersion">Major version.</param>
+        /// <param name="minorVersion">Minor version.</param>
         internal Phone(int majorVersion, int minorVersion)
             : base()
         {
@@ -82,6 +90,9 @@ namespace XForms.Toolkit
             this.Name = this.HardwareVersion = this.Version.GetDescription();
         }
 
+        /// <summary>
+        /// Gets the version of iPhone.
+        /// </summary>
         public PhoneType Version
         {
             get;

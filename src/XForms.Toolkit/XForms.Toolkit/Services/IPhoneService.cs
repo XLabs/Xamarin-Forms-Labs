@@ -41,6 +41,10 @@ namespace XForms.Toolkit.Services
         /// </summary>
         string MNC { get; }
 
+        /// <summary>
+        /// Opens native dialog to dial the specified number
+        /// </summary>
+        /// <param name="number">Number to dial.</param>
         void DialNumber(string number);
     }
 }

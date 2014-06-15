@@ -15,11 +15,12 @@ namespace XForms.Toolkit.WP.Controls.ImageButton
 {
     public class ImageButtonRenderer : ButtonRenderer
     {
-        protected override void OnModelSet()
-        {
-            base.OnModelSet();
 
-            var sourceButton = this.Model as Toolkit.Controls.ImageButton;
+        protected override void OnElementChanged(ElementChangedEventArgs<Xamarin.Forms.Button> e)
+        {
+            base.OnElementChanged(e);
+
+            var sourceButton = this.Element as Toolkit.Controls.ImageButton;
             var targetButton = this.Control;
             if (sourceButton != null && targetButton != null && !String.IsNullOrEmpty(sourceButton.Image))
             {
@@ -41,7 +42,7 @@ namespace XForms.Toolkit.WP.Controls.ImageButton
                     sourceButton.Orientation == ImageOrientation.ImageToLeft)
                 {
                     stackPanel.Children.Add(image);
-                    stackPanel.Children.Add(label);                    
+                    stackPanel.Children.Add(label);
                 }
                 else
                 {
@@ -51,6 +52,7 @@ namespace XForms.Toolkit.WP.Controls.ImageButton
 
                 targetButton.Content = stackPanel;
             }
+
         }
 
         private Image GetImage(string imageName, int height, int width)
