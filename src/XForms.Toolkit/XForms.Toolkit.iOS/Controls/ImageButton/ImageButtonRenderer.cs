@@ -13,36 +13,48 @@ namespace XForms.Toolkit.iOS.Controls.ImageButton
     public class ImageButtonRenderer : ButtonRenderer
     {
         private const int controlPadding = 2;
-		private  Toolkit.Controls.ImageButton ImageButton { get { return (XForms.Toolkit.Controls.ImageButton) Element; } }
+        private Toolkit.Controls.ImageButton ImageButton { get { return (XForms.Toolkit.Controls.ImageButton)Element; } }
         private const string iPad = "iPad";
         private const string iPhone = "iPhone";
 
-		protected override void OnElementChanged (ElementChangedEventArgs<Button> e)
-		{
-			base.OnElementChanged (e);
-			var imageButton = this.ImageButton;
-			var targetButton = Control as UIButton;
-			if (imageButton != null && targetButton != null && !String.IsNullOrEmpty(imageButton.Image))
-			{
-				SetImage(imageButton.Image, imageButton.ImageWidthRequest, imageButton.ImageHeightRequest, targetButton);
+        protected override void OnElementChanged(ElementChangedEventArgs<Button> e)
+        {
+            base.OnElementChanged(e);
+            
+            this.UpdateImage();
+        }
 
-				switch (imageButton.Orientation)
-				{
-				case ImageOrientation.ImageToLeft:
-					AlignToLeft(targetButton);
-					break;
-				case ImageOrientation.ImageToRight:
-					AlignToRight(imageButton.ImageWidthRequest, targetButton);
-					break;
-				case ImageOrientation.ImageOnTop:
-                    AlignToTop(imageButton.ImageHeightRequest, imageButton.ImageWidthRequest, targetButton);
-					break;
-				case ImageOrientation.ImageOnBottom:
-                    AlignToBottom(imageButton.ImageHeightRequest, imageButton.ImageWidthRequest, targetButton);
-					break;
-				}                
-			}
-		}
+        protected virtual void UpdateImage()
+        {
+            if (ImageButton != null && !String.IsNullOrEmpty(ImageButton.Image))
+            {
+                SetupImage(ImageButton.Image);
+            }
+        }
+
+        protected void SetupImage(string imageName)
+        {
+            if (this.Control != null)
+            {
+                SetImage(imageName, ImageButton.ImageWidthRequest, ImageButton.ImageHeightRequest, this.Control);
+
+                switch (ImageButton.Orientation)
+                {
+                    case ImageOrientation.ImageToLeft:
+                        AlignToLeft(this.Control);
+                        break;
+                    case ImageOrientation.ImageToRight:
+                        AlignToRight(ImageButton.ImageWidthRequest, this.Control);
+                        break;
+                    case ImageOrientation.ImageOnTop:
+                        AlignToTop(ImageButton.ImageHeightRequest, ImageButton.ImageWidthRequest, this.Control);
+                        break;
+                    case ImageOrientation.ImageOnBottom:
+                        AlignToBottom(ImageButton.ImageHeightRequest, ImageButton.ImageWidthRequest, this.Control);
+                        break;
+                }
+            }
+        }
 
         private void AlignToLeft(UIButton targetButton)
         {
@@ -113,7 +125,7 @@ namespace XForms.Toolkit.iOS.Controls.ImageButton
             else
             {
                 titleInsets = new UIEdgeInsets(-1 * heightRequest, -1 * widthRequest, heightRequest, widthRequest);
-                imageInsets = new UIEdgeInsets(0, 0, 0, 0);                
+                imageInsets = new UIEdgeInsets(0, 0, 0, 0);
             }
             targetButton.TitleEdgeInsets = titleInsets;
             targetButton.ImageEdgeInsets = imageInsets;
