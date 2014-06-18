@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using XForms.Toolkit.Controls;
 
@@ -25,7 +21,9 @@ namespace XForms.Toolkit.Sample.Pages.Controls
             TwitterButton.Clicked += Button_Click;
             FacebookButton.Clicked += Button_Click;
             GoogleButton.Clicked += Button_Click;
-            MicrosoftButton.Clicked += Button_Click;
+
+            // NOTE: Removed the on click here because I wanted to make it easy to see the toggle
+            //MicrosoftButton.Clicked += Button_Click;
 
         }
 

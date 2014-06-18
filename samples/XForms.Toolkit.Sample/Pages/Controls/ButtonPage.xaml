@@ -3,12 +3,11 @@
 			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:XForms.Toolkit.Controls;assembly=XForms.Toolkit"
 			 x:Class="XForms.Toolkit.Sample.Pages.Controls.ButtonPage"
-			 Title="Buttons"
-			 >
+			 Title="Buttons">
     <StackLayout x:Name="PageLayout">
         <controls:ImageButton x:Name="TwitterButton" Text="Twitter" BackgroundColor="#01abdf" TextColor="#ffffff" HeightRequest="75" WidthRequest="175" Image="icon_twitter" Orientation="ImageToLeft"  ImageHeightRequest="50" ImageWidthRequest="50" />
         <controls:ImageButton x:Name="FacebookButton" Text="Facebook" BackgroundColor="#3d509f" TextColor="#ffffff" HeightRequest="75" WidthRequest="175" Image="icon_facebook" Orientation="ImageToRight"  ImageHeightRequest="50" ImageWidthRequest="50" />
         <controls:ImageButton x:Name="GoogleButton" Text="Google" BackgroundColor="#dc021e" TextColor="#ffffff" HeightRequest="125" WidthRequest="175" Image="icon_google" Orientation="ImageOnTop"  ImageHeightRequest="100" ImageWidthRequest="100" />
-        <controls:ImageButton x:Name="MicrosoftButton" Text="Microsoft" BackgroundColor="#ffffff" TextColor="#000000" HeightRequest="125" WidthRequest="175" Image="icon_microsoft" Orientation="ImageOnBottom"  ImageHeightRequest="100" ImageWidthRequest="100" />
+        <controls:ToggleButton x:Name="MicrosoftButton" Text="Microsoft" SelectedBackgroundColor="#ffffff" UnSelectedBackgroundColor="#000000" SelectedTextColor="#000000" UnSelectedTextColor="#ffffff" HeightRequest="125" WidthRequest="175" SelectedImage="icon_microsoft" UnSelectedImage="icon_google" Orientation="ImageOnBottom"  ImageHeightRequest="100" ImageWidthRequest="100" />
     </StackLayout>
 </ContentPage>
