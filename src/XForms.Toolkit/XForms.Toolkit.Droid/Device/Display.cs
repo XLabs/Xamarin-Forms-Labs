@@ -13,11 +13,19 @@ namespace XForms.Toolkit
         /// </summary>
         public Display()
         {
-            var dm = Application.Context.Resources.DisplayMetrics;
+            var dm = Metrics;
             this.Height = dm.HeightPixels;
             this.Width = dm.WidthPixels;
             this.Xdpi = dm.Xdpi;
             this.Ydpi = dm.Ydpi;
+        }
+
+        public static Android.Util.DisplayMetrics Metrics
+        {
+            get
+            {
+                return Application.Context.Resources.DisplayMetrics;
+            }
         }
 
         #region IScreen implementation
@@ -56,7 +64,24 @@ namespace XForms.Toolkit
             get;
             private set;
         }
+
+        /// <summary>
+        /// Convert width in inches to runtime pixels
+        /// </summary>
+        public double WidthRequestInInches(double inches)
+        {
+            return inches * this.Xdpi / Metrics.Density;
+        }
+
+        /// <summary>
+        /// Convert height in inches to runtime pixels
+        /// </summary>
+        public double HeightRequestInInches(double inches)
+        {
+            return inches * this.Ydpi / Metrics.Density;
+        }
         #endregion
+
         /// <summary>
         /// Returns a <see cref="System.String"/> that represents the current <see cref="XForms.Toolkit.Display"/>.
         /// </summary>

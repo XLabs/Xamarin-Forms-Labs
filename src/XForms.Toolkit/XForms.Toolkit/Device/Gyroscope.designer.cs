@@ -7,9 +7,14 @@ using XForms.Toolkit.Helpers;
 
 namespace XForms.Toolkit
 {
-    public partial class Gyroscope
+    public partial class Gyroscope : IGyroscope
     {
         private event EventHandler<EventArgs<Vector3>> readingAvailable;
+
+        public Gyroscope()
+        {
+            this.Interval = AccelerometerInterval.Ui;
+        }
 
         public event EventHandler<EventArgs<Vector3>> ReadingAvailable
         {

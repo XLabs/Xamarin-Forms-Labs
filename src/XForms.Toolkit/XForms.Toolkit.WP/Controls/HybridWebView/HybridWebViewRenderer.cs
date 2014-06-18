@@ -33,7 +33,6 @@ namespace XForms.Toolkit.Controls
             this.SetNativeControl(this.webView);
 
             this.Initialize ();
-         
         }
 
         private void WebViewOnScriptNotify(object sender, NotifyEventArgs notifyEventArgs)
@@ -61,7 +60,14 @@ namespace XForms.Toolkit.Controls
 
         partial void Inject(string script)
         {
-            this.webView.InvokeScript("eval", script);
+            try
+            {
+                this.webView.InvokeScript("eval", script);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
         }
 
         partial void Load(Uri uri)

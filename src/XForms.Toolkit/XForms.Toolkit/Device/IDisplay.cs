@@ -25,6 +25,16 @@ namespace XForms.Toolkit
         /// Gets the screens Y pixel density per inch
         /// </summary>
         double Ydpi { get; }
+
+        /// <summary>
+        /// Convert width in inches to runtime pixels
+        /// </summary>
+        double WidthRequestInInches(double inches);
+
+        /// <summary>
+        /// Convert height in inches to runtime pixels
+        /// </summary>
+        double HeightRequestInInches(double inches);
     }
 }
 

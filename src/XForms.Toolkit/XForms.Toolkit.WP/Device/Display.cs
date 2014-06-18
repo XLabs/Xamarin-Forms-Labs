@@ -72,6 +72,22 @@ namespace XForms.Toolkit
             private set;
         }
 
+        /// <summary>
+        /// Convert width in inches to runtime pixels
+        /// </summary>
+        public double WidthRequestInInches(double inches)
+        {
+            return inches * this.Xdpi * 100 / Application.Current.Host.Content.ScaleFactor;
+        }
+
+        /// <summary>
+        /// Convert height in inches to runtime pixels
+        /// </summary>
+        public double HeightRequestInInches(double inches)
+        {
+            return inches * this.Ydpi * 100 / Application.Current.Host.Content.ScaleFactor;
+        }
+
         #endregion
 
         /// <summary>

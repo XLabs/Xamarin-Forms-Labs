@@ -19,16 +19,6 @@ namespace XForms.Toolkit
         private SensorManager sensorManager;
         private Sensor accelerometer;
 
-        public Accelerometer()
-        {
-            this.delay = SensorDelay.Ui;
-        }
-
-        public Accelerometer(SensorDelay Delay)
-        {
-            this.delay = Delay;
-        }
-
         public static bool IsSupported
         {
             get

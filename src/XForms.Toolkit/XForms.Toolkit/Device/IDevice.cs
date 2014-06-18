@@ -29,8 +29,14 @@ namespace XForms.Toolkit
 		/// <summary>
 		/// Gets the accelerometer.
 		/// </summary>
-		/// <value>The accelerometer.</value>
+        /// <value>The accelerometer instance if available, otherwise null.</value>
 		IAccelerometer Accelerometer { get; }
+
+        /// <summary>
+        /// Gets the gyroscope.
+        /// </summary>
+        /// <value>The gyroscope instance if available, otherwise null.</value>
+        IGyroscope Gyroscope { get; }
 
 		/// <summary>
 		/// Gets the picture chooser.

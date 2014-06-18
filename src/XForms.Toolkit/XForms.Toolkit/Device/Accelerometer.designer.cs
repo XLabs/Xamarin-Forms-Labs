@@ -15,6 +15,11 @@ namespace XForms.Toolkit
         public const double Gravitation = 9.81;
 
         private event EventHandler<EventArgs<Vector3>> readingAvailable;
+        
+        public Accelerometer()
+        {
+            this.Interval = AccelerometerInterval.Ui;
+        }
 
         public event EventHandler<EventArgs<Vector3>> ReadingAvailable
         {

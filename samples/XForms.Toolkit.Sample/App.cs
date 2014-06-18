@@ -39,6 +39,41 @@ namespace XForms.Toolkit.Sample
 	/// </summary>
 	public class App
 	{
+		public static void Init()
+		{
+			var app = Resolver.Resolve<IXFormsApp>();
+			if (app == null) return;
+
+			app.Closing += (o, e) =>
+			{
+				System.Diagnostics.Debug.WriteLine("Application Closing");
+			};
+			app.Error += (o, e) =>
+			{
+				System.Diagnostics.Debug.WriteLine("Application Error");
+			};
+			app.Initialize += (o, e) =>
+			{
+				System.Diagnostics.Debug.WriteLine("Application Initialized");
+			};
+			app.Resumed += (o, e) =>
+			{
+				System.Diagnostics.Debug.WriteLine("Application Resumed");
+			};
+			app.Rotation += (o, e) =>
+			{
+				System.Diagnostics.Debug.WriteLine("Application Rotated");
+			};
+			app.Startup += (o, e) =>
+			{
+				System.Diagnostics.Debug.WriteLine("Application Startup");
+			};
+			app.Suspended += (o, e) =>
+			{
+				System.Diagnostics.Debug.WriteLine("Application Suspended");
+			};
+		}
+
 		/// <summary>
 		/// Gets the main page.
 		/// </summary>
@@ -75,7 +110,7 @@ namespace XForms.Toolkit.Sample
 		/// <returns>ContentPage.</returns>
 		static ContentPage GetServicesPage(NavigationPage mainPage)
 		{
-			var services = new ContentPage {Title = "Services"};
+            var services = new ContentPage { Title = "Services" };
 			var lstServices = new ListView
 			{
 				ItemsSource = new List<string>()
@@ -85,9 +120,11 @@ namespace XForms.Toolkit.Sample
 					"PhoneService",
 					"GeoLocator",
 					"Camera",
-					"Accelerometer"
+					"Accelerometer",
+                    "Display"
 				}
 			};
+
 			lstServices.ItemSelected += (sender, e) =>
 			{
 				switch (e.SelectedItem.ToString().ToLower())
@@ -110,6 +147,9 @@ namespace XForms.Toolkit.Sample
 					case "accelerometer":
 						mainPage.Navigation.PushAsync(new AcceleratorSensorPage());
 						break;
+                    case "display":
+                        mainPage.Navigation.PushAsync(new AbsoluteLayoutWithDisplayInfoPage(Resolver.Resolve<IDisplay>()));
+                        break;
 					default:
 						break;
 				}
@@ -157,15 +197,6 @@ namespace XForms.Toolkit.Sample
 						break;
 					case "hybridwebview":
 						mainPage.Navigation.PushAsync(new CanvasWebHybrid());
-						//					mainPage.Navigation.PushAsync (new ContentPage () {
-						//						
-						//						Content = new HybridWebView (Resolver.Resolve<IJsonSerializer>()) {
-						//							Uri = new Uri ("https://github.com/XForms/XForms-Toolkit"), 
-						//
-						//							HorizontalOptions = LayoutOptions.FillAndExpand,
-						//							VerticalOptions = LayoutOptions.FillAndExpand
-						//						}
-						//					});
 						break;
 					default:
 						break;

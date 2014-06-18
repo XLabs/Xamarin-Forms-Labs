@@ -56,11 +56,7 @@ namespace XForms.Toolkit
 
 			if (Microsoft.Devices.Sensors.Gyroscope.IsSupported)
 			{
-				// TODO: add gyroscope
-				var g = new Microsoft.Devices.Sensors.Gyroscope();
-
-				var r = g.CurrentValue;
-				var e = new Microsoft.Devices.Sensors.GyroscopeReading();
+                this.Gyroscope = new Gyroscope();
 			}
 
 			MediaPicker = new MediaPicker();
@@ -112,6 +108,16 @@ namespace XForms.Toolkit
 			get;
 			private set;
 		}
+
+        /// <summary>
+        /// Gets the gyroscope.
+        /// </summary>
+        /// <value>The gyroscope instance if available, otherwise null.</value>
+        public IGyroscope Gyroscope
+        {
+            get;
+            private set;
+        }
 
 		/// <summary>
 		/// Gets the picture chooser.

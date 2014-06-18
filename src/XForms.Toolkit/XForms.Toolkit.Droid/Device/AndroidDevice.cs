@@ -30,6 +30,11 @@ namespace XForms.Toolkit
                 this.Accelerometer = new Accelerometer();
             }
 
+            if (XForms.Toolkit.Gyroscope.IsSupported)
+            {
+                this.Gyroscope = new Gyroscope();
+            }
+
 //            if (BluetoothAdapter.DefaultAdapter != null)
 //            {
 //                this.BluetoothHub = new BluetoothHub(BluetoothAdapter.DefaultAdapter);
@@ -96,6 +101,16 @@ namespace XForms.Toolkit
         /// </summary>
         /// <value>Instance of IAccelerometer if available, otherwise null.</value>
         public IAccelerometer Accelerometer
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// Gets the gyroscope.
+        /// </summary>
+        /// <value>The gyroscope instance if available, otherwise null.</value>
+        public IGyroscope Gyroscope
         {
             get;
             private set;

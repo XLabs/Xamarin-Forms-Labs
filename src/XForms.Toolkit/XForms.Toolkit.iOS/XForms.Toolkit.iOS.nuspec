@@ -1,19 +1,21 @@
 <?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
-  <metadata>
-    <id>$id$</id>
-    <version>$version$</version>
-    <authors>ruimarinho.net</authors>
-    <owners>ruimarinho.net</owners>
-    <licenseUrl>https://github.com/XForms/XForms-Toolkit/blob/master/LICENSE</licenseUrl>
-    <projectUrl>https://github.com/XForms/XForms-Toolkit</projectUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Xamarin Forms Toolkit is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.
-  This package contains the iOS specific controls.
-  </description>
-    <copyright>Copyright 2014</copyright>
-    <dependencies>
-        <dependency id="XForms.Toolkit" version="1.0" />
-    </dependencies>
-  </metadata>
+	<metadata>
+		<id>$id$</id>
+		<version>1.0.1</version>
+		<authors>XForms Toolkit Team</authors>
+		<owners>ruimarinho.net</owners>
+		<licenseUrl>https://github.com/XForms/XForms-Toolkit/blob/master/LICENSE</licenseUrl>
+		<projectUrl>https://github.com/XForms/XForms-Toolkit</projectUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>
+			Xamarin Forms Toolkit is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.
+			This package contains the iOS specific controls.
+		</description>
+		<releaseNotes>See latest changeset on github</releaseNotes>
+		<copyright>Copyright 2014</copyright>
+		<dependencies>
+			<dependency id="XForms.Toolkit" version="1.0" />
+		</dependencies>
+	</metadata>
 </package>

@@ -18,7 +18,8 @@ namespace XForms.Toolkit.Services.Geolocation
                 Heading = geocoordinate.Heading,
                 Latitude = geocoordinate.Latitude,
                 Longitude = geocoordinate.Longitude,
-                Speed = geocoordinate.Speed
+                Speed = geocoordinate.Speed,
+                Timestamp = geocoordinate.Timestamp
             };
         }
     }

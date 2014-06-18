@@ -29,6 +29,11 @@ namespace XForms.Toolkit
             this.Battery = new Battery();
             this.Accelerometer = new Accelerometer();
             this.FirmwareVersion = UIDevice.CurrentDevice.SystemVersion;
+
+            if (XForms.Toolkit.Gyroscope.IsSupported)
+            {
+                this.Gyroscope = new Gyroscope();
+            }
         }
 
         /// <summary>
@@ -114,6 +119,16 @@ namespace XForms.Toolkit
         {
             get;
             protected set;
+        }
+
+        /// <summary>
+        /// Gets the gyroscope.
+        /// </summary>
+        /// <value>The gyroscope instance if available, otherwise null.</value>
+        public IGyroscope Gyroscope
+        {
+            get;
+            private set;
         }
 
         /// <summary>

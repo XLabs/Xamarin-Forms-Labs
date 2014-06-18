@@ -6,6 +6,9 @@ namespace XForms.Toolkit.Sample
 {
     public class AcceleratorSensorPage : ContentPage
     {
+        private IAccelerometer accelerometer;
+        private SensorBarView xsensor, ysensor, zsensor;
+
         public AcceleratorSensorPage()
         {
             var device = Resolver.Resolve<IDevice> ();
@@ -21,9 +24,11 @@ namespace XForms.Toolkit.Sample
                 return;
             }
 
+            this.accelerometer = device.Accelerometer;
+
             var grid = new StackLayout ();
 
-            var xsensor = new SensorBarView () 
+            this.xsensor = new SensorBarView () 
             {
                 HeightRequest = 75,
                 WidthRequest = 250,
@@ -34,7 +39,7 @@ namespace XForms.Toolkit.Sample
 //                HorizontalOptions = LayoutOptions.Fill
             };
 
-            var ysensor = new SensorBarView ()
+            this.ysensor = new SensorBarView()
             {
                 HeightRequest = 75,
                 WidthRequest = 250,
@@ -45,7 +50,7 @@ namespace XForms.Toolkit.Sample
 //                HorizontalOptions = LayoutOptions.Fill
             };
 
-            var zsensor = new SensorBarView ()
+            this.zsensor = new SensorBarView()
             {
                 HeightRequest = 75,
                 WidthRequest = 250,
@@ -65,14 +70,27 @@ namespace XForms.Toolkit.Sample
             grid.Children.Add (new Label () { Text = "Z", XAlign = TextAlignment.Center });
             grid.Children.Add (zsensor);
 
-            device.Accelerometer.ReadingAvailable += (sender, e) => 
-            {
-                xsensor.CurrentValue = e.Value.X;
-                ysensor.CurrentValue = e.Value.Y;
-                zsensor.CurrentValue = e.Value.Z;
-            };
-
             this.Content = grid;
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            this.accelerometer.ReadingAvailable += accelerometer_ReadingAvailable;
+        }
+
+        protected override void OnDisappearing()
+        {
+            this.accelerometer.ReadingAvailable -= accelerometer_ReadingAvailable;
+            base.OnDisappearing();
+        }
+
+        void accelerometer_ReadingAvailable(object sender, EventArgs<Helpers.Vector3> e)
+        {
+            this.xsensor.CurrentValue = e.Value.X;
+            this.ysensor.CurrentValue = e.Value.Y;
+            this.zsensor.CurrentValue = e.Value.Z;
         }
     }
 }

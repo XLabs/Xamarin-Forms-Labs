@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 using XForms.Toolkit;
 
+[assembly: Dependency(typeof(XForms.Toolkit.Services.Geolocation.Geolocator))]
 namespace XForms.Toolkit.Services.Geolocation
 {
     using Windows.Devices.Geolocation;
@@ -76,22 +78,45 @@ namespace XForms.Toolkit.Services.Geolocation
 
         public async Task<Position> GetPositionAsync(System.Threading.CancellationToken cancelToken)
         {
-            throw new NotImplementedException();
+            var t = locator.GetGeopositionAsync().AsTask();
+
+            while (t.Status == TaskStatus.Running)
+            {
+                cancelToken.ThrowIfCancellationRequested();
+            }
+
+            var position = await t;
+            
+            return position.Coordinate.GetPosition();
         }
 
         public Task<Position> GetPositionAsync(System.Threading.CancellationToken cancelToken, bool includeHeading)
         {
-            throw new NotImplementedException();
+            return this.GetPositionAsync(cancelToken);
         }
 
         public Task<Position> GetPositionAsync(int timeout, System.Threading.CancellationToken cancelToken)
         {
-            throw new NotImplementedException();
+            var t = GetPositionAsync(timeout);
+
+            while (t.Status == TaskStatus.Running)
+            {
+                cancelToken.ThrowIfCancellationRequested();
+            }
+
+            return t;
         }
 
         public Task<Position> GetPositionAsync(int timeout, System.Threading.CancellationToken cancelToken, bool includeHeading)
         {
-            throw new NotImplementedException();
+            var t = GetPositionAsync(timeout, includeHeading);
+
+            while (t.Status == TaskStatus.Running)
+            {
+                cancelToken.ThrowIfCancellationRequested();
+            }
+
+            return t;
         }
 
         public void StartListening(uint minTime, double minDistance)

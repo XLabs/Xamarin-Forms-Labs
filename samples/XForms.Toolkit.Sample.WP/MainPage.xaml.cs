@@ -13,34 +13,36 @@ using XForms.Toolkit.WP.Controls.Calendar;
 
 namespace XForms.Toolkit.Sample.WP
 {
-    public partial class MainPage : PhoneApplicationPage
-    {
-        // Constructor
-        public MainPage()
-        {
-            InitializeComponent();
-          new CalendarViewRenderer();
-            // Sample code to localize the ApplicationBar
-            Forms.Init();
+	public partial class MainPage : PhoneApplicationPage
+	{
+		// Constructor
+		public MainPage()
+		{
+			InitializeComponent();
+		  new CalendarViewRenderer();
+			// Sample code to localize the ApplicationBar
+			Forms.Init();
 
-            Content = XForms.Toolkit.Sample.App.GetMainPage().ConvertPageToUIElement(this);
-            //BuildLocalizedApplicationBar();
-        }
+			XForms.Toolkit.Sample.App.Init();
 
-        // Sample code for building a localized ApplicationBar
-        //private void BuildLocalizedApplicationBar()
-        //{
-        //    // Set the page's ApplicationBar to a new instance of ApplicationBar.
-        //    ApplicationBar = new ApplicationBar();
+			Content = XForms.Toolkit.Sample.App.GetMainPage().ConvertPageToUIElement(this);
+			//BuildLocalizedApplicationBar();
+		}
 
-        //    // Create a new button and set the text value to the localized string from AppResources.
-        //    ApplicationBarIconButton appBarButton = new ApplicationBarIconButton(new Uri("/Assets/AppBar/appbar.add.rest.png", UriKind.Relative));
-        //    appBarButton.Text = AppResources.AppBarButtonText;
-        //    ApplicationBar.Buttons.Add(appBarButton);
+		// Sample code for building a localized ApplicationBar
+		//private void BuildLocalizedApplicationBar()
+		//{
+		//    // Set the page's ApplicationBar to a new instance of ApplicationBar.
+		//    ApplicationBar = new ApplicationBar();
 
-        //    // Create a new menu item with the localized string from AppResources.
-        //    ApplicationBarMenuItem appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarMenuItemText);
-        //    ApplicationBar.MenuItems.Add(appBarMenuItem);
-        //}
-    }
+		//    // Create a new button and set the text value to the localized string from AppResources.
+		//    ApplicationBarIconButton appBarButton = new ApplicationBarIconButton(new Uri("/Assets/AppBar/appbar.add.rest.png", UriKind.Relative));
+		//    appBarButton.Text = AppResources.AppBarButtonText;
+		//    ApplicationBar.Buttons.Add(appBarButton);
+
+		//    // Create a new menu item with the localized string from AppResources.
+		//    ApplicationBarMenuItem appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarMenuItemText);
+		//    ApplicationBar.MenuItems.Add(appBarMenuItem);
+		//}
+	}
 }

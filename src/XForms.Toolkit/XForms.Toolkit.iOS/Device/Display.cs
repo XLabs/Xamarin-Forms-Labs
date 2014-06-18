@@ -1,4 +1,5 @@
 ﻿using System;
+using MonoTouch.UIKit;
 
 namespace XForms.Toolkit
 {
@@ -57,6 +58,22 @@ namespace XForms.Toolkit
         {
             get;
             private set;
+        }
+
+        /// <summary>
+        /// Convert width in inches to runtime pixels
+        /// </summary>
+        public double WidthRequestInInches(double inches)
+        {
+            return inches * this.Xdpi / UIScreen.MainScreen.Scale;
+        }
+
+        /// <summary>
+        /// Convert height in inches to runtime pixels
+        /// </summary>
+        public double HeightRequestInInches(double inches)
+        {
+            return inches * this.Ydpi / UIScreen.MainScreen.Scale;
         }
 
         #endregion

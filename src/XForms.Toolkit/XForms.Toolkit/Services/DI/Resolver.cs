@@ -25,7 +25,7 @@ namespace XForms.Toolkit.Services
                 throw new InvalidOperationException("IResolver can only be set once.");
             }
 
-            instance = resolver;
+            instance = resolver;			
         }
 
         /// <summary>

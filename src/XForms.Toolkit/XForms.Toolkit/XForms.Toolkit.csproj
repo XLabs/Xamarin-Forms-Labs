@@ -50,6 +50,8 @@
     <Compile Include="Helpers\EventExtensions.cs" />
     <Compile Include="Helpers\TaskUtils.cs" />
     <Compile Include="Helpers\Vector3.cs" />
+    <Compile Include="Mvvm\IXFormsApp.cs" />
+    <Compile Include="Mvvm\XFormsApp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Media\MediaExtensions.cs" />
     <Compile Include="Services\Media\MediaFile.cs" />
@@ -98,7 +100,9 @@
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
     <None Include="XForms.Toolkit.nuspec" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Import Project="../packages/Xamarin.Forms.1.1.0.6201/build/portable-win+net45+wp80+MonoAndroid10+MonoTouch10/Xamarin.Forms.targets" />
@@ -123,5 +127,10 @@
       <HintPath>..\packages\Xamarin.Forms.1.1.0.6201\lib\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup />
+  <PropertyGroup>
+    <PostBuildEvent>REM Create a NuGet package for this project and place the .nupkg file in the project's output directory.
+REM If you see this in Visual Studio's Error List window, check the Output window's Build tab for the actual error.
+ECHO Building NuGet package in Post-Build event...
+PowerShell -NoProfile -ExecutionPolicy Bypass -Command "&amp; '$(SolutionDir).nuget\BuildNewPackage-RanAutomatically.ps1' -ProjectFilePath '$(ProjectPath)' -OutputDirectory '$(TargetDir)' -Configuration '$(ConfigurationName)' -Platform '$(PlatformName)'" -PackageDirectory '$(SolutionDir)..\..\packages'</PostBuildEvent>
+  </PropertyGroup>
 </Project>
