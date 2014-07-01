@@ -95,6 +95,9 @@
       <Link>Device\Gyroscope.designer.cs</Link>
     </Compile>
     <Compile Include="Controls\Calendar\CalendarViewRenderer.cs" />
+    <Compile Include="Controls\ExtendedLabel\ExtendedLabelRenderer.cs" />
+    <Compile Include="Controls\ExtendedTextCell\ExtendedTextCellRenderer.cs" />
+    <Compile Include="Controls\ExtendedViewCell\ExtendedViewCellRenderer.cs" />
     <Compile Include="Controls\HybridWebView\HybridWebViewRenderer.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -169,6 +172,7 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
   <ProjectExtensions />

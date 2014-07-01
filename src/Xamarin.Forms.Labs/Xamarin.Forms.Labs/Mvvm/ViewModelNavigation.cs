@@ -32,6 +32,7 @@ namespace Xamarin.Forms.Labs.Mvvm
 			return PushAsync(ViewFactory.CreatePage<TViewModel>(activateAction));
 		}
 
+
 		public Task PopAsync ()
 		{
 			return implementor.PopAsync ();

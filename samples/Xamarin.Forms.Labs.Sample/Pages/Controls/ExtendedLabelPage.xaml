@@ -11,6 +11,7 @@
         	<controls:ExtendedLabel Text="This uses a custom font set xaml" 
         					FontNameAndroid="fonts/Roboto-Light.ttf" 
         					FontNameIOS="Roboto-Light" 
+                  FontNameWP="/Assets/Roboto-Light.ttf#Roboto Light"
         					FontSize="22"
         					HorizontalOptions="StartAndExpand"
 							 VerticalOptions="Center" ></controls:ExtendedLabel>
@@ -24,6 +25,7 @@
 								<controls:ExtendedLabel Text="{Binding}" 
         						FontNameAndroid="fonts/Roboto-Light.ttf" 
         						FontNameIOS="Roboto-Light" 
+                    FontNameWP="/Assets/Roboto-Light.ttf#Roboto Light"
         						FontSize="22"
         						IsUnderline="True"
         						HorizontalOptions="StartAndExpand"

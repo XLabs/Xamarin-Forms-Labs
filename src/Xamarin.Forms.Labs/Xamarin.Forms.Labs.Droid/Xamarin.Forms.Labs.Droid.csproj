@@ -17,7 +17,7 @@
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
     <NuGetPackageImportStamp>5003732c</NuGetPackageImportStamp>
-	<StyleCopTreatErrorsAsWarnings>true</StyleCopTreatErrorsAsWarnings>
+    <StyleCopTreatErrorsAsWarnings>true</StyleCopTreatErrorsAsWarnings>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -84,6 +84,7 @@ PowerShell -NoProfile -ExecutionPolicy Bypass -Command "&amp; '$(SolutionDir).nu
     <Compile Include="Controls\Calendar\MonoDroid.TimesSquare\MonthCellDescriptor.cs" />
     <Compile Include="Controls\Calendar\MonoDroid.TimesSquare\MonthDescriptor.cs" />
     <Compile Include="Controls\Calendar\MonoDroid.TimesSquare\MonthView.cs" />
+    <Compile Include="Controls\ExtendedViewCell\ExtendedViewCellRenderer.cs" />
     <Compile Include="Controls\ImageButton\ImageButtonRenderer.cs" />
     <Compile Include="Device\Accelerometer.cs" />
     <Compile Include="Device\AndroidDevice.cs" />

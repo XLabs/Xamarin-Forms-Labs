@@ -120,6 +120,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Roboto-Light.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml">
