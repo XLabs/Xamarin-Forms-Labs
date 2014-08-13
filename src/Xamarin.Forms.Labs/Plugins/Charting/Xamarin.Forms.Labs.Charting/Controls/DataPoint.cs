@@ -8,8 +8,8 @@ namespace Xamarin.Forms.Labs.Charting.Controls
 {
     public class DataPoint : Element
     {
-        public static readonly BindableProperty LabelProperty = BindableProperty.Create("Label", typeof(string), typeof(DataPoint), default(string), BindingMode.OneWay, null, null, null, null);
-        public static readonly BindableProperty ValueProperty = BindableProperty.Create("Value", typeof(float), typeof(DataPoint), default(float), BindingMode.OneWay, null, null, null, null);
+        public static readonly BindableProperty LabelProperty = BindableProperty.Create("Label", typeof(string), typeof(DataPoint), String.Empty, BindingMode.OneWay, null, null, null, null);
+        public static readonly BindableProperty ValueProperty = BindableProperty.Create("Value", typeof(float), typeof(DataPoint), 0.0F, BindingMode.OneWay, null, null, null, null);
 
         public string Label
         {

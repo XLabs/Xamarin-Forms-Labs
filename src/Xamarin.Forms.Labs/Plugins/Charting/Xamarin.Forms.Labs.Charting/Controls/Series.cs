@@ -10,7 +10,7 @@ namespace Xamarin.Forms.Labs.Charting.Controls
     public class Series : Element
     {
         public static readonly BindableProperty PointsProperty = BindableProperty.Create("Points", typeof(DataPointCollection), typeof(Series), default(DataPointCollection), BindingMode.OneWay, null, null, null, null);
-        public static readonly BindableProperty ColorProperty = BindableProperty.Create("Color", typeof(Color), typeof(Series), Color.White, BindingMode.OneWay, null, null, null, null);
+        public static readonly BindableProperty ColorProperty = BindableProperty.Create("Color", typeof(Color), typeof(Series), Color.Blue, BindingMode.OneWay, null, null, null, null);
         public static readonly BindableProperty TypeProperty = BindableProperty.Create("Type", typeof(ChartType), typeof(Series), ChartType.Bar, BindingMode.OneWay, null, null, null, null);
 
         public Color Color

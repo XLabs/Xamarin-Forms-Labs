@@ -5,7 +5,7 @@
 					   x:Class="Xamarin.Forms.Labs.Sample.Pages.Controls.Charts.BarChartPage">
   <StackLayout x:Name="PageLayout">
 
-    <charting:Chart x:Name="BarChart" Color="White" Width="400" Height="500" Spacing="10">
+    <charting:Chart x:Name="BarChart" Color="White" Width="600" Height="900" Spacing="10">
 
       <charting:Chart.Series>
         <charting:Series Type="Bar" Color="Red">
