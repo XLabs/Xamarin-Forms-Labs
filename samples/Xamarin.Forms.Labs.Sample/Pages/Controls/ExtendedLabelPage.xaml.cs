@@ -5,7 +5,9 @@ using Xamarin.Forms.Labs.Controls;
 
 namespace Xamarin.Forms.Labs.Sample
 {
-    public partial class ExtendedLabelPage : ContentPage
+  using Xamarin.Forms.Labs.Mvvm.Views;
+
+  public partial class ExtendedLabelPage : BaseView
     {
         public ExtendedLabelPage()
         {
@@ -14,18 +16,16 @@ namespace Xamarin.Forms.Labs.Sample
 
             var label = new ExtendedLabel
             {
-                Text = "From code, using Device.OnPlatform, Underlined",
-                FontName = "Open 24 Display St.ttf",
-                FriendlyFontName = Device.OnPlatform<String>("", "", "Open 24 Display St"),
+                Text = "and From code",
+                FontName = Device.OnPlatform<String>("Roboto-Light", "fonts/Roboto-Light.ttf", "Courier New"),
                 IsUnderline = true,
                 FontSize = 22,
             };
 
             var label2 = new ExtendedLabel
             {
-                Text = "From code, Strikethrough",
-                FontName = "Open 24 Display St.ttf",
-                FriendlyFontName = Device.OnPlatform<String>("", "", "Open 24 Display St"),
+                Text = "and From code",
+                FontName = Device.OnPlatform<String>("Roboto-Light", "fonts/Roboto-Light.ttf", "Courier New"),
                 IsUnderline = false,
                 IsStrikeThrough = true,
                 FontSize = 22,

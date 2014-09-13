@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-					   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+<mvvm:BaseView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:charting="clr-namespace:Xamarin.Forms.Labs.Charting.Controls;assembly=Xamarin.Forms.Labs.Charting"
-					   x:Class="Xamarin.Forms.Labs.Sample.Pages.Controls.Charts.BoundChartPage">
+             xmlns:mvvm="clr-namespace:Xamarin.Forms.Labs.Mvvm.Views;assembly=Xamarin.Forms.Labs.Mvvm"
+             x:Class="Xamarin.Forms.Labs.Sample.Pages.Controls.Charts.BoundChartPage">
   <StackLayout x:Name="PageLayout" Orientation="Vertical">
     <StackLayout Orientation="Horizontal">
       <Button Text="Yellow" Command="{Binding ChangeColorYellowCommand}" />
@@ -24,4 +25,4 @@
     </charting:Chart>
 
   </StackLayout>
-</ContentPage>
+</mvvm:BaseView>

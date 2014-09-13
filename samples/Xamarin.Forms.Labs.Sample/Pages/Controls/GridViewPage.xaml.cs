@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
-using Xamarin.Forms.Labs.Mvvm;
+using Xamarin.Forms.Labs.Mvvm.Views;
 
 namespace Xamarin.Forms.Labs.Sample.Pages.Controls
 {
@@ -12,7 +12,7 @@ namespace Xamarin.Forms.Labs.Sample.Pages.Controls
             InitializeComponent ();
             BindingContext = ViewModelLocator.Main;
             this.grdView.ItemSelected += (object sender, EventArgs<object> e) => {
-                DisplayAlert ("selected value", e.Value.ToString (), "ok");
+                DisplayAlert ("selected value", e.Value.ToString (), "ok", null);
             };
         }
 

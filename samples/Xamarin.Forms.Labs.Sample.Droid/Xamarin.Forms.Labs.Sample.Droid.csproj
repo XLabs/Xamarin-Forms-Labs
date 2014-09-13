@@ -120,6 +120,14 @@
       <Project>{67F9D3A8-F71E-4428-913F-C37AE82CDB24}</Project>
       <Name>Xamarin.Forms.Labs.Charting</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\src\Xamarin.Forms.Labs\Plugins\Mvvm\Xamarin.Forms.Labs.Mvvm.csproj">
+      <Project>{4353C25C-1D62-4922-B8A5-F027FB2172C6}</Project>
+      <Name>Xamarin.Forms.Labs.Mvvm</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Xamarin.Forms.Labs\Plugins\Serialization\Xamarin.Forms.Labs.ServiceStackSerializer\Xamarin.Forms.Labs.ServiceStackSerializer.Android.csproj">
+      <Project>{56838cd4-8ebc-4860-a3e1-1697875bbc61}</Project>
+      <Name>Xamarin.Forms.Labs.ServiceStackSerializer.Android</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Xamarin.Forms.Labs.Sample\Xamarin.Forms.Labs.Sample.csproj">
       <Project>{DC133A2F-E49E-49E3-B43D-BFB957CB5482}</Project>
       <Name>Xamarin.Forms.Labs.Sample</Name>

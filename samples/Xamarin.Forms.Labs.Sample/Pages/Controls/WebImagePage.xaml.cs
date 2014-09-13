@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Xamarin.Forms.Labs.Sample.Pages.Controls
 {
-    public partial class WebImagePage : ContentPage
+  using Xamarin.Forms.Labs.Mvvm.Views;
+
+  public partial class WebImagePage : BaseView
     {
         public WebImagePage()
         {

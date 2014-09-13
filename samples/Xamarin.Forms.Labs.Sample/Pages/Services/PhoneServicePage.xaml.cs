@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using Xamarin.Forms;
 
 namespace Xamarin.Forms.Labs.Sample
-{	
-	public partial class PhoneServicePage : ContentPage
+{
+
+  using Xamarin.Forms.Labs.Mvvm.Views;
+
+  public partial class PhoneServicePage : BaseView
 	{	
 		public PhoneServicePage ()
 		{

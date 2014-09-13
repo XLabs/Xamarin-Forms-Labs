@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using Xamarin.Forms.Labs.Mvvm;
 using Xamarin.Forms.Labs.Services;
 
 namespace Xamarin.Forms.Labs.Sample
@@ -10,7 +9,7 @@ namespace Xamarin.Forms.Labs.Sample
     /// <summary>
     /// Sample ViewModel for the CacheService.
     /// </summary>
-    public class CacheServiceViewModel : Xamarin.Forms.Labs.Mvvm.ViewModel
+  public class CacheServiceViewModel : Mvvm.ViewModels.ViewModel
     {
         /// <summary>
         /// Key used in the cache.

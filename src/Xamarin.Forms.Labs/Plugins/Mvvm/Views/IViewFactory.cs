@@ -39,5 +39,20 @@
     /// <param name="useCache">Use the cache for this view instance. The <see cref="EnableCache"/> is a global setting that if true always uses the cache.</param>
     INavigable CreateView<TViewModel>(string key = null, Action<TViewModel, INavigable> initialiser = null, bool useCache = false)
       where TViewModel : class, IViewModel, new();
+
+    /// <summary>
+    /// Create the <see cref="INavigable"/> mapped to the <see cref="ViewModels.ViewModel"/> using the extra key if required.
+    /// Also wraps the view in a constructed wrappingViewType and returns the wrapping view, not the wrapped view.
+    /// </summary>
+    /// <typeparam name="TViewModel">The type of the <see cref="ViewModels.ViewModel"/></typeparam>
+    /// <param name="wrappingViewType">The Type to wrap the created view in. This type must have a constructor containing an <see cref="INavigable"/> as the only parameter.</param>
+    /// <param name="key">The key to use in case multiple <see cref="INavigable"/> are mapped to the same <see cref="ViewModels.ViewModel"/>.</param>
+    /// <param name="initialiser">An action to execute when the <see cref="INavigable"/> is created.</param>
+    /// <param name="useCache">Use the cache for this view instance. The <see cref="EnableCache"/> is a global setting that if true always uses the cache.</param>
+    /// <returns>The <see cref="INavigable"/> created wrapped in the Type of the wrappingViewType.</returns>
+    /// <remarks>If the Cache is used to cache the view created, both the wrapping and the wrapped view are cached.
+    /// The wrapping view is returned.</remarks>
+    INavigable CreateView<TViewModel>(Type wrappingViewType, string key = null, Action<TViewModel, INavigable> initialiser = null, bool useCache = false)
+      where TViewModel : class, IViewModel, new();
   }
 }

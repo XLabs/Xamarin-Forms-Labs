@@ -4,10 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms.Labs.Controls;
+using Xamarin.Forms.Labs.Sample.ViewModel;
 
 namespace Xamarin.Forms.Labs.Sample.Pages.Controls
 {
-    public class RepeaterViewPage : ContentPage
+
+  using Xamarin.Forms.Labs.Mvvm.Views;
+
+  public class RepeaterViewPage : BaseView
     {
         public RepeaterViewPage()
         {

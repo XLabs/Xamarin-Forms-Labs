@@ -4,7 +4,9 @@ using Xamarin.Forms;
 
 namespace Xamarin.Forms.Labs.Sample
 {
-    public partial class ExtendedCellPage : ContentPage
+  using Xamarin.Forms.Labs.Mvvm.Views;
+
+  public partial class ExtendedCellPage : BaseView
     {
         public ExtendedCellPage()
         {

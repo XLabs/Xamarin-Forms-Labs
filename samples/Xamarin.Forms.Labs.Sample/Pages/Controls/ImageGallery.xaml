@@ -1,8 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+<mvvm:BaseView xmlns="http://xamarin.com/schemas/2014/forms" 
   xmlns:controls="clr-namespace:Xamarin.Forms.Labs.Controls;assembly=Xamarin.Forms.Labs"
-  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Xamarin.Forms.Labs.Sample.Pages.Controls.ImageGallery">
+  xmlns:mvvm="clr-namespace:Xamarin.Forms.Labs.Mvvm.Views;assembly=Xamarin.Forms.Labs.Mvvm"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+  x:Class="Xamarin.Forms.Labs.Sample.Pages.Controls.ImageGallery">
     <ContentPage.Content>
         <controls:ImageGallery ItemsSource="{Binding Images}" > </controls:ImageGallery>
     </ContentPage.Content>
-</ContentPage>
+</mvvm:BaseView>

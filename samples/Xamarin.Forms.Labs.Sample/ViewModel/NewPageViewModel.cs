@@ -1,47 +1,78 @@
-﻿using System;
-using Xamarin.Forms.Labs.Mvvm;
-
-
-namespace Xamarin.Forms.Labs.Sample
+﻿namespace Xamarin.Forms.Labs.Sample
 {
-	//[ViewType(typeof(NewPageView))] can specify this
-    public class NewPageViewModel : Xamarin.Forms.Labs.Mvvm.ViewModel
-	{
-		public NewPageViewModel ()
-		{
-			NewPage =@"This page was created by the view factory and binded to the viewmodel and injected a navigation context using the following code:
-						ViewFactory.Register<NewPageView,NewPageViewModel> ();
-						We can also navigate to this page from any view model using the following code: 
-						await Navigation.PushAsync<NewPageViewModel>() ";
+  #region Usings
 
-		}
+  using System;
 
-		private string _newPage =string.Empty;
-		public string NewPage
-		{
-			get
-			{
-				return _newPage;
-			}
-			set
-						
-			{
-				this.SetProperty(ref _newPage, value);
-			}
-		}
+  #endregion
 
-		private string _pageTitle ="New Page";
-		public string PageTitle
-		{
-			get
-			{
-				return _pageTitle;
-			}
-			set
-			{
-				this.SetProperty(ref _pageTitle, value);
-			}
-		}
-	}
+  public class NewPageViewModel : Mvvm.ViewModels.ViewModel
+  {
+    public string Id
+    {
+      get
+      {
+        return _id;
+      }
+      set
+      {
+        SetProperty(ref _id, value);
+      }
+    }
+    private string _id;
+
+    public string NewPage
+    {
+      get
+      {
+        return _newPage;
+      }
+      set
+      {
+        SetProperty(ref _newPage, value);
+      }
+    }
+    private string _newPage = string.Empty;
+
+    public string KeyedNewPage
+    {
+      get
+      {
+        return _keyedNewPage;
+      }
+      set
+      {
+        SetProperty(ref _keyedNewPage, value);
+      }
+    }
+    private string _keyedNewPage = string.Empty;
+
+    public string PageTitle
+    {
+      get
+      {
+        return _pageTitle;
+      }
+      set
+      {
+        SetProperty(ref _pageTitle, value);
+      }
+    }
+    private string _pageTitle = "New Page";
+
+    public NewPageViewModel()
+    {
+      NewPage = @"This page was created by the view factory and binded to the ViewModel and injected a navigation context using the following code:
+            ViewFactory.Instance.Register<NewPageView,NewPageViewModel> ();
+            We can also navigate to this page from any view model using the following code: 
+            await NavigationService.PushAsync<NewPageViewModel>() ";
+
+      KeyedNewPage = @"This page was created by the view factory and binded to the ViewModel and injected a navigation context using the following code:
+            ViewFactory.Instance.Register<NewPageView,NewPageViewModel> (""key"");
+            We can also navigate to this page from any view model using the following code: 
+            await NavigationService.PushAsync<NewPageViewModel>(""key"") ";
+
+      Id = Guid.NewGuid().ToString();
+    }
+  }
 }
-

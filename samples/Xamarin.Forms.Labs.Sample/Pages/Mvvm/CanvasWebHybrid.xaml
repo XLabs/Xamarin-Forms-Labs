@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<toolkit:BaseView
+<mvvm:BaseView
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="Xamarin.Forms.Labs.Sample.CanvasWebHybrid"
-    xmlns:toolkit="clr-namespace:Xamarin.Forms.Labs.Mvvm;assembly=Xamarin.Forms.Labs"
+    xmlns:mvvm="clr-namespace:Xamarin.Forms.Labs.Mvvm.Views;assembly=Xamarin.Forms.Labs.Mvvm"
     xmlns:controls="clr-namespace:Xamarin.Forms.Labs.Controls;assembly=Xamarin.Forms.Labs"
     Title="CanvasJS hybrid view"
     >
-    <toolkit:BaseView.Content>
+    <mvvm:BaseView.Content>
 	     <StackLayout x:Name="container" Padding="0,40,0,0">
 	     <Label Text="{Binding Title}"></Label>
 			<ListView ItemsSource="{Binding DataPoints}" WidthRequest="200" HeightRequest="200">
@@ -29,6 +29,6 @@
 				<controls:HybridWebView x:Name="hybridWebView" WidthRequest="200" HeightRequest="325">
 				</controls:HybridWebView>
 		</StackLayout>
-    </toolkit:BaseView.Content>
-</toolkit:BaseView>
+    </mvvm:BaseView.Content>
+</mvvm:BaseView>
 

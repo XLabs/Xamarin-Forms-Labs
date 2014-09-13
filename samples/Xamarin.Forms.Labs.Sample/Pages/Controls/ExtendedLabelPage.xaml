@@ -1,71 +1,25 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-
-<ContentPage
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<mvvm:BaseView
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:Xamarin.Forms.Labs.Controls;assembly=Xamarin.Forms.Labs"
+    xmlns:mvvm="clr-namespace:Xamarin.Forms.Labs.Mvvm.Views;assembly=Xamarin.Forms.Labs.Mvvm"
     x:Class="Xamarin.Forms.Labs.Sample.ExtendedLabelPage"
-    Title="Labels">
-    <ContentPage.Content>
-        <!-- Removed scrollview as this makes the Windows Phone not render the font substitutions. This is bug reported to the Xamarin team. 
-        Works on other platforms. !-->
-        <!--<ScrollView>-->
-        <StackLayout x:Name="stkRoot" Padding="0,40,0,0">
-            <controls:ExtendedLabel
-                Text="Plain unspecified Extended Label" HorizontalOptions="StartAndExpand">
-            </controls:ExtendedLabel>
-            <controls:ExtendedLabel
-                Text="Text with strikethrough - no font or size size specified"
-                IsStrikeThrough="True"
-                HorizontalOptions="StartAndExpand">
-            </controls:ExtendedLabel>
-            <controls:ExtendedLabel
-                Text="Text with strikethrough size 14"
-                IsStrikeThrough="True" FontSize="14"
-                HorizontalOptions="StartAndExpand">
-            </controls:ExtendedLabel>
-            <controls:ExtendedLabel
-                Text="Text with strikethrough 20"
-                IsStrikeThrough="True" FontSize="20"
-                HorizontalOptions="StartAndExpand">
-            </controls:ExtendedLabel>
-            <controls:ExtendedLabel
-                Text="This uses 'FontName' = 'Open 24 Display St' set in XAML and 'FriendlyFontName' properties, size 20"
-                FontName="Open 24 Display St"
-                FriendlyFontName="Open 24 Display St"
-                FontSize="20"
-                HorizontalOptions="StartAndExpand">
-            </controls:ExtendedLabel>
-            <controls:ExtendedLabel
-                Text="As above, but now with Strikethrough"
-                FontName="Open 24 Display St"
-                FriendlyFontName="Open 24 Display St"
-                FontSize="20"
-                IsStrikeThrough="True"
-                HorizontalOptions="StartAndExpand">
-            </controls:ExtendedLabel>
-            <controls:ExtendedLabel
-                Text="This uses 'FontName' = 'Open 24 Display St.ttf'. Size 14"
-                FontName="Open 24 Display St"
-                FriendlyFontName="Open 24 Display St"
-                FontSize="14"
-                HorizontalOptions="StartAndExpand">
-            </controls:ExtendedLabel>
-            <controls:ExtendedLabel
-                Text="This 'FontName' = 'CODE2000', but font does NOT exist, so should default to the system font."
-                FontName="CODE2000"
-                FriendlyFontName="Code2000"
-                FontSize="14"
-                HorizontalOptions="StartAndExpand">
-            </controls:ExtendedLabel>
-            <controls:ExtendedLabel
-                Text="This uses a custom font set xaml using obsolete properties 'FontNameAndroid', 'FontNameIOS'"
-                FontNameAndroid="Open 24 Display St.ttf"
-                FontNameIOS="Open 24 Display St"
-                FontSize="20"
-                HorizontalOptions="StartAndExpand">
-            </controls:ExtendedLabel>
-        </StackLayout>
-        <!--</ScrollView>-->
-    </ContentPage.Content>
-</ContentPage>
+    Title="Labels"
+  >
+  <ContentPage.Content>
+    <StackLayout x:Name="stkRoot" Padding="0,40,0,0">
+      <controls:ExtendedLabel Text="with strikethrough" IsStrikeThrough="True"></controls:ExtendedLabel>
+      <controls:ExtendedLabel Text="This uses a custom font set xaml"
+              FontNameAndroid="fonts/Roboto-Light.ttf"
+              FontNameIOS="Roboto-Light"
+              FontSize="22"
+              HorizontalOptions="StartAndExpand"
+           VerticalOptions="Center" ></controls:ExtendedLabel>
+
+     
+
+    </StackLayout>
+  </ContentPage.Content>
+</mvvm:BaseView>
+

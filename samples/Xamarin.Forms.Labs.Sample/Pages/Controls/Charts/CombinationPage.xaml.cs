@@ -7,11 +7,13 @@ using Xamarin.Forms.Labs.Charting.Controls;
 
 namespace Xamarin.Forms.Labs.Sample.Pages.Controls.Charts
 {
-    public partial class CombinationPage
+  using Xamarin.Forms.Labs.Mvvm.Views;
+
+  public partial class CombinationPage : BaseView
+  {
+    public CombinationPage()
     {
-        public CombinationPage()
-        {
-            InitializeComponent();
-        }
+      InitializeComponent();
     }
+  }
 }

@@ -42,7 +42,7 @@
     /// <summary>
     /// The resolved view cache.
     /// </summary>
-    private static readonly Dictionary<string, Tuple<IViewModel, INavigable>> ViewCache = new Dictionary<string, Tuple<IViewModel, INavigable>>();
+    private static readonly Dictionary<string, Tuple<IViewModel, INavigable, INavigable>> ViewCache = new Dictionary<string, Tuple<IViewModel, INavigable, INavigable>>();
 
     /// <inheritdoc />
     public bool EnableCache { get; set; }
@@ -62,10 +62,10 @@
       {
         // register view model with DI to enable non default VM constructors or service locator.
         // either as a singleton instance or not
-        if (singleInstance) 
+        if (singleInstance)
           container.RegisterSingle<TViewModel, TViewModel>();
-        else 
-          container.Register<TViewModel, TViewModel>();       
+        else
+          container.Register<TViewModel, TViewModel>();
       }
     }
 
@@ -82,6 +82,7 @@
         throw new InvalidOperationException(string.Format("No View registered for ViewModel({0}) and key {1}.", typeof(TViewModel).Name, key ?? "(none)"));
 
       INavigable view;
+      INavigable wrappingView = null;
       TViewModel viewModel;
       var cacheKey = string.Format("{0}:{1}:{2}", typeof(TViewModel).Name, viewType.Name, key ?? "");
 
@@ -90,6 +91,7 @@
         var cache = ViewCache[cacheKey];
         viewModel = cache.Item1 as TViewModel;
         view = cache.Item2;
+        wrappingView = cache.Item3;
       }
       else
       {
@@ -97,7 +99,7 @@
         viewModel = Resolver.Resolve<TViewModel>() ?? Activator.CreateInstance<TViewModel>();
 
         if (EnableCache || useCache)
-          ViewCache[cacheKey] = new Tuple<IViewModel, INavigable>(viewModel, view);
+          ViewCache[cacheKey] = new Tuple<IViewModel, INavigable, INavigable>(viewModel, view, null);
       }
 
       if (initialiser != null) initialiser(viewModel, view);
@@ -108,7 +110,53 @@
 
       return view;
     }
-  
+
+    /// <inheritdoc />
+    public INavigable CreateView<TViewModel>(Type wrappingViewType, string key = null, Action<TViewModel, INavigable> initialiser = null, bool useCache = false)
+      where TViewModel : class, IViewModel, new()
+    {
+      Type viewType;
+      var dictKey = new Tuple<Type, string>(typeof(TViewModel), key ?? "");
+
+      if (TypeDictionary.ContainsKey(dictKey))
+        viewType = TypeDictionary[dictKey];
+      else
+        throw new InvalidOperationException(string.Format("No View registered for ViewModel({0}) and key {1}.", typeof(TViewModel).Name, key ?? "(none)"));
+
+      INavigable wrappedView;
+      INavigable wrappingView = null;
+      TViewModel viewModel;
+      var cacheKey = string.Format("{0}:{1}:{2}", typeof(TViewModel).Name, viewType.Name, key ?? "");
+
+      if ((EnableCache || useCache) && ViewCache.ContainsKey(cacheKey))
+      {
+        var cache = ViewCache[cacheKey];
+        viewModel = cache.Item1 as TViewModel;
+        wrappedView = cache.Item2;
+        wrappingView = cache.Item3;
+      }
+      else
+      {
+        wrappedView = Activator.CreateInstance(viewType) as INavigable;
+        viewModel = Resolver.Resolve<TViewModel>() ?? Activator.CreateInstance<TViewModel>();
+      }
+      if (wrappingViewType != null && wrappingView == null)
+      {
+        wrappingView = Activator.CreateInstance(wrappingViewType, wrappedView) as INavigable;
+      }
+
+      if (EnableCache || useCache)
+        ViewCache[cacheKey] = new Tuple<IViewModel, INavigable, INavigable>(viewModel, wrappedView, wrappingView);
+
+      if (initialiser != null) initialiser(viewModel, wrappedView);
+
+      // forcing break reference on view model in order to allow initializer to do its work
+      wrappedView.BindingContext = null;
+      wrappedView.BindingContext = viewModel;
+
+      return wrappingView ?? wrappedView;
+    }
+
     /// <summary>
     /// Create and register the default <see cref="IViewFactory"/>.
     /// </summary>

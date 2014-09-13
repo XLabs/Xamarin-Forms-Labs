@@ -54,4 +54,9 @@ namespace Xamarin.Forms.Labs.Mvvm.Views
     /// <param name="nav">The <see cref="INavigable"/> to push onto the stack modally.</param>
     Task PushModalAsync(INavigable nav);
   }
+
+  public interface IWrappedNavigable : INavigable
+  {
+    
+  }
 }

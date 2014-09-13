@@ -54,6 +54,18 @@
       where TViewModel : class, IViewModel, new();
 
     /// <summary>
+    /// Asynchronously push the modal view mapped to the view model.
+    /// </summary>
+    /// <typeparam name="TViewModel">TheMvvm.IViewModelef="ViewModel"/> to use.</typeparam>
+    /// <param name="wrappingType">The Type to wrap the created view in. This type must have a constructor containing an <see cref="INavigable"/> as the only parameter.</param>
+    /// <param name="key">A extra key in case the same view model is mapped to multiple views.</param>
+    /// <param name="initialiser">An <see cref="Action"/> to execute when the view is activated.</param>
+    /// <param name="useCache">Use the cache for this view instance. The <see cref="IViewFactory.EnableCache"/> is a global setting that if true always uses the cache.</param>
+    /// <returns>True if successful, false otherwise.</returns>
+    Task<bool> PushModalAsync<TViewModel>(Type wrapperType, string key = null, Action<IViewModel, INavigable> initialiser = null, bool useCache = false)
+      where TViewModel : class, IViewModel, new();
+
+    /// <summary>
     /// Asynchronously pop the modal view that is currently on display.
     /// </summary>
     /// <returns>The view that was on display.</returns>

@@ -68,6 +68,9 @@
     <Compile Include="Pages\Controls\RepeaterViewPage.cs" />
     <Compile Include="Pages\Controls\ExtendedSliderPage.cs" />
     <Compile Include="Pages\Controls\SegmentPage.cs" />
+    <Compile Include="Pages\Mvvm\KeyedNewPageView.xaml.cs">
+      <DependentUpon>KeyedNewPageView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Services\EmailPage.cs" />
     <Compile Include="Pages\Services\WaveRecorderPage.xaml.cs">
       <DependentUpon>WaveRecorderPage.xaml</DependentUpon>
@@ -217,6 +220,10 @@
       <Project>{67F9D3A8-F71E-4428-913F-C37AE82CDB24}</Project>
       <Name>Xamarin.Forms.Labs.Charting</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\src\Xamarin.Forms.Labs\Plugins\Mvvm\Xamarin.Forms.Labs.Mvvm.csproj">
+      <Project>{4353c25c-1d62-4922-b8a5-f027fb2172c6}</Project>
+      <Name>Xamarin.Forms.Labs.Mvvm</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\Xamarin.Forms.Labs\Xamarin.Forms.Labs\Xamarin.Forms.Labs.csproj">
       <Project>{4D10DF5E-883D-468B-A854-4A53C7FE75AC}</Project>
       <Name>Xamarin.Forms.Labs</Name>
@@ -298,6 +305,12 @@
     <EmbeddedResource Include="Pages\Services\WaveRecorderPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Mvvm\KeyedNewPageView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

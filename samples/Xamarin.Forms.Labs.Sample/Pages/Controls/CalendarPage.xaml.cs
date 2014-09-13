@@ -5,7 +5,9 @@ using Xamarin.Forms.Labs.Controls;
 
 namespace Xamarin.Forms.Labs.Sample
 {
-    public partial class CalendarPage : ContentPage
+  using Xamarin.Forms.Labs.Mvvm.Views;
+
+  public partial class CalendarPage : BaseView
     {
         CalendarView _calendarView;
         StackLayout _stacker;

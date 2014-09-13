@@ -1,16 +1,19 @@
 ﻿namespace Xamarin.Forms.Labs.Sample.Pages.Controls
 {
+
+  using Xamarin.Forms.Labs.Mvvm.Views;
+
+  /// <summary>
+  /// Example page showing the ExtendedEntry control
+  /// </summary>
+  public partial class ExtendedEntryPage : BaseView
+  {
     /// <summary>
-    /// Example page showing the ExtendedEntry control
+    /// Creates a new instance of the <see cref="ExtendedEntryPage"/> class
     /// </summary>
-    public partial class ExtendedEntryPage : ContentPage
+    public ExtendedEntryPage()
     {
-        /// <summary>
-        /// Creates a new instance of the <see cref="ExtendedEntryPage"/> class
-        /// </summary>
-        public ExtendedEntryPage()
-        {
-            InitializeComponent();
-        }
+      InitializeComponent();
     }
+  }
 }

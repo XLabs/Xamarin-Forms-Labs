@@ -1,16 +1,17 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<ContentPage
+<mvvm:BaseView
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:mvvm="clr-namespace:Xamarin.Forms.Labs.Mvvm.Views;assembly=Xamarin.Forms.Labs.Mvvm"
     x:Class="Xamarin.Forms.Labs.Sample.TextToSpeechPage"
     Title="Text To Speech Service"
     >
-    <ContentPage.Content>
+  <ContentPage.Content>
     <StackLayout>
-		<Entry Text="{Binding TextToSpeak, Mode=TwoWay}"></Entry>
-        <Button x:Name="btnSpeak" Text="Speak" WidthRequest="200" HeightRequest="100" Command="{Binding SpeakCommand}" ></Button>
+      <Entry Text="{Binding TextToSpeak, Mode=TwoWay}"></Entry>
+      <Button x:Name="btnSpeak" Text="Speak" WidthRequest="200" HeightRequest="100" Command="{Binding SpeakCommand}" ></Button>
     </StackLayout>
-    
-    </ContentPage.Content>
-</ContentPage>
+
+  </ContentPage.Content>
+</mvvm:BaseView>
 

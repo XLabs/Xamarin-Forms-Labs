@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace Xamarin.Forms.Labs.Sample.Pages.Controls.Charts
 {
-    public partial class PieChartPage
+  using Xamarin.Forms.Labs.Mvvm.Views;
+
+  public partial class PieChartPage : BaseView
+  {
+    public PieChartPage()
     {
-        public PieChartPage()
-        {
-            InitializeComponent();
-        }
+      InitializeComponent();
     }
+  }
 }

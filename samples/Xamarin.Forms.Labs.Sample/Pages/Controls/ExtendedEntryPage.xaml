@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-					   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+<mvvm:BaseView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:Xamarin.Forms.Labs.Controls;assembly=Xamarin.Forms.Labs"
-					   x:Class="Xamarin.Forms.Labs.Sample.Pages.Controls.ExtendedEntryPage"
+             xmlns:mvvm="clr-namespace:Xamarin.Forms.Labs.Mvvm.Views;assembly=Xamarin.Forms.Labs.Mvvm"
+             x:Class="Xamarin.Forms.Labs.Sample.Pages.Controls.ExtendedEntryPage"
              Title="Extended Entry">
   <ContentPage.Content>
     <StackLayout Padding="0,40,0,0">
@@ -14,4 +15,4 @@
       <controls:ExtendedEntry Placeholder="No border" HasBorder="false" />
     </StackLayout>
   </ContentPage.Content>
-</ContentPage>
+</mvvm:BaseView>

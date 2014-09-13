@@ -36,8 +36,8 @@ namespace Xamarin.Forms.Labs.Mvvm.Views
     /// Initializes a new instance of the <see cref="BaseNavigationView"/> class using
     /// the root page passed in as the content of the page.
     /// </summary>
-    public BaseNavigationView(Page root)
-      : base(root)
+    public BaseNavigationView(INavigable root)
+      : base(root as Page)
     {
       SetValue(HasNavigationBarProperty, false); //TODO: why
     }

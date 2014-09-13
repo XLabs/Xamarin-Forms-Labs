@@ -4,12 +4,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Xamarin.Forms.Labs.Mvvm;
 
-namespace Xamarin.Forms.Labs.Sample
+namespace Xamarin.Forms.Labs.Sample.ViewModel
 {
-    [ViewType(typeof(MvvmSamplePage))]
-    public class RepeaterViewViewModel : Xamarin.Forms.Labs.Mvvm.ViewModel
+  public class RepeaterViewViewModel : Mvvm.ViewModels.ViewModel
     {
         public RepeaterViewViewModel()
         {

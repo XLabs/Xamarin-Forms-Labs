@@ -7,7 +7,10 @@ using Xamarin.Forms.Labs.Services.Media;
 
 namespace Xamarin.Forms.Labs.Sample.Pages.Services
 {
-    public class EmailPage : ContentPage
+
+  using Xamarin.Forms.Labs.Mvvm.Views;
+
+  public class EmailPage : BaseView
     {
         private IDevice Device;
         private IEmailService EmailService;

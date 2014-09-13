@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.Labs.Mvvm.Views;
 
 namespace Xamarin.Forms.Labs.Sample
 {
-    public class ExtendedDeviceInfoPage : ContentPage
+    public class ExtendedDeviceInfoPage : BaseView
     {
         public ExtendedDeviceInfoPage(IDevice device)
         {

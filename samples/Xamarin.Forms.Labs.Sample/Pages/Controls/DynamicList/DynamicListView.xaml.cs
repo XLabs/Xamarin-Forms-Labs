@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Xamarin.Forms.Labs.Sample.Pages.Controls.DynamicList
 {
-    public partial class DynamicListView
+
+  using Xamarin.Forms.Labs.Mvvm.Views;
+
+  public partial class DynamicListView: BaseView
     {
         private int count;
         public DynamicListView()

@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using Xamarin.Forms;
 
 namespace Xamarin.Forms.Labs.Sample.Pages.Controls
-{    
-    public partial class ExtendedScrollView : ContentPage
+{
+
+  using Xamarin.Forms.Labs.Mvvm.Views;
+
+  public partial class ExtendedScrollView : BaseView
     {    
         int _imageHeight = 200;
         bool _displayAlert = false;

@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using Xamarin.Forms;
 
 namespace Xamarin.Forms.Labs.Sample
-{	
-	public partial class AutoCompletePage : ContentPage
+{
+  using Xamarin.Forms.Labs.Mvvm.Views;
+
+  public partial class AutoCompletePage : BaseView
 	{	
 		public AutoCompletePage ()
 		{

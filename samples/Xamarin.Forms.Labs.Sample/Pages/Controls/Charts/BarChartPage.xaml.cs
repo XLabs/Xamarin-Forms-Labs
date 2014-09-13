@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 namespace Xamarin.Forms.Labs.Sample.Pages.Controls.Charts
 {
-    public partial class BarChartPage
+
+  using Xamarin.Forms.Labs.Mvvm.Views;
+
+  public partial class BarChartPage : BaseView
+  {
+    public BarChartPage()
     {
-        public BarChartPage()
-        {
-            InitializeComponent();
-        }
+      InitializeComponent();
     }
+  }
 }

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<mvvm:BaseView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:mvvm="clr-namespace:Xamarin.Forms.Labs.Mvvm.Views;assembly=Xamarin.Forms.Labs.Mvvm"
+    x:Class="Xamarin.Forms.Labs.Sample.KeyedNewPageView"
+    Title="{Binding PageTitle}"
+    >
+  <StackLayout>
+    <Label Text="{Binding KeyedNewPage}"></Label>
+    <Label Text="The following id should be the same in all views. Which indicates that a singleton instance of the ViewModel was created:"></Label>
+    <Label Text="{Binding Id}"></Label>
+    <Label Text="The following id should be the same in all views. Which indicates that a cached instance of the view was used:" />
+    <Label x:Name="ViewId" Text="" />
+  </StackLayout>
+</mvvm:BaseView>
+

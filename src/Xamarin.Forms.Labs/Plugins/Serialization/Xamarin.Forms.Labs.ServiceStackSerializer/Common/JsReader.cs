@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
-using Xamarin.Forms.Labs.ServiceStackSerializer.Common;
+//using Xamarin.Forms.Labs.ServiceStackSerializer.Common;
 
 namespace ServiceStack.Text.Common
 {
@@ -77,16 +77,17 @@ namespace ServiceStack.Text.Common
                 if (type.IsOrHasGenericInterfaceTypeOf(typeof(IEnumerable<>)))
                     return DeserializeEnumerable<T, TSerializer>.Parse;
 
-                if (type.Name.Contains("Tuple`"))
-                {
-                    return new ParseStringDelegate(x => DeserializeTuple<TSerializer>.Parse(type, x));
-                }
+              // because servicestack wont compile this has to commented out
+                //if (type.Name.Contains("Tuple`"))
+                //{
+                //    return new ParseStringDelegate(x => DeserializeTuple<TSerializer>.Parse(type, x));
+                //}
 
             }
 
 #if NET40
             if (typeof (T).IsAssignableFrom(typeof (System.Dynamic.IDynamicMetaObjectProvider)) ||
-	            typeof (T).HasInterface(typeof (System.Dynamic.IDynamicMetaObjectProvider))) 
+              typeof (T).HasInterface(typeof (System.Dynamic.IDynamicMetaObjectProvider))) 
             {
                 return DeserializeDynamic<TSerializer>.Parse;
             }

@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-					   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                        xmlns:controls="clr-namespace:Xamarin.Forms.Labs.Controls;assembly=Xamarin.Forms.Labs"
-					   x:Class="Xamarin.Forms.Labs.Sample.Pages.Controls.CheckBoxPage">
+<mvvm:BaseView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Xamarin.Forms.Labs.Controls;assembly=Xamarin.Forms.Labs"
+             xmlns:mvvm="clr-namespace:Xamarin.Forms.Labs.Mvvm.Views;assembly=Xamarin.Forms.Labs.Mvvm"
+             x:Class="Xamarin.Forms.Labs.Sample.Pages.Controls.CheckBoxPage">
   <StackLayout>
     <StackLayout.BackgroundColor>
       <OnPlatform x:TypeArguments="Color"
@@ -11,15 +12,7 @@
                   WinPhone="Black"/>
     </StackLayout.BackgroundColor>
     <controls:CheckBox DefaultText="Default text" HorizontalOptions="FillAndExpand" TextColor="Green" FontSize="25" FontName="AmericanTypewriter"/>
-    <controls:CheckBox DefaultText="Default text" CheckedText="Checked" UncheckedText="Unchecked" TextColor="Blue" HorizontalOptions="FillAndExpand" />
-    <controls:CheckBox DefaultText="This is a very long string. A very long string. A really very long string." TextColor="Blue" HorizontalOptions="FillAndExpand" />
-    <controls:CheckBox DefaultText="Normal length text again." HorizontalOptions="FillAndExpand" FontSize="25">
-      <controls:CheckBox.TextColor>
-        <OnPlatform x:TypeArguments="Color"
-                          iOS="Black"
-                          Android="Black"
-                          WinPhone="White"/>
-      </controls:CheckBox.TextColor>
-    </controls:CheckBox>
+    <controls:CheckBox DefaultText="Default text" CheckedText="Checked" UncheckedText="Unchecked" TextColor="Blue" HorizontalOptions="FillAndExpand"
+                       Checked="{Binding Checked, Mode=TwoWay}"/>
   </StackLayout>
-</ContentPage>
+</mvvm:BaseView>

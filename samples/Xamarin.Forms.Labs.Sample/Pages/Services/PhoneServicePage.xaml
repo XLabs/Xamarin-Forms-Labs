@@ -1,14 +1,15 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<ContentPage
+<mvvm:BaseView
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="Xamarin.Forms.Labs.Sample.PhoneServicePage"
+    xmlns:mvvm="clr-namespace:Xamarin.Forms.Labs.Mvvm.Views;assembly=Xamarin.Forms.Labs.Mvvm"
     Title="Phone Service">
     <ContentPage.Content>
         <StackLayout>
-		<Entry Text="{Binding NumberToCall, Mode=TwoWay}"></Entry>
+    <Entry Text="{Binding NumberToCall, Mode=TwoWay}"></Entry>
         <Button x:Name="btnSpeak" Text="Call" WidthRequest="200" HeightRequest="100" Command="{Binding CallCommand}" ></Button>
     </StackLayout>
     </ContentPage.Content>
-</ContentPage>
+</mvvm:BaseView>
 

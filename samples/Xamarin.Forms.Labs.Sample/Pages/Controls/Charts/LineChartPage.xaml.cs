@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace Xamarin.Forms.Labs.Sample.Pages.Controls.Charts
 {
-    public partial class LineChartPage
+  using Xamarin.Forms.Labs.Mvvm.Views;
+
+  public partial class LineChartPage : BaseView
+  {
+    public LineChartPage()
     {
-        public LineChartPage()
-        {
-            InitializeComponent();
-        }
+      InitializeComponent();
     }
+  }
 }

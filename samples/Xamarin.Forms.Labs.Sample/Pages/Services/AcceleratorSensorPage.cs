@@ -5,7 +5,10 @@ using Xamarin.Forms.Labs.Services;
 
 namespace Xamarin.Forms.Labs.Sample
 {
-    public class AcceleratorSensorPage : ContentPage
+
+  using Xamarin.Forms.Labs.Mvvm.Views;
+
+  public class AcceleratorSensorPage : BaseView
     {
         private IAccelerometer accelerometer;
         private SensorBarView xsensor, ysensor, zsensor;
@@ -14,9 +17,9 @@ namespace Xamarin.Forms.Labs.Sample
         {
             var device = Resolver.Resolve<IDevice> ();
 
-			this.Title ="Accelerator Sensor";
+      this.Title ="Accelerator Sensor";
           
-			if (device.Accelerometer == null)
+      if (device.Accelerometer == null)
             {
                 this.Content = new Label () 
                 {

@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-					   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+<mvvm:BaseView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:Xamarin.Forms.Labs.Controls;assembly=Xamarin.Forms.Labs"
-					   x:Class="Xamarin.Forms.Labs.Sample.Pages.Controls.WebImagePage"
+             xmlns:mvvm="clr-namespace:Xamarin.Forms.Labs.Mvvm.Views;assembly=Xamarin.Forms.Labs.Mvvm"
+             x:Class="Xamarin.Forms.Labs.Sample.Pages.Controls.WebImagePage"
              Title="Web Image">
   <StackLayout>
     <controls:WebImage ImageUrl="http://www.stockvault.net/data/2011/05/31/124348/small.jpg" DefaultImage="imgNotAvailable.png"/>
   </StackLayout>
 
-</ContentPage>
+</mvvm:BaseView>

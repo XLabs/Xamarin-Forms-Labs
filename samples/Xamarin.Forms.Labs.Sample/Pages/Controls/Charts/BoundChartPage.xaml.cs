@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace Xamarin.Forms.Labs.Sample.Pages.Controls.Charts
 {
-    public partial class BoundChartPage
+  using Xamarin.Forms.Labs.Mvvm.Views;
+
+  public partial class BoundChartPage : BaseView
+  {
+    public BoundChartPage()
     {
-        public BoundChartPage()
-        {
-            InitializeComponent();
-            this.BindingContext = new BoundChartViewModel();
-        }
+      InitializeComponent();
+      this.BindingContext = new BoundChartViewModel();
     }
+  }
 }

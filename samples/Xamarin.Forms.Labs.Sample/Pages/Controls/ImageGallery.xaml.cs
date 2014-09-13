@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using Xamarin.Forms;
 
 namespace Xamarin.Forms.Labs.Sample.Pages.Controls
-{    
-    public partial class ImageGallery : ContentPage
+{
+
+  using Xamarin.Forms.Labs.Mvvm.Views;
+
+  public partial class ImageGallery : BaseView
     {    
         public ImageGallery ()
         {

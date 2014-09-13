@@ -66,6 +66,19 @@ namespace Xamarin.Forms.Labs.Mvvm.Services
 
       return true;
     }
+    
+    public async Task<bool> PushModalAsync<TViewModel>(Type wrapperType, string key = null, Action<IViewModel, INavigable> initialiser = null, bool useCache = false)
+      where TViewModel : class, IViewModel, new()
+    {
+      if (Instance == null || Instance.Navigable == null || ViewFactory == null) return false;
+
+      var view = ViewFactory.CreateView<TViewModel>(wrapperType, key, initialiser, useCache);
+      if (view == null) return false;
+
+      await Instance.Navigable.PushModalAsync(view);
+
+      return true;
+    }
 
     /// <inheritdoc />
     public async Task<INavigable> PopModalAsync()

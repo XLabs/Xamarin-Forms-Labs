@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <mvvm:BaseView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
- xmlns:mvvm="clr-namespace:Xamarin.Forms.Labs.Mvvm;assembly=Xamarin.Forms.Labs"
+ xmlns:mvvm="clr-namespace:Xamarin.Forms.Labs.Mvvm.Views;assembly=Xamarin.Forms.Labs.Mvvm"
  xmlns:controls="clr-namespace:Xamarin.Forms.Labs.Controls;assembly=Xamarin.Forms.Labs"
  x:Class="Xamarin.Forms.Labs.Sample.Pages.Controls.GridViewPage"
  Title="GridView"

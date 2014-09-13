@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
-using Xamarin.Forms.Labs.Mvvm;
+using Xamarin.Forms.Labs.Mvvm.Views;
 
 namespace Xamarin.Forms.Labs.Sample
 {	
