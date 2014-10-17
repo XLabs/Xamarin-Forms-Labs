@@ -23,7 +23,7 @@
         /// <summary>
         /// Gets a value indicating whether this instance has network available.
         /// </summary>
-        bool? IsNetworkAvailable { get; }
+        bool IsNetworkAvailable { get; }
 
         /// <summary>
         /// Gets the ISO Country Code.
