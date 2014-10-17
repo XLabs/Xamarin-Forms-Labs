@@ -120,6 +120,20 @@ namespace Xamarin.Forms.Labs.Services
                 return mobileNetworkInfo != null && mobileNetworkInfo.IsConnected;
             }
         }
+        
+        /// <summary>
+        /// Gets if a phone network is enabled
+        /// </summary>
+        /// <value>
+        /// Whether a phone network is enabled
+        /// </value>
+        public bool IsPhoneNetworkEnabled
+        {
+            get
+            {
+                return Manager.NetworkType != Android.Telephony.NetworkType.Unknown
+            }
+        }
 
         /// <summary>
         /// Gets a value indicating whether this instance has cellular data roaming enabled.
@@ -170,7 +184,10 @@ namespace Xamarin.Forms.Labs.Services
         /// <param name="number">Number to dial.</param>
         public void DialNumber(string number)
         {
-            number.StartActivity(new Intent(Intent.ActionDial, Uri.Parse("tel:" + number)));
+            if(IsPhoneNetworkEnabled)
+            {
+                number.StartActivity(new Intent(Intent.ActionDial, Uri.Parse("tel:" + number)));
+            }
         }
 
         public void SendSMS(string to, string body)
