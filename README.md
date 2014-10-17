@@ -131,6 +131,29 @@ Using the Services
 			device.PhoneService.DialNumber("+1 (855) 926-2746");
 		}
 
+Initializing the Services
+-----------
+Do this before using the services
+
+**Step 1:** 
+* iOS => Make sure your AppDelegate inherits from XFormsApplicationDelegate
+
+* Android => MainActivity inherits from XFormsApplicationDroid
+
+* Windows Phone => Add this line to your App.cs 
+				  var app = new XFormsAppWP(); app.Init(this);
+
+**Step 2:** 
+		Initialize the container in your app startup code.
+
+		var container = new SimpleContainer ();
+		container.Register<IDevice> (t => AppleDevice.CurrentDevice);
+		container.Register<IDisplay> (t => t.Resolve<IDevice> ().Display);
+		container.Register<INetwork>(t=> t.Resolve<IDevice>().Network);
+
+		Resolver.SetResolver (container.GetResolver ());
+
+[For more info on initialization go to the Labs Wiki](https://github.com/XLabs/Xamarin-Forms-Labs/wiki)
 ________________
 
 
