@@ -97,6 +97,7 @@
     <Compile Include="Controls\Calendar\MonoDroid.TimesSquare\MonthCellDescriptor.cs" />
     <Compile Include="Controls\Calendar\MonoDroid.TimesSquare\MonthDescriptor.cs" />
     <Compile Include="Controls\Calendar\MonoDroid.TimesSquare\MonthView.cs" />
+    <Compile Include="Controls\ExtendedMasterDetail\ExtendedMasterDetailRenderer.cs" />
     <Compile Include="Controls\ExtendedSwitch\ExtendedSwitchRenderer.cs" />
     <Compile Include="Controls\ImageButton\ImageButtonRenderer.cs" />
     <Compile Include="Controls\ImageButton\ImageButtonRenderer.shared.cs" />

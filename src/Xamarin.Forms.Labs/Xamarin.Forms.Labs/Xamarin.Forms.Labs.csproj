@@ -40,6 +40,7 @@
     <Compile Include="Controls\DynamicListView.cs" />
     <Compile Include="Controls\ExtendedContentView.cs" />
     <Compile Include="Controls\ExtendedEntry.cs" />
+    <Compile Include="Controls\ExtendedMasterDetailPage.cs" />
     <Compile Include="Controls\ExtendedSlider.cs" />
     <Compile Include="Controls\ExtendedSwitch.cs" />
     <Compile Include="Controls\ExtendedTabbedPage.cs" />
@@ -145,7 +146,6 @@
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <ItemGroup>
     <Folder Include="Services\Contacts\" />
-    <Folder Include="Converter\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="ExifLib">
@@ -173,7 +173,7 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Xamarin.Forms.1.2.3.6257\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.Forms.1.2.3.6257\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets'))" />
-  </Target>  
+  </Target>
   <Import Project="..\packages\Xamarin.Forms.1.2.3.6256-pre4\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.2.3.6256-pre4\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets')" />
   <Import Project="..\packages\Xamarin.Forms.1.2.3.6257\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.2.3.6257\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets')" />
 </Project>
