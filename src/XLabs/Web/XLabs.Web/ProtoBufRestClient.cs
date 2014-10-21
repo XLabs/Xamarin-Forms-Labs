@@ -3,7 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Net.Http;
 using XLabs.Serialization;
 
-namespace Xamarin.Forms.Labs.Services.Web.RestClient
+namespace XLabs.Web.RestClient
 {
     /// <summary>
     /// The protobuf Rest client.
@@ -25,7 +25,7 @@ namespace Xamarin.Forms.Labs.Services.Web.RestClient
         /// </exception>
         public ProtoBufRestClient(ISerializer serializer, HttpClient client = null) : base(serializer, client)
         {
-            if (serializer.Format != SerializationFormat.Json)
+            if (serializer.Format != SerializationFormat.ProtoBuffer)
             {
                 throw new Exception(string.Format("Invalid serializer type: {0}. Valid type is: {1}", serializer.Format, SerializationFormat.ProtoBuffer));
             }

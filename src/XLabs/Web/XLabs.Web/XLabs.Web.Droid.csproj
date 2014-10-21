@@ -4,15 +4,15 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <ProjectGuid>{6F2F5193-BB10-4DA3-92ED-25D5410DC299}</ProjectGuid>
+    <ProjectGuid>{2E1D51ED-2850-4C22-94F9-73F11B7864B9}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Xamarin.Forms.Labs.Services.Web.RestClient.Droid</RootNamespace>
+    <RootNamespace>XLabs.Web</RootNamespace>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <AndroidResgenClass>Resource</AndroidResgenClass>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
-    <AssemblyName>Xamarin.Forms.Labs.Services.Web.RestClient.Droid</AssemblyName>
+    <AssemblyName>XLabs.Web.Droid</AssemblyName>
     <TargetFrameworkVersion>
     </TargetFrameworkVersion>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
@@ -32,12 +32,12 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>full</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\..\..\..\ReleaseBuild\</OutputPath>
+    <OutputPath>..\..\..\..\ReleaseBuild\</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
     <ConsolePause>false</ConsolePause>
-    <DocumentationFile>..\..\..\..\..\ReleaseBuild\Xamarin.Forms.Labs.Services.Web.RestClient.Droid.XML</DocumentationFile>
+    <DocumentationFile>..\..\..\..\ReleaseBuild\XLabs.Web.Droid.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -50,23 +50,17 @@
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
     <Compile Include="JsonRestClient.cs" />
+    <Compile Include="ProtoBufRestClient.cs" />
     <Compile Include="RestCoreClient.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\XLabs\Serialization\XLabs.Serialization\XLabs.Serialization.csproj">
+    <ProjectReference Include="..\..\Serialization\XLabs.Serialization\XLabs.Serialization.csproj">
       <Project>{8E7F7522-F018-466A-AA8A-147EE9341BA0}</Project>
       <Name>XLabs.Serialization</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Xamarin.Forms.Labs\Xamarin.Forms.Labs.csproj">
-      <Project>{4D10DF5E-883D-468B-A854-4A53C7FE75AC}</Project>
-      <Name>Xamarin.Forms.Labs</Name>
+    <ProjectReference Include="XLabs.Web.csproj">
+      <Project>{d66d0e8a-4350-4f95-90f8-86f2fb1a45a3}</Project>
+      <Name>XLabs.Web</Name>
     </ProjectReference>
   </ItemGroup>
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\..\..\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\.nuget\NuGet.targets'))" />
-  </Target>
 </Project>

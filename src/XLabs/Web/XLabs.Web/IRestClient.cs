@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using System.Collections.Generic;
 
-namespace Xamarin.Forms.Labs.Services.Web
+namespace XLabs.Web
 {
     /// <summary>
     /// Rest Client interface.

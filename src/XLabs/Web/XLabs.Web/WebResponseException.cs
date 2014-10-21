@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Xamarin.Forms.Labs
+namespace XLabs.Web
 {
     public class WebResponseException : Exception
     {

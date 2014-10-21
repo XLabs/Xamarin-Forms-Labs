@@ -4,11 +4,11 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectTypeGuids>{6BC8ED88-2882-458C-8E55-DFD12B67127B};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <ProjectGuid>{CB46882F-8C00-4938-A336-3C10B39D7500}</ProjectGuid>
+    <ProjectGuid>{4BF3BDCF-4D27-427D-B2D7-CBBACA37E156}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Xamarin.Forms.Labs.Services.Web.RestClient.iOS</RootNamespace>
+    <RootNamespace>XLabs.Web</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>Xamarin.Forms.Labs.Services.Web.RestClient.iOS</AssemblyName>
+    <AssemblyName>XLabs.Web.iOS</AssemblyName>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
@@ -25,11 +25,11 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>full</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\..\..\..\ReleaseBuild\</OutputPath>
+    <OutputPath>..\..\..\..\ReleaseBuild\</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
-    <DocumentationFile>..\..\..\..\..\ReleaseBuild\Xamarin.Forms.Labs.Services.Web.RestClient.iOS.XML</DocumentationFile>
+    <DocumentationFile>..\..\..\..\ReleaseBuild\XLabs.Web.iOS.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -43,24 +43,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProtoBufRestClient.cs" />
     <Compile Include="RestCoreClient.cs" />
     <Compile Include="JsonRestClient.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\XLabs\Serialization\XLabs.Serialization\XLabs.Serialization.csproj">
+    <ProjectReference Include="..\..\Serialization\XLabs.Serialization\XLabs.Serialization.csproj">
       <Project>{8E7F7522-F018-466A-AA8A-147EE9341BA0}</Project>
       <Name>XLabs.Serialization</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Xamarin.Forms.Labs\Xamarin.Forms.Labs.csproj">
-      <Project>{4D10DF5E-883D-468B-A854-4A53C7FE75AC}</Project>
-      <Name>Xamarin.Forms.Labs</Name>
+    <ProjectReference Include="XLabs.Web.csproj">
+      <Project>{d66d0e8a-4350-4f95-90f8-86f2fb1a45a3}</Project>
+      <Name>XLabs.Web</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
   </Target>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
 </Project>

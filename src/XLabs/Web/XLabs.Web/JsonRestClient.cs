@@ -2,7 +2,7 @@
 using System.Net.Http;
 using XLabs.Serialization;
 
-namespace Xamarin.Forms.Labs.Services.Web.RestClient
+namespace XLabs.Web
 {
     /// <summary>
     /// The JSON rest client.

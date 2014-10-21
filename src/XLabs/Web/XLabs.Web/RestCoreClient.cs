@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using XLabs.Serialization;
 
-namespace Xamarin.Forms.Labs.Services.Web.RestClient
+namespace XLabs.Web
 {
     /// <summary>
     /// The rest core client.
