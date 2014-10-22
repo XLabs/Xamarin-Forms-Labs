@@ -152,6 +152,7 @@
       <DependentUpon>CameraViewPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Controls\SeparatorPage.cs" />
+    <Compile Include="Pages\Controls\SvgImagePage.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
@@ -187,6 +188,12 @@
     <EmbeddedResource Include="Pages\Controls\CameraViewPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Images\tiger.svg" />
+    <EmbeddedResource Include="Images\hipster.svg" />
+    <EmbeddedResource Include="Images\pin.svg" />
+    <EmbeddedResource Include="Images\star_on.svg" />
+    <EmbeddedResource Include="Images\star_off.svg" />
+    <EmbeddedResource Include="Images\star_depressed.svg" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\Controls\CalendarPage.xaml">
@@ -225,7 +232,7 @@
       <Name>Xamarin.Forms.Labs</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\XLabs\Caching\XLabs.Caching\XLabs.Caching.csproj">
-      <Project>{8dea9048-3715-4f76-9c7c-390a4256d833}</Project>
+      <Project>{8DEA9048-3715-4F76-9C7C-390A4256D833}</Project>
       <Name>XLabs.Caching</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\XLabs\IOC\XLabs.Ioc\XLabs.Ioc.csproj">
@@ -318,4 +325,7 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\..\src\Xamarin.Forms.Labs\packages\Xamarin.Forms.1.2.3.6257\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\src\Xamarin.Forms.Labs\packages\Xamarin.Forms.1.2.3.6257\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets'))" />
   </Target>
+  <ItemGroup>
+    <Folder Include="Images\" />
+  </ItemGroup>
 </Project>

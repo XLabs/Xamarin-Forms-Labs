@@ -127,6 +127,7 @@
     <Compile Include="Extensions\NumericExtensions.cs" />
     <Compile Include="Controls\ExtendedTimePicker.cs" />
     <Compile Include="Controls\ExtendedDatePicker.cs" />
+    <Compile Include="Controls\SvgImage.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>

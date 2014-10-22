@@ -203,6 +203,7 @@ namespace Xamarin.Forms.Labs.Sample
                     "Segment",
                     "Separator",
                     "WebImage",
+                    "SvgImage",
                 }
             };
 
@@ -269,6 +270,9 @@ namespace Xamarin.Forms.Labs.Sample
                         break;
                     case "buttongroup":
                         await mainPage.Navigation.PushAsync(new ButtonGroupPage());
+                        break;
+                    case "svgimage":
+                        await mainPage.Navigation.PushAsync(new SvgImagePage());
                         break;
                 }
             };
