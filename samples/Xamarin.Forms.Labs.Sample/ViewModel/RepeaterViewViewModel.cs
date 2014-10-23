@@ -65,7 +65,7 @@ namespace Xamarin.Forms.Labs.Sample.ViewModel
             {
                 return _addItem ?? (_addItem = new Command(() =>
                 {
-                    Things.Add(new Thing { Name = string.Format("Thing {0}", NextItemNumber), Description = string.Format("This is thing #{0}", NextItemNumber++) });
+                    Things.Add(new Thing { Index = Things.Count + 1, Name = string.Format("Thing {0}", NextItemNumber), Description = string.Format("This is thing #{0}", NextItemNumber++) });
                 },
                 () => Things.Count < 5));
             }
@@ -73,14 +73,15 @@ namespace Xamarin.Forms.Labs.Sample.ViewModel
 
         public void LoadData()
         {
-            Things.Add(new Thing { Name = "Thing 1", Description = "This is thing #1." });
-            Things.Add(new Thing { Name = "Thing 2", Description = "This is thing #2." });
+            Things.Add(new Thing { Index = 1, Name = "Thing 1", Description = "This is thing #1." });
+            Things.Add(new Thing { Index = 2, Name = "Thing 2", Description = "This is thing #2." });
             NextItemNumber = 3;
         }
     }
 
     public class Thing
     {
+        public int Index { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
     }

@@ -11,7 +11,7 @@ namespace Xamarin.Forms.Labs.Sample
     /// <summary>
     /// The main view model.
     /// </summary>
-    public class MainViewModel : ViewModel
+    public class MainViewModel : Xamarin.Forms.Labs.Mvvm.ViewModel
     {
         private readonly IDevice device;
         private string numberToCall = "+1 (855) 926-2746";

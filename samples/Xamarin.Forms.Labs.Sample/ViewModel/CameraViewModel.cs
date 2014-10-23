@@ -10,7 +10,7 @@ namespace Xamarin.Forms.Labs.Sample
 	/// Class CameraViewModel.
 	/// </summary>
 	[ViewType(typeof(CameraPage))]
-	public class CameraViewModel : ViewModel
+    public class CameraViewModel : Xamarin.Forms.Labs.Mvvm.ViewModel
 	{
         /// <summary>
         /// The _scheduler.

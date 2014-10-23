@@ -9,7 +9,7 @@ using Xamarin.Forms.Labs.Data;
 
 namespace Xamarin.Forms.Labs.Sample
 {
-    public class ChartViewModel : ViewModel
+    public class ChartViewModel : Xamarin.Forms.Labs.Mvvm.ViewModel
     {
         public ChartViewModel()
         {

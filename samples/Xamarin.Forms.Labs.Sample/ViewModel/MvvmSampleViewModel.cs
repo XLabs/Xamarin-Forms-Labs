@@ -6,7 +6,7 @@ namespace Xamarin.Forms.Labs.Sample
     /// The MVVM sample view model.
     /// </summary>
     [ViewType(typeof(MvvmSamplePage))]
-	public class MvvmSampleViewModel : ViewModel
+    public class MvvmSampleViewModel : Xamarin.Forms.Labs.Mvvm.ViewModel
 	{
 	    private Command navigateToViewModel;
         private string navigateToViewModelButtonText = "Navigate to another view model";
