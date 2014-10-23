@@ -40,6 +40,7 @@
     <Compile Include="Controls\DynamicListView.cs" />
     <Compile Include="Controls\ExtendedContentView.cs" />
     <Compile Include="Controls\ExtendedEntry.cs" />
+    <Compile Include="Controls\ExtendedMasterDetailPage.cs" />
     <Compile Include="Controls\ExtendedSlider.cs" />
     <Compile Include="Controls\ExtendedSwitch.cs" />
     <Compile Include="Controls\ExtendedTabbedPage.cs" />
@@ -143,7 +144,6 @@
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <ItemGroup>
     <Folder Include="Services\Contacts\" />
-    <Folder Include="Converter\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="ExifLib">
