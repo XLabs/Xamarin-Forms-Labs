@@ -8,11 +8,14 @@ using Xamarin.Forms.Labs.Sample.ViewModel;
 
 namespace Xamarin.Forms.Labs.Sample.Pages.Controls
 {
-    public partial class RepeaterViewXMLPage
+    public partial class RepeaterViewXAMLPage
     {
-        public RepeaterViewXMLPage()
+        public RepeaterViewXAMLPage()
         {
             InitializeComponent();
+            var viewModel = new RepeaterViewXAMLViewModel();
+            BindingContext = viewModel;
+            viewModel.LoadData();
         }
 
 

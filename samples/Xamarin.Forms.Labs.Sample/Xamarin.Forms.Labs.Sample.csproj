@@ -44,8 +44,8 @@
       <DependentUpon>DynamicListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Controls\RepeaterViewPage.cs" />
-    <Compile Include="Pages\Controls\RepeaterViewXMLPage.xaml.cs">
-      <DependentUpon>RepeaterViewXMLPage.xaml</DependentUpon>
+    <Compile Include="Pages\Controls\RepeaterViewXAMLPage.xaml.cs">
+      <DependentUpon>RepeaterViewXAMLPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Controls\WebImagePage.xaml.cs">
       <DependentUpon>WebImagePage.xaml</DependentUpon>
@@ -210,7 +210,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\Controls\RepeaterViewXMLPage.xaml">
+    <EmbeddedResource Include="Pages\Controls\RepeaterViewXAMLPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>

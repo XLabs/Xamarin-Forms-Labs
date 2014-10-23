@@ -48,7 +48,7 @@ namespace Xamarin.Forms.Labs.Sample
             ViewFactory.Register<CacheServicePage, CacheServiceViewModel> ();
             ViewFactory.Register<SoundPage, SoundServiceViewModel> ();
             ViewFactory.Register<RepeaterViewPage, RepeaterViewViewModel>();
-            ViewFactory.Register<RepeaterViewXMLPage, RepeaterViewXAMLViewModel>();
+            ViewFactory.Register<RepeaterViewXAMLPage, RepeaterViewXAMLViewModel>();
 
             var mainTab = new ExtendedTabbedPage () { Title = "Xamarin Forms Labs" };
             var mainPage = new NavigationPage (mainTab);
@@ -183,7 +183,7 @@ namespace Xamarin.Forms.Labs.Sample
                     await mainPage.Navigation.PushAsync (new Xamarin.Forms.Labs.Sample.Pages.Controls.RepeaterViewPage ());
                     break;
                 case "repeaterviewxaml":
-                    await mainPage.Navigation.PushAsync(new Xamarin.Forms.Labs.Sample.Pages.Controls.RepeaterViewPage());
+                    await mainPage.Navigation.PushAsync(new Xamarin.Forms.Labs.Sample.Pages.Controls.RepeaterViewXAMLPage());
                     break;
                 default:
                     break;
