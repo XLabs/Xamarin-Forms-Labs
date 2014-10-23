@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,32 +33,68 @@ namespace Xamarin.Forms.Labs.Controls
             foreach (var item in newValue)
             {
                 var cell = control.ItemTemplate.CreateContent();
-                control.Children.Add(((ViewCell)cell).View);
+                View view;
+
+                if (cell is ViewCell)
+                {
+                    view = ((ViewCell)cell).View;
+                }
+                else
+                {
+                    view = cell as View;
+                }
+                view.BindingContext = item;
+                control.Children.Add(view);
             }
         }
 
+        public delegate void RepeaterViewItemAddedEventHandler(object sender, RepeaterViewItemAddedEventArgs args);
+        public event RepeaterViewItemAddedEventHandler ItemCreated;
+
+        protected virtual void NotifyItemAdded(View view, object model)
+        {
+            if (ItemCreated != null)
+            {
+                ItemCreated(this, new RepeaterViewItemAddedEventArgs(view, model));
+            }
+        }
 
         void ItemsSource_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
-            if (e.OldItems != null)
+            if (e.Action == NotifyCollectionChangedAction.Reset)
             {
-                this.Children.RemoveAt(e.OldStartingIndex);
+                this.Children.Clear();
                 this.UpdateChildrenLayout();
                 this.InvalidateLayout();
             }
-
-            if (e.NewItems != null)
+            else
             {
-                foreach (T item in e.NewItems)
+                if (e.OldItems != null)
                 {
-                    var cell = this.ItemTemplate.CreateContent();
-                    var view = ((ViewCell)cell).View;
-                    view.BindingContext = item;
-                    this.Children.Insert(ItemsSource.IndexOf(item), view);
+                    this.Children.RemoveAt(e.OldStartingIndex);
+                    this.UpdateChildrenLayout();
+                    this.InvalidateLayout();
                 }
 
-                this.UpdateChildrenLayout();
-                this.InvalidateLayout();
+                if (e.NewItems != null)
+                {
+                    foreach (T item in e.NewItems)
+                    {
+                        var cell = this.ItemTemplate.CreateContent();
+                        View view;
+                        if (cell is ViewCell)
+                            view = ((ViewCell)cell).View;
+                        else
+                            view = (View)cell;
+
+                        view.BindingContext = item;
+                        this.Children.Insert(ItemsSource.IndexOf(item), view);
+                        NotifyItemAdded(view, item);
+                    }
+
+                    this.UpdateChildrenLayout();
+                    this.InvalidateLayout();
+                }
             }
         }
 
@@ -70,4 +107,16 @@ namespace Xamarin.Forms.Labs.Controls
             set { SetValue(ItemTemplateProperty, value); }
         }
     }
+    public class RepeaterViewItemAddedEventArgs : EventArgs
+    {
+        public RepeaterViewItemAddedEventArgs(View view, object model)
+        {
+            View = view;
+            Model = model;
+        }
+
+        public View View { get; set; }
+        public object Model { get; set; }
+    }
 }
+
