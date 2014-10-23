@@ -44,6 +44,9 @@
       <DependentUpon>DynamicListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Controls\RepeaterViewPage.cs" />
+    <Compile Include="Pages\Controls\RepeaterViewXMLPage.xaml.cs">
+      <DependentUpon>RepeaterViewXMLPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Controls\WebImagePage.xaml.cs">
       <DependentUpon>WebImagePage.xaml</DependentUpon>
     </Compile>
@@ -63,6 +66,7 @@
     </Compile>
     <Compile Include="ViewModel\CameraViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\RepeaterViewXAMLViewModel.cs" />
     <Compile Include="ViewModel\RepeaterViewViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="Pages\Controls\ExtendedLabelPage.xaml.cs">
@@ -201,6 +205,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\Controls\DynamicList\DynamicListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Controls\RepeaterViewXMLPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>

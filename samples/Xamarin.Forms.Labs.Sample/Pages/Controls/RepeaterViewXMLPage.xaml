@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+					   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+					   xmlns:controls="clr-namespace:Xamarin.Forms.Labs.Controls;assembly=XWeather.Forms.Labs"
+					   x:Class="Xamarin.Forms.Labs.Sample.Pages.Controls.RepeaterViewXMLPage">
+
+	<StackLayout
+		Padding="20"
+		Spacing="5">
+		<Label Text="RepeaterView Demo" FontSize="24" />
+		<controls:RepeaterView 
+			Spacing="10"
+			ItemCreated="RepeaterItemCreated"
+			ItemsSource="{Binding viewModel.Things}">
+			<controls:RepaterView.ItemTemplate>
+				<DataTemplate>
+					<StackLayout Spacing="0">
+						<Label FontSize="18" Text="{Binding Name}" />
+						<Label FontSize="14" Text="{Binding Description}" /> 						
+					</StackLayout>
+				</DataTemplate>
+			</controls:RepaterView.ItemTemplate>			
+		</controls:RepeaterView>
+		<Button Text="Remove 1st Item" HorizontalOptions="Start" Command="{Binding RemoveFirstItem}" />
+		<Button Text="Add New Item" HorizontalOptions="Start" Command="{Binding AddItem}" />
+	</StackLayout>
+</ContentPage>

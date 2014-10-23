@@ -48,6 +48,7 @@ namespace Xamarin.Forms.Labs.Sample
             ViewFactory.Register<CacheServicePage, CacheServiceViewModel> ();
             ViewFactory.Register<SoundPage, SoundServiceViewModel> ();
             ViewFactory.Register<RepeaterViewPage, RepeaterViewViewModel>();
+            ViewFactory.Register<RepeaterViewXMLPage, RepeaterViewXAMLViewModel>();
 
             var mainTab = new ExtendedTabbedPage () { Title = "Xamarin Forms Labs" };
             var mainPage = new NavigationPage (mainTab);
@@ -142,7 +143,8 @@ namespace Xamarin.Forms.Labs.Sample
                     "DynamicListView",
                     "GridView",
                     "ExtendedScrollView",
-                    "RepeaterView"
+                    "RepeaterView",
+                    "RepeaterViewXAML"
                 }
             };
             lstControls.ItemSelected += async (sender, e) => {
@@ -179,6 +181,9 @@ namespace Xamarin.Forms.Labs.Sample
                     break;
                 case "repeaterview":
                     await mainPage.Navigation.PushAsync (new Xamarin.Forms.Labs.Sample.Pages.Controls.RepeaterViewPage ());
+                    break;
+                case "repeaterviewxaml":
+                    await mainPage.Navigation.PushAsync(new Xamarin.Forms.Labs.Sample.Pages.Controls.RepeaterViewPage());
                     break;
                 default:
                     break;
