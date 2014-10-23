@@ -9,7 +9,7 @@ namespace Xamarin.Forms.Labs.Sample
     /// The Geo-locator view model.
     /// </summary>
     [ViewType(typeof(GeolocatorPage))]
-    public class GeolocatorViewModel : Xamarin.Forms.Labs.Mvvm.ViewModel
+	public class GeolocatorViewModel : ViewModel
 	{
         private readonly TaskScheduler scheduler = TaskScheduler.FromCurrentSynchronizationContext();
 		private IGeolocator geolocator;

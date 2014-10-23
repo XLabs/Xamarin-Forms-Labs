@@ -10,7 +10,7 @@ namespace Xamarin.Forms.Labs.Sample
     /// <summary>
     /// Sample ViewModel for the CacheService.
     /// </summary>
-    public class CacheServiceViewModel : Xamarin.Forms.Labs.Mvvm.ViewModel
+    public class CacheServiceViewModel : ViewModel
     {
         /// <summary>
         /// Key used in the cache.

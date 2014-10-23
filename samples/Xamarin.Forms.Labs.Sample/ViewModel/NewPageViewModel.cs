@@ -5,7 +5,7 @@ using Xamarin.Forms.Labs.Mvvm;
 namespace Xamarin.Forms.Labs.Sample
 {
 	//[ViewType(typeof(NewPageView))] can specify this
-    public class NewPageViewModel : Xamarin.Forms.Labs.Mvvm.ViewModel
+	public class NewPageViewModel : ViewModel
 	{
 		public NewPageViewModel ()
 		{

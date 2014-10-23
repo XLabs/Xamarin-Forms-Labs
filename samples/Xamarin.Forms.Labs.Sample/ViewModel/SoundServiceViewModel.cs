@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Xamarin.Forms.Labs.Sample
 {
-    public class SoundServiceViewModel : Xamarin.Forms.Labs.Mvvm.ViewModel
+	public class SoundServiceViewModel : ViewModel
 	{
 		ISoundService _soundService;
 
