@@ -204,6 +204,7 @@ namespace Xamarin.Forms.Labs.Sample
                     "Separator",
                     "WebImage",
                     "SvgImage",
+                    "PulsatingButton",
                 }
             };
 
@@ -273,6 +274,9 @@ namespace Xamarin.Forms.Labs.Sample
                         break;
                     case "svgimage":
                         await mainPage.Navigation.PushAsync(new SvgImagePage());
+                        break;
+                    case "pulsatingbutton":
+                        await mainPage.Navigation.PushAsync(new PulsatingButtonPage());
                         break;
                 }
             };

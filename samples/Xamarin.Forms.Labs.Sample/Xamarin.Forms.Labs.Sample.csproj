@@ -66,6 +66,7 @@
     <Compile Include="Pages\Controls\PopupPage.xaml.cs">
       <DependentUpon>PopupPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Controls\PulsatingButtonPage.cs" />
     <Compile Include="Pages\Controls\RepeaterViewPage.cs" />
     <Compile Include="Pages\Controls\ExtendedSliderPage.cs" />
     <Compile Include="Pages\Controls\SegmentPage.cs" />

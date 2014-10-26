@@ -47,6 +47,7 @@
     <Compile Include="Controls\ImageButton.cs" />
     <Compile Include="Controls\ImageButtonSourceConverter.cs" />
     <Compile Include="Controls\PopupLayout.cs" />
+    <Compile Include="Controls\PulsatingButton.cs" />
     <Compile Include="Controls\RepeaterView.cs" />
     <Compile Include="Controls\SegmentControl\SegmentedControlView.cs" />
     <Compile Include="Controls\WebImage.cs" />
