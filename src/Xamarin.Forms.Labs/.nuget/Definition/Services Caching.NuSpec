@@ -4,7 +4,7 @@
     <id>Xamarin.Forms.Labs.Caching.SQLiteNet</id>
     <title>Xamarin Forms Labs - Caching</title>
     <tags>Xamarin.Forms Labs Caching</tags>
-    <version>1.2.0-beta1</version>
+    <version>..</version>
     <authors>Xamarin Forms Labs Team</authors>
     <licenseUrl>https://github.com/XForms/Xamarin-Forms-Labs/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/XForms/Xamarin-Forms-Labs</projectUrl>
@@ -21,21 +21,21 @@ Xamarin Forms Labs is a open source project that aims to provide a powerfull and
     <language>en-US</language>
     <dependencies>
       <group>
-        <dependency id="Xamarin.Forms.Labs" version="[1.2.0-beta1]" />
+        <dependency id="Xamarin.Forms.Labs" version="[..]" />
         <dependency id="SQLite.Net.Async-PCL" version="2.3.0" />
       </group>
       <group targetFramework="MonoTouch">
-        <dependency id="Xamarin.Forms.Labs" version="[1.2.0-beta1]" />
+        <dependency id="Xamarin.Forms.Labs" version="[..]" />
         <dependency id="SQLite.Net.Async-PCL" version="2.3.0" />
         <dependency id="SQLite.Net.Platform.XamarinIOS" version="2.3.0" />
       </group>
       <group targetFramework="MonoAndroid">
-        <dependency id="Xamarin.Forms.Labs" version="[1.2.0-beta1]" />
+        <dependency id="Xamarin.Forms.Labs" version="[..]" />
         <dependency id="SQLite.Net.Async-PCL" version="2.3.0" />
         <dependency id="SQLite.Net.Platform.XamarinAndroid" version="2.3.0" />
       </group>
       <group targetFramework="wp8">
-        <dependency id="Xamarin.Forms.Labs" version="[1.2.0-beta1]" />
+        <dependency id="Xamarin.Forms.Labs" version="[..]" />
         <dependency id="SQLite.Net.Async-PCL" version="2.3.0" />
         <dependency id="SQLite.Net.Platform.WindowsPhone8" version="2.3.0" />
       </group>

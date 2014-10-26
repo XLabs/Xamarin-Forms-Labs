@@ -4,7 +4,7 @@
     <id>Xamarin.Forms.Labs.Charting</id>
     <title>Xamarin Forms Labs - Charting</title>
     <tags>Xamarin.Forms Labs Charting</tags>
-    <version>1.2.0-beta1</version>
+    <version>..</version>
     <authors>Xamarin Forms Labs Team</authors>
     <licenseUrl>https://github.com/XForms/Xamarin-Forms-Labs/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/XForms/Xamarin-Forms-Labs</projectUrl>
@@ -21,7 +21,7 @@ Xamarin Forms Labs is a open source project that aims to provide a powerfull and
     <language>en-US</language>
     <dependencies>
       <group>
-        <dependency id="Xamarin.Forms.Labs" version="[1.2.0-beta1]" />
+        <dependency id="Xamarin.Forms.Labs" version="[..]" />
       </group>
     </dependencies>
   </metadata>
