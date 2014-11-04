@@ -128,6 +128,10 @@ namespace Xamarin.Forms.Labs.Controls
             if (e.Uri.IsAbsoluteUri && this.CheckRequest(e.Uri.AbsoluteUri))
             {
                 System.Diagnostics.Debug.WriteLine(e.Uri);
+            } 
+            else 
+            {
+                this.Element.Uri = e.Uri;
             }
         }
 

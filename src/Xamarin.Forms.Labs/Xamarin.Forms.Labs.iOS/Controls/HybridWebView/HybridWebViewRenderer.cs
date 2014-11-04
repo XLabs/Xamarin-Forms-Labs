@@ -76,7 +76,12 @@ namespace Xamarin.Forms.Labs.Controls
 
         private bool HandleStartLoad(UIWebView webView, NSUrlRequest request, UIWebViewNavigationType navigationType)
         {
-            return !this.CheckRequest(request.Url.RelativeString);
+            var shouldStartLoad = !this.CheckRequest(request.Url.RelativeString);
+            if (shouldStartLoad) 
+            {
+                this.Element.Uri = new Uri(request.Url.AbsoluteUrl.AbsoluteString);
+            }
+            return shouldStartLoad;
         }
 
         partial void Inject(string script)
