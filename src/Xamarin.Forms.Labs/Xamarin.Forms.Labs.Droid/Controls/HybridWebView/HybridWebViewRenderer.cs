@@ -83,8 +83,13 @@ namespace Xamarin.Forms.Labs.Controls
             {
                 HybridWebViewRenderer hybrid;
 
-                if (!this.webHybrid.TryGetTarget(out hybrid) || !hybrid.CheckRequest(url))
+                if (!this.webHybrid.TryGetTarget(out hybrid))
                 {
+                    return base.ShouldOverrideUrlLoading(view, url);
+                }
+                if (!hybrid.CheckRequest(url))
+                {
+                    hybrid.Element.Uri = new Uri(url);
                     return base.ShouldOverrideUrlLoading(view, url);
                 }
 
