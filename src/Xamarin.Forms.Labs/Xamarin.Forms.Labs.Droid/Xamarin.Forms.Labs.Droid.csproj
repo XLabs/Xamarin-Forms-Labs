@@ -12,12 +12,12 @@
     <AndroidResgenClass>Resource</AndroidResgenClass>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AssemblyName>Xamarin.Forms.Labs.Droid</AssemblyName>
-    <TargetFrameworkVersion>
-    </TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.4</TargetFrameworkVersion>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
     <NuGetPackageImportStamp>7aef5d54</NuGetPackageImportStamp>
-    <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
+    <AndroidUseLatestPlatformSdk>
+    </AndroidUseLatestPlatformSdk>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -95,6 +95,7 @@
     <Compile Include="Controls\Calendar\MonoDroid.TimesSquare\MonthView.cs" />
     <Compile Include="Controls\CircleImage\CircleImageRenderer.cs" />
     <Compile Include="Controls\ExtendedSwitch\ExtendedSwitchRenderer.cs" />
+    <Compile Include="Controls\GesturesContentView\GesturesContentViewRenderer.cs" />
     <Compile Include="Controls\ImageButton\ImageButtonRenderer.cs" />
     <Compile Include="Controls\ImageButton\ImageButtonRenderer.shared.cs" />
     <Compile Include="Controls\WebImage\WebImageRenderer.cs" />
@@ -195,7 +196,9 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Behavior\" />
+  </ItemGroup>
   <ItemGroup />
   <ItemGroup />
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
