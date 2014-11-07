@@ -5,7 +5,6 @@ using Xamarin.Forms;
 namespace Xamarin.Forms.Labs.Droid.Controls.GesturesContentView
 {
     using System;
-    using System.Text.RegularExpressions;
 
     using Android.Views;
 

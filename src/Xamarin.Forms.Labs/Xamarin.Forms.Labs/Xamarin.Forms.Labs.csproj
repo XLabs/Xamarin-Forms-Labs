@@ -39,6 +39,7 @@
     <Compile Include="Behaviors\GestureResult.cs" />
     <Compile Include="Behaviors\Gestures.cs" />
     <Compile Include="Behaviors\IGesture.cs" />
+    <Compile Include="Behaviors\Validator.cs" />
     <Compile Include="Controls\CarouselView.cs" />
     <Compile Include="Controls\GesturesContentView.cs" />
     <Compile Include="Behaviors\GridLayout.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="Controls\TemplateContentView.cs" />
     <Compile Include="Controls\WebImage.cs" />
     <Compile Include="Controls\WrapLayout.cs" />
+    <Compile Include="Converter\ObjectRefToBooleanConverter.cs" />
     <Compile Include="Data\ObservableObject.cs" />
     <Compile Include="Device\DisplayExtensions.cs" />
     <Compile Include="Device\IAccelerometer.cs" />
@@ -80,7 +82,9 @@
     <Compile Include="Exceptions\InvalidNestingException.cs" />
     <Compile Include="Exceptions\InvalidVisualObjectException.cs" />
     <Compile Include="Exceptions\NoDataTemplateMatchException.cs" />
+    <Compile Include="Exceptions\PropertyNotFoundException.cs" />
     <Compile Include="Extensions\BindableObjectExtensions.cs" />
+    <Compile Include="Extensions\OnPlatformList.cs" />
     <Compile Include="Extensions\PositionExtensions.cs" />
     <Compile Include="Extensions\ViewExtensions.cs" />
     <Compile Include="Mvvm\INavigationAware.cs" />
@@ -89,6 +93,7 @@
     <Compile Include="Mvvm\NavigationView.cs" />
     <Compile Include="Mvvm\ViewModel.cs" />
     <Compile Include="Mvvm\XFormsApp.cs" />
+    <Compile Include="Pages\ModalPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
