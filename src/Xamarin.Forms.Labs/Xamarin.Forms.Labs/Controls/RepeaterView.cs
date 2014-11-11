@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
@@ -6,7 +7,6 @@ using System.Windows.Input;
 
 namespace Xamarin.Forms.Labs.Controls
 {
-    using System.Collections.Generic;
     using Xamarin.Forms.Labs.Exceptions;
 
     public class RepeaterView<T> : StackLayout
@@ -62,7 +62,7 @@ namespace Xamarin.Forms.Labs.Controls
 
         public IEnumerable<T> ItemsSource
         {
-            get { return (ObservableCollection<T>)GetValue(ItemsSourceProperty); }
+            get { return (IEnumerable<T>)GetValue(ItemsSourceProperty); }
             set { SetValue(ItemsSourceProperty, value); }
         }
 
