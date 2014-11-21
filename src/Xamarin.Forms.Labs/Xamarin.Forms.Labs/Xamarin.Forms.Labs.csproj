@@ -43,6 +43,8 @@
     <Compile Include="Converter\CollectionEmptyToBool.cs" />
     <Compile Include="Converter\HeightToMillimeters.cs" />
     <Compile Include="Extensions\CollectionTypeExtension.cs" />
+    <Compile Include="Services\IO\AppSettingsBase.cs" />
+    <Compile Include="Services\IO\IAppSettings.cs" />
     <Compile Include="Validation\PredicatePriority.cs" />
     <Compile Include="Validation\PropertySetter.cs" />
     <Compile Include="Validation\PropertySetters.cs" />
