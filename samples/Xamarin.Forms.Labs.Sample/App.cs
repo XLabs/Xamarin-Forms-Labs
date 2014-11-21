@@ -109,6 +109,7 @@ namespace Xamarin.Forms.Labs.Sample
                 "FontManager",
                 "NFC",
                 "Email",
+                "AppSettings"
                 //"WaveRecorder",
                 //"Bluetooth",
             };
@@ -163,6 +164,9 @@ namespace Xamarin.Forms.Labs.Sample
                         break;
                     case "email":
                         await mainPage.Navigation.PushAsync(new EmailPage());
+                        break;
+                    case "appsettings":
+                        await mainPage.Navigation.PushAsync(new AppSettingsPage());
                         break;
                 }
             };

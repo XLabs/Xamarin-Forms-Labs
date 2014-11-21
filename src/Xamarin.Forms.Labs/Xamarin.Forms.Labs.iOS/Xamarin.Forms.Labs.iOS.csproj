@@ -113,6 +113,7 @@
     </Compile>
     <Compile Include="Services\Email\EmailService.cs" />
     <Compile Include="Services\FontManager.cs" />
+    <Compile Include="Services\IO\AppSettings.cs" />
     <Compile Include="Services\Media\Microphone.cs" />
     <Compile Include="Services\Network.cs" />
     <Compile Include="Services\PhoneService.cs" />

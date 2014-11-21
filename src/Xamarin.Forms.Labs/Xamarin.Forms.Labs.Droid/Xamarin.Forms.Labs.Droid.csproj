@@ -122,6 +122,7 @@
     <Compile Include="Services\Geolocation\GeolocationContinuousListener.cs" />
     <Compile Include="Services\Geolocation\GeolocationSingleListener.cs" />
     <Compile Include="Services\Geolocation\Geolocator.cs" />
+    <Compile Include="Services\IO\AppSettings.cs" />
     <Compile Include="Services\Media\MediaPicker.cs" />
     <Compile Include="Services\Media\MediaPickerActivity.cs" />
     <Compile Include="Services\Media\Microphone.cs" />

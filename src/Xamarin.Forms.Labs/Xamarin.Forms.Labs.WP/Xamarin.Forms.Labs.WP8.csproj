@@ -150,6 +150,7 @@
     <Compile Include="Services\FontManager.cs" />
     <Compile Include="Services\Geolocation\CoordinateExtensions.cs" />
     <Compile Include="Services\Geolocation\Geolocator.cs" />
+    <Compile Include="Services\IO\AppSettings.cs" />
     <Compile Include="Services\Media\XnaMicrophone.cs" />
     <Compile Include="Services\Network.cs" />
     <Compile Include="Services\NfcDevice.cs" />
