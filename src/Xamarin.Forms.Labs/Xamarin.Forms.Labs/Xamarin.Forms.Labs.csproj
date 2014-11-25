@@ -175,6 +175,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
+    <None Include="Controls\ClassDiagramForControls.cd" />
     <None Include="Settings.StyleCop" />
     <None Include="packages.config">
       <SubType>Designer</SubType>

@@ -13,6 +13,7 @@ namespace Xamarin.Forms.Labs.Sample
         private ObservableCollection<object> _items;
         private Command<string> _searchCommand;
         private Command<object> _cellSelectedCommand;
+        private TestPerson _selectedItem;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AutoCompleteViewModel"/> class.
@@ -79,6 +80,22 @@ namespace Xamarin.Forms.Labs.Sample
                 return _searchCommand ?? (_searchCommand = new Command<string>(
                     obj => { },
                     obj => !string.IsNullOrEmpty(obj.ToString())));
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the selected item.
+        /// </summary>
+        /// <value>The selected item.</value>
+        public TestPerson SelectedItem
+        {
+            get
+            {
+                return _selectedItem;
+            }
+            set
+            {
+                SetProperty(ref _selectedItem, value);
             }
         }
     }

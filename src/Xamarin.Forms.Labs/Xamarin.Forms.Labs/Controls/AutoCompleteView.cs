@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
 using System.Text.RegularExpressions;
@@ -26,14 +27,39 @@ namespace Xamarin.Forms.Labs.Controls
         public static readonly BindableProperty SearchBackgroundColorProperty = BindableProperty.Create<AutoCompleteView, Color>(p => p.SearchBackgroundColor, Color.Red, BindingMode.TwoWay, null, SearchBackgroundColorChanged);
 
         /// <summary>
+        /// The search border color property.
+        /// </summary>
+        public static readonly BindableProperty SearchBorderColorProperty = BindableProperty.Create<AutoCompleteView, Color>(p => p.SearchBorderColor, Color.White, BindingMode.TwoWay, null, SearchBorderColorChanged);
+
+        /// <summary>
+        /// The search border radius property.
+        /// </summary>
+        public static readonly BindableProperty SearchBorderRadiusProperty = BindableProperty.Create<AutoCompleteView, int>(p => p.SearchBorderRadius, 0, BindingMode.TwoWay, null, SearchBorderRadiusChanged);
+
+        /// <summary>
+        /// The search border width property.
+        /// </summary>
+        public static readonly BindableProperty SearchBorderWidthProperty = BindableProperty.Create<AutoCompleteView, int>(p => p.SearchBorderWidth, 1, BindingMode.TwoWay, null, SearchBorderWidthChanged);
+
+        /// <summary>
         /// The search command property.
         /// </summary>
         public static readonly BindableProperty SearchCommandProperty = BindableProperty.Create<AutoCompleteView, ICommand>(p => p.SearchCommand, null);
 
         /// <summary>
+        /// The search text color property.
+        /// </summary>
+        public static readonly BindableProperty SearchTextColorProperty = BindableProperty.Create<AutoCompleteView, Color>(p => p.SearchTextColor, Color.Red, BindingMode.TwoWay, null, SearchTextColorChanged);
+        
+        /// <summary>
         /// The selected command property.
         /// </summary>
         public static readonly BindableProperty SelectedCommandProperty = BindableProperty.Create<AutoCompleteView, ICommand>(p => p.SelectedCommand, null);
+
+        /// <summary>
+        /// The selected item property.
+        /// </summary>
+        public static readonly BindableProperty SelectedItemProperty = BindableProperty.Create<AutoCompleteView, object>(p => p.SelectedItem, null, BindingMode.TwoWay);
 
         /// <summary>
         /// The show search property.
@@ -56,10 +82,25 @@ namespace Xamarin.Forms.Labs.Controls
         public static readonly BindableProperty SuggestionsProperty = BindableProperty.Create<AutoCompleteView, ObservableCollection<object>>(p => p.Suggestions, null);
 
         /// <summary>
+        /// The text background color property.
+        /// </summary>
+        public static readonly BindableProperty TextBackgroundColorProperty = BindableProperty.Create<AutoCompleteView, Color>(p => p.TextBackgroundColor, Color.White, BindingMode.TwoWay, null, TextBackgroundColorChanged);
+
+        /// <summary>
+        /// The text color property.
+        /// </summary>
+        public static readonly BindableProperty TextColorProperty = BindableProperty.Create<AutoCompleteView, Color>(p => p.TextBackgroundColor, Color.Black, BindingMode.TwoWay, null, TextColorChanged);
+
+        /// <summary>
         /// The text property
         /// </summary>
-        public static readonly BindableProperty TextProperty = BindableProperty.Create<AutoCompleteView, string>(p => p.Text, string.Empty, BindingMode.TwoWay, null, TextChanged);
+        public static readonly BindableProperty TextProperty = BindableProperty.Create<AutoCompleteView, string>(p => p.Text, string.Empty, BindingMode.TwoWay, null, TextValueChanged);
 
+        /// <summary>
+        /// The search text property.
+        /// </summary>
+        public static readonly BindableProperty SearchTextProperty = BindableProperty.Create<AutoCompleteView, string>(p => p.SearchText, "Search", BindingMode.TwoWay, null, SearchTextChanged);
+    
         private readonly Button _btnSearch;
         private readonly Entry _entText;
         private readonly ListView _lstSuggestions;
@@ -70,6 +111,7 @@ namespace Xamarin.Forms.Labs.Controls
         /// </summary>
         public AutoCompleteView()
         {
+            AvailableSuggestions = new ObservableCollection<object>();
             _stkBase = new StackLayout();
             var innerLayout = new StackLayout();
             _entText = new Entry
@@ -100,11 +142,14 @@ namespace Xamarin.Forms.Labs.Controls
             _entText.TextChanged += (s, e) =>
             {
                 Text = e.NewTextValue;
+                OnTextChanged(e);
             };
             _btnSearch.Clicked += (s, e) =>
             {
                 if (SearchCommand != null && SearchCommand.CanExecute(Text))
+                {
                     SearchCommand.Execute(Text);
+                }
             };
             _lstSuggestions.ItemSelected += (s, e) =>
             {
@@ -112,18 +157,28 @@ namespace Xamarin.Forms.Labs.Controls
 
                 AvailableSuggestions.Clear();
                 ShowHideListbox(false);
-                SelectedCommand.Execute(e.SelectedItem);
+                OnSelectedItemChanged(e.SelectedItem);
+             
                 if (ExecuteOnSuggestionClick
-                   && SearchCommand != null && SearchCommand.CanExecute(Text))
+                   && SearchCommand != null 
+                   && SearchCommand.CanExecute(Text))
                 {
                     SearchCommand.Execute(e);
                 }
-
             };
-            AvailableSuggestions = new ObservableCollection<object>();
             ShowHideListbox(false);
             _lstSuggestions.ItemsSource = AvailableSuggestions;
         }
+
+        /// <summary>
+        /// Occurs when [selected item changed].
+        /// </summary>
+        public event EventHandler<SelectedItemChangedEventArgs> SelectedItemChanged;
+
+        /// <summary>
+        /// Occurs when [text changed].
+        /// </summary>
+        public event EventHandler<TextChangedEventArgs> TextChanged;
 
         /// <summary>
         /// Gets the available Suggestions.
@@ -144,7 +199,7 @@ namespace Xamarin.Forms.Labs.Controls
             get { return (bool)GetValue(ExecuteOnSuggestionClickProperty); }
             set { SetValue(ExecuteOnSuggestionClickProperty, value); }
         }
-        
+
         /// <summary>
         /// Gets or sets the placeholder.
         /// </summary>
@@ -166,6 +221,36 @@ namespace Xamarin.Forms.Labs.Controls
         }
 
         /// <summary>
+        /// Gets or sets the search border color.
+        /// </summary>
+        /// <value>The search border brush.</value>
+        public Color SearchBorderColor
+        {
+            get { return (Color)GetValue(SearchBorderColorProperty); }
+            set { SetValue(SearchBorderColorProperty, value); }
+        }
+
+        /// <summary>
+        /// Gets or sets the search border radius.
+        /// </summary>
+        /// <value>The search border radius.</value>
+        public int SearchBorderRadius
+        {
+            get { return (int)GetValue(SearchBorderRadiusProperty); }
+            set { SetValue(SearchBorderRadiusProperty, value); }
+        }
+
+        /// <summary>
+        /// Gets or sets the width of the search border.
+        /// </summary>
+        /// <value>The width of the search border.</value>
+        public int SearchBorderWidth
+        {
+            get { return (int)GetValue(SearchBorderWidthProperty); }
+            set { SetValue(SearchBorderWidthProperty, value); }
+        }
+
+        /// <summary>
         /// Gets or sets the search command.
         /// </summary>
         /// <value>The search command.</value>
@@ -176,6 +261,26 @@ namespace Xamarin.Forms.Labs.Controls
         }
 
         /// <summary>
+        /// Gets or sets the color of the search text button.
+        /// </summary>
+        /// <value>The color of the search text.</value>
+        public Color SearchTextColor
+        {
+            get { return (Color)GetValue(SearchTextColorProperty); }
+            set { SetValue(SearchTextColorProperty, value); }
+        }
+
+        /// <summary>
+        /// Gets or sets the search text.
+        /// </summary>
+        /// <value>The search text.</value>
+        public string SearchText
+        {
+            get { return (string)GetValue(SearchTextProperty); }
+            set { SetValue(SearchTextProperty, value); }
+        }
+
+        /// <summary>
         /// Gets or sets the selected command.
         /// </summary>
         /// <value>The selected command.</value>
@@ -183,6 +288,16 @@ namespace Xamarin.Forms.Labs.Controls
         {
             get { return (ICommand)GetValue(SelectedCommandProperty); }
             set { SetValue(SelectedCommandProperty, value); }
+        }
+
+        /// <summary>
+        /// Gets or sets the selected item.
+        /// </summary>
+        /// <value>The selected item.</value>
+        public object SelectedItem
+        {
+            get { return (Color)GetValue(SelectedItemProperty); }
+            set { SetValue(SelectedItemProperty, value); }
         }
 
         /// <summary>
@@ -236,6 +351,24 @@ namespace Xamarin.Forms.Labs.Controls
         }
 
         /// <summary>
+        /// Gets or sets the color of the text background.
+        /// </summary>
+        /// <value>The color of the text background.</value>
+        public Color TextBackgroundColor
+        {
+            get { return (Color)GetValue(TextBackgroundColorProperty); }
+            set { SetValue(TextBackgroundColorProperty, value); }
+        }
+        /// <summary>
+        /// Gets or sets the color of the text.
+        /// </summary>
+        /// <value>The color of the text.</value>
+        public Color TextColor
+        {
+            get { return (Color)GetValue(TextColorProperty); }
+            set { SetValue(TextColorProperty, value); }
+        }
+        /// <summary>
         /// Places the holder changed.
         /// </summary>
         /// <param name="obj">The object.</param>
@@ -262,6 +395,81 @@ namespace Xamarin.Forms.Labs.Controls
             if (autoCompleteView != null)
             {
                 autoCompleteView._stkBase.BackgroundColor = newValue;
+            }
+        }
+        
+        /// <summary>
+        /// Searches the text changed.
+        /// </summary>
+        /// <param name="obj">The bindable.</param>
+        /// <param name="oldValue">The old value.</param>
+        /// <param name="newValue">The new value.</param>
+        private static void SearchTextChanged(BindableObject obj, string oldValue, string newValue)
+        {
+            var autoCompleteView = obj as AutoCompleteView;
+            if (autoCompleteView != null)
+            {
+                autoCompleteView._btnSearch.Text = newValue;
+            }
+        }
+
+        /// <summary>
+        /// Searches the border color changed.
+        /// </summary>
+        /// <param name="obj">The object.</param>
+        /// <param name="oldValue">The old value.</param>
+        /// <param name="newValue">The new value.</param>
+        private static void SearchBorderColorChanged(BindableObject obj, Color oldValue, Color newValue)
+        {
+            var autoCompleteView = obj as AutoCompleteView;
+            if (autoCompleteView != null)
+            {
+                autoCompleteView._btnSearch.BorderColor = newValue;
+            }
+        }
+
+        /// <summary>
+        /// Searches the border radius changed.
+        /// </summary>
+        /// <param name="obj">The object.</param>
+        /// <param name="oldValue">The old value.</param>
+        /// <param name="newValue">The new value.</param>
+        private static void SearchBorderRadiusChanged(BindableObject obj, int oldValue, int newValue)
+        {
+            var autoCompleteView = obj as AutoCompleteView;
+            if (autoCompleteView != null)
+            {
+                autoCompleteView._btnSearch.BorderRadius = newValue;
+            }
+        }
+
+        /// <summary>
+        /// Searches the border width changed.
+        /// </summary>
+        /// <param name="obj">The object.</param>
+        /// <param name="oldValue">The old value.</param>
+        /// <param name="newValue">The new value.</param>
+        private static void SearchBorderWidthChanged(BindableObject obj, int oldValue, int newValue)
+        {
+            var autoCompleteView = obj as AutoCompleteView;
+            if (autoCompleteView != null)
+            {
+                autoCompleteView._btnSearch.BorderWidth = newValue;
+            }
+        }
+
+        /// <summary>
+        /// Searches the text color color changed.
+        /// </summary>
+        /// <param name="obj">The object.</param>
+        /// <param name="oldValue">The old value.</param>
+        /// <param name="newValue">The new value.</param>
+        private static void SearchTextColorChanged(BindableObject obj, Color oldValue, Color newValue)
+        {
+            var autoCompleteView = obj as AutoCompleteView;
+            if (autoCompleteView != null)
+            {
+                autoCompleteView._btnSearch.TextColor = newValue;
             }
         }
 
@@ -311,12 +519,41 @@ namespace Xamarin.Forms.Labs.Controls
         }
 
         /// <summary>
+        /// Texts the background color changed.
+        /// </summary>
+        /// <param name="obj">The object.</param>
+        /// <param name="oldValue">The old value.</param>
+        /// <param name="newValue">The new value.</param>
+        private static void TextBackgroundColorChanged(BindableObject obj, Color oldValue, Color newValue)
+        {
+            var autoCompleteView = obj as AutoCompleteView;
+            if (autoCompleteView != null)
+            {
+                autoCompleteView._entText.BackgroundColor = newValue;
+            }
+        }
+
+        /// <summary>
+        /// Texts the color changed.
+        /// </summary>
+        /// <param name="obj">The object.</param>
+        /// <param name="oldValue">The old value.</param>
+        /// <param name="newValue">The new value.</param>
+        private static void TextColorChanged(BindableObject obj, Color oldValue, Color newValue)
+        {
+            var autoCompleteView = obj as AutoCompleteView;
+            if (autoCompleteView != null)
+            {
+                autoCompleteView._entText.TextColor = newValue;
+            }
+        }
+        /// <summary>
         /// Texts the changed.
         /// </summary>
         /// <param name="obj">The object.</param>
         /// <param name="oldPlaceHolderValue">The old place holder value.</param>
         /// <param name="newPlaceHolderValue">The new place holder value.</param>
-        private static void TextChanged(BindableObject obj, string oldPlaceHolderValue, string newPlaceHolderValue)
+        private static void TextValueChanged(BindableObject obj, string oldPlaceHolderValue, string newPlaceHolderValue)
         {
             var control = obj as AutoCompleteView;
 
@@ -347,6 +584,33 @@ namespace Xamarin.Forms.Labs.Controls
                         control.ShowHideListbox(false);
                     }
                 }
+            }
+        }
+
+        /// <summary>
+        /// Called when [selected item changed].
+        /// </summary>
+        /// <param name="selectedItem">The selected item.</param>
+        private void OnSelectedItemChanged(object selectedItem)
+        {
+            SelectedItem = selectedItem;
+            SelectedCommand.Execute(selectedItem);
+
+            if (SelectedItemChanged != null)
+            {
+                SelectedItemChanged(this, new SelectedItemChangedEventArgs(selectedItem));
+            }
+        }
+
+        /// <summary>
+        /// Handles the <see cref="E:TextChanged" /> event.
+        /// </summary>
+        /// <param name="e">The <see cref="TextChangedEventArgs"/> instance containing the event data.</param>
+        private void OnTextChanged(TextChangedEventArgs e)
+        {
+            if (TextChanged != null)
+            {
+                TextChanged(this, e);
             }
         }
 
