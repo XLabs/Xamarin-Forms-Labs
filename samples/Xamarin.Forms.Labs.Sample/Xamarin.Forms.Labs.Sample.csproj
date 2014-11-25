@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="Model\TestPerson.cs" />
     <Compile Include="Pages\Controls\CarouselSample.xaml.cs">
       <DependentUpon>CarouselSample.xaml</DependentUpon>
     </Compile>
@@ -115,6 +116,7 @@
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\CameraViewModel.cs" />
     <Compile Include="ViewModel\GestureSampleVM.cs" />
+    <Compile Include="ViewModel\AutoCompletViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\RepeaterViewViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />

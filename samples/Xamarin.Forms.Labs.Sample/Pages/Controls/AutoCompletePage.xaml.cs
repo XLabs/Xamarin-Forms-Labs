@@ -1,15 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using Xamarin.Forms;
-
-namespace Xamarin.Forms.Labs.Sample
-{	
+﻿namespace Xamarin.Forms.Labs.Sample
+{
+    /// <summary>
+    /// Define the AutoCompletePage.
+    /// </summary>
 	public partial class AutoCompletePage : ContentPage
-	{	
+	{
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AutoCompletePage"/> class.
+        /// </summary>
 		public AutoCompletePage ()
 		{
 			InitializeComponent ();
-			BindingContext = ViewModelLocator.Main;
+            BindingContext = ViewModelLocator.AutoCompleteViewModel;
 		}
 	}
 }

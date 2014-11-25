@@ -1,41 +1,35 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:controls="clr-namespace:Xamarin.Forms.Labs.Controls;assembly=Xamarin.Forms.Labs"
-    Title="AutoComplete"
-    x:Class="Xamarin.Forms.Labs.Sample.AutoCompletePage">
-    <ContentPage.Resources>
-    <ResourceDictionary>
-	<!--    this isn't working yet-->
-      <DataTemplate x:Key="SugestionItemTemplate">
-			<ViewCell Height="60">
-					<ViewCell.View>
-						<StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-							
-								<Label Text="{Binding FirstName}" VerticalOptions="Center" HorizontalOptions="Start" />
-						
-							
-								<Label Text="{Binding LastName}" VerticalOptions="Center" HorizontalOptions="Start" />
-							
-						</StackLayout>
-					</ViewCell.View>
-				</ViewCell>
-	</DataTemplate>
-    </ResourceDictionary>
-  
-    </ContentPage.Resources>
-    <ContentPage.Content>
-        	<controls:AutoCompleteView 
-				SugestionItemDataTemplate="{StaticResource SugestionItemTemplate}"
-				Placeholder="type 'firstname'"
-				ShowSearch="True"
-				SearchBackgroundColor="Blue"
-				SugestionBackgroundColor="Green"
-				SearchCommand="{Binding SearchCommand}"
-				Sugestions="{Binding Items, Mode=TwoWay}"
-				SelectedCommand = "{Binding CellSelectedCommand}"
-				/>
-    </ContentPage.Content>
+		xmlns="http://xamarin.com/schemas/2014/forms"
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+		xmlns:controls="clr-namespace:Xamarin.Forms.Labs.Controls;assembly=Xamarin.Forms.Labs"
+		Title="AutoComplete"
+		x:Class="Xamarin.Forms.Labs.Sample.AutoCompletePage">
+		<ContentPage.Resources>
+		<ResourceDictionary>
+	    <!--    this isn't working yet-->
+			<DataTemplate x:Key="SugestionItemTemplate">
+			    <ViewCell Height="60">
+					    <ViewCell.View>
+						    <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+								    <Label Text="{Binding FirstName}" VerticalOptions="Center" HorizontalOptions="Start" />
+						        <Label Text="{Binding LastName}" VerticalOptions="Center" HorizontalOptions="Start" />
+					      </StackLayout>
+					    </ViewCell.View>
+				    </ViewCell>
+	    </DataTemplate>
+		</ResourceDictionary>
+		</ContentPage.Resources>
+		<ContentPage.Content>
+					<controls:AutoCompleteView 
+				      SuggestionItemDataTemplate="{StaticResource SugestionItemTemplate}"
+				      Placeholder="type 'firstname'"
+				      ShowSearchButton="True"
+				      SearchBackgroundColor="Blue"
+				      SuggestionBackgroundColor="Green"
+				      SearchCommand="{Binding SearchCommand}"
+				      Suggestions="{Binding Items, Mode=TwoWay}"
+				      SelectedCommand = "{Binding CellSelectedCommand}"/>
+		</ContentPage.Content>
 </ContentPage>
 

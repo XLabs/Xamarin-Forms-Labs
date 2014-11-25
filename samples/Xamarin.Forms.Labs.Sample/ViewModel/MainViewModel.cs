@@ -2,9 +2,6 @@
 using Xamarin.Forms.Labs.Mvvm;
 using System.Collections.ObjectModel;
 using Xamarin.Forms.Labs.Services;
-using Xamarin.Forms.Labs.Data;
-using System.Diagnostics;
-using Xamarin.Forms.Labs.Controls;
 using System.Threading.Tasks;
 using XLabs.Ioc;
 
@@ -13,52 +10,50 @@ namespace Xamarin.Forms.Labs.Sample
     /// <summary>
     /// The main view model.
     /// </summary>
-    public class MainViewModel : Xamarin.Forms.Labs.Mvvm.ViewModel
+    public class MainViewModel : ViewModel
     {
-        private readonly IDevice device;
-        private string numberToCall = "+1 (855) 926-2746";
-        private string textToSpeak = "Hello from Xamarin Forms Labs";
-        private string deviceTimerInfo = string.Empty;
-        private ObservableCollection<object> items;
-        private ObservableCollection<string> images;
-        private Command<string> searchCommand;
-        private Command<object> cellSelectedCommand;
-        private Command callCommand;
+        private readonly IDevice _device;
+        private string _numberToCall = "+1 (855) 926-2746";
+        private string _textToSpeak = "Hello from Xamarin Forms Labs";
+        private string _deviceTimerInfo = string.Empty;
+        private ObservableCollection<string> _images;
+        private Command _callCommand;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MainViewModel"/> class.
         /// </summary>
-        public MainViewModel ()
+        public MainViewModel()
         {
-            SpeakCommand = new Command (() => DependencyService.Get<ITextToSpeechService> ().Speak (TextToSpeak));
+            SpeakCommand = new Command(() => DependencyService.Get<ITextToSpeechService>().Speak(TextToSpeak));
 
-            Items = new ObservableCollection<object> ();
-            Images = new ObservableCollection<string> ();
-            for (var i = 0; i < 10; i++) {
-                Images.Add ("ad16.jpg");
-                Items.Add (new TestPerson(string.Format ("FirstName {0}", i), string.Format ("LastName {0}", i),i));
+            Images = new ObservableCollection<string>();
+            for (var i = 0; i < 10; i++)
+            {
+                Images.Add("ad16.jpg");
             }
 
-            this.device = Resolver.Resolve<IDevice> ();
+            _device = Resolver.Resolve<IDevice>();
         }
 
         public Task AddImages()
         {
-            return Task.Run (async () => 
+            return Task.Run(async () =>
             {
                 await Task.Delay(1000);
-                for (var i = 0; i < 5; i++) 
+                for (var i = 0; i < 5; i++)
                 {
-                    Images.Add ("http://www.stockvault.net/data/2011/05/31/124348/small.jpg");
+                    Images.Add("http://www.stockvault.net/data/2011/05/31/124348/small.jpg");
                 }
             });
         }
+
         /// <summary>
         /// The start timer.
         /// </summary>
-        public void StartTimer ()
+        public void StartTimer()
         {
-            Device.StartTimer (new TimeSpan (6000), () => {
+            Device.StartTimer(new TimeSpan(6000), () =>
+            {
                 DeviceTimerInfo = "This text was updated using the Device Timer";
                 return true;
             });
@@ -70,9 +65,11 @@ namespace Xamarin.Forms.Labs.Sample
         /// <value>
         /// The device manufacturer.
         /// </value>
-        public string DeviceManufacturer {
-            get {
-                return string.Format ("Device was manufactured by {0}", this.device.Manufacturer);
+        public string DeviceManufacturer
+        {
+            get
+            {
+                return string.Format("Device was manufactured by {0}", _device.Manufacturer);
             }
         }
 
@@ -82,9 +79,11 @@ namespace Xamarin.Forms.Labs.Sample
         /// <value>
         /// The device name.
         /// </value>
-        public string DeviceName {
-            get {
-                return string.Format ("Device is called {0}", this.device.Name);
+        public string DeviceName
+        {
+            get
+            {
+                return string.Format("Device is called {0}", _device.Name);
             }
         }
 
@@ -94,12 +93,15 @@ namespace Xamarin.Forms.Labs.Sample
         /// <value>
         /// The number to call.
         /// </value>
-        public string NumberToCall {
-            get {
-                return numberToCall;
+        public string NumberToCall
+        {
+            get
+            {
+                return _numberToCall;
             }
-            set {
-                this.SetProperty (ref numberToCall, value);
+            set
+            {
+                SetProperty(ref _numberToCall, value);
             }
         }
 
@@ -109,12 +111,15 @@ namespace Xamarin.Forms.Labs.Sample
         /// <value>
         /// The text to speak.
         /// </value>
-        public string TextToSpeak {
-            get {
-                return textToSpeak;
+        public string TextToSpeak
+        {
+            get
+            {
+                return _textToSpeak;
             }
-            set {
-                this.SetProperty (ref textToSpeak, value);
+            set
+            {
+                SetProperty(ref _textToSpeak, value);
             }
         }
 
@@ -126,12 +131,15 @@ namespace Xamarin.Forms.Labs.Sample
         /// <value>
         /// The device UI thread info.
         /// </value>
-        public string DeviceUIThreadInfo {
-            get {
+        public string DeviceUIThreadInfo
+        {
+            get
+            {
                 return deviceUIThreadInfo;
             }
-            set { 
-                this.SetProperty (ref deviceUIThreadInfo, value);
+            set
+            {
+                SetProperty(ref deviceUIThreadInfo, value);
             }
         }
 
@@ -141,28 +149,16 @@ namespace Xamarin.Forms.Labs.Sample
         /// <value>
         /// The device timer info.
         /// </value>
-        public string DeviceTimerInfo {
-            get {
-                return deviceTimerInfo;
+        public string DeviceTimerInfo
+        {
+            get
+            {
+                return _deviceTimerInfo;
             }
-            
-            set { 
-                this.SetProperty (ref deviceTimerInfo, value);
-            }
-        }
 
-        /// <summary>
-        /// Gets or sets the items.
-        /// </summary>
-        /// <value>
-        /// The items.
-        /// </value>
-        public ObservableCollection<object> Items {
-            get {
-                return items;
-            }
-            set {
-                this.SetProperty (ref items, value);
+            set
+            {
+                SetProperty(ref _deviceTimerInfo, value);
             }
         }
 
@@ -172,12 +168,15 @@ namespace Xamarin.Forms.Labs.Sample
         /// <value>
         /// The images.
         /// </value>
-        public ObservableCollection<string> Images {
-            get {
-                return images;
+        public ObservableCollection<string> Images
+        {
+            get
+            {
+                return _images;
             }
-            set {
-                this.SetProperty (ref images, value);
+            set
+            {
+                SetProperty(ref _images, value);
             }
         }
 
@@ -189,88 +188,20 @@ namespace Xamarin.Forms.Labs.Sample
         /// </value>
         public Command SpeakCommand { get; private set; }
 
-        
-        /// <summary>
-        /// Gets the selected cell command.
-        /// </summary>
-        /// <value>
-        /// The selected cell command.
-        /// </value>
-        public Command<object> CellSelectedCommand {
-            get {
-                return cellSelectedCommand ?? (cellSelectedCommand = new Command<object> ((object o) => {
-                    TestPerson person = ((TestPerson)((SelectedItemChangedEventArgs)o).SelectedItem);
-                    Debug.WriteLine(person.FirstName + person.LastName + person.Age);
-                }));
-            }
-        }
-
-
-        /// <summary>
-        /// Gets the search command.
-        /// </summary>
-        /// <value>
-        /// The search command.
-        /// </value>
-        public Command<string> SearchCommand {
-            get {
-                return searchCommand ?? (searchCommand = new Command<string> (
-                    obj => {
-                    },
-                    obj => !string.IsNullOrEmpty (obj.ToString())));
-            }
-        }
         /// <summary>
         /// Gets the call command.
         /// </summary>
         /// <value>
         /// The call command.
         /// </value>
-        public Command CallCommand 
+        public Command CallCommand
         {
-            get 
+            get
             {
-                return callCommand ?? (callCommand = new Command (
-                    () => this.device.PhoneService.DialNumber (NumberToCall),
-                    () => this.device.PhoneService != null)); 
+                return _callCommand ?? (_callCommand = new Command(
+                    () => _device.PhoneService.DialNumber(NumberToCall),
+                    () => _device.PhoneService != null));
             }
-        }
-    }
-
-    public class TestPerson : ObservableObject, AutoCompleteSearchObject
-    {
-        private string firstName;
-        private string lastName;
-        private int age;
-
-        public TestPerson(string firstnameInput, string lastnameInput, int ageInput)
-        {
-            FirstName = firstnameInput;
-            LastName = lastnameInput;
-            Age = ageInput;
-        }
-
-        public string FirstName
-        { 
-            get{ return firstName; } 
-            set {SetProperty (ref firstName, value);}
-        }
-
-        public string LastName 
-        { 
-            get { return lastName; } 
-            set { SetProperty (ref lastName, value); } 
-        }
-
-        public int Age
-        { 
-            get { return age; } 
-            set { SetProperty (ref age, value); } 
-        }
-
-        public string StringToSearchBy ()
-        {
-            return FirstName;
         }
     }
 }

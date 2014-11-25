@@ -186,7 +186,7 @@ namespace Xamarin.Forms.Labs.Sample
         {
             var listItems = new SortedDictionary<string, Type>
             {
-                {"Autocomplete",  typeof(AutoCompletePage)},
+                {"AutocompleteView",  typeof(AutoCompletePage)},
                 {"ButtonGroup", typeof(ButtonGroupPage)},
                 {"Calendar", typeof(CalendarPage)},
                 {"CameraView", typeof(CameraViewPage)},

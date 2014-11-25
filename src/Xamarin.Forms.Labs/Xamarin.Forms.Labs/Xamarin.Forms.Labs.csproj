@@ -63,7 +63,7 @@
     <Compile Include="Controls\CarouselView.cs" />
     <Compile Include="Controls\GesturesContentView.cs" />
     <Compile Include="Behaviors\GridLayout.cs" />
-    <Compile Include="Controls\AutoComplete.cs" />
+    <Compile Include="Controls\AutoCompleteView.cs" />
     <Compile Include="Controls\ButtonGroup.cs" />
     <Compile Include="Controls\CircleImage.cs" />
     <Compile Include="Controls\DynamicListView.cs" />
