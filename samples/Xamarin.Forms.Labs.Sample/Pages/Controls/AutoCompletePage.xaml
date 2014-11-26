@@ -27,10 +27,11 @@
 							ShowSearchButton="True"
 							SearchBackgroundColor="Blue"
 							SearchTextColor = "Yellow"
+							SearchBorderColor = "Yellow"
 							SuggestionBackgroundColor="Green"
 							SearchCommand="{Binding SearchCommand}"
 							Suggestions="{Binding Items, Mode=TwoWay}"
-              SelectedItem ="{Binding SelectedItem}"
+							SelectedItem ="{Binding SelectedItem}"
 							SelectedCommand = "{Binding CellSelectedCommand}"/>
 		</ContentPage.Content>
 </ContentPage>

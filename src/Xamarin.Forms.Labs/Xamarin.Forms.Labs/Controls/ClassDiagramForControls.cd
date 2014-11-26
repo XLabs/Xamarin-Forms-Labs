@@ -3,6 +3,7 @@
   <Class Name="Xamarin.Forms.Labs.Controls.AutoCompleteView">
     <Position X="0.75" Y="0.5" Width="2.75" />
     <Members>
+      <Field Name="_availableSuggestions" Hidden="true" />
       <Field Name="_btnSearch" Hidden="true" />
       <Field Name="_entText" Hidden="true" />
       <Field Name="_lstSuggestions" Hidden="true" />
@@ -22,8 +23,14 @@
       <Method Name="SearchBorderWidthChanged" Hidden="true" />
       <Field Name="SearchBorderWidthProperty" Hidden="true" />
       <Field Name="SearchCommandProperty" Hidden="true" />
+      <Method Name="SearchHorizontalOptionsChanged" Hidden="true" />
+      <Field Name="SearchHorizontalOptionsProperty" Hidden="true" />
+      <Method Name="SearchTextChanged" Hidden="true" />
       <Method Name="SearchTextColorChanged" Hidden="true" />
       <Field Name="SearchTextColorProperty" Hidden="true" />
+      <Field Name="SearchTextProperty" Hidden="true" />
+      <Method Name="SearchVerticalOptionsChanged" Hidden="true" />
+      <Field Name="SearchVerticalOptionsProperty" Hidden="true" />
       <Field Name="SelectedCommandProperty" Hidden="true" />
       <Field Name="SelectedItemProperty" Hidden="true" />
       <Method Name="ShowHideListbox" Hidden="true" />
@@ -31,16 +38,24 @@
       <Field Name="ShowSearchProperty" Hidden="true" />
       <Method Name="SuggestionBackgroundColorChanged" Hidden="true" />
       <Field Name="SuggestionBackgroundColorProperty" Hidden="true" />
+      <Method Name="SuggestionHeightRequestChanged" Hidden="true" />
       <Method Name="SuggestionItemDataTemplateChanged" Hidden="true" />
       <Field Name="SuggestionItemDataTemplateProperty" Hidden="true" />
+      <Field Name="SuggestionsHeightRequestProperty" Hidden="true" />
       <Field Name="SuggestionsProperty" Hidden="true" />
+      <Method Name="TestVerticalOptionsChanged" Hidden="true" />
+      <Method Name="TextBackgroundColorChanged" Hidden="true" />
+      <Field Name="TextBackgroundColorProperty" Hidden="true" />
       <Method Name="TextColorChanged" Hidden="true" />
       <Field Name="TextColorProperty" Hidden="true" />
+      <Method Name="TextHorizontalOptionsChanged" Hidden="true" />
+      <Field Name="TextHorizontalOptionsProperty" Hidden="true" />
       <Field Name="TextProperty" Hidden="true" />
       <Method Name="TextValueChanged" Hidden="true" />
+      <Field Name="TextVerticalOptionsProperty" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>AkSQEA6AAAgIxEAMkiZAAEAQXAgGByIIEDAAWQAxBQQ=</HashCode>
+      <HashCode>AuSUEA6BAAgIxkAskiZAgEAQXAgmByIoEDgAWQCxBYQ=</HashCode>
       <FileName>Controls\AutoCompleteView.cs</FileName>
     </TypeIdentifier>
   </Class>

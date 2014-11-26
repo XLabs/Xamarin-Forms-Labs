@@ -10,9 +10,9 @@ namespace Xamarin.Forms.Labs.Sample
     /// </summary>
     public class AutoCompleteViewModel : ViewModel
     {
-        private ObservableCollection<object> _items;
+        private ObservableCollection<TestPerson> _items;
         private Command<string> _searchCommand;
-        private Command<object> _cellSelectedCommand;
+        private Command<TestPerson> _cellSelectedCommand;
         private TestPerson _selectedItem;
 
         /// <summary>
@@ -20,7 +20,7 @@ namespace Xamarin.Forms.Labs.Sample
         /// </summary>
         public AutoCompleteViewModel()
         {
-            Items = new ObservableCollection<object>();
+            Items = new ObservableCollection<TestPerson>();
             for (var i = 0; i < 10; i++)
             {
                 Items.Add(new TestPerson
@@ -37,7 +37,7 @@ namespace Xamarin.Forms.Labs.Sample
         /// <value>
         /// The items.
         /// </value>
-        public ObservableCollection<object> Items
+        public ObservableCollection<TestPerson> Items
         {
             get
             {
@@ -55,15 +55,11 @@ namespace Xamarin.Forms.Labs.Sample
         /// <value>
         /// The selected cell command.
         /// </value>
-        public Command<object> CellSelectedCommand
+        public Command<TestPerson> CellSelectedCommand
         {
             get
             {
-                return _cellSelectedCommand ?? (_cellSelectedCommand = new Command<object>((object parameter) =>
-                {
-                    var person = ((TestPerson)parameter);
-                    Debug.WriteLine(person.FirstName + person.LastName + person.Age);
-                }));
+                return _cellSelectedCommand ?? (_cellSelectedCommand = new Command<TestPerson>(parameter => Debug.WriteLine(parameter.FirstName + parameter.LastName + parameter.Age)));
             }
         }
 
