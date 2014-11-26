@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
@@ -47,10 +49,25 @@ namespace Xamarin.Forms.Labs.Controls
         public static readonly BindableProperty SearchCommandProperty = BindableProperty.Create<AutoCompleteView, ICommand>(p => p.SearchCommand, null);
 
         /// <summary>
+        /// The search horizontal options property
+        /// </summary>
+        public static readonly BindableProperty SearchHorizontalOptionsProperty = BindableProperty.Create<AutoCompleteView, LayoutOptions>(p => p.SearchHorizontalOptions, LayoutOptions.FillAndExpand, BindingMode.TwoWay, null, SearchHorizontalOptionsChanged);
+
+        /// <summary>
         /// The search text color property.
         /// </summary>
         public static readonly BindableProperty SearchTextColorProperty = BindableProperty.Create<AutoCompleteView, Color>(p => p.SearchTextColor, Color.Red, BindingMode.TwoWay, null, SearchTextColorChanged);
-        
+
+        /// <summary>
+        /// The search text property.
+        /// </summary>
+        public static readonly BindableProperty SearchTextProperty = BindableProperty.Create<AutoCompleteView, string>(p => p.SearchText, "Search", BindingMode.TwoWay, null, SearchTextChanged);
+
+        /// <summary>
+        /// The search vertical options property
+        /// </summary>
+        public static readonly BindableProperty SearchVerticalOptionsProperty = BindableProperty.Create<AutoCompleteView, LayoutOptions>(p => p.SearchVerticalOptions, LayoutOptions.Center, BindingMode.TwoWay, null, SearchVerticalOptionsChanged);
+
         /// <summary>
         /// The selected command property.
         /// </summary>
@@ -77,14 +94,19 @@ namespace Xamarin.Forms.Labs.Controls
         public static readonly BindableProperty SuggestionItemDataTemplateProperty = BindableProperty.Create<AutoCompleteView, DataTemplate>(p => p.SuggestionItemDataTemplate, null, BindingMode.TwoWay, null, SuggestionItemDataTemplateChanged);
 
         /// <summary>
+        /// The suggestion height request property.
+        /// </summary>
+        public static readonly BindableProperty SuggestionsHeightRequestProperty = BindableProperty.Create<AutoCompleteView, double>(p => p.SuggestionsHeightRequest, 250, BindingMode.TwoWay, null, SuggestionHeightRequestChanged);
+
+        /// <summary>
         /// The suggestions property.
         /// </summary>
-        public static readonly BindableProperty SuggestionsProperty = BindableProperty.Create<AutoCompleteView, ObservableCollection<object>>(p => p.Suggestions, null);
+        public static readonly BindableProperty SuggestionsProperty = BindableProperty.Create<AutoCompleteView, IEnumerable>(p => p.Suggestions, null);
 
         /// <summary>
         /// The text background color property.
         /// </summary>
-        public static readonly BindableProperty TextBackgroundColorProperty = BindableProperty.Create<AutoCompleteView, Color>(p => p.TextBackgroundColor, Color.White, BindingMode.TwoWay, null, TextBackgroundColorChanged);
+        public static readonly BindableProperty TextBackgroundColorProperty = BindableProperty.Create<AutoCompleteView, Color>(p => p.TextBackgroundColor, Color.Transparent, BindingMode.TwoWay, null, TextBackgroundColorChanged);
 
         /// <summary>
         /// The text color property.
@@ -92,15 +114,20 @@ namespace Xamarin.Forms.Labs.Controls
         public static readonly BindableProperty TextColorProperty = BindableProperty.Create<AutoCompleteView, Color>(p => p.TextBackgroundColor, Color.Black, BindingMode.TwoWay, null, TextColorChanged);
 
         /// <summary>
-        /// The text property
+        /// The text horizontal options property
+        /// </summary>
+        public static readonly BindableProperty TextHorizontalOptionsProperty = BindableProperty.Create<AutoCompleteView, LayoutOptions>(p => p.TextHorizontalOptions, LayoutOptions.FillAndExpand, BindingMode.TwoWay, null, TextHorizontalOptionsChanged);
+
+        /// <summary>
+        /// The text property.
         /// </summary>
         public static readonly BindableProperty TextProperty = BindableProperty.Create<AutoCompleteView, string>(p => p.Text, string.Empty, BindingMode.TwoWay, null, TextValueChanged);
 
         /// <summary>
-        /// The search text property.
+        /// The text vertical options property.
         /// </summary>
-        public static readonly BindableProperty SearchTextProperty = BindableProperty.Create<AutoCompleteView, string>(p => p.SearchText, "Search", BindingMode.TwoWay, null, SearchTextChanged);
-    
+        public static readonly BindableProperty TextVerticalOptionsProperty = BindableProperty.Create<AutoCompleteView, LayoutOptions>(p => p.TextVerticalOptions, LayoutOptions.Start, BindingMode.TwoWay, null, TestVerticalOptionsChanged);
+        private readonly ObservableCollection<object> _availableSuggestions;
         private readonly Button _btnSearch;
         private readonly Entry _entText;
         private readonly ListView _lstSuggestions;
@@ -111,23 +138,26 @@ namespace Xamarin.Forms.Labs.Controls
         /// </summary>
         public AutoCompleteView()
         {
-            AvailableSuggestions = new ObservableCollection<object>();
+            _availableSuggestions = new ObservableCollection<object>();
             _stkBase = new StackLayout();
             var innerLayout = new StackLayout();
             _entText = new Entry
             {
-                HorizontalOptions = LayoutOptions.FillAndExpand,
-                VerticalOptions = LayoutOptions.Start
+                HorizontalOptions = TextHorizontalOptions,
+                VerticalOptions = TextVerticalOptions,
+                TextColor =  TextColor,
+                BackgroundColor = TextBackgroundColor
             };
             _btnSearch = new Button
             {
-                VerticalOptions = LayoutOptions.Center,
-                Text = "Search"
+                VerticalOptions = SearchVerticalOptions,
+                HorizontalOptions = SearchHorizontalOptions,
+                Text = SearchText
             };
 
             _lstSuggestions = new ListView
             {
-                HeightRequest = 250,
+                HeightRequest = SuggestionsHeightRequest,
                 HasUnevenRows = true
             };
 
@@ -155,7 +185,7 @@ namespace Xamarin.Forms.Labs.Controls
             {
                 _entText.Text = e.SelectedItem.ToString();
 
-                AvailableSuggestions.Clear();
+                _availableSuggestions.Clear();
                 ShowHideListbox(false);
                 OnSelectedItemChanged(e.SelectedItem);
              
@@ -167,9 +197,9 @@ namespace Xamarin.Forms.Labs.Controls
                 }
             };
             ShowHideListbox(false);
-            _lstSuggestions.ItemsSource = AvailableSuggestions;
+            _lstSuggestions.ItemsSource = _availableSuggestions;
         }
-
+        
         /// <summary>
         /// Occurs when [selected item changed].
         /// </summary>
@@ -184,10 +214,9 @@ namespace Xamarin.Forms.Labs.Controls
         /// Gets the available Suggestions.
         /// </summary>
         /// <value>The available Suggestions.</value>
-        public ObservableCollection<object> AvailableSuggestions
+        public IEnumerable AvailableSuggestions
         {
-            get;
-            private set;
+            get { return _availableSuggestions; }
         }
 
         /// <summary>
@@ -261,13 +290,13 @@ namespace Xamarin.Forms.Labs.Controls
         }
 
         /// <summary>
-        /// Gets or sets the color of the search text button.
+        /// Gets or sets the search horizontal options.
         /// </summary>
-        /// <value>The color of the search text.</value>
-        public Color SearchTextColor
+        /// <value>The search horizontal options.</value>
+        public LayoutOptions SearchHorizontalOptions
         {
-            get { return (Color)GetValue(SearchTextColorProperty); }
-            set { SetValue(SearchTextColorProperty, value); }
+            get { return (LayoutOptions)GetValue(SearchHorizontalOptionsProperty); }
+            set { SetValue(SearchHorizontalOptionsProperty, value); }
         }
 
         /// <summary>
@@ -279,6 +308,27 @@ namespace Xamarin.Forms.Labs.Controls
             get { return (string)GetValue(SearchTextProperty); }
             set { SetValue(SearchTextProperty, value); }
         }
+
+        /// <summary>
+        /// Gets or sets the color of the search text button.
+        /// </summary>
+        /// <value>The color of the search text.</value>
+        public Color SearchTextColor
+        {
+            get { return (Color)GetValue(SearchTextColorProperty); }
+            set { SetValue(SearchTextColorProperty, value); }
+        }
+
+        /// <summary>
+        /// Gets or sets the search vertical options.
+        /// </summary>
+        /// <value>The search vertical options.</value>
+        public LayoutOptions SearchVerticalOptions
+        {
+            get { return (LayoutOptions)GetValue(SearchVerticalOptionsProperty); }
+            set { SetValue(SearchVerticalOptionsProperty, value); }
+        }
+
 
         /// <summary>
         /// Gets or sets the selected command.
@@ -334,12 +384,21 @@ namespace Xamarin.Forms.Labs.Controls
         /// Gets or sets the Suggestions.
         /// </summary>
         /// <value>The Suggestions.</value>
-        public ObservableCollection<object> Suggestions
+        public IEnumerable Suggestions
         {
-            get { return (ObservableCollection<object>)GetValue(SuggestionsProperty); }
+            get { return (IEnumerable)GetValue(SuggestionsProperty); }
             set { SetValue(SuggestionsProperty, value); }
         }
 
+        /// <summary>
+        /// Gets or sets the height of the suggestion.
+        /// </summary>
+        /// <value>The height of the suggestion.</value>
+        public double SuggestionsHeightRequest
+        {
+            get { return (double)GetValue(SuggestionsHeightRequestProperty); }
+            set { SetValue(SuggestionsHeightRequestProperty, value); }
+        }
         /// <summary>
         /// Gets or sets the text.
         /// </summary>
@@ -359,6 +418,7 @@ namespace Xamarin.Forms.Labs.Controls
             get { return (Color)GetValue(TextBackgroundColorProperty); }
             set { SetValue(TextBackgroundColorProperty, value); }
         }
+
         /// <summary>
         /// Gets or sets the color of the text.
         /// </summary>
@@ -367,6 +427,26 @@ namespace Xamarin.Forms.Labs.Controls
         {
             get { return (Color)GetValue(TextColorProperty); }
             set { SetValue(TextColorProperty, value); }
+        }
+
+        /// <summary>
+        /// Gets or sets the text horizontal options.
+        /// </summary>
+        /// <value>The text horizontal options.</value>
+        public LayoutOptions TextHorizontalOptions
+        {
+            get { return (LayoutOptions)GetValue(TextHorizontalOptionsProperty); }
+            set { SetValue(TextHorizontalOptionsProperty, value); }
+        }
+
+        /// <summary>
+        /// Gets or sets the text vertical options.
+        /// </summary>
+        /// <value>The text vertical options.</value>
+        public LayoutOptions TextVerticalOptions
+        {
+            get { return (LayoutOptions)GetValue(TextVerticalOptionsProperty); }
+            set { SetValue(TextVerticalOptionsProperty, value); }
         }
         /// <summary>
         /// Places the holder changed.
@@ -395,21 +475,6 @@ namespace Xamarin.Forms.Labs.Controls
             if (autoCompleteView != null)
             {
                 autoCompleteView._stkBase.BackgroundColor = newValue;
-            }
-        }
-        
-        /// <summary>
-        /// Searches the text changed.
-        /// </summary>
-        /// <param name="obj">The bindable.</param>
-        /// <param name="oldValue">The old value.</param>
-        /// <param name="newValue">The new value.</param>
-        private static void SearchTextChanged(BindableObject obj, string oldValue, string newValue)
-        {
-            var autoCompleteView = obj as AutoCompleteView;
-            if (autoCompleteView != null)
-            {
-                autoCompleteView._btnSearch.Text = newValue;
             }
         }
 
@@ -459,6 +524,36 @@ namespace Xamarin.Forms.Labs.Controls
         }
 
         /// <summary>
+        /// Searches the horizontal options changed.
+        /// </summary>
+        /// <param name="obj">The object.</param>
+        /// <param name="oldValue">The old value.</param>
+        /// <param name="newValue">The new value.</param>
+        private static void SearchHorizontalOptionsChanged(BindableObject obj, LayoutOptions oldValue, LayoutOptions newValue)
+        {
+            var autoCompleteView = obj as AutoCompleteView;
+            if (autoCompleteView != null)
+            {
+                autoCompleteView._btnSearch.HorizontalOptions = newValue;
+            }
+        }
+
+        /// <summary>
+        /// Searches the text changed.
+        /// </summary>
+        /// <param name="obj">The bindable.</param>
+        /// <param name="oldValue">The old value.</param>
+        /// <param name="newValue">The new value.</param>
+        private static void SearchTextChanged(BindableObject obj, string oldValue, string newValue)
+        {
+            var autoCompleteView = obj as AutoCompleteView;
+            if (autoCompleteView != null)
+            {
+                autoCompleteView._btnSearch.Text = newValue;
+            }
+        }
+
+        /// <summary>
         /// Searches the text color color changed.
         /// </summary>
         /// <param name="obj">The object.</param>
@@ -470,6 +565,21 @@ namespace Xamarin.Forms.Labs.Controls
             if (autoCompleteView != null)
             {
                 autoCompleteView._btnSearch.TextColor = newValue;
+            }
+        }
+
+        /// <summary>
+        /// Searches the vertical options changed.
+        /// </summary>
+        /// <param name="obj">The object.</param>
+        /// <param name="oldValue">The old value.</param>
+        /// <param name="newValue">The new value.</param>
+        private static void SearchVerticalOptionsChanged(BindableObject obj, LayoutOptions oldValue, LayoutOptions newValue)
+        {
+            var autoCompleteView = obj as AutoCompleteView;
+            if (autoCompleteView != null)
+            {
+                autoCompleteView._btnSearch.VerticalOptions = newValue;
             }
         }
 
@@ -504,6 +614,20 @@ namespace Xamarin.Forms.Labs.Controls
         }
 
         /// <summary>
+        /// Suggestions the height changed.
+        /// </summary>
+        /// <param name="obj">The object.</param>
+        /// <param name="oldValue">The old value.</param>
+        /// <param name="newValue">The new value.</param>
+        private static void SuggestionHeightRequestChanged(BindableObject obj, double oldValue, double newValue)
+        {
+            var autoCompleteView = obj as AutoCompleteView;
+            if (autoCompleteView != null)
+            {
+                autoCompleteView._lstSuggestions.HeightRequest = newValue;
+            }
+        }
+        /// <summary>
         /// Suggestions the item data template changed.
         /// </summary>
         /// <param name="obj">The object.</param>
@@ -515,6 +639,21 @@ namespace Xamarin.Forms.Labs.Controls
             if (autoCompleteView != null)
             {
                 autoCompleteView._lstSuggestions.ItemTemplate = newShowSearchValue;
+            }
+        }
+
+        /// <summary>
+        /// Tests the vertical options changed.
+        /// </summary>
+        /// <param name="obj">The object.</param>
+        /// <param name="oldValue">The old value.</param>
+        /// <param name="newValue">The new value.</param>
+        private static void TestVerticalOptionsChanged(BindableObject obj, LayoutOptions oldValue, LayoutOptions newValue)
+        {
+            var autoCompleteView = obj as AutoCompleteView;
+            if (autoCompleteView != null)
+            {
+                autoCompleteView._entText.VerticalOptions = newValue;
             }
         }
 
@@ -547,6 +686,21 @@ namespace Xamarin.Forms.Labs.Controls
                 autoCompleteView._entText.TextColor = newValue;
             }
         }
+
+        /// <summary>
+        /// Texts the horizontal options changed.
+        /// </summary>
+        /// <param name="obj">The object.</param>
+        /// <param name="oldValue">The old value.</param>
+        /// <param name="newValue">The new value.</param>
+        private static void TextHorizontalOptionsChanged(BindableObject obj, LayoutOptions oldValue, LayoutOptions newValue)
+        {
+            var autoCompleteView = obj as AutoCompleteView;
+            if (autoCompleteView != null)
+            {
+                autoCompleteView._entText.VerticalOptions = newValue;
+            }
+        }
         /// <summary>
         /// Texts the changed.
         /// </summary>
@@ -560,27 +714,36 @@ namespace Xamarin.Forms.Labs.Controls
             if (control != null)
             {
                 control._btnSearch.IsEnabled = !string.IsNullOrEmpty(newPlaceHolderValue);
-                string cleanedNewPlaceHolderValue = Regex.Replace((newPlaceHolderValue ?? string.Empty).ToLowerInvariant(), @"\s+", string.Empty);
+                
+                var cleanedNewPlaceHolderValue = Regex.Replace((newPlaceHolderValue ?? string.Empty).ToLowerInvariant(), @"\s+", string.Empty);
+                
                 if (!string.IsNullOrEmpty(cleanedNewPlaceHolderValue) && control.Suggestions != null)
                 {
-                    var filteredSuggestions = control.Suggestions.Where(x => Regex.Replace(x.ToString().ToLowerInvariant(), @"\s+", string.Empty).Contains(cleanedNewPlaceHolderValue)).OrderByDescending(x => Regex.Replace(x.ToString().ToLowerInvariant(), @"\s+", string.Empty).StartsWith(cleanedNewPlaceHolderValue)).ToArray();
+                    var filteredSuggestions = control.Suggestions.Cast<object>()
+                        .Where(x => Regex.Replace(x.ToString().ToLowerInvariant(), @"\s+", string.Empty).Contains(cleanedNewPlaceHolderValue))
+                        .OrderByDescending(x => Regex.Replace(x.ToString()
+                        .ToLowerInvariant(), @"\s+", string.Empty)
+                        .StartsWith(cleanedNewPlaceHolderValue)).ToList();
 
-                    control.AvailableSuggestions.Clear();
-
-                    foreach (var item in filteredSuggestions)
+                    control._availableSuggestions.Clear();
+                    if (filteredSuggestions.Count > 0)
                     {
-                        control.AvailableSuggestions.Add(item);
-                    }
-                    if (control.AvailableSuggestions.Count > 0)
-                    {
+                        foreach (var suggestion in filteredSuggestions)
+                        {
+                            control._availableSuggestions.Add(suggestion);
+                        }
                         control.ShowHideListbox(true);
+                    }
+                    else
+                    {
+                        control.ShowHideListbox(false);
                     }
                 }
                 else
                 {
-                    if (control.AvailableSuggestions.Count > 0)
+                    if (control._availableSuggestions.Count > 0)
                     {
-                        control.AvailableSuggestions.Clear();
+                        control._availableSuggestions.Clear();
                         control.ShowHideListbox(false);
                     }
                 }
