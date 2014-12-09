@@ -17,7 +17,7 @@ namespace Xamarin.Forms.Labs.Controls
 			this.SelectedIndexChanged += OnSelectedIndexChanged;
 		}
 
-		public Func<object, string> SouceItemLabelConverter { get; set; }
+		public Func<object, string> SourceItemLabelConverter { get; set; }
 
 		public static BindableProperty ItemsSourceProperty =
 			BindableProperty.Create<BindablePicker, IList>(o => o.ItemsSource, default(IList), propertyChanged: new BindableProperty.BindingPropertyChangedDelegate<IList> (BindablePicker.OnItemsSourceChanged));
@@ -45,8 +45,8 @@ namespace Xamarin.Forms.Labs.Controls
 			{
 				foreach (var item in newvalue)
 				{
-					if (picker.SouceItemLabelConverter != null)
-						picker.Items.Add (picker.SouceItemLabelConverter (item));
+					if (picker.SourceItemLabelConverter != null)
+						picker.Items.Add (picker.SourceItemLabelConverter (item));
 					else 
 						picker.Items.Add (item.ToString());
 				}
@@ -71,8 +71,8 @@ namespace Xamarin.Forms.Labs.Controls
 			var picker = bindable as BindablePicker;
 			if (newvalue != null) {
 				string title = string.Empty;
-				if (picker.SouceItemLabelConverter != null)
-					title = picker.SouceItemLabelConverter (newvalue);
+				if (picker.SourceItemLabelConverter != null)
+					title = picker.SourceItemLabelConverter (newvalue);
 				else
 					title = newvalue.ToString ();
 
@@ -138,8 +138,8 @@ namespace Xamarin.Forms.Labs.Controls
 		{
 			if (SelectedItem != null) {
 				string title = string.Empty;
-				if (SouceItemLabelConverter != null)
-					title = SouceItemLabelConverter (SelectedItem);
+				if (SourceItemLabelConverter != null)
+					title = SourceItemLabelConverter (SelectedItem);
 				else
 					title = SelectedItem.ToString ();
 
