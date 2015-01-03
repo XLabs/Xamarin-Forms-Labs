@@ -56,6 +56,36 @@ namespace XLabs.Forms.Controls
             BindableProperty.Create<ExtendedTabbedPage, string>(
                 p => p.TabBarBackgroundImage, null);
 
+        public static readonly BindableProperty ItemTemplateSelectorProperty = BindableProperty.Create< ExtendedTabbedPage, DataTemplateSelector>(x => x.ItemTemplateSelector, default(DataTemplateSelector), propertyChanged: OnDataTemplateSelectorChanged);
+
+        private DataTemplateSelector currentItemSelector;
+        public DataTemplateSelector ItemTemplateSelector
+        {
+            get
+            {
+                return (DataTemplateSelector)GetValue(ItemTemplateSelectorProperty);
+            }
+            set
+            {
+                SetValue(ItemTemplateSelectorProperty, value);
+            }
+        }
+
+        private static void OnDataTemplateSelectorChanged(BindableObject bindable, DataTemplateSelector oldvalue, DataTemplateSelector newvalue)
+        {
+            ((ExtendedTabbedPage)bindable).OnDataTemplateSelectorChanged(oldvalue, newvalue);
+        }
+
+        protected virtual void OnDataTemplateSelectorChanged(DataTemplateSelector oldValue, DataTemplateSelector newValue)
+        {
+            // check to see we don't have an ItemTemplate set
+            if (ItemTemplate != null && newValue != null)
+                throw new ArgumentException("Cannot set both ItemTemplate and ItemTemplateSelector", "ItemTemplateSelector");
+
+            // cache value locally
+            currentItemSelector = newValue;
+        }
+
         public Color TintColor
         {
             get
@@ -304,6 +334,24 @@ namespace XLabs.Forms.Controls
             }
 
             CurrentPage = Children[currentPage];
+        }
+
+        protected override Page CreateDefault(object item)
+        {
+            var view = this.ViewFor(item, currentItemSelector);
+
+            if (view != null)
+            {
+                var cp = new ContentPage
+                {
+                    BindingContext = item,
+                    Content = view,
+                };
+                return cp;
+            }
+
+            
+            return base.CreateDefault(item);
         }
     }
 }

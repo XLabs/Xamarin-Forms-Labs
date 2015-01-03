@@ -92,8 +92,7 @@ namespace XLabs.Forms.Controls
 
         }
 
-		#region Bindables
-		/// <summary>
+	    /// <summary>
 		/// Property defnition for the <see cref="ViewModels" /> property
 		/// </summary>
 		public static BindableProperty ViewModelsProperty = BindableProperty.Create<CarouselView<T>, ObservableCollection<T>>(x => x.ViewModels, default(ObservableCollection<T>),BindingMode.OneWay,null,ViewModelsChanged);
@@ -109,13 +108,42 @@ namespace XLabs.Forms.Controls
 		/// Property definition for the <see cref="ShowTick" />
 		/// </summary>
 		public static readonly BindableProperty ShowTickProperty =BindableProperty.Create<CarouselView<T>, bool>(x => x.ShowTick, true,BindingMode.OneWay,null,ShowTickchanged);
-		#endregion
 
-		/// <summary>
-		/// Show the tickboard.  The tickboard takes up 8dp vertically when shown.
-		/// </summary>
-		/// <value><c>true</c> if [show tick]; otherwise, <c>false</c>.</value>
-		public bool ShowTick
+	    public static readonly BindableProperty ItemTemplateSelectorProperty = BindableProperty.Create<CarouselView<T>, DataTemplateSelector>(x => x.ItemTemplateSelector, default(DataTemplateSelector), propertyChanged: OnDataTemplateSelectorChanged);
+
+        private DataTemplateSelector currentItemSelector;
+        public DataTemplateSelector ItemTemplateSelector
+        {
+            get
+            {
+                return (DataTemplateSelector)GetValue(ItemTemplateSelectorProperty);
+            }
+            set
+            {
+                SetValue(ItemTemplateSelectorProperty, value);
+            }
+        }
+
+        private static void OnDataTemplateSelectorChanged(BindableObject bindable, DataTemplateSelector oldvalue, DataTemplateSelector newvalue)
+        {
+            ((CarouselView<T>)bindable).OnDataTemplateSelectorChanged(oldvalue, newvalue);
+        }
+
+        protected virtual void OnDataTemplateSelectorChanged(DataTemplateSelector oldValue, DataTemplateSelector newValue)
+        {
+            // Cache locally
+            currentItemSelector = newValue;
+
+            if (this.contentView != null)//may be constructing
+            {
+                this.contentView.ItemTemplateSelector = currentItemSelector;
+            }
+        }
+        /// <summary>
+        /// Show the tickboard.  The tickboard takes up 8dp vertically when shown.
+        /// </summary>
+        /// <value><c>true</c> if [show tick]; otherwise, <c>false</c>.</value>
+        public bool ShowTick
 		{
 			get { return (bool)GetValue(ShowTickProperty); }
 			set { SetValue(ShowTickProperty,value);}
