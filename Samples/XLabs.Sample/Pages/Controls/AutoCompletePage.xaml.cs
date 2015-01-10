@@ -15,7 +15,7 @@
 		public AutoCompletePage ()
 		{
 			InitializeComponent ();
-			BindingContext = ViewModelLocator.Main;
+            BindingContext = ViewModelLocator.AutoCompleteViewModel;
 		}
 	}
 }

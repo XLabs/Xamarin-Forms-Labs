@@ -33,7 +33,7 @@
 		/// <param name="html">if set to <c>true</c> [HTML].</param>
 		/// <param name="to">To.</param>
 		/// <param name="attachments">The attachments.</param>
-		public void ShowDraft(string subject, string body, bool html, string to, IEnumerable<string> attachments)
+		public void ShowDraft(string subject, string body, bool html, string to, IEnumerable<string> attachments = null)
 		{
 			var task = new EmailComposeTask { Subject = subject, Body = body, To = to };
 
@@ -57,7 +57,7 @@
 			string[] to,
 			string[] cc,
 			string[] bcc,
-			IEnumerable<string> attachments)
+			IEnumerable<string> attachments = null)
 		{
 			var task = new EmailComposeTask { Subject = subject, Body = body };
 

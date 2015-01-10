@@ -20,7 +20,7 @@
 		/// <param name="html">if set to <c>true</c> [HTML].</param>
 		/// <param name="to">To.</param>
 		/// <param name="attachments">The attachments.</param>
-		void ShowDraft(string subject, string body, bool html, string to, IEnumerable<string> attachments);
+		void ShowDraft(string subject, string body, bool html, string to, IEnumerable<string> attachments = null);
 		/// <summary>
 		/// Shows the draft.
 		/// </summary>
@@ -31,6 +31,6 @@
 		/// <param name="cc">The cc.</param>
 		/// <param name="bcc">The BCC.</param>
 		/// <param name="attachments">The attachments.</param>
-		void ShowDraft(string subject, string body, bool html, string[] to, string[] cc, string[] bcc, IEnumerable<string> attachments);
+		void ShowDraft(string subject, string body, bool html, string[] to, string[] cc, string[] bcc, IEnumerable<string> attachments = null);
 	}
 }

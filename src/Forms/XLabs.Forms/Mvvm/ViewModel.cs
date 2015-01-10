@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
+using XLabs.Ioc;
 
 namespace XLabs.Forms.Mvvm
 {
@@ -20,15 +21,20 @@ namespace XLabs.Forms.Mvvm
 	/// this.ChangeAndNotify(ref this.propertyBackField, value);
 	/// }
 	/// </example>
-	public abstract class ViewModel : ObservableObject
+	public abstract class ViewModel : ObservableObject, IViewModel
 	{
 		/// <summary>
 		/// Gets or sets the navigation.
 		/// </summary>
 		/// <value>The navigation.</value>
-		public INavigationService Navigation { get; set; }
+		public INavigationService Navigation
+		{
+			get { return _navigation ?? Resolver.Resolve<INavigationService>(); }
+			set { _navigation = value; }
+		}
 
 		private bool _isBusy;
+		private INavigationService _navigation;
 
 		/// <summary>
 		/// Gets or sets a value indicating whether this instance is busy.

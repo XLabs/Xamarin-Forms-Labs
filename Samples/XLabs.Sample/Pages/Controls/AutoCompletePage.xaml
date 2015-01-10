@@ -5,37 +5,34 @@
     xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
     Title="AutoComplete"
     x:Class="XLabs.Sample.Pages.Controls.AutoCompletePage">
-	<ContentPage.Resources>
+		<ContentPage.Resources>
 		<ResourceDictionary>
 			<!--    this isn't working yet-->
 			<DataTemplate x:Key="SugestionItemTemplate">
-				<ViewCell Height="60">
-					<ViewCell.View>
-						<StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-
-							<Label Text="{Binding FirstName}" VerticalOptions="Center" HorizontalOptions="Start" />
-
-
-							<Label Text="{Binding LastName}" VerticalOptions="Center" HorizontalOptions="Start" />
-
-						</StackLayout>
-					</ViewCell.View>
-				</ViewCell>
+					<ViewCell Height="60">
+							<ViewCell.View>
+								<StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+										<Label Text="{Binding FirstName}" VerticalOptions="Center" HorizontalOptions="Start" />
+										<Label Text="{Binding LastName}" VerticalOptions="Center" HorizontalOptions="Start" />
+								</StackLayout>
+							</ViewCell.View>
+						</ViewCell>
 			</DataTemplate>
 		</ResourceDictionary>
-
-	</ContentPage.Resources>
-	<ContentPage.Content>
-		<controls:AutoCompleteView
-			SugestionItemDataTemplate="{StaticResource SugestionItemTemplate}"
-			Placeholder="type 'firstname'"
-			ShowSearch="True"
-			SearchBackgroundColor="Blue"
-			SugestionBackgroundColor="Yellow"
-			SearchCommand="{Binding SearchCommand}"
-			Sugestions="{Binding Items, Mode=TwoWay}"
-			SelectedCommand = "{Binding CellSelectedCommand}"
-				/>
-	</ContentPage.Content>
+		</ContentPage.Resources>
+		<ContentPage.Content>
+					<controls:AutoCompleteView 
+							SuggestionItemDataTemplate="{StaticResource SugestionItemTemplate}"
+							Placeholder="type 'firstname'"
+							ShowSearchButton="True"
+							SearchBackgroundColor="Blue"
+							SearchTextColor = "Yellow"
+							SearchBorderColor = "Yellow"
+							SuggestionBackgroundColor="Green"
+							SearchCommand="{Binding SearchCommand}"
+							Suggestions="{Binding Items, Mode=TwoWay}"
+							SelectedItem ="{Binding SelectedItem}"
+							SelectedCommand = "{Binding CellSelectedCommand}"/>
+		</ContentPage.Content>
 </ContentPage>
 

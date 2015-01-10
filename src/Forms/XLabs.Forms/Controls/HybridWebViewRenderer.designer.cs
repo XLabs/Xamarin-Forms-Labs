@@ -67,9 +67,10 @@ namespace XLabs.Forms.Controls
 			this.Inject(builder.ToString());
 		}
 #endif
+        protected override void OnElementPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            base.OnElementPropertyChanged(sender, e);
 
-		private void Model_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-		{
 			if (e.PropertyName == "Uri")
 			{
 				this.Load(this.Element.Uri);
@@ -84,7 +85,6 @@ namespace XLabs.Forms.Controls
 		{
 			if (Element != null)
 			{
-				this.Element.PropertyChanged += this.Model_PropertyChanged;
 				if (this.Element.Uri != null)
 				{
 					this.Load (this.Element.Uri);
@@ -94,7 +94,6 @@ namespace XLabs.Forms.Controls
 					LoadSource();
 				}
 
-				this.Element.PropertyChanged += this.Model_PropertyChanged;
 				this.Element.JavaScriptLoadRequested += OnInjectRequest;
 				this.Element.LoadFromContentRequested += LoadFromContent;
 				this.Element.LoadContentRequested += LoadContent;
@@ -123,7 +122,6 @@ namespace XLabs.Forms.Controls
 		{
 			if (oldElement != null)
 			{
-				oldElement.PropertyChanged -= this.Model_PropertyChanged;
 				oldElement.JavaScriptLoadRequested -= OnInjectRequest;
 				oldElement.LoadFromContentRequested -= LoadFromContent;
 				oldElement.LoadContentRequested -= LoadContent;

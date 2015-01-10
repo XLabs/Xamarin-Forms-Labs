@@ -33,7 +33,7 @@ namespace XLabs.Platform.Services.Email
 		/// <param name="cc">The cc.</param>
 		/// <param name="bcc">The BCC.</param>
 		/// <param name="attachments">The attachments.</param>
-		public void ShowDraft(string subject, string body, bool html, string[] to, string[] cc, string[] bcc, IEnumerable<string> attachments)
+		public void ShowDraft(string subject, string body, bool html, string[] to, string[] cc, string[] bcc, IEnumerable<string> attachments = null)
 		{
 			var intent = new Intent(Intent.ActionSend);
 
@@ -52,7 +52,10 @@ namespace XLabs.Platform.Services.Email
 				intent.PutExtra(Intent.ExtraText, body ?? string.Empty);
 			}
 
-			intent.AddAttachments(attachments);
+			if (attachments != null) 
+			{
+				intent.AddAttachments (attachments);
+			}
 
 			this.StartActivity(intent);
 		}
@@ -65,7 +68,7 @@ namespace XLabs.Platform.Services.Email
 		/// <param name="html">if set to <c>true</c> [HTML].</param>
 		/// <param name="to">To.</param>
 		/// <param name="attachments">The attachments.</param>
-		public void ShowDraft(string subject, string body, bool html, string to, IEnumerable<string> attachments)
+		public void ShowDraft(string subject, string body, bool html, string to, IEnumerable<string> attachments = null)
 		{
 			var intent = new Intent(Intent.ActionSend);
 			intent.SetType(html ? "text/html" : "text/plain");

@@ -43,7 +43,7 @@ namespace XLabs.Platform.Services.Email
 			string[] to,
 			string[] cc,
 			string[] bcc,
-			IEnumerable<string> attachments)
+			IEnumerable<string> attachments = null)
 		{
 			var mailer = new MFMailComposeViewController();
 
@@ -53,9 +53,12 @@ namespace XLabs.Platform.Services.Email
 			mailer.SetToRecipients(to);
 			mailer.Finished += (s, e) => ((MFMailComposeViewController)s).DismissViewController(true, () => { });
 
-			foreach (var attachment in attachments)
+			if (attachments != null) 
 			{
-				mailer.AddAttachmentData(NSData.FromFile(attachment), GetMimeType(attachment), Path.GetFileName(attachment));
+				foreach (var attachment in attachments) 
+				{
+					mailer.AddAttachmentData (NSData.FromFile (attachment), GetMimeType (attachment), Path.GetFileName (attachment));
+				}
 			}
 
 			UIApplication.SharedApplication.KeyWindow.RootViewController.PresentViewController(mailer, true, null);
@@ -69,7 +72,7 @@ namespace XLabs.Platform.Services.Email
 		/// <param name="html">if set to <c>true</c> [HTML].</param>
 		/// <param name="to">To.</param>
 		/// <param name="attachments">The attachments.</param>
-		public void ShowDraft(string subject, string body, bool html, string to, IEnumerable<string> attachments)
+		public void ShowDraft(string subject, string body, bool html, string to, IEnumerable<string> attachments = null)
 		{
 			ShowDraft(subject, body, html, new[] { to }, new string[] { }, new string[] { }, attachments);
 		}

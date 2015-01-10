@@ -48,7 +48,7 @@
     <Compile Include="Behaviors\RelayGesture.cs" />
     <Compile Include="Behaviors\RelayGestureAsync.cs" />
     <Compile Include="Controls\AccessoryViewCell.cs" />
-    <Compile Include="Controls\AutoComplete.cs" />
+    <Compile Include="Controls\AutoCompleteView.cs" />
     <Compile Include="Controls\BindablePicker.cs" />
     <Compile Include="Controls\ButtonGroup.cs" />
     <Compile Include="Controls\CalendarView.cs" />
@@ -113,6 +113,7 @@
     <Compile Include="Mvvm\BaseView.cs" />
     <Compile Include="Mvvm\INavigationAware.cs" />
     <Compile Include="Mvvm\IPage.cs" />
+    <Compile Include="Mvvm\IViewModel.cs" />
     <Compile Include="Mvvm\NavigationAwareViewModel.cs" />
     <Compile Include="Mvvm\NavigationView.cs" />
     <Compile Include="Mvvm\RelayCommand.cs" />

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<FileList
+    DisplayName="SQLite for Windows Phone"
+    ProductFamilyName="SQLite.WP80"
+    MoreInfo="http://www.sqlite.org/"
+    MinVSVersion="11.0"
+    SupportsMultipleVersions="Error"
+    SupportedArchitectures="x86;ARM">
+</FileList>

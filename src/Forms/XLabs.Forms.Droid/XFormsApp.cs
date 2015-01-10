@@ -9,7 +9,7 @@ namespace XLabs.Forms
     /// <summary>
     /// Class XFormsApplicationDroid.
     /// </summary>
-    public class XFormsApplicationDroid : AndroidActivity
+	public class XFormsApplicationDroid : FormsApplicationActivity
     {
         /// <summary>
         /// Gets or sets the destroy.

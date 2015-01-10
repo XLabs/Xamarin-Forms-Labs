@@ -13,6 +13,9 @@
 //	Note: This implementatio is based on the excellent work done in MVVM Light
 // </summary>
 // ***********************************************************************
+
+using XLabs.Forms.Mvvm;
+
 namespace XLabs.Forms.Services
 {
 	using System;
@@ -26,6 +29,25 @@ namespace XLabs.Forms.Services
 	/// </summary>
 	public class NavigationService : INavigationService
 	{
+		private Xamarin.Forms.INavigation _navigation;
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="NavigationService"/> class.
+		/// </summary>
+		public NavigationService()
+		{
+			_navigation = Xamarin.Forms.DependencyService.Get<Xamarin.Forms.INavigation>();
+		}
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="NavigationService"/> class.
+		/// </summary>
+		/// <param name="nav">The nav.</param>
+		public NavigationService(Xamarin.Forms.INavigation nav)
+		{
+			_navigation = nav;
+		}
+
 		/// <summary>
 		/// The _page lookup
 		/// </summary>
@@ -75,16 +97,30 @@ namespace XLabs.Forms.Services
 		/// <exception cref="System.ArgumentException">Argument must be derived from type Xamarin.Forms.Page;pageType</exception>
 		public void NavigateTo(Type pageType, object parameter = null, bool animated = true)
 		{
-			var p = Activator.CreateInstance(pageType);
-
-			if (p == null || !p.GetType().GetTypeInfo().IsAssignableFrom(typeof(Xamarin.Forms.Page).GetTypeInfo()))
+			if (_navigation == null)
 			{
-				throw new ArgumentException("Argument must be derived from type Xamarin.Forms.Page", "pageType");
+				throw new InvalidOperationException("Xamarin Forms Navigation Service not found");
 			}
 
-			var nav = Xamarin.Forms.DependencyService.Get<Xamarin.Forms.INavigation>();
+			object page;
+			var pInfo = pageType.GetTypeInfo();
+			var xfPage = typeof(Xamarin.Forms.Page).GetTypeInfo();
+			var xlvm = typeof(IViewModel).GetTypeInfo();
 
-			nav.PushAsync((Xamarin.Forms.Page)p, animated).Start();
+			if (pInfo.IsAssignableFrom(xlvm) || pInfo.IsSubclassOf(typeof(ViewModel)))
+			{
+				page = ViewFactory.CreatePage(pageType);
+			}
+			else if (pInfo.IsAssignableFrom(xfPage) || pInfo.IsSubclassOf(typeof(Xamarin.Forms.Page)))
+			{
+				page = Activator.CreateInstance(pageType);
+			}
+			else
+			{
+				throw new ArgumentException("Page Type must be based on Xamarin.Forms.Page");
+			}
+
+			_navigation.PushAsync(page as Xamarin.Forms.Page);
 		}
 
 		/// <summary>
@@ -95,17 +131,8 @@ namespace XLabs.Forms.Services
 		/// <param name="animated">if set to <c>true</c> [animated].</param>
 		/// <exception cref="System.ArgumentException">Page Type must be based on Xamarin.Forms.Page</exception>
 		public void NavigateTo<T>(object parameter = null, bool animated = true) where T : class
-		{
-			var p = Activator.CreateInstance(typeof(T));
-
-			if (p == null || !p.GetType().GetTypeInfo().IsAssignableFrom(typeof(Xamarin.Forms.Page).GetTypeInfo()))
-			{
-				throw new ArgumentException("Page Type must be based on Xamarin.Forms.Page");
-			}
-
-			var nav = Xamarin.Forms.DependencyService.Get<Xamarin.Forms.INavigation>();
-
-			nav.PushAsync((Xamarin.Forms.Page)p, animated).Start();
+		{		
+			NavigateTo(typeof(T), parameter, animated);
 		}
 
 		/// <summary>
@@ -113,9 +140,7 @@ namespace XLabs.Forms.Services
 		/// </summary>
 		public void GoBack()
 		{
-			var nav = Xamarin.Forms.DependencyService.Get<Xamarin.Forms.INavigation>();
-
-			nav.PopAsync(true).Start();
+			_navigation.PopAsync(true).Start();
 		}
 
 		/// <summary>

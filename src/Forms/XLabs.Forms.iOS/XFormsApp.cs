@@ -4,13 +4,14 @@ namespace XLabs.Forms
 
 	using MonoTouch.Foundation;
 	using MonoTouch.UIKit;
+	using Xamarin.Forms.Platform.iOS;
 
 	using XLabs.Platform.Mvvm;
 
 	/// <summary>
 	/// Class XFormsApplicationDelegate.
 	/// </summary>
-	public class XFormsApplicationDelegate : UIApplicationDelegate
+	public class XFormsApplicationDelegate : FormsApplicationDelegate
 	{
 		/// <summary>
 		/// Gets or sets the finished launching event.

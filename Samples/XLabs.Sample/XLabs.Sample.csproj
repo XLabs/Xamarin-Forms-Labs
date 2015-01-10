@@ -27,7 +27,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>full</DebugType>
-    <Optimize>true</Optimize>
+    <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="Model\TestModel.cs" />
     <Compile Include="Pages\Controls\CarouselSample.xaml.cs">
       <DependentUpon>CarouselSample.xaml</DependentUpon>
     </Compile>
@@ -113,6 +114,7 @@
     <Compile Include="Pages\Services\TextToSpeechPage.xaml.cs">
       <DependentUpon>TextToSpeechPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\AutoCompleteViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\CameraViewModel.cs" />
     <Compile Include="ViewModel\GestureSampleVM.cs" />

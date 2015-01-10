@@ -1,4 +1,7 @@
-﻿namespace XLabs.Sample
+﻿using XLabs.Forms.Services;
+using XLabs.Platform.Services;
+
+namespace XLabs.Sample
 {
 	using System;
 	using System.Collections;
@@ -76,6 +79,9 @@
 			};
 
 			var mainPage = new NavigationPage(mainTab);
+
+			Resolver.Resolve<IDependencyContainer>()
+				.Register<INavigationService>(t => new NavigationService(mainPage.Navigation));
 
 			mainTab.CurrentPageChanged += () => Debug.WriteLine("ExtendedTabbedPage CurrentPageChanged {0}", mainTab.CurrentPage.Title);
 
@@ -191,7 +197,7 @@
 		{
 			var listItems = new SortedDictionary<string, Type>
 			{
-				{"Autocomplete",  typeof(AutoCompletePage)},
+				{"AutocompleteView",  typeof(AutoCompletePage)},
 				{"ButtonGroup", typeof(ButtonGroupPage)},
 				{"Calendar", typeof(CalendarPage)},
 				{"CameraView", typeof(CameraViewPage)},
@@ -205,7 +211,7 @@
 				{"ExtendedSlider", typeof(ExtendedSliderPage)},
 				{"GridView", typeof(GridViewPage)},
 				{"HybridWebView", typeof(CanvasWebHybrid)},
-                {"WebHybridTestPage", typeof(WebHybridTestPage)},
+				{"WebHybridTestPage", typeof(WebHybridTestPage)},
 				{"ImageButton", typeof(ButtonPage)},
 				{"ImageGallery", typeof(ImageGalleryPage)},
 				{"Popup", typeof(PopupPage)},
