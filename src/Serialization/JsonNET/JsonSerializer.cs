@@ -30,6 +30,11 @@ namespace XLabs.Serialization.JsonNET
 		{
 		}
 
+        public JsonSerializer(JsonSerializerSettings settings)
+        {
+            this.Settings = settings;
+        }
+
 		/// <summary>
 		/// Initializes a new instance of the <see cref="JsonSerializer"/> class.
 		/// </summary>
@@ -39,15 +44,20 @@ namespace XLabs.Serialization.JsonNET
 		/// <param name="contractResolver">The contract resolver.</param>
 		public JsonSerializer(TypeNameHandling typeNameHandling, ReferenceLoopHandling referenceLoopHandling, bool ignoreNulls = true, IContractResolver contractResolver = null)
 		{
-			JsonConvert.DefaultSettings = JsonConvert.DefaultSettings ?? new Func<JsonSerializerSettings>(() => 
-				new JsonSerializerSettings()
+            this.Settings = new JsonSerializerSettings()
 				{
 					TypeNameHandling = typeNameHandling,
 					ReferenceLoopHandling = referenceLoopHandling,
 					NullValueHandling = ignoreNulls ? NullValueHandling.Ignore : NullValueHandling.Include,
 					ContractResolver = contractResolver
-				});
+				};
 		}
+
+        public JsonSerializerSettings Settings
+        {
+            get;
+            set;
+        }
 
 		/// <summary>
 		/// Gets the serialization format.
@@ -76,7 +86,7 @@ namespace XLabs.Serialization.JsonNET
 		/// <returns>Serialized string of the object.</returns>
 		public override string Serialize<T>(T obj)
 		{
-			return JsonConvert.SerializeObject(obj);
+            return JsonConvert.SerializeObject(obj, this.Settings);
 		}
 
 		/// <summary>
@@ -87,12 +97,12 @@ namespace XLabs.Serialization.JsonNET
 		/// <returns>Object of type T.</returns>
 		public override T Deserialize<T>(string data)
 		{
-			return JsonConvert.DeserializeObject<T>(data);
+            return JsonConvert.DeserializeObject<T>(data, this.Settings);
 		}
 
 		public override object Deserialize(string data, Type type)
 		{
-			return JsonConvert.DeserializeObject(data, type);
+            return JsonConvert.DeserializeObject(data, type, this.Settings);
 		}
 	}
 }

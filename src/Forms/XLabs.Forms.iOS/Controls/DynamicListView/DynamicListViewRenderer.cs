@@ -1,7 +1,9 @@
+using System;
+
 namespace XLabs.Forms.Controls
 {
-	using MonoTouch.Foundation;
-	using MonoTouch.UIKit;
+	using Foundation;
+	using UIKit;
 
 	using Xamarin.Forms;
 	using Xamarin.Forms.Platform.iOS;
@@ -178,7 +180,7 @@ namespace XLabs.Forms.Controls
 		/// <param name="tableView">The table view.</param>
 		/// <param name="section">The section.</param>
 		/// <returns>The <see cref="int" />.</returns>
-		public int RowsInSection(UITableView tableView, int section)
+		public int RowsInSection(UITableView tableView, nint section)
 		{
 			return Element.Data.Count;
 		}
@@ -191,7 +193,7 @@ namespace XLabs.Forms.Controls
 		/// <param name="indexPath">The index path.</param>
 		public void RowSelected(UITableView tableView, NSIndexPath indexPath)
 		{
-			Element.InvokeItemSelectedEvent(tableView, Element.Data[indexPath.Item]);
+			Element.InvokeItemSelectedEvent(tableView, Element.Data[(int)indexPath.Item]);
 		}
 
 		//[Export("tableView:heightForRowAtIndexPath:")]
@@ -203,7 +205,7 @@ namespace XLabs.Forms.Controls
 		/// <returns>System.Single.</returns>
 		public virtual float GetHeightForRow(UITableView tableView, NSIndexPath indexPath)
 		{
-			return GetHeightForRow(tableView, Element.Data[indexPath.Item]);
+			return GetHeightForRow(tableView, Element.Data[(int)indexPath.Item]);
 		}
 
 		/// <summary>
@@ -236,7 +238,7 @@ namespace XLabs.Forms.Controls
 			/// <param name="tableView">The table view.</param>
 			/// <param name="section">The section.</param>
 			/// <returns>System.Int32.</returns>
-			public delegate int OnRowsInSection(UITableView tableView, int section);
+			public delegate int OnRowsInSection(UITableView tableView, nint section);
 
 			/// <summary>
 			/// The _on get cell
@@ -275,7 +277,7 @@ namespace XLabs.Forms.Controls
 			/// <param name="tableView">The table view.</param>
 			/// <param name="section">The section.</param>
 			/// <returns>System.Int32.</returns>
-			public override int RowsInSection(UITableView tableView, int section)
+			public override nint RowsInSection(UITableView tableView, nint section)
 			{
 				return _onRowsInSection(tableView, section);
 			}
@@ -326,7 +328,7 @@ namespace XLabs.Forms.Controls
 			/// <param name="tableView">The table view.</param>
 			/// <param name="indexPath">The index path.</param>
 			/// <returns>System.Single.</returns>
-			public override float GetHeightForRow(UITableView tableView, NSIndexPath indexPath)
+			public override nfloat GetHeightForRow(UITableView tableView, NSIndexPath indexPath)
 			{
 				return _onGetHeightForRow(tableView, indexPath);
 			}

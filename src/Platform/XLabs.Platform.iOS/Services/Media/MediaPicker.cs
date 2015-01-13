@@ -1,4 +1,4 @@
-﻿namespace XLabs.Platform.Services.Media
+namespace XLabs.Platform.Services.Media
 {
 	using System;
 	using System.IO;
@@ -6,7 +6,7 @@
 	using System.Threading;
 	using System.Threading.Tasks;
 
-	using MonoTouch.UIKit;
+	using UIKit;
 
 	/// <summary>
 	/// Class MediaPicker.

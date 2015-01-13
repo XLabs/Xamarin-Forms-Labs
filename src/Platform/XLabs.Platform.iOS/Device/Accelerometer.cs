@@ -1,6 +1,6 @@
 namespace XLabs.Platform.Device
 {
-	using MonoTouch.UIKit;
+	using UIKit;
 
 	/// <summary>
 	/// The accelerometer.

@@ -1,4 +1,4 @@
-﻿using MonoTouch.UIKit;
+using UIKit;
 using Xamarin.Forms;
 
 using XLabs.Forms.Controls;
@@ -7,7 +7,7 @@ using XLabs.Forms.Controls;
 
 namespace XLabs.Forms.Controls
 {
-	using System.Drawing;
+	using CoreGraphics;
 
 	using Xamarin.Forms;
 	using Xamarin.Forms.Platform.iOS;
@@ -31,14 +31,14 @@ namespace XLabs.Forms.Controls
 	    /// <param name="reusableCell">The reusable table view cell.</param>
 	    /// <param name="tv">The table view.</param>
 	    /// <returns>MonoTouch.UIKit.UITableViewCell.</returns>
-	    public override UITableViewCell GetCell(Cell item, UITableViewCell reusableCell, MonoTouch.UIKit.UITableView tv)
+	    public override UITableViewCell GetCell(Cell item, UITableViewCell reusableCell, UIKit.UITableView tv)
 		{
 			var viewCell = item as AccessoryViewCell;
             var nativeCell = base.GetCell(item, reusableCell, tv);
 
             if (viewCell != null)
 	        {
-                var frame = new RectangleF (0, 0, (float)viewCell.AccessoryView.WidthRequest, (float)viewCell.AccessoryView.HeightRequest);
+                var frame = new CGRect (0, 0, (float)viewCell.AccessoryView.WidthRequest, (float)viewCell.AccessoryView.HeightRequest);
 			    var nativeView = RendererFactory.GetRenderer (viewCell.AccessoryView).NativeView;
 			    nativeView.Frame = frame;
 			    nativeView.Bounds = frame;

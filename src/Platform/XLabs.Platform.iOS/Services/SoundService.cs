@@ -1,10 +1,10 @@
-﻿namespace XLabs.Platform.Services
+namespace XLabs.Platform.Services
 {
 	using System;
 	using System.Threading.Tasks;
 
-	using MonoTouch.AVFoundation;
-	using MonoTouch.Foundation;
+	using AVFoundation;
+	using Foundation;
 
 	using XLabs.Platform.Services.Sound;
 

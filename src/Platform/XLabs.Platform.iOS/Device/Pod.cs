@@ -1,4 +1,4 @@
-﻿namespace XLabs.Platform.Device
+namespace XLabs.Platform.Device
 {
 	using System.ComponentModel;
 

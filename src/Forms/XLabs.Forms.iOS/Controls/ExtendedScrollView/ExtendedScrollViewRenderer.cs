@@ -1,4 +1,4 @@
-﻿using Xamarin.Forms;
+using Xamarin.Forms;
 
 using XLabs.Forms.Controls;
 
@@ -6,7 +6,7 @@ using XLabs.Forms.Controls;
 namespace XLabs.Forms.Controls
 {
 	using System.ComponentModel;
-	using System.Drawing;
+	using CoreGraphics;
 
 	using Xamarin.Forms.Platform.iOS;
 
@@ -56,7 +56,7 @@ namespace XLabs.Forms.Controls
 					return;
 
 				ScrollRectToVisible(
-					new RectangleF((float)pt.X, (float)pt.Y, Bounds.Width, Bounds.Height), sv.AnimateScroll);
+					new CGRect((float)pt.X, (float)pt.Y, Bounds.Width, Bounds.Height), sv.AnimateScroll);
 			}
 		}
 	}

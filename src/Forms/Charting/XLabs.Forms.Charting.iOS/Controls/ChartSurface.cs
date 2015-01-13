@@ -1,11 +1,11 @@
 namespace XLabs.Forms.Charting.Controls
 {
 	using System;
-	using System.Drawing;
+	using CoreGraphics;
 
-	using MonoTouch.CoreGraphics;
-	using MonoTouch.Foundation;
-	using MonoTouch.UIKit;
+	using CoreGraphics;
+	using Foundation;
+	using UIKit;
 
 	using XLabs.Forms.Charting.Events;
 
@@ -57,7 +57,7 @@ namespace XLabs.Forms.Charting.Controls
 		/// Draws the specified rect.
 		/// </summary>
 		/// <param name="rect">The rect.</param>
-		public override void Draw(RectangleF rect)
+		public override void Draw(CGRect rect)
 		{
 			base.Draw(rect);
 
@@ -77,7 +77,7 @@ namespace XLabs.Forms.Charting.Controls
 				Colors[e.Data.SeriesNo].SetFill();
 				Colors[e.Data.SeriesNo].SetStroke();
 
-				RectangleF rect = new RectangleF((float)e.Data.XFrom, (float)e.Data.YFrom, (float)(e.Data.XTo - e.Data.XFrom), (float)(e.Data.YTo - e.Data.YFrom));
+				CGRect rect = new CGRect((float)e.Data.XFrom, (float)e.Data.YFrom, (float)(e.Data.XTo - e.Data.XFrom), (float)(e.Data.YTo - e.Data.YFrom));
 				g.AddRect(rect);
 
 				g.DrawPath(CGPathDrawingMode.FillStroke);
@@ -153,7 +153,7 @@ namespace XLabs.Forms.Charting.Controls
 		private void _chart_OnDrawText(object sender, Chart.DrawEventArgs<TextDrawingData> e)
 		{
 			NSString str = new NSString(e.Data.Text);
-			str.DrawString(new PointF((float)e.Data.X, (float)e.Data.Y), UIFont.SystemFontOfSize(12));
+			str.DrawString(new CGPoint((float)e.Data.X, (float)e.Data.Y), UIFont.SystemFontOfSize(12));
 		}
 
 		/// <summary>

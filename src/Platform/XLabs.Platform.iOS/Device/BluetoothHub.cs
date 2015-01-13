@@ -1,12 +1,12 @@
-﻿namespace XLabs.Platform.Device
+namespace XLabs.Platform.Device
 {
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Threading.Tasks;
 
-	using MonoTouch.CoreBluetooth;
-	using MonoTouch.CoreFoundation;
+	using CoreBluetooth;
+	using CoreFoundation;
 
 	public class BluetoothHub : CBCentralManagerDelegate, IBluetoothHub
 	{

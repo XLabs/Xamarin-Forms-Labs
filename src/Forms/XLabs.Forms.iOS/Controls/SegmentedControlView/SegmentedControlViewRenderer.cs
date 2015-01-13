@@ -7,9 +7,9 @@ using XLabs.Forms.Controls;
 namespace XLabs.Forms.Controls
 {
 	using System;
-	using System.Drawing;
+	using CoreGraphics;
 
-	using MonoTouch.UIKit;
+	using UIKit;
 
 	using Xamarin.Forms.Platform.iOS;
 
@@ -39,7 +39,7 @@ namespace XLabs.Forms.Controls
 		/// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
 		private void HandleControlValueChanged(object sender, EventArgs e)
 		{
-			Element.SelectedItem = Control.SelectedSegment;
+			Element.SelectedItem = (int)Control.SelectedSegment;
 		}
 
 		/// <summary>
@@ -70,7 +70,7 @@ namespace XLabs.Forms.Controls
 				return;
 			}
 
-			var native = new UISegmentedControl(RectangleF.Empty);
+			var native = new UISegmentedControl(CGRect.Empty);
 			var segments = e.NewElement.SegmentsItens.Split(';');
 
 			for (var i = 0; i < segments.Length; i++)

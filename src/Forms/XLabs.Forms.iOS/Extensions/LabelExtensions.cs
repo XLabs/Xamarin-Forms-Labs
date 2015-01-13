@@ -1,4 +1,4 @@
-﻿namespace XLabs.Forms.Extensions
+namespace XLabs.Forms.Extensions
 {
 	using Xamarin.Forms;
 	using Xamarin.Forms.Platform.iOS;

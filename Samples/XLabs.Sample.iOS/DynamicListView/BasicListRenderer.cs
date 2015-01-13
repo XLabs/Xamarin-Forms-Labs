@@ -9,8 +9,8 @@ namespace XLabs.Sample.iOS.DynamicListView
 {
 	using System;
 
-	using MonoTouch.Foundation;
-	using MonoTouch.UIKit;
+	using Foundation;
+	using UIKit;
 
 	/// <summary>
 	/// Class BasicListRenderer.
@@ -24,6 +24,7 @@ namespace XLabs.Sample.iOS.DynamicListView
 		/// <param name="item">The item.</param>
 		/// <returns>UITableViewCell.</returns>
 		/// <exception cref="System.NotImplementedException"></exception>
+	
         protected override UITableViewCell GetCell(UITableView tableView, object item)
         {
             if (item is string)
@@ -50,9 +51,9 @@ namespace XLabs.Sample.iOS.DynamicListView
 		/// <param name="indexPath">The index path.</param>
 		/// <returns>System.Single.</returns>
 		/// <exception cref="System.NotImplementedException"></exception>
-        public override float GetHeightForRow(UITableView tableView, NSIndexPath indexPath)
+		public override float GetHeightForRow(UITableView tableView, NSIndexPath indexPath)
         {
-            var item = this.Element.Data[indexPath.Item];
+			var item = this.Element.Data[(int)indexPath.Item];
             if (item is string)
             {
                 return base.GetHeightForRow(tableView, indexPath);

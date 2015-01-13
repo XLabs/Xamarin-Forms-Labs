@@ -1,8 +1,9 @@
-﻿using MonoTouch.UIKit;
+using UIKit;
 
 using Xamarin.Forms;
 
 using XLabs.Forms.Pages;
+using ObjCRuntime;
 
 [assembly: ExportRenderer(typeof(ExtendedMasterDetailPage), typeof(ExtendedPhoneMasterDetailPageRenderer), UIUserInterfaceIdiom.Phone)]
 [assembly: ExportRenderer(typeof(ExtendedMasterDetailPage), typeof(ExtendedTabletMasterDetailPageRenderer), UIUserInterfaceIdiom.Pad)]
@@ -12,7 +13,7 @@ namespace XLabs.Forms.Pages
 	using System;
 	using System.Reflection;
 
-	using MonoTouch.UIKit;
+	using UIKit;
 
 	using Xamarin.Forms.Platform.iOS;
 
@@ -31,7 +32,7 @@ namespace XLabs.Forms.Pages
 		/// </summary>
 		public ExtendedTabletMasterDetailPageRenderer()
 		{
-			var version = new Version(MonoTouch.Constants.Version);
+			var version = new Version(Constants.Version);
 			if (version >= new Version(8, 0))
 			{
 				// Code that uses features from Xamarin.iOS 7.0
@@ -51,7 +52,7 @@ namespace XLabs.Forms.Pages
 		protected override void OnElementChanged(VisualElementChangedEventArgs e)
 		{
 			base.OnElementChanged(e);
-			var version = new Version(MonoTouch.Constants.Version);
+			var version = new Version(Constants.Version);
 #if (IOS_8)
 			if (version >= new Version(8, 0))
 			{

@@ -2,7 +2,7 @@ namespace XLabs.Sample.iOS
 {
 	using System;
 
-	using MonoTouch.UIKit;
+	using UIKit;
 
 	public partial class SensorStoryboardController : UIViewController
     {

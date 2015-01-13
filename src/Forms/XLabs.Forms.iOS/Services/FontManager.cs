@@ -5,7 +5,7 @@ namespace XLabs.Forms.Services
 {
 	using System.Collections.Generic;
 
-	using MonoTouch.UIKit;
+	using UIKit;
 
 	using XLabs.Platform.Device;
 	using XLabs.Platform.Extensions;

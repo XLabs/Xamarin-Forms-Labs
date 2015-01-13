@@ -7,9 +7,9 @@ namespace XLabs.Forms.Controls
 {
 	using System;
 	using System.ComponentModel;
-	using System.Drawing;
+	using CoreGraphics;
 
-	using MonoTouch.UIKit;
+	using UIKit;
 
 	using Xamarin.Forms;
 	using Xamarin.Forms.Platform.iOS;
@@ -91,12 +91,12 @@ namespace XLabs.Forms.Controls
 			}
 
 			UIImage image = Control.Image;
-			var clipRect = new RectangleF(0, 0, width, height);
-			var scaled = image.Scale(new SizeF(width, height));
-			UIGraphics.BeginImageContextWithOptions(new SizeF(width, height), false, 0f);
+			var clipRect = new CGRect(0, 0, width, height);
+			var scaled = image.Scale(new CGSize(width, height));
+			UIGraphics.BeginImageContextWithOptions(new CGSize(width, height), false, 0f);
 			UIBezierPath.FromRoundedRect(clipRect, Math.Max(width, height) / 2).AddClip();
 
-			scaled.Draw(new RectangleF(0, 0, scaled.Size.Width, scaled.Size.Height));
+			scaled.Draw(new CGRect(0, 0, scaled.Size.Width, scaled.Size.Height));
 			UIImage final = UIGraphics.GetImageFromCurrentImageContext();
 			UIGraphics.EndImageContext();
 			Control.Image = final;

@@ -80,7 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\XLabs.Core\XLabs.Core.csproj">
-      <Project>{15d9c404-f7e2-49f0-acc9-63c4c008c860}</Project>
+      <Project>{15D9C404-F7E2-49F0-ACC9-63C4C008C860}</Project>
       <Name>XLabs.Core</Name>
     </ProjectReference>
   </ItemGroup>

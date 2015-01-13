@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
@@ -52,20 +52,17 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Serialization\XLabs.Serialization\XLabs.Serialization.csproj">
-      <Project>{8e7f7522-f018-466a-aa8a-147ee9341ba0}</Project>
+      <Project>{8E7F7522-F018-466A-AA8A-147EE9341BA0}</Project>
       <Name>XLabs.Serialization</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\XLabs.Core\XLabs.Core.csproj">
-      <Project>{15d9c404-f7e2-49f0-acc9-63c4c008c860}</Project>
+      <Project>{15D9C404-F7E2-49F0-ACC9-63C4C008C860}</Project>
       <Name>XLabs.Core</Name>
     </ProjectReference>
     <ProjectReference Include="XLabs.Web.csproj">
-      <Project>{d66d0e8a-4350-4f95-90f8-86f2fb1a45a3}</Project>
+      <Project>{D66D0E8A-4350-4F95-90F8-86F2FB1A45A3}</Project>
       <Name>XLabs.Web</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Net.Http">

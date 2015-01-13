@@ -1,6 +1,6 @@
 using System;
 using System.ComponentModel;
-using MonoTouch.UIKit;
+using UIKit;
 using Xamarin.Forms;
 
 using Xamarin.Forms.Platform.iOS;
@@ -69,7 +69,7 @@ namespace XLabs.Forms.Controls
 			}
 		}
 
-		public override void Draw(System.Drawing.RectangleF rect)
+		public override void Draw(CoreGraphics.CGRect rect)
 		{
 			base.Draw(rect);
 			this.ResizeText();

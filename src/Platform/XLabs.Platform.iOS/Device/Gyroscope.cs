@@ -1,7 +1,7 @@
 namespace XLabs.Platform.Device
 {
-	using MonoTouch.CoreMotion;
-	using MonoTouch.Foundation;
+	using CoreMotion;
+	using Foundation;
 
 	/// <summary>
 	/// Class Gyroscope.

@@ -1,4 +1,4 @@
-﻿using System.Threading;
+using System.Threading;
 
 //Not using it here, but @marcgravell's stuff is too good not to include
 namespace ServiceStack.Text.Marc

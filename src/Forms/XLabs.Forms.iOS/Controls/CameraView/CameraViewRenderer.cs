@@ -6,11 +6,11 @@ using XLabs.Forms.Controls;
 
 namespace XLabs.Forms.Controls
 {
-	using System.Drawing;
+	using CoreGraphics;
 
-	using MonoTouch.AVFoundation;
-	using MonoTouch.Foundation;
-	using MonoTouch.UIKit;
+	using AVFoundation;
+	using Foundation;
+	using UIKit;
 
 	using Xamarin.Forms.Platform.iOS;
 
@@ -76,7 +76,7 @@ namespace XLabs.Forms.Controls
 		/// Initializes a new instance of the <see cref="CameraPreview"/> class.
 		/// </summary>
 		/// <param name="bounds">The bounds.</param>
-		public CameraPreview(RectangleF bounds)
+		public CameraPreview(CGRect bounds)
 			: base(bounds)
 		{
 			Initialize();
@@ -86,7 +86,7 @@ namespace XLabs.Forms.Controls
 		/// Draws the specified rect.
 		/// </summary>
 		/// <param name="rect">The rect.</param>
-		public override void Draw(RectangleF rect)
+		public override void Draw(CGRect rect)
 		{
 			base.Draw(rect);
 			_previewLayer.Frame = rect;
@@ -100,7 +100,7 @@ namespace XLabs.Forms.Controls
 			var captureSession = new AVCaptureSession();
 			_previewLayer = new AVCaptureVideoPreviewLayer(captureSession)
 				{
-					LayerVideoGravity = AVLayerVideoGravity.ResizeAspectFill,
+					VideoGravity = AVLayerVideoGravity.ResizeAspectFill,
 					Frame = Bounds
 				};
 

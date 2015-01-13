@@ -1,4 +1,4 @@
-﻿using Xamarin.Forms;
+using Xamarin.Forms;
 using XLabs.Forms.Controls;
 
 [assembly: ExportRenderer(typeof(ExtendedViewCell), typeof(ExtendedViewCellRenderer))]
@@ -6,8 +6,8 @@ using XLabs.Forms.Controls;
 namespace XLabs.Forms.Controls
 {
 	using System;
-	using System.Drawing;
-	using MonoTouch.UIKit;
+	using CoreGraphics;
+	using UIKit;
 	using Xamarin.Forms;
 	using Xamarin.Forms.Platform.iOS;
 
@@ -45,7 +45,7 @@ namespace XLabs.Forms.Controls
 						detailDisclosureButton.SetImage (UIImage.FromBundle (extendedCell.DisclousureImage), UIControlState.Normal);
 						detailDisclosureButton.SetImage (UIImage.FromBundle (extendedCell.DisclousureImage), UIControlState.Selected);
 
-						detailDisclosureButton.Frame = new RectangleF (0f, 0f, 30f, 30f);
+						detailDisclosureButton.Frame = new CGRect (0f, 0f, 30f, 30f);
 						detailDisclosureButton.TouchUpInside += (object sender, EventArgs e) => 
                         {
 								try 
@@ -54,7 +54,7 @@ namespace XLabs.Forms.Controls
 									tv.SelectRow (index, true, UITableViewScrollPosition.None);
 									tv.Source.RowSelected (tv, index);
 								} 
-                                catch ( MonoTouch.Foundation.You_Should_Not_Call_base_In_This_Method ex) 
+                                catch ( Foundation.You_Should_Not_Call_base_In_This_Method ex) 
                                 {
 									Console.Write("Xamarin Forms Labs Weird stuff : You_Should_Not_Call_base_In_This_Method happend");
 								}

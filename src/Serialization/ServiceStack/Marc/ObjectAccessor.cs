@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 //using System.Dynamic;
 
 //Not using it here, but @marcgravell's stuff is too good not to include

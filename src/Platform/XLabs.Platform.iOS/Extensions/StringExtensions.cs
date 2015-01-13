@@ -1,9 +1,11 @@
-﻿namespace XLabs.Platform.Extensions
-{
-	using System.Drawing;
+using System;
 
-	using MonoTouch.Foundation;
-	using MonoTouch.UIKit;
+namespace XLabs.Platform.Extensions
+{
+	using CoreGraphics;
+
+	using Foundation;
+	using UIKit;
 
 	/// <summary>
 	/// Class StringExtensions.
@@ -17,12 +19,12 @@
 		/// <param name="font">The font.</param>
 		/// <param name="width">The width.</param>
 		/// <returns>System.Single.</returns>
-		public static float StringHeight(this string text, UIFont font, float width)
+		public static nfloat StringHeight(this string text, UIFont font, nfloat width)
 		{
 			var nativeString = new NSString(text);
 
 			var rect = nativeString.GetBoundingRect(
-				new SizeF(width, float.MaxValue),
+				new CGSize(width, float.MaxValue),
 				NSStringDrawingOptions.UsesLineFragmentOrigin,
 				new UIStringAttributes { Font = font },
 				null);

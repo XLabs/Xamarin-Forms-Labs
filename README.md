@@ -219,25 +219,26 @@ __________________
 
 **Contributions:**
 ======
- - Michael Ridland [@rid00z ](https://twitter.com/rid00z)
- - [Rui Marinho](http://ruimarinho.net/)  [@ruiespinho](https://twitter.com/ruiespinho)
- - Filip De Vos  [@foxtricks](https://twitter.com/foxtricks)
- - ThomasLebrun 
- - Sami M. Kallio 
- - [Kevin E. Ford](http://windingroadway.blogspot.com/) [@Bowman74](https://twitter.com/Bowman74)
- - Jason Smith [@jassmith87](https://twitter.com/jassmith87)
  - Shawn Anderson
- - [Sara Silva](http://saramgsilva.com) [@saramgsilva](https://twitter.com/saramgsilva)
- - Ben Ishiyama-Levy [@mrbrl](http://www.monovo.io)
- - Ryan Wischkaemper
- - [Eric Grover](http://www.ericgrover.com) [@bluechiperic](https://twitter.com/bluechiperic)
- - [Mitch Milam](http://blogs.infinite-x.net) [@mitchmilam](https://twitter.com/mitchmilam)
  - [Jim Bennett](http://www.jimbobbennett.io) [@jimbobbennett](https://twitter.com/jimbobbennett)
- - Kazuki Yasufuku
- - Petr Klíma
+ - Filip De Vos  [@foxtricks](https://twitter.com/foxtricks) 
+ - [Kevin E. Ford](http://windingroadway.blogspot.com/) [@Bowman74](https://twitter.com/Bowman74)
+ - [Eric Grover](http://www.ericgrover.com) [@bluechiperic](https://twitter.com/bluechiperic) 
+ - Ben Ishiyama-Levy [@mrbrl](http://www.monovo.io) 
+ - Sami M. Kallio
  - Bart Kardol
- - [Nicholas Rogoff](http://blog.nicholasrogoff.com/) [@nrogoff](https://twitter.com/nrogoff)
+ - Petr Klíma
+ - [Thomas Lebrun](http://blog.thomaslebrun.net/) [@thomas_lebrun](https://twitter.com/thomas_lebrun) 
+ - [Rui Marinho](http://ruimarinho.net/)  [@ruiespinho](https://twitter.com/ruiespinho)
+ - [Mitch Milam](http://blogs.infinite-x.net) [@mitchmilam](https://twitter.com/mitchmilam)
+ - [Oren Novotny](http://blog.novotny.org) [@onovotny](https://twitter.com/onovotny)
+ - Michael Ridland [@rid00z ](https://twitter.com/rid00z)
  - Chris Riesgo [@chrisriesgo](https://twitter.com/chrisriesgo)
+ - [Nicholas Rogoff](http://blog.nicholasrogoff.com/) [@nrogoff](https://twitter.com/nrogoff)
+ - [Sara Silva](http://saramgsilva.com) [@saramgsilva](https://twitter.com/saramgsilva)
+ - Jason Smith [@jassmith87](https://twitter.com/jassmith87)
+ - Ryan Wischkaemper
+ - Kazuki Yasufuku
 
  
 **Other Project Contributions:**

@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
 	<metadata>
-		<id>XLabs.IoC.Serialization.JsonNET</id>
-		<title>XLabs - IoC - Serialization Resolver - JsonNET</title>
-		<tags>Xamarin XLabs IoC Autofac</tags>
+		<id>XLabs.Core</id>
+		<title>XLabs - Core</title>
+		<tags>Xamarin.Forms XLabs</tags>
 		<version>1.3.0-beta1</version>
 		<authors>XLabs Team</authors>
 		<licenseUrl>https://github.com/XForms/Xamarin-Forms-Labs/blob/master/LICENSE</licenseUrl>
@@ -13,7 +13,7 @@
 		<description>
 			XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.
 
-			This package contains helpers to work with IoC and JsonNET for resolving ojects during serialization
+			This package contains the the core components of the XLabs Forms framework and controls.
 		</description>
 		<summary>
 			XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.
@@ -23,16 +23,15 @@
 		</releaseNotes>
 		<language>en-US</language>
 		<dependencies>
-			<dependency id="XLabs.IoC" version="1.3.0-pre2" />
 		</dependencies>
 	</metadata>
 	<files>
-		<file src="..\..\build\**\XLabs.IoC.Serialization.JsonNET.dll" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
-		<file src="..\..\build\**\XLabs.IoC.Serialization.JsonNET.dll.mdb" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
-		<file src="..\..\build\**\XLabs.IoC.Serialization.JsonNET.pdb" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
-		<file src="..\..\build\**\XLabs.IoC.Serialization.JsonNET.xml" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
+		<file src="..\..\build\**\XLabs.Core.dll" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
+		<file src="..\..\build\**\XLabs.Core.dll.mdb" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
+		<file src="..\..\build\**\XLabs.Core.pdb" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
+		<file src="..\..\build\**\XLabs.Core.xml" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
 
 		<!-- Source Files for Symbol Server -->
-		<file src="..\..\src\IoC\XLabs.IoC.Serialization.JsonNET\**\*.cs" target="src" />
+		<file src="..\..\src\XLabs.Core\**\*.cs" target="src" />
 	</files>
 </package>

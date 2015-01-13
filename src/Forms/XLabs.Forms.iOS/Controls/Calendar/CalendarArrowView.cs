@@ -1,8 +1,8 @@
-﻿namespace XLabs.Forms.Controls
+namespace XLabs.Forms.Controls
 {
-	using System.Drawing;
+	using CoreGraphics;
 
-	using MonoTouch.UIKit;
+	using UIKit;
 
 	/// <summary>
 	/// Class CalendarArrowView.
@@ -60,7 +60,7 @@
 		/// Initializes a new instance of the <see cref="CalendarArrowView"/> class.
 		/// </summary>
 		/// <param name="frame">The frame.</param>
-		public CalendarArrowView(RectangleF frame) : base(){
+		public CalendarArrowView(CGRect frame) : base(){
 			Frame = frame;
 			UserInteractionEnabled = true;
 			BackgroundColor = UIColor.Clear;
@@ -72,20 +72,20 @@
 		/// </summary>
 		/// <param name="rect">The rect.</param>
 		/// <returns>UIImage.</returns>
-		private UIImage GenerateImageForButton(RectangleF rect){
+		private UIImage GenerateImageForButton(CGRect rect){
 			UIGraphics.BeginImageContextWithOptions(rect.Size, false, 0);
 			UIImage image = null;
 			using(var context = UIGraphics.GetCurrentContext()){
-				PointF p1 , p2 , p3 ;
+				CGPoint p1 , p2 , p3 ;
 				if(_arrowDirection == ArrowDirection.Left){
 
-					p1 = new PointF(0, (rect.Height) / 2);
-					p2 = new PointF(rect.Width, 0);
-					p3 = new PointF(rect.Width, rect.Height);
+					p1 = new CGPoint(0, (rect.Height) / 2);
+					p2 = new CGPoint(rect.Width, 0);
+					p3 = new CGPoint(rect.Width, rect.Height);
 				}else{
-					p1 = new PointF(rect.Width, rect.Height / 2);
-					p2 = new PointF(0, 0);
-					p3 = new PointF(0, rect.Height);
+					p1 = new CGPoint(rect.Width, rect.Height / 2);
+					p2 = new CGPoint(0, 0);
+					p3 = new CGPoint(0, rect.Height);
 				}
 				context.SetFillColor(UIColor.Clear.CGColor);
 				context.FillRect(rect);
@@ -104,7 +104,7 @@
 		/// Draws the specified rect.
 		/// </summary>
 		/// <param name="rect">The rect.</param>
-		public override void Draw(RectangleF rect)
+		public override void Draw(CGRect rect)
 		{
 			base.Draw(rect);
 

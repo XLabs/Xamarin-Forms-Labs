@@ -3,9 +3,9 @@ namespace XLabs.Platform.Services.Email
 	using System.Collections.Generic;
 	using System.IO;
 
-	using MonoTouch.Foundation;
-	using MonoTouch.MessageUI;
-	using MonoTouch.UIKit;
+	using Foundation;
+	using MessageUI;
+	using UIKit;
 
 	/// <summary>
 	/// Class EmailService.

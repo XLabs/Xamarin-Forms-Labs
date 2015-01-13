@@ -34,10 +34,10 @@ namespace XLabs.Forms.Controls
 {
 	using System;
 	using System.Collections.Generic;
-	using System.Drawing;
+	using CoreGraphics;
 	using System.Globalization;
 
-	using MonoTouch.UIKit;
+	using UIKit;
 
 	/// <summary>
 	/// Class MonthGridView.
@@ -105,7 +105,7 @@ namespace XLabs.Forms.Controls
 		{
 			var loc = tapRecg.LocationInView(this);
 			if (SelectDayView(loc)&& _calendarMonthView.OnDateSelected!=null)
-				_calendarMonthView.OnDateSelected(new DateTime(_currentMonth.Year, _currentMonth.Month, SelectedDayView.Tag));
+				_calendarMonthView.OnDateSelected(new DateTime(_currentMonth.Year, _currentMonth.Month, (int)SelectedDayView.Tag));
 		}
 
 		/// <summary>
@@ -157,7 +157,7 @@ namespace XLabs.Forms.Controls
 				var dayView = new CalendarDayView(_calendarMonthView)
 					              {
 						              Frame =
-							              new RectangleF((i - 1) * boxWidth, 0, boxWidth, boxHeight),
+							              new CGRect((i - 1) * boxWidth, 0, boxWidth, boxHeight),
 						              Date = viewDay,
 						              Text = lead.ToString()
 					              };
@@ -180,7 +180,7 @@ namespace XLabs.Forms.Controls
 				var dayView = new CalendarDayView(_calendarMonthView)
 					              {
 						              Frame =
-							              new RectangleF(
+							              new CGRect(
 							              (position - 1) * boxWidth,
 							              line * boxHeight,
 							              boxWidth,
@@ -219,7 +219,7 @@ namespace XLabs.Forms.Controls
 					var viewDay = new DateTime (nextMonth.Year, nextMonth.Month, dayCounter);
 					var dayView = new CalendarDayView (_calendarMonthView)
 					{
-						Frame = new RectangleF((i - 1) * boxWidth, line * boxHeight, boxWidth, boxHeight),
+						Frame = new CGRect((i - 1) * boxWidth, line * boxHeight, boxWidth, boxHeight),
 						Text = dayCounter.ToString(),
 					};
 					dayView.Date = viewDay;
@@ -252,7 +252,7 @@ namespace XLabs.Forms.Controls
 //				}
 //			}
 
-			Frame = new RectangleF(Frame.Location, new SizeF(Frame.Width, (line + 1) * boxHeight));
+			Frame = new CGRect(Frame.Location, new CGSize(Frame.Width, (line + 1) * boxHeight));
 
 			Lines = (position == 1 ? line - 1 : line);
 
@@ -289,7 +289,7 @@ namespace XLabs.Forms.Controls
 		/// </summary>
 		/// <param name="p">The p.</param>
 		/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-		private bool SelectDayView(PointF p){
+		private bool SelectDayView(CGPoint p){
 
 			int index = ((int)p.Y / _calendarMonthView.BoxHeight) * 7 + ((int)p.X / _calendarMonthView.BoxWidth);
 			if(index<0 || index >= DayTiles.Count) return false;

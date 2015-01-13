@@ -3,8 +3,8 @@ namespace XLabs.Platform.Services
 	using System;
 	using System.Net;
 
-	using MonoTouch.CoreFoundation;
-	using MonoTouch.SystemConfiguration;
+	using CoreFoundation;
+	using SystemConfiguration;
 
 	/// <summary>
 	/// The reachability utility class.
@@ -80,7 +80,7 @@ namespace XLabs.Platform.Services
 			if (adHocWiFiNetworkReachability == null)
 			{
 				adHocWiFiNetworkReachability = new NetworkReachability(new IPAddress(new byte[] { 169, 254, 0, 0 }));
-				adHocWiFiNetworkReachability.SetCallback(OnChange);
+				adHocWiFiNetworkReachability.SetNotification(OnChange);
 				adHocWiFiNetworkReachability.Schedule(CFRunLoop.Current, CFRunLoop.ModeDefault);
 			}
 
@@ -109,8 +109,7 @@ namespace XLabs.Platform.Services
 				// Need to probe before we queue, or we wont get any meaningful values
 				// this only happens when you create NetworkReachability from a hostname
 				reachable = remoteHostReachability.TryGetFlags(out flags);
-
-				remoteHostReachability.SetCallback(OnChange);
+				remoteHostReachability.SetNotification(OnChange);
 				remoteHostReachability.Schedule(CFRunLoop.Current, CFRunLoop.ModeDefault);
 			}
 			else
@@ -186,7 +185,7 @@ namespace XLabs.Platform.Services
 			if (defaultRouteReachability == null)
 			{
 				defaultRouteReachability = new NetworkReachability(new IPAddress(0));
-				defaultRouteReachability.SetCallback(OnChange);
+				defaultRouteReachability.SetNotification(OnChange);
 				defaultRouteReachability.Schedule(CFRunLoop.Current, CFRunLoop.ModeDefault);
 			}
 

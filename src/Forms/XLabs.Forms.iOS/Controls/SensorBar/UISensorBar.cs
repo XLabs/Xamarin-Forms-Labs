@@ -2,10 +2,10 @@ namespace XLabs.Forms.Controls
 {
 	using System;
 	using System.ComponentModel;
-	using System.Drawing;
+	using CoreGraphics;
 
-	using MonoTouch.Foundation;
-	using MonoTouch.UIKit;
+	using Foundation;
+	using UIKit;
 
 	/// <summary>
 	/// The UI sensor bar view.
@@ -32,7 +32,7 @@ namespace XLabs.Forms.Controls
 		/// <param name="bounds">
 		/// The bounds.
 		/// </param>
-		public UISensorBar(RectangleF bounds)
+		public UISensorBar(CGRect bounds)
 			: base(bounds)
 		{
 			Initialize();
@@ -53,7 +53,7 @@ namespace XLabs.Forms.Controls
 		/// <summary>
 		/// Gets or sets the current value.
 		/// </summary>
-		[Export, Browsable(true)]
+		//[Export, Browsable(true)]
 		public double CurrentValue
 		{
 			get
@@ -74,7 +74,7 @@ namespace XLabs.Forms.Controls
 		/// <summary>
 		/// Gets or sets the limit.
 		/// </summary>
-		[Export, Browsable(true)]
+		//[Export, Browsable(true)]
 		public double Limit
 		{
 			get { return _limit; }
@@ -84,7 +84,7 @@ namespace XLabs.Forms.Controls
 		/// <summary>
 		/// Gets or sets the positive color.
 		/// </summary>
-		[Export, Browsable(true)]
+		//[Export, Browsable(true)]
 		public UIColor PositiveColor
 		{
 			get { return _positiveColor; }
@@ -94,7 +94,7 @@ namespace XLabs.Forms.Controls
 		/// <summary>
 		/// Gets or sets the negative color.
 		/// </summary>
-		[Export, Browsable(true)]
+		//[Export, Browsable(true)]
 		public UIColor NegativeColor
 		{
 			get { return _negativeColor; }
@@ -107,7 +107,7 @@ namespace XLabs.Forms.Controls
 		/// <param name="rect">
 		/// The rectangle for draw.
 		/// </param>
-		public override void Draw(RectangleF rect)
+		public override void Draw(CGRect rect)
 		{
 			base.Draw(rect);
 			var half = Bounds.Size.Width / 2.0f;
@@ -123,11 +123,11 @@ namespace XLabs.Forms.Controls
 			{
 				var start = (float)percentage * half;
 				var size = half - start;
-				context.FillRect(new RectangleF(start, 0, size, height));
+				context.FillRect(new CGRect(start, 0, size, height));
 			}
 			else
 			{
-				context.FillRect(new RectangleF(half, 0, (float)percentage * half, height));
+				context.FillRect(new CGRect(half, 0, (float)percentage * half, height));
 			}
 		}
 

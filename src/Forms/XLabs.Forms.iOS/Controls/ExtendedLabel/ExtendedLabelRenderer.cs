@@ -1,4 +1,4 @@
-﻿using Xamarin.Forms;
+using Xamarin.Forms;
 
 using XLabs.Forms.Controls;
 
@@ -8,8 +8,8 @@ namespace XLabs.Forms.Controls
 {
 	using System.IO;
 
-	using MonoTouch.Foundation;
-	using MonoTouch.UIKit;
+	using Foundation;
+	using UIKit;
 
 	using Xamarin.Forms;
 	using Xamarin.Forms.Platform.iOS;
@@ -128,7 +128,7 @@ namespace XLabs.Forms.Controls
 				{
 					ShadowColor = UIColor.DarkGray,
 					ShadowBlurRadius = 1.4f,
-					ShadowOffset = new System.Drawing.SizeF(new System.Drawing.PointF(0.3f, 0.8f))
+					ShadowOffset = new CoreGraphics.CGSize(new CoreGraphics.CGPoint(0.3f, 0.8f))
 				};
 			}
 

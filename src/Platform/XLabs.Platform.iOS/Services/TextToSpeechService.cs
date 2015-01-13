@@ -1,9 +1,9 @@
-﻿namespace XLabs.Platform.Services
+namespace XLabs.Platform.Services
 {
 	using System.Collections.Generic;
 	using System.Linq;
 
-	using MonoTouch.AVFoundation;
+	using AVFoundation;
 
 	/// <summary>
 	/// The text to speech service for iOS.

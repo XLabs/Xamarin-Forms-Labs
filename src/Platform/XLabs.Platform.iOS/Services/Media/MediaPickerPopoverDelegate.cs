@@ -1,6 +1,6 @@
-﻿namespace XLabs.Platform.Services.Media
+namespace XLabs.Platform.Services.Media
 {
-	using MonoTouch.UIKit;
+	using UIKit;
 
 	/// <summary>
 	/// Class MediaPickerPopoverDelegate.

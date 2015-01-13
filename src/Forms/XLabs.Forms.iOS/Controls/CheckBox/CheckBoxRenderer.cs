@@ -9,7 +9,7 @@ namespace XLabs.Forms.Controls
 	using System;
 	using System.ComponentModel;
 
-	using MonoTouch.UIKit;
+	using UIKit;
 
 	using Xamarin.Forms.Platform.iOS;
 
@@ -84,7 +84,7 @@ namespace XLabs.Forms.Controls
 		/// Draws the specified rect.
 		/// </summary>
 		/// <param name="rect">The rect.</param>
-		public override void Draw(System.Drawing.RectangleF rect)
+		public override void Draw(CoreGraphics.CGRect rect)
 		{
 			base.Draw(rect);
 			ResizeText();

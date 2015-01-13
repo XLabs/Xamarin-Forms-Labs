@@ -1,4 +1,4 @@
-﻿//
+//
 // https://github.com/ServiceStack/ServiceStack.Text
 // ServiceStack.Text: .NET C# POCO JSON, JSV and CSV Text Serializers.
 //

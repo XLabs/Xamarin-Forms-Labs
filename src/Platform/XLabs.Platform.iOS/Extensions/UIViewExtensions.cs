@@ -1,12 +1,12 @@
 namespace XLabs.Platform.Extensions
 {
-	using System.Drawing;
+	using CoreGraphics;
 	using System.IO;
 	using System.Linq;
 	using System.Threading.Tasks;
 
-	using MonoTouch.CoreGraphics;
-	using MonoTouch.UIKit;
+	using CoreGraphics;
+	using UIKit;
 
 	/// <summary>
 	/// Class UiViewExtensions.
@@ -49,7 +49,7 @@ namespace XLabs.Platform.Extensions
 		/// </summary>
 		/// <param name="size">The size.</param>
 		/// <returns>CGBitmapContext.</returns>
-		public static CGBitmapContext ToBitmapContext(this SizeF size)
+		public static CGBitmapContext ToBitmapContext(this CGSize size)
 		{
 			using (var colorSpace = CGColorSpace.CreateDeviceRGB())
 			{

@@ -1,6 +1,6 @@
-﻿using System.Drawing;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using CoreGraphics;
+using Foundation;
+using UIKit;
 
 namespace XLabs.Forms.Controls
 {
@@ -12,7 +12,7 @@ namespace XLabs.Forms.Controls
             Initialize();
         }
 
-        public RadioButtonView(RectangleF bounds)
+        public RadioButtonView(CGRect bounds)
             : base(bounds)
         {
             Initialize();

@@ -1,4 +1,4 @@
-﻿//
+//
 //  CalendarMonthView.cs
 //
 //  Converted to MonoTouch on 1/22/09 - Eduardo Scoz || http://escoz.com
@@ -33,11 +33,11 @@ namespace XLabs.Forms.Controls
 {
 	using System;
 	using System.Collections.Generic;
-	using System.Drawing;
+	using CoreGraphics;
 	using System.Globalization;
 
-	using MonoTouch.Foundation;
-	using MonoTouch.UIKit;
+	using Foundation;
+	using UIKit;
 
 	public delegate void DateSelected(DateTime date);
 
@@ -174,7 +174,7 @@ namespace XLabs.Forms.Controls
 				_headerHeight = showNavArrows ? 40 : 20;
 			}
 
-			Frame = _showHeader ? new RectangleF(0, 0, width, 198 + _headerHeight) : new RectangleF(0, 0, width, 198);
+			Frame = _showHeader ? new CGRect(0, 0, width, 198 + _headerHeight) : new CGRect(0, 0, width, 198);
 
 			BoxWidth = Convert.ToInt32(Math.Ceiling(width / 7));
 
@@ -377,9 +377,9 @@ namespace XLabs.Forms.Controls
 
 			_scrollView = new UIScrollView
 				              {
-					              ContentSize = new SizeF(320, 260),
+					              ContentSize = new CGSize(320, 260),
 					              ScrollEnabled = false,
-					              Frame = new RectangleF(0, 16 + _headerHeight, 320, Frame.Height - 16),
+					              Frame = new CGRect(0, 16 + _headerHeight, 320, Frame.Height - 16),
 					              BackgroundColor = StyleDescriptor.BackgroundColor
 				              };
 
@@ -418,11 +418,11 @@ namespace XLabs.Forms.Controls
 		/// </summary>
 		private void LoadNavArrows()
 		{
-			_leftArrow = new CalendarArrowView(new RectangleF(10, 9, 18, 22)) { Color = StyleDescriptor.TitleForegroundColor };
+			_leftArrow = new CalendarArrowView(new CGRect(10, 9, 18, 22)) { Color = StyleDescriptor.TitleForegroundColor };
 			_leftArrow.TouchUpInside += HandlePreviousMonthTouch;
 			_leftArrow.Direction = CalendarArrowView.ArrowDirection.Left;
 			AddSubview(_leftArrow);
-			_rightArrow = new CalendarArrowView(new RectangleF(320 - 22 - 10, 9, 18, 22))
+			_rightArrow = new CalendarArrowView(new CGRect(320 - 22 - 10, 9, 18, 22))
 				              {
 					              Color =
 						              StyleDescriptor.TitleForegroundColor
@@ -482,21 +482,21 @@ namespace XLabs.Forms.Controls
 				{
 					var oldX = _monthGridView.Center.X;
 
-					_monthGridView.Center = new PointF(oldX, _monthGridView.Center.Y);
+					_monthGridView.Center = new CGPoint(oldX, _monthGridView.Center.Y);
 					Animate(
 						0.25,
 						() =>
 							{
 								if (right)
 								{
-									_monthGridView.Center = new PointF(_monthGridView.Center.X - 40, _monthGridView.Center.Y);
+									_monthGridView.Center = new CGPoint(_monthGridView.Center.X - 40, _monthGridView.Center.Y);
 								}
 								else
 								{
-									_monthGridView.Center = new PointF(_monthGridView.Center.X + 40, _monthGridView.Center.Y);
+									_monthGridView.Center = new CGPoint(_monthGridView.Center.X + 40, _monthGridView.Center.Y);
 								}
 							},
-						() => { Animate(0.25, () => { _monthGridView.Center = new PointF(oldX, _monthGridView.Center.Y); }); });
+						() => { Animate(0.25, () => { _monthGridView.Center = new CGPoint(oldX, _monthGridView.Center.Y); }); });
 				}
 				return;
 			}
@@ -601,7 +601,7 @@ namespace XLabs.Forms.Controls
 			if (!left && _monthGridView.weekdayOfFirst==0)
 				pointsToMove -= 44;*/
 
-			gridToMove.Frame = new RectangleF(new PointF(pointsToMove, 0), gridToMove.Frame.Size);
+			gridToMove.Frame = new CGRect(new CGPoint(pointsToMove, 0), gridToMove.Frame.Size);
 
 			_scrollView.AddSubview(gridToMove);
 
@@ -613,8 +613,8 @@ namespace XLabs.Forms.Controls
 				SetAnimationCurve(UIViewAnimationCurve.EaseInOut);
 			}
 
-			_monthGridView.Center = new PointF(_monthGridView.Center.X - pointsToMove, _monthGridView.Center.Y);
-			gridToMove.Center = new PointF(gridToMove.Center.X - pointsToMove, gridToMove.Center.Y);
+			_monthGridView.Center = new CGPoint(_monthGridView.Center.X - pointsToMove, _monthGridView.Center.Y);
+			gridToMove.Center = new CGPoint(gridToMove.Center.X - pointsToMove, gridToMove.Center.Y);
 
 			_monthGridView.Alpha = 0;
 
@@ -650,7 +650,7 @@ namespace XLabs.Forms.Controls
 		{
 			var grid = new MonthGridView(this, date) { CurrentDate = CurrentDate };
 			grid.BuildGrid();
-			grid.Frame = new RectangleF(0, 0, 320, Frame.Height - 16);
+			grid.Frame = new CGRect(0, 0, 320, Frame.Height - 16);
 			return grid;
 		}
 
@@ -676,13 +676,13 @@ namespace XLabs.Forms.Controls
 		/// Draws the specified rect.
 		/// </summary>
 		/// <param name="rect">The rect.</param>
-		public override void Draw(RectangleF rect)
+		public override void Draw(CGRect rect)
 		{
 			using (var context = UIGraphics.GetCurrentContext())
 			{
 				context.SetFillColor(StyleDescriptor.TitleBackgroundColor.CGColor);
 				//Console.WriteLine("Title background color is {0}",_styleDescriptor.TitleBackgroundColor.ToString());
-				context.FillRect(new RectangleF(0, 0, 320, 18 + _headerHeight));
+				context.FillRect(new CGRect(0, 0, 320, 18 + _headerHeight));
 			}
 
 			DrawDayLabels(rect);
@@ -697,9 +697,9 @@ namespace XLabs.Forms.Controls
 		/// Draws the month label.
 		/// </summary>
 		/// <param name="rect">The rect.</param>
-		private void DrawMonthLabel(RectangleF rect)
+		private void DrawMonthLabel(CGRect rect)
 		{
-			var r = new RectangleF(new PointF(0, 2), new SizeF { Width = 320, Height = _headerHeight });
+			var r = new CGRect(new CGPoint(0, 2), new CGSize { Width = 320, Height = _headerHeight });
 			//			_styleDescriptor.TitleForegroundColor.SetColor();
 			//			DrawString(CurrentMonthYear.ToString("MMMM yyyy"), 
 			//				r, _styleDescriptor.MonthTitleFont,
@@ -718,14 +718,14 @@ namespace XLabs.Forms.Controls
 		/// <param name="color">The color.</param>
 		/// <param name="rect">The rect.</param>
 		/// <param name="font">The font.</param>
-		private void DrawCenteredString(NSString text, UIColor color, RectangleF rect, UIFont font)
+		private void DrawCenteredString(NSString text, UIColor color, CGRect rect, UIFont font)
 		{
 			var paragraphStyle = (NSMutableParagraphStyle)NSParagraphStyle.Default.MutableCopy();
 			paragraphStyle.LineBreakMode = UILineBreakMode.TailTruncation;
 			paragraphStyle.Alignment = UITextAlignment.Center;
 			var attrs = new UIStringAttributes { Font = font, ForegroundColor = color, ParagraphStyle = paragraphStyle };
 			var size = text.GetSizeUsingAttributes(attrs);
-			var targetRect = new RectangleF(
+			var targetRect = new CGRect(
 				rect.X + (float)Math.Floor((rect.Width - size.Width) / 2f),
 				rect.Y + (float)Math.Floor((rect.Height - size.Height) / 2f),
 				size.Width,
@@ -737,7 +737,7 @@ namespace XLabs.Forms.Controls
 		/// Draws the day labels.
 		/// </summary>
 		/// <param name="rect">The rect.</param>
-		private void DrawDayLabels(RectangleF rect)
+		private void DrawDayLabels(CGRect rect)
 		{
 			var font = StyleDescriptor.DateLabelFont;
 
@@ -750,14 +750,14 @@ namespace XLabs.Forms.Controls
 			{
 				var offset = firstDayOfWeek - (int)today.DayOfWeek + i;
 				today = today.AddDays(offset);
-				var dateRectangle = new RectangleF(i * BoxWidth, 2 + _headerHeight, BoxWidth, 15);
+				var dateRectangle = new CGRect(i * BoxWidth, 2 + _headerHeight, BoxWidth, 15);
 				if (StyleDescriptor.ShouldHighlightDaysOfWeekLabel && HighlightedDaysOfWeek[(int)today.DayOfWeek])
 				{
-					context.SetFillColorWithColor(StyleDescriptor.HighlightedDateBackgroundColor.CGColor);
+					context.SetFillColor(StyleDescriptor.HighlightedDateBackgroundColor.CGColor);
 				}
 				else
 				{
-					context.SetFillColorWithColor(StyleDescriptor.DayOfWeekLabelBackgroundColor.CGColor);
+					context.SetFillColor(StyleDescriptor.DayOfWeekLabelBackgroundColor.CGColor);
 				}
 				context.FillRect(dateRectangle);
 				if (StyleDescriptor.ShouldHighlightDaysOfWeekLabel && HighlightedDaysOfWeek[(int)today.DayOfWeek])
@@ -768,7 +768,8 @@ namespace XLabs.Forms.Controls
 				{
 					StyleDescriptor.DayOfWeekLabelForegroundColor.SetColor();
 				}
-				DrawString(today.ToString("ddd"), dateRectangle, font, UILineBreakMode.WordWrap, UITextAlignment.Center);
+			
+				DrawCenteredString( new NSString(today.ToString("ddd")),UIColor.White, dateRectangle, font);
 				today = originalDay;
 			}
 

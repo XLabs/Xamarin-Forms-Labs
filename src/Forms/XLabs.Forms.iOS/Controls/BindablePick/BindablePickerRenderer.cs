@@ -1,4 +1,4 @@
-﻿using Xamarin.Forms;
+using Xamarin.Forms;
 
 using XLabs.Forms.Controls;
 
@@ -10,10 +10,10 @@ namespace XLabs.Forms.Controls
 	using System.Collections.ObjectModel;
 	using System.Collections.Specialized;
 	using System.ComponentModel;
-	using System.Drawing;
+	using CoreGraphics;
 	using System.Linq;
 
-	using MonoTouch.UIKit;
+	using UIKit;
 
 	using Xamarin.Forms;
 	using Xamarin.Forms.Platform.iOS;
@@ -68,7 +68,7 @@ namespace XLabs.Forms.Controls
 			/// <param name="picker">The picker.</param>
 			/// <param name="component">The component.</param>
 			/// <returns>System.Int32.</returns>
-			public override int GetRowsInComponent(UIPickerView picker, int component)
+			public override nint GetRowsInComponent(UIPickerView picker, nint component)
 			{
 				if (_model.Items == null)
 				{
@@ -81,7 +81,7 @@ namespace XLabs.Forms.Controls
 			/// </summary>
 			/// <param name="picker">The picker.</param>
 			/// <returns>System.Int32.</returns>
-			public override int GetComponentCount(UIPickerView picker)
+			public override nint GetComponentCount(UIPickerView picker)
 			{
 				return 1;
 			}
@@ -92,9 +92,9 @@ namespace XLabs.Forms.Controls
 			/// <param name="row">The row.</param>
 			/// <param name="component">The component.</param>
 			/// <returns>System.String.</returns>
-			public override string GetTitle(UIPickerView picker, int row, int component)
+			public override string GetTitle(UIPickerView picker, nint row, nint component)
 			{
-				return _model.Items[row];
+				return _model.Items[(int)row];
 			}
 			/// <summary>
 			/// Selecteds the specified picker.
@@ -102,10 +102,10 @@ namespace XLabs.Forms.Controls
 			/// <param name="picker">The picker.</param>
 			/// <param name="row">The row.</param>
 			/// <param name="component">The component.</param>
-			public override void Selected(UIPickerView picker, int row, int component)
+			public override void Selected(UIPickerView picker, nint row, nint component)
 			{
-				SelectedItem = _model.Items[row];
-				SelectedIndex = row;
+				SelectedItem = _model.Items[(int)row];
+				SelectedIndex = (int)row;
 				EventHandler valueChanged = ValueChanged;
 				if (valueChanged != null)
 				{
@@ -135,10 +135,10 @@ namespace XLabs.Forms.Controls
 			entry.Started += new EventHandler (OnStarted);
 			entry.Ended += new EventHandler (OnEnded);
 			_picker = new UIPickerView {
-				Source = new PickerSource (e.NewElement)
+				DataSource = new PickerSource (e.NewElement)
 			};
-			float width = UIScreen.MainScreen.Bounds.Width;
-			UIToolbar uIToolbar = new UIToolbar (new RectangleF (0, 0, width, 44)) {
+			nfloat width = UIScreen.MainScreen.Bounds.Width;
+			UIToolbar uIToolbar = new UIToolbar (new CGRect (0, 0, width, 44)) {
 				BarStyle = UIBarStyle.Default,
 				Translucent = true
 			};
@@ -155,11 +155,11 @@ namespace XLabs.Forms.Controls
 				entry.InputView = _picker;
 				entry.InputAccessoryView = uIToolbar;
 			} else {
-				entry.InputView = new UIView (RectangleF.Empty);
-				entry.InputAccessoryView = new UIView (RectangleF.Empty);
+				entry.InputView = new UIView (CGRect.Empty);
+				entry.InputAccessoryView = new UIView (CGRect.Empty);
 			}
 
-			((PickerSource)_picker.Source).ValueChanged += new EventHandler (HandleValueChanged);
+			((PickerSource)_picker.DataSource).ValueChanged += new EventHandler (HandleValueChanged);
 			SetNativeControl (entry);
 			UpdatePicker ();
 		}
@@ -188,10 +188,10 @@ namespace XLabs.Forms.Controls
 			if (Device.Idiom != TargetIdiom.Phone) {
 				var vc = new UIViewController ();
 				vc.Add (_picker);
-				vc.View.Frame = new RectangleF (0, 0, 320, 200);
-				vc.PreferredContentSize = new SizeF (320, 200);
+				vc.View.Frame = new CGRect (0, 0, 320, 200);
+				vc.PreferredContentSize = new CGSize (320, 200);
 				_popOver = new UIPopoverController (vc);
-				_popOver.PresentFromRect(new RectangleF(Control.Frame.Width/2,Control.Frame.Height-3,0,0), Control, UIPopoverArrowDirection.Any, true);
+				_popOver.PresentFromRect(new CGRect(Control.Frame.Width/2,Control.Frame.Height-3,0,0), Control, UIPopoverArrowDirection.Any, true);
 				_popOver.DidDismiss += (object s, EventArgs e) => {
 					_popOver = null;
 					Control.ResignFirstResponder();

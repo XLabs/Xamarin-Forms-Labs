@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 using Xamarin.Forms;
 
@@ -9,10 +9,10 @@ using XLabs.Forms.Controls;
 namespace XLabs.Forms.Controls
 {
 	using System;
-	using System.Drawing;
+	using CoreGraphics;
 
-	using MonoTouch.Foundation;
-	using MonoTouch.UIKit;
+	using Foundation;
+	using UIKit;
 
 	using Xamarin.Forms;
 	using Xamarin.Forms.Platform.iOS;
@@ -46,7 +46,7 @@ namespace XLabs.Forms.Controls
 
 			if (e.OldElement == null)
 			{
-				_tableView = new UITableView(new RectangleF(0,0,1,1), UITableViewStyle.Plain);
+				_tableView = new UITableView(new CGRect(0,0,1,1), UITableViewStyle.Plain);
 				SetNativeControl(_tableView);
 			}
 
@@ -192,7 +192,7 @@ namespace XLabs.Forms.Controls
 			/// <param name="tableView">The table view.</param>
 			/// <param name="section">The section.</param>
 			/// <returns>System.Int32.</returns>
-			public override int RowsInSection(UITableView tableView, int section)
+			public override nint RowsInSection(UITableView tableView, nint section)
 			{
 				return _containerRenderer.Element.Source.Count + 1;
 			}
@@ -239,7 +239,7 @@ namespace XLabs.Forms.Controls
 			/// <param name="tableView">The table view.</param>
 			/// <param name="indexPath">The index path.</param>
 			/// <returns>System.Single.</returns>
-			public override float GetHeightForRow(UITableView tableView, NSIndexPath indexPath)
+			public override nfloat GetHeightForRow(UITableView tableView, NSIndexPath indexPath)
 			{
 				return _containerRenderer.RowHeight;
 			}

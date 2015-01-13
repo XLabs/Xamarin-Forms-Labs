@@ -1,4 +1,6 @@
-﻿namespace XLabs.Platform.Device
+using ObjCRuntime;
+
+namespace XLabs.Platform.Device
 {
 	using System;
 	using System.IO.IsolatedStorage;
@@ -7,8 +9,8 @@
 	using System.Threading.Tasks;
 
 	using MonoTouch;
-	using MonoTouch.Foundation;
-	using MonoTouch.UIKit;
+	using Foundation;
+	using UIKit;
 
 	using XLabs.Platform.Services;
 	using XLabs.Platform.Services.IO;
@@ -130,7 +132,7 @@
 			IntPtr newp,
 			uint newlen);
 
-        [DllImport(MonoTouch.Constants.SystemLibrary)]
+        [DllImport(Constants.SystemLibrary)]
         static internal extern int sysctl(
             [MarshalAs(UnmanagedType.LPArray)] int[] name, 
             uint namelen, 

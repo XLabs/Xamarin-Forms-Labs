@@ -2,7 +2,7 @@ namespace XLabs.Forms.Controls
 {
 	using System;
 
-	using MonoTouch.UIKit;
+	using UIKit;
 
 	/// <summary>
 	/// Class UISeparator.
@@ -156,7 +156,7 @@ namespace XLabs.Forms.Controls
 		/// Initializes a new instance of the <see cref="UISeparator"/> class.
 		/// </summary>
 		/// <param name="bounds">The bounds.</param>
-		public UISeparator(System.Drawing.RectangleF bounds)
+		public UISeparator(CoreGraphics.CGRect bounds)
 			: base(bounds)
 		{
 			Initialize();
@@ -184,7 +184,7 @@ namespace XLabs.Forms.Controls
 		/// Draws the specified rect.
 		/// </summary>
 		/// <param name="rect">The rect.</param>
-		public override void Draw(System.Drawing.RectangleF rect)
+		public override void Draw(CoreGraphics.CGRect rect)
 		{
 			base.Draw(rect);
 
@@ -201,10 +201,10 @@ namespace XLabs.Forms.Controls
 			switch (StrokeType)
 			{
 				case StrokeType.Dashed:
-					context.SetLineDash(0, new float[] { 6, 2 });
+					context.SetLineDash(0, new nfloat[] { 6, 2 });
 					break;
 				case StrokeType.Dotted:
-					context.SetLineDash(0, new float[] { (float)Thickness, (float)Thickness });
+					context.SetLineDash(0, new nfloat[] { (nfloat)Thickness, (nfloat)Thickness });
 					break;
 				default:
 

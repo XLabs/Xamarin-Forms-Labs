@@ -1,4 +1,4 @@
-﻿using Xamarin.Forms;
+using Xamarin.Forms;
 
 using XLabs.Forms.Controls;
 
@@ -8,10 +8,10 @@ namespace XLabs.Forms.Controls
 {
 	using System;
 	using System.ComponentModel;
-	using System.Drawing;
+	using CoreGraphics;
 
-	using MonoTouch.Foundation;
-	using MonoTouch.UIKit;
+	using Foundation;
+	using UIKit;
 
 	using Xamarin.Forms;
 	using Xamarin.Forms.Platform.iOS;
@@ -75,8 +75,8 @@ namespace XLabs.Forms.Controls
 				Mode = UIDatePickerMode.Date,
 				TimeZone = new NSTimeZone ("UTC")
 			};
-			float width = UIScreen.MainScreen.Bounds.Width;
-			UIToolbar uIToolbar = new UIToolbar (new RectangleF (0, 0, width, 44)) {
+			nfloat width = UIScreen.MainScreen.Bounds.Width;
+			UIToolbar uIToolbar = new UIToolbar (new CGRect (0, 0, width, 44)) {
 				BarStyle = UIBarStyle.Default,
 				Translucent = true
 			};
@@ -93,8 +93,8 @@ namespace XLabs.Forms.Controls
 				entry.InputView = _picker;
 				entry.InputAccessoryView = uIToolbar;
 			} else {
-				entry.InputView = new UIView (RectangleF.Empty);
-				entry.InputAccessoryView = new UIView (RectangleF.Empty);
+				entry.InputView = new UIView (CGRect.Empty);
+				entry.InputAccessoryView = new UIView (CGRect.Empty);
 			}
 
 			SetNativeControl (entry);
@@ -156,10 +156,10 @@ namespace XLabs.Forms.Controls
 			if (Device.Idiom != TargetIdiom.Phone) {
 				var vc = new UIViewController ();
 				vc.Add (_picker);
-				vc.View.Frame = new RectangleF (0, 0, 320, 200);
-				vc.PreferredContentSize = new SizeF (320, 200);
+				vc.View.Frame = new CGRect (0, 0, 320, 200);
+				vc.PreferredContentSize = new CGSize (320, 200);
 				_popOver = new UIPopoverController (vc);
-				_popOver.PresentFromRect(new RectangleF(Control.Frame.Width/2,Control.Frame.Height-3,0,0), Control, UIPopoverArrowDirection.Any, true);
+				_popOver.PresentFromRect(new CGRect(Control.Frame.Width/2,Control.Frame.Height-3,0,0), Control, UIPopoverArrowDirection.Any, true);
 				_popOver.DidDismiss += (object s, EventArgs e) => {
 					_popOver = null;
 					Control.ResignFirstResponder();

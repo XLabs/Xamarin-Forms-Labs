@@ -1,12 +1,12 @@
-﻿namespace XLabs.Platform.Services.Media
+namespace XLabs.Platform.Services.Media
 {
 	using System;
-	using System.Drawing;
+	using CoreGraphics;
 	using System.IO;
 	using System.Threading.Tasks;
 
-	using MonoTouch.Foundation;
-	using MonoTouch.UIKit;
+	using Foundation;
+	using UIKit;
 
 	using XLabs.Platform.Extensions;
 
@@ -176,13 +176,13 @@
 			float x, y;
 			if (_orientation == UIDeviceOrientation.LandscapeLeft || _orientation == UIDeviceOrientation.LandscapeRight)
 			{
-				y = (swidth / 2) - (height / 2);
-				x = (sheight / 2) - (width / 2);
+				y = (float)(swidth / 2) - (height / 2);
+				x = (float)(sheight / 2) - (width / 2);
 			}
 			else
 			{
-				x = (swidth / 2) - (width / 2);
-				y = (sheight / 2) - (height / 2);
+				x = (float)(swidth / 2) - (width / 2);
+				y = (float)(sheight / 2) - (height / 2);
 			}
 
 			if (hideFirst && Popover.PopoverVisible)
@@ -190,7 +190,7 @@
 				Popover.Dismiss(false);
 			}
 
-			Popover.PresentFromRect(new RectangleF(x, y, width, height), View, 0, true);
+			Popover.PresentFromRect(new CGRect(x, y, width, height), View, 0, true);
 		}
 
 		/// <summary>
@@ -198,7 +198,7 @@
 		/// </summary>
 		/// <param name="picker">The picker.</param>
 		/// <param name="onDismiss">The on dismiss.</param>
-		private void Dismiss(UIImagePickerController picker, NSAction onDismiss)
+		private void Dismiss(UIImagePickerController picker, Action onDismiss)
 		{
 			if (_viewController == null)
 			{

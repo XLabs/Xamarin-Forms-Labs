@@ -1,11 +1,11 @@
-﻿namespace XLabs.Forms.Controls
+namespace XLabs.Forms.Controls
 {
 	using System.ComponentModel;
-	using System.Drawing;
+	using CoreGraphics;
 
-	using MonoTouch.CoreGraphics;
-	using MonoTouch.Foundation;
-	using MonoTouch.UIKit;
+	using CoreGraphics;
+	using Foundation;
+	using UIKit;
 
 	using Xamarin.Forms;
 	using Xamarin.Forms.Platform.iOS;
@@ -50,7 +50,7 @@
 		/// </summary>
 		/// <param name="frame">The frame.</param>
 		[Export ("initWithFrame:")]
-		public GridViewCell (RectangleF frame) : base (frame)
+		public GridViewCell (CGRect frame) : base (frame)
 		{
 			// SelectedBackgroundView = new GridItemSelectedViewOverlay (frame);
 			// this.BringSubviewToFront (SelectedBackgroundView);
@@ -105,7 +105,7 @@
 		public override void LayoutSubviews ()
 		{
 			base.LayoutSubviews ();
-			RectangleF frame = ContentView.Frame;
+			CGRect frame = ContentView.Frame;
 			frame.X = (Bounds.Width - frame.Width) / 2;
 			frame.Y = (Bounds.Height - frame.Height) / 2;
 			ViewCell.View.Layout (frame.ToRectangle ());
@@ -124,7 +124,7 @@
 		/// Initializes a new instance of the <see cref="GridItemSelectedViewOverlay"/> class.
 		/// </summary>
 		/// <param name="frame">The frame.</param>
-		public GridItemSelectedViewOverlay (RectangleF frame) : base (frame)
+		public GridItemSelectedViewOverlay (CGRect frame) : base (frame)
 		{
 			BackgroundColor = UIColor.Clear;
 		}
@@ -133,7 +133,7 @@
 		/// Draws the specified rect.
 		/// </summary>
 		/// <param name="rect">The rect.</param>
-		public override void Draw (RectangleF rect)
+		public override void Draw (CGRect rect)
 		{
 			using (var g = UIGraphics.GetCurrentContext ()) {
 				g.SetLineWidth (10);

@@ -7,7 +7,7 @@ namespace XLabs.Forms.Charting.Controls
 {
 	using System.Linq;
 
-	using MonoTouch.UIKit;
+	using UIKit;
 
 	using Xamarin.Forms.Platform.iOS;
 

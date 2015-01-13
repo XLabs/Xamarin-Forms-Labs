@@ -7,7 +7,7 @@
 
 namespace XLabs.Sample.iOS
 {
-	using MonoTouch.Foundation;
+	using Foundation;
 
 	[Register ("SensorStoryboardController")]
 	partial class SensorStoryboardController

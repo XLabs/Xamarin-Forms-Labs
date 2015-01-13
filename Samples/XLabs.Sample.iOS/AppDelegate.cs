@@ -2,8 +2,8 @@
 {
 	using System.IO;
 
-	using MonoTouch.Foundation;
-	using MonoTouch.UIKit;
+	using Foundation;
+	using UIKit;
 
 	using Xamarin.Forms;
 
@@ -54,14 +54,15 @@
 
 			Forms.Init();
 
-			App.Init();
+			var formsApp = new App();
 
-			this._window = new UIWindow(UIScreen.MainScreen.Bounds)
-			{
-				RootViewController = App.GetMainPage().CreateViewController()
-			};
+			LoadApplication (formsApp);
 
-			this._window.MakeKeyAndVisible();
+//			this._window = new UIWindow(UIScreen.MainScreen.Bounds)
+//			{
+//				RootViewController = App.GetMainPage().CreateViewController()
+//			};
+
 
 			base.FinishedLaunching(app, options);
 

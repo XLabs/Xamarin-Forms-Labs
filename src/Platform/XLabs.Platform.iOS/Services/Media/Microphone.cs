@@ -6,7 +6,7 @@ namespace XLabs.Platform.Services.Media
 	using System.Runtime.InteropServices;
 	using System.Threading.Tasks;
 
-	using MonoTouch.AudioToolbox;
+	using AudioToolbox;
 
 	/// <summary>
 	/// Class Microphone.

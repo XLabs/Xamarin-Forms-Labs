@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
-using System.Drawing;
+using CoreGraphics;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 using XLabs.Forms.Controls;
@@ -18,8 +18,8 @@ namespace XLabs.Forms.Controls
 	{
 		private UIView touchedView;
 		private View touchedElement;
-		private PointF offsetLocation;
-		private PointF homePosition;
+		private CGPoint offsetLocation;
+		private CGPoint homePosition;
 
 		protected override void OnElementChanged(ElementChangedEventArgs<DragContentView> e)
 		{
@@ -53,7 +53,7 @@ namespace XLabs.Forms.Controls
 				{
 					this.touchedElement = GetMovedElement(this.touchedView, this.Element.Content);
 					this.homePosition = this.touchedView.Frame.Location;
-					this.offsetLocation = new PointF(loc.X - this.touchedView.Frame.X, loc.Y - this.touchedView.Frame.Y);
+					this.offsetLocation = new CGPoint(loc.X - this.touchedView.Frame.X, loc.Y - this.touchedView.Frame.Y);
 
 					this.BringSubviewToFront(this.touchedView);
 				}
@@ -83,8 +83,8 @@ namespace XLabs.Forms.Controls
 			{
 				var newLoc = t[0].LocationInView(this);
 
-				var frame = new RectangleF(
-					new PointF(newLoc.X - this.offsetLocation.X, newLoc.Y - this.offsetLocation.Y),
+				var frame = new CGRect(
+					new CGPoint(newLoc.X - this.offsetLocation.X, newLoc.Y - this.offsetLocation.Y),
 					this.touchedView.Frame.Size);
 
 				if (this.touchedElement != null)

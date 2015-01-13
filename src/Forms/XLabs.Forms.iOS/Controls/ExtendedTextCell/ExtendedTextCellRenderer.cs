@@ -1,4 +1,4 @@
-﻿using Xamarin.Forms;
+using Xamarin.Forms;
 
 using XLabs.Forms.Controls;
 
@@ -7,9 +7,9 @@ namespace XLabs.Forms.Controls
 {
 	using System;
 	using System.ComponentModel;
-	using System.Drawing;
+	using CoreGraphics;
 
-	using MonoTouch.UIKit;
+	using UIKit;
 
 	using Xamarin.Forms;
 	using Xamarin.Forms.Platform.iOS;
@@ -76,7 +76,7 @@ namespace XLabs.Forms.Controls
 						detailDisclosureButton.SetImage (UIImage.FromBundle (extendedCell.DisclousureImage), UIControlState.Normal);
 						detailDisclosureButton.SetImage (UIImage.FromBundle (extendedCell.DisclousureImage), UIControlState.Selected);
 
-						detailDisclosureButton.Frame = new RectangleF (0f, 0f, 30f, 30f);
+						detailDisclosureButton.Frame = new CGRect (0f, 0f, 30f, 30f);
 						detailDisclosureButton.TouchUpInside += (object sender, EventArgs e) => {
 							var index = tv.IndexPathForCell (cell);
 							tv.SelectRow (index, true, UITableViewScrollPosition.None);

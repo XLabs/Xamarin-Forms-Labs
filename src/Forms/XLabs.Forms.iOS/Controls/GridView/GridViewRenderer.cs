@@ -1,4 +1,4 @@
-﻿using Xamarin.Forms;
+using Xamarin.Forms;
 
 using XLabs.Forms.Controls;
 
@@ -10,8 +10,8 @@ namespace XLabs.Forms.Controls
 	using System.Collections.Specialized;
 	using System.Linq;
 
-	using MonoTouch.Foundation;
-	using MonoTouch.UIKit;
+	using Foundation;
+	using UIKit;
 
 	using Xamarin.Forms;
 	using Xamarin.Forms.Platform.iOS;
@@ -43,7 +43,7 @@ namespace XLabs.Forms.Controls
 			collectionView.ContentInset = new UIEdgeInsets ((float)Element.Padding.Top, (float)Element.Padding.Left, (float)Element.Padding.Bottom, (float)Element.Padding.Right);
 
 			collectionView.BackgroundColor = Element.BackgroundColor.ToUIColor ();
-			collectionView.ItemSize = new System.Drawing.SizeF ((float)Element.ItemWidth, (float)Element.ItemHeight);
+			collectionView.ItemSize = new CoreGraphics.CGSize ((float)Element.ItemWidth, (float)Element.ItemHeight);
 			collectionView.RowSpacing = Element.RowSpacing;
 			collectionView.ColumnSpacing = Element.ColumnSpacing;
 
@@ -176,7 +176,7 @@ namespace XLabs.Forms.Controls
 		/// <param name="collectionView">The collection view.</param>
 		/// <param name="section">The section.</param>
 		/// <returns>System.Int32.</returns>
-		public int RowsInSection (UICollectionView collectionView, int section)
+		public int RowsInSection (UICollectionView collectionView, nint section)
 		{
 			return ((ICollection)Element.ItemsSource).Count;
 		}

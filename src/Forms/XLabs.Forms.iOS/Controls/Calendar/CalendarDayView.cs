@@ -33,11 +33,11 @@
 namespace XLabs.Forms.Controls
 {
 	using System;
-	using System.Drawing;
+	using CoreGraphics;
 
-	using MonoTouch.CoreGraphics;
-	using MonoTouch.Foundation;
-	using MonoTouch.UIKit;
+	using CoreGraphics;
+	using Foundation;
+	using UIKit;
 
 	/// <summary>
 	/// Class CalendarDayView.
@@ -120,7 +120,7 @@ namespace XLabs.Forms.Controls
 		/// Draws the specified rect.
 		/// </summary>
 		/// <param name="rect">The rect.</param>
-		public override void Draw(RectangleF rect)
+		public override void Draw(CGRect rect)
 		{
 			DateTime dt = DateTime.Now;
 			UIImage img = null;
@@ -180,7 +180,7 @@ namespace XLabs.Forms.Controls
 				if (backgroundStyle == CalendarView.BackgroundStyle.Fill)
 				{
 					context.SetFillColor(BackgroundColor.CGColor);
-					context.FillRect(new RectangleF(0, 0, _mv.BoxWidth, _mv.BoxHeight));
+					context.FillRect(new CGRect(0, 0, _mv.BoxWidth, _mv.BoxHeight));
 				}
 				else
 				{
@@ -192,11 +192,11 @@ namespace XLabs.Forms.Controls
 					{
 						context.SetFillColor(_mv.StyleDescriptor.DateBackgroundColor.CGColor);
 					}
-					context.FillRect(new RectangleF(0, 0, _mv.BoxWidth, _mv.BoxHeight));
+					context.FillRect(new CGRect(0, 0, _mv.BoxWidth, _mv.BoxHeight));
 
 					var smallerSide = Math.Min(_mv.BoxWidth, _mv.BoxHeight);
-					var center = new PointF(_mv.BoxWidth / 2, _mv.BoxHeight / 2);
-					var circleArea = new RectangleF(center.X - smallerSide / 2, center.Y - smallerSide / 2, smallerSide, smallerSide);
+					var center = new CGPoint(_mv.BoxWidth / 2, _mv.BoxHeight / 2);
+					var circleArea = new CGRect(center.X - smallerSide / 2, center.Y - smallerSide / 2, smallerSide, smallerSide);
 
 					if (backgroundStyle == CalendarView.BackgroundStyle.CircleFill)
 					{
@@ -213,7 +213,7 @@ namespace XLabs.Forms.Controls
 
 
 			color.SetColor();
-			var inflated = new RectangleF(0, 0, Bounds.Width, Bounds.Height);
+			var inflated = new CGRect(0, 0, Bounds.Width, Bounds.Height);
 			//			var attrs = new UIStringAttributes() {
 			//				Font = _mv.StyleDescriptor.DateLabelFont,
 			//				ForegroundColor = color,
@@ -248,7 +248,7 @@ namespace XLabs.Forms.Controls
 		/// <param name="dateString">The date string.</param>
 		/// <param name="color">The color.</param>
 		/// <param name="rect">The rect.</param>
-		private void DrawDateString(NSString dateString, UIColor color, RectangleF rect)
+		private void DrawDateString(NSString dateString, UIColor color, CGRect rect)
 		{
 			if (paragraphStyle == null)
 			{
@@ -264,7 +264,7 @@ namespace XLabs.Forms.Controls
 				ParagraphStyle = paragraphStyle
 			};
 			var size = dateString.GetSizeUsingAttributes(attrs);
-			RectangleF targetRect = new RectangleF(
+			CGRect targetRect = new CGRect(
 				rect.X + (float)Math.Floor((rect.Width - size.Width) / 2f),
 				rect.Y + (float)Math.Floor((rect.Height - size.Height) / 2f),
 										size.Width,

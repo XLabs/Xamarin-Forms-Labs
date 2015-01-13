@@ -1,7 +1,7 @@
-﻿namespace XLabs.Forms.Controls
+namespace XLabs.Forms.Controls
 {
-	using MonoTouch.Foundation;
-	using MonoTouch.UIKit;
+	using Foundation;
+	using UIKit;
 
 	/// <summary>
 	/// Class GridViewDelegate.

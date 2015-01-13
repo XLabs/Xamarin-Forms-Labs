@@ -7,10 +7,10 @@ namespace XLabs.Forms.Controls
 {
 	using System;
 	using System.ComponentModel;
-	using System.Drawing;
+	using CoreGraphics;
 	using System.Threading.Tasks;
 
-	using MonoTouch.UIKit;
+	using UIKit;
 
 	using Xamarin.Forms;
 	using Xamarin.Forms.Platform.iOS;
@@ -207,7 +207,7 @@ namespace XLabs.Forms.Controls
 				UIImage scaled = image;
 				if (heightRequest > 0 && widthRequest > 0 && (image.Size.Height != heightRequest || image.Size.Width != widthRequest))
 				{
-					scaled = scaled.Scale(new SizeF(widthRequest, heightRequest));
+					scaled = scaled.Scale(new CGSize(widthRequest, heightRequest));
 				}
 				targetButton.SetImage(scaled.ImageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), UIControlState.Normal);   
 			}

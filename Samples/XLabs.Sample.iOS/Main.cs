@@ -1,6 +1,6 @@
 ﻿namespace XLabs.Sample.iOS
 {
-	using MonoTouch.UIKit;
+	using UIKit;
 
 	using XLabs.Forms.Charting.Controls;
 

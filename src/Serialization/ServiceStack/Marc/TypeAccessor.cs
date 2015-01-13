@@ -1,13 +1,14 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Reflection;
-using System.Reflection.Emit;
 using System.Threading;
 //using System.Dynamic;
 
 //Not using it here, but @marcgravell's stuff is too good not to include
 // http://code.google.com/p/fast-member/ Apache License 2.0
+
 #if !SILVERLIGHT && !MONOTOUCH && !XBOX
+using System.Reflection.Emit;
 namespace ServiceStack.Text.FastMember
 {
     /// <summary>

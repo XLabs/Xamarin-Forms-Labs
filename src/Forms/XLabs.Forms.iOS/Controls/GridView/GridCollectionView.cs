@@ -1,9 +1,9 @@
-﻿namespace XLabs.Forms.Controls
+namespace XLabs.Forms.Controls
 {
-	using System.Drawing;
+	using CoreGraphics;
 
-	using MonoTouch.Foundation;
-	using MonoTouch.UIKit;
+	using Foundation;
+	using UIKit;
 
 	/// <summary>
 	/// Class GridCollectionView.
@@ -21,7 +21,7 @@
 		/// <summary>
 		/// Initializes a new instance of the <see cref="GridCollectionView"/> class.
 		/// </summary>
-		public GridCollectionView () : this (default(RectangleF))
+		public GridCollectionView () : this (default(CGRect))
 		{
 		}
 
@@ -29,7 +29,7 @@
 		/// Initializes a new instance of the <see cref="GridCollectionView"/> class.
 		/// </summary>
 		/// <param name="frm">The FRM.</param>
-		public GridCollectionView (RectangleF frm) : base (default(RectangleF), new UICollectionViewFlowLayout () { })
+		public GridCollectionView (CGRect frm) : base (default(CGRect), new UICollectionViewFlowLayout () { })
 		{
 			AutoresizingMask = UIViewAutoresizing.All;
 			ContentMode = UIViewContentMode.ScaleToFill;
@@ -51,7 +51,7 @@
 		/// Draws the specified rect.
 		/// </summary>
 		/// <param name="rect">The rect.</param>
-		public override void Draw (RectangleF rect)
+		public override void Draw (CGRect rect)
 		{
 			CollectionViewLayout.InvalidateLayout ();
 
@@ -88,7 +88,7 @@
 		/// Gets or sets the size of the item.
 		/// </summary>
 		/// <value>The size of the item.</value>
-		public SizeF ItemSize {
+		public CGSize ItemSize {
 			get { 
 				return (CollectionViewLayout as UICollectionViewFlowLayout).ItemSize;
 			}

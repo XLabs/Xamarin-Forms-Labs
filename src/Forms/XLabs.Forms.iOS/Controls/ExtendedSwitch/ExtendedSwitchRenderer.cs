@@ -8,7 +8,7 @@ namespace XLabs.Forms.Controls
 {
 	using System;
 
-	using MonoTouch.UIKit;
+	using UIKit;
 
 	using Xamarin.Forms;
 	using Xamarin.Forms.Platform.iOS;

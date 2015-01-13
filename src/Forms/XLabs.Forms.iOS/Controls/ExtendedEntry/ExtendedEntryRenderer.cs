@@ -7,10 +7,10 @@ namespace XLabs.Forms.Controls
 {
 	using System;
 	using System.ComponentModel;
-	using System.Drawing;
+	using CoreGraphics;
 
-	using MonoTouch.Foundation;
-	using MonoTouch.UIKit;
+	using Foundation;
+	using UIKit;
 
 	using Xamarin.Forms;
 	using Xamarin.Forms.Platform.iOS;
@@ -144,7 +144,7 @@ namespace XLabs.Forms.Controls
 			var height = Math.Max(Bounds.Height,
 				new UITextField {Font = Control.Font}.IntrinsicContentSize.Height);
 
-			Control.Frame = new RectangleF(0.0f, 0.0f, (float) Element.Width, height);
+			Control.Frame = new CGRect(0.0f, 0.0f, (nfloat) Element.Width,  (nfloat) height);
 
 			Element.HeightRequest = height;
 		}

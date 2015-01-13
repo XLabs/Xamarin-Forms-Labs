@@ -1,8 +1,8 @@
-﻿namespace XLabs.Forms.Controls
+namespace XLabs.Forms.Controls
 {
-	using System.Drawing;
+	using CoreGraphics;
 
-	using MonoTouch.UIKit;
+	using UIKit;
 
 	/// <summary>
 	/// Class NoCaretField.
@@ -12,7 +12,7 @@
 		/// <summary>
 		/// Initializes a new instance of the <see cref="NoCaretField"/> class.
 		/// </summary>
-		public NoCaretField() : base(default(RectangleF))
+		public NoCaretField() : base(default(CGRect))
 		{
 		}
 		/// <summary>
@@ -20,9 +20,9 @@
 		/// </summary>
 		/// <param name="position">The position.</param>
 		/// <returns>RectangleF.</returns>
-		public override RectangleF GetCaretRectForPosition(UITextPosition position)
+		public override CGRect GetCaretRectForPosition(UITextPosition position)
 		{
-			return default(RectangleF);
+			return default(CGRect);
 		}
 	}
 }

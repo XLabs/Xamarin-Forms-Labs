@@ -1,12 +1,12 @@
-﻿namespace XLabs.Platform.Services
+namespace XLabs.Platform.Services
 {
 	using System;
 
-	using MonoTouch.CoreTelephony;
-	using MonoTouch.Foundation;
-	using MonoTouch.MessageUI;
-	using MonoTouch.SystemConfiguration;
-	using MonoTouch.UIKit;
+	using CoreTelephony;
+	using Foundation;
+	using MessageUI;
+	using SystemConfiguration;
+	using UIKit;
 
 	/// <summary>
 	/// Apple Phone service implements <see cref="IPhoneService" />.

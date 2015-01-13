@@ -1,8 +1,8 @@
-﻿namespace XLabs.Platform.Extensions
+namespace XLabs.Platform.Extensions
 {
 	using System.IO;
 
-	using MonoTouch.Foundation;
+	using Foundation;
 
 	/// <summary>
 	///     Class NsDataStream.
@@ -19,7 +19,7 @@
 		/// </summary>
 		/// <param name="data">The data.</param>
 		public NsDataStream(NSData data)
-			: base((byte*)data.Bytes, data.Length)
+			: base((byte*)data.Bytes, (long)data.Length)
 		{
 			_data = data;
 		}

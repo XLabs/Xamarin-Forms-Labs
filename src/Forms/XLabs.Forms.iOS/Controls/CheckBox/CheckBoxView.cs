@@ -1,9 +1,9 @@
-﻿namespace XLabs.Forms.Controls
+namespace XLabs.Forms.Controls
 {
-	using System.Drawing;
+	using CoreGraphics;
 
-	using MonoTouch.Foundation;
-	using MonoTouch.UIKit;
+	using Foundation;
+	using UIKit;
 
 	/// <summary>
 	/// Class CheckBoxView.
@@ -23,7 +23,7 @@
 		/// Initializes a new instance of the <see cref="CheckBoxView"/> class.
 		/// </summary>
 		/// <param name="bounds">The bounds.</param>
-		public CheckBoxView(RectangleF bounds)
+		public CheckBoxView(CGRect bounds)
 			: base(bounds)
 		{
 			Initialize();

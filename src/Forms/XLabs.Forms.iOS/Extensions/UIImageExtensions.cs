@@ -1,13 +1,13 @@
 namespace XLabs.Forms.Extensions
 {
-	using System.Drawing;
+	using CoreGraphics;
 	using System.IO;
 	using System.Linq;
 	using System.Threading;
 	using System.Threading.Tasks;
 
-	using MonoTouch.Foundation;
-	using MonoTouch.UIKit;
+	using Foundation;
+	using UIKit;
 
 	using Xamarin.Forms;
 	using Xamarin.Forms.Platform.iOS;
@@ -31,7 +31,7 @@ namespace XLabs.Forms.Extensions
 		public static async Task<ImageSource> AddText(
 			this StreamImageSource source,
 			string text,
-			PointF point,
+			CGPoint point,
 			Font font,
 			Color color)
 		{
@@ -57,14 +57,14 @@ namespace XLabs.Forms.Extensions
 		public static UIImage AddText(
 			this UIImage image,
 			string text,
-			PointF point,
+			CGPoint point,
 			UIFont font,
 			UIColor color,
 			UITextAlignment alignment = UITextAlignment.Left)
 		{
 			//var labelRect = new RectangleF(point, new SizeF(image.Size.Width - point.X, image.Size.Height - point.Y));
 			var h = text.StringHeight(font, image.Size.Width);
-			var labelRect = new RectangleF(point, new SizeF(image.Size.Width - point.X, h));
+			var labelRect = new CGRect(point, new CGSize(image.Size.Width - point.X, h));
 
 			var label = new UILabel(labelRect)
 				            {
@@ -79,7 +79,7 @@ namespace XLabs.Forms.Extensions
 
 			using (var context = image.Size.ToBitmapContext())
 			{
-				var rect = new RectangleF(new PointF(0, 0), image.Size);
+				var rect = new CGRect(new CGPoint(0, 0), image.Size);
 				context.DrawImage(rect, image.CGImage);
 				context.DrawImage(labelRect, labelImage.CGImage);
 				context.StrokePath();

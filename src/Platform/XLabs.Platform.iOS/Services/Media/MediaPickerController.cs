@@ -1,10 +1,10 @@
-﻿namespace XLabs.Platform.Services.Media
+namespace XLabs.Platform.Services.Media
 {
 	using System;
 	using System.Threading.Tasks;
 
-	using MonoTouch.Foundation;
-	using MonoTouch.UIKit;
+	using Foundation;
+	using UIKit;
 
 	/// <summary>
 	/// Class MediaPickerController. This class cannot be inherited.

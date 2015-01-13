@@ -1,4 +1,4 @@
-﻿using MonoTouch.UIKit;
+using UIKit;
 using Xamarin.Forms;
 
 using XLabs.Forms.Controls;

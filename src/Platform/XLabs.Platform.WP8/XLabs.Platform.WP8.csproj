@@ -67,35 +67,37 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>Bin\ARM\Debug</OutputPath>
+    <OutputPath>..\..\..\build\</OutputPath>
     <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
     <NoStdLib>true</NoStdLib>
     <NoConfig>true</NoConfig>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\..\..\build\XLabs.Platform.WP8.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|ARM' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>Bin\ARM\Release</OutputPath>
+    <OutputPath>..\..\..\build\</OutputPath>
     <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
     <NoStdLib>true</NoStdLib>
     <NoConfig>true</NoConfig>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\..\..\build\XLabs.Platform.WP8.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="..\XLabs.Platform\device\Accelerometer.designer.cs">
       <Link>Device\Accelerometer.designer.cs</Link>
-      <DependentUpon>Accelerometer.cs</DependentUpon>
+      <DependentUpon>..\Device\Accelerometer.cs</DependentUpon>
     </Compile>
     <Compile Include="..\XLabs.Platform\device\Battery.designer.cs">
       <Link>Device\Battery.designer.cs</Link>
-      <DependentUpon>Battery.cs</DependentUpon>
+      <DependentUpon>..\Device\Battery.cs</DependentUpon>
     </Compile>
     <Compile Include="..\XLabs.Platform\device\Gyroscope.designer.cs">
       <Link>Device\Gyroscope.designer.cs</Link>
-      <DependentUpon>Gyroscope.cs</DependentUpon>
+      <DependentUpon>..\Device\Gyroscope.cs</DependentUpon>
     </Compile>
     <Compile Include="..\XLabs.Platform\services\io\FileManager.cs">
       <Link>Services\IO\FileManager.cs</Link>

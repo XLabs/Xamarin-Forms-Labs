@@ -1,13 +1,13 @@
-﻿namespace XLabs.Forms.Controls
+namespace XLabs.Forms.Controls
 {
 	using System;
 	using System.Collections.ObjectModel;
 	using System.Collections.Specialized;
-	using System.Drawing;
+	using CoreGraphics;
 	using System.Threading.Tasks;
 
-	using MonoTouch.Foundation;
-	using MonoTouch.UIKit;
+	using Foundation;
+	using UIKit;
 
 	/// <summary>
 	/// Class ImageGalleryView.
@@ -29,7 +29,7 @@
 		/// </summary>
 		/// <param name="images">The images.</param>
 		public ImageGalleryView(ObservableCollection<string> images)
-			: this(default(RectangleF), images)
+			: this(default(CGRect), images)
 		{
 		}
 
@@ -38,7 +38,7 @@
 		/// </summary>
 		/// <param name="frame">The frame.</param>
 		/// <param name="images">The images.</param>
-		public ImageGalleryView(RectangleF frame, ObservableCollection<string> images = null)
+		public ImageGalleryView(CGRect frame, ObservableCollection<string> images = null)
 			: base(frame)
 		{
 			AutoresizingMask = UIViewAutoresizing.All;
@@ -48,7 +48,7 @@
 			
 			BackgroundColor = UIColor.White;
 			
-			Frame = frame == default(RectangleF) ? UIScreen.MainScreen.Bounds : frame;
+			Frame = frame == default(CGRect) ? UIScreen.MainScreen.Bounds : frame;
 
 			Images = images ?? new ObservableCollection<string>();
 
@@ -102,7 +102,7 @@
 		/// Draws the specified rect.
 		/// </summary>
 		/// <param name="rect">The rect.</param>
-		public override void Draw(RectangleF rect)
+		public override void Draw(CGRect rect)
 		{
 			Images.CollectionChanged += HandleCollectionChanged;
 			_scroller.Scrolled += ScrollChanged;
@@ -115,16 +115,16 @@
 						var orientation = UIDevice.CurrentDevice.Orientation;
 						if ((UIDeviceOrientation.LandscapeLeft == orientation || UIDeviceOrientation.LandscapeRight == orientation))
 						{
-							_scroller.ContentSize = new SizeF(Frame.Height * Images.Count - 1, Frame.Width);
+							_scroller.ContentSize = new CGSize(Frame.Height * Images.Count - 1, Frame.Width);
 						}
 						else
 						{
-							_scroller.ContentSize = new SizeF(rect.Width * Images.Count - 1, rect.Height);
+							_scroller.ContentSize = new CGSize(rect.Width * Images.Count - 1, rect.Height);
 						}
 						UpdateScrollPositionBasedOnPageControl();
 					});
-			_pageControl.Frame = new RectangleF(rect.Left, rect.Height - 40, rect.Width, 40);
-			_scroller.Frame = new RectangleF(rect.Left, rect.Top, rect.Width, rect.Height);
+			_pageControl.Frame = new CGRect(rect.Left, rect.Height - 40, rect.Width, 40);
+			_scroller.Frame = new CGRect(rect.Left, rect.Top, rect.Width, rect.Height);
 			
 			var curr = 0;
 			foreach (var im in  Images)
@@ -139,7 +139,7 @@
 					// ignored
 				}
 			}
-			_scroller.ContentSize = new SizeF(_scroller.Frame.Width * curr - 1, _scroller.Frame.Height);
+			_scroller.ContentSize = new CGSize(_scroller.Frame.Width * curr - 1, _scroller.Frame.Height);
 			_pageControl.Pages = curr;
 
 			base.Draw(rect);
@@ -151,7 +151,7 @@
 		/// <param name="rect">The rect.</param>
 		/// <param name="position">The position.</param>
 		/// <param name="im">The im.</param>
-		private void AddImage(RectangleF rect, int position, string im)
+		private void AddImage(CGRect rect, nint position, string im)
 		{
 			var img = new UIImage();
 			var isRemote = Helpers.IsValidUrl(im);
@@ -183,7 +183,7 @@
 				FadeImageViewIn(imgView);
 			}
 			
-			imgView.Frame = new RectangleF(rect.Width * position, rect.Top, rect.Width, rect.Height);
+			imgView.Frame = new CGRect(rect.Width * position, rect.Top, rect.Width, rect.Height);
 			_scroller.AddSubview(imgView);
 		}
 
@@ -193,7 +193,7 @@
 		/// <param name="position">The position.</param>
 		/// <param name="url">The URL.</param>
 		/// <returns>Task.</returns>
-		private Task LoadImageAsync(int position, string url)
+		private Task LoadImageAsync(nint position, string url)
 		{
 			return Task.Run(
 				() =>
@@ -247,8 +247,8 @@
 						BeginInvokeOnMainThread(
 							() =>
 								{
-									AddImage(Frame, _pageControl.Pages, newImage as string);
-									_scroller.ContentSize = new SizeF(Frame.Width * (_pageControl.Pages + 1), _scroller.Frame.Height);
+								AddImage(Frame, _pageControl.Pages, newImage as string);
+									_scroller.ContentSize = new CGSize(Frame.Width * (_pageControl.Pages + 1), _scroller.Frame.Height);
 									_pageControl.Pages = _pageControl.Pages + 1;
 								});
 					}
@@ -279,7 +279,7 @@
 		private void UpdateScrollPositionBasedOnPageControl()
 		{
 			var off = _pageControl.CurrentPage * _scroller.Frame.Width;
-			_scroller.SetContentOffset(new PointF(off, 0), true);
+			_scroller.SetContentOffset(new CGPoint(off, 0), true);
 		}
 
 		/// <summary>

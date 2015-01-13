@@ -1,9 +1,9 @@
-﻿
+
 namespace XLabs.Platform.Device
 {
 	using System;
 
-	using MonoTouch.CoreBluetooth;
+	using CoreBluetooth;
 
 	/// <summary>
 	/// Class BluetoothDevice.
