@@ -59,6 +59,7 @@
     <Compile Include="Controls\CircleImage.cs" />
     <Compile Include="Controls\CollectionChangedHandle.cs" />
     <Compile Include="Controls\ContentPresenter.cs" />
+    <Compile Include="Controls\DataTemplateSelector.cs" />
     <Compile Include="Controls\DragContentView.cs" />
     <Compile Include="Controls\DynamicListView.cs" />
     <Compile Include="Controls\EditableListView.cs" />
@@ -68,6 +69,7 @@
     <Compile Include="Controls\ExtendedEntry.cs" />
     <Compile Include="Controls\ExtendedEntryCell.cs" />
     <Compile Include="Controls\ExtendedLabel.cs" />
+    <Compile Include="Controls\ExtendedListView.cs" />
     <Compile Include="Controls\ExtendedScrollView.cs" />
     <Compile Include="Controls\ExtendedSlider.cs" />
     <Compile Include="Controls\ExtendedSwitch.cs" />

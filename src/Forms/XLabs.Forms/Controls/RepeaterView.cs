@@ -51,6 +51,35 @@
                 x => x.TemplateSelector,
                 default(TemplateSelector));
 
+        public static readonly BindableProperty ItemTemplateSelectorProperty = BindableProperty.Create<RepeaterView<T>, DataTemplateSelector>(x => x.ItemTemplateSelector, default(DataTemplateSelector), propertyChanged: OnDataTemplateSelectorChanged);
+
+        private DataTemplateSelector currentItemSelector;
+        public DataTemplateSelector ItemTemplateSelector
+        {
+            get
+            {
+                return (DataTemplateSelector)GetValue(ItemTemplateSelectorProperty);
+            }
+            set
+            {
+                SetValue(ItemTemplateSelectorProperty, value);
+            }
+        }
+
+        private static void OnDataTemplateSelectorChanged(BindableObject bindable, DataTemplateSelector oldvalue, DataTemplateSelector newvalue)
+        {
+            ((RepeaterView<T>)bindable).OnDataTemplateSelectorChanged(oldvalue, newvalue);
+        }
+
+        protected virtual void OnDataTemplateSelectorChanged(DataTemplateSelector oldValue, DataTemplateSelector newValue)
+        {
+            // check to see we don't have an ItemTemplate set
+            if (ItemTemplate != null && newValue != null)
+                throw new ArgumentException("Cannot set both ItemTemplate and ItemTemplateSelector", "ItemTemplateSelector");
+
+            currentItemSelector = newValue;
+        }
+
         /// <summary>
         /// Event delegate definition fo the <see cref="ItemCreated"/> event
         /// </summary>
@@ -161,11 +190,22 @@
         /// <see cref="Xamarin.Forms.View"/> or <see cref="Xamarin.Forms.ViewCell"/>
         protected virtual View ViewFor(T item)
         {
-            var template = GetTemplateFor(item.GetType());
-            var content = template.CreateContent();
+            // Check the item template selector first
+            View view = null;
+            if (currentItemSelector != null)
+            {
+                view = this.ViewFor(item, currentItemSelector);
+            }
 
-            if (!(content is View) && !(content is ViewCell)) throw new InvalidVisualObjectException(content.GetType());
-            var view = (content is View) ? content as View : ((ViewCell)content).View;
+            if (view == null)
+            {
+                var template = GetTemplateFor(item.GetType());
+                var content = template.CreateContent();
+
+                if (!(content is View) && !(content is ViewCell)) throw new InvalidVisualObjectException(content.GetType());
+                view = (content is View) ? content as View : ((ViewCell)content).View;
+            }
+            
             view.BindingContext = item;
             view.GestureRecognizers.Add(
                 new TapGestureRecognizer { Command = ItemClickCommand, CommandParameter = item });
