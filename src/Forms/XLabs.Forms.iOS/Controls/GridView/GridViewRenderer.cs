@@ -96,12 +96,27 @@ namespace XLabs.Forms.Controls
 		/// <param name="e">The <see cref="System.ComponentModel.PropertyChangedEventArgs"/> instance containing the event data.</param>
 		private void ElementPropertyChanged (object sender, System.ComponentModel.PropertyChangedEventArgs e)
 		{
-			if (e.PropertyName == "ItemsSource")
-			{
-				var itemsSource = Element.ItemsSource as INotifyCollectionChanged;
-				if (itemsSource != null) {
-					itemsSource.CollectionChanged -= DataCollectionChanged;
-				}
+            switch (e.PropertyName)
+            {
+                case "ItemsSource":
+                    {
+                        var itemsSource = Element.ItemsSource as INotifyCollectionChanged;
+                        if (itemsSource != null)
+                        {
+                            itemsSource.CollectionChanged -= DataCollectionChanged;
+                        }
+                    }
+                    break;
+                case "SelectedItem":
+                    {
+                        if (Element.ItemsSource != null)
+                        {
+                            var selectionIndex = Element.ItemsSource.Cast<object>().ToList().IndexOf(Element.SelectedItem);
+
+                            Control.SelectItem(NSIndexPath.FromIndex((nuint)selectionIndex), false, UICollectionViewScrollPosition.None);
+                        }
+                    }
+                    break;
 			}
 		}
 
@@ -195,7 +210,6 @@ namespace XLabs.Forms.Controls
 		{
 			var item = Element.ItemsSource.Cast<object>().ElementAt(indexPath.Row);
 			Element.InvokeItemSelectedEvent(this, item);
-
 		}
 
 		/// <summary>
