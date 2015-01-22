@@ -13,6 +13,7 @@ namespace XLabs.Forms.Controls
 	using Xamarin.Forms.Platform.Android;
 
 	using XLabs.Forms.Extensions;
+    using Android.Text;
 
 	/// <summary>
 	/// Class ExtendedEntryRenderer.
@@ -42,6 +43,7 @@ namespace XLabs.Forms.Controls
 			SetTextAlignment(view);
 			//SetBorder(view);
 			SetPlaceholderTextColor(view);
+            SetMaxLength(view);
 
 			if (e.NewElement == null)
 			{
@@ -180,6 +182,15 @@ namespace XLabs.Forms.Controls
 			if(view.PlaceholderTextColor != Color.Default) 
 				Control.SetHintTextColor(view.PlaceholderTextColor.ToAndroid());			
 		}
+
+        /// <summary>
+        /// Sets the MaxLength characteres.
+        /// </summary>
+        /// <param name="view">The view.</param>
+        private void SetMaxLength(ExtendedEntry view)
+        {
+            Control.SetFilters(new IInputFilter[] { new global::Android.Text.InputFilterLengthFilter(view.MaxLength) });
+        }
 	}
 }
 

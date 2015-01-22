@@ -45,6 +45,7 @@ namespace XLabs.Forms.Controls
 				SetTextAlignment (view);
 				SetBorder (view);
 				SetPlaceholderTextColor (view);
+                SetMaxLength (view);
 
 				ResizeHeight ();
 			}
@@ -136,6 +137,19 @@ namespace XLabs.Forms.Controls
 		{
 			Control.BorderStyle = view.HasBorder ? UITextBorderStyle.RoundedRect : UITextBorderStyle.None;
 		}
+
+        /// <summary>
+        /// Sets the maxLength.
+        /// </summary>
+        /// <param name="view">The view.</param>
+        private void SetMaxLength(ExtendedEntry view)
+        {
+            Control.ShouldChangeCharacters = (textField, range, replacementString) =>
+            {
+                var newLength = textField.Text.Length + replacementString.Length - range.Length;
+                return newLength <= view.MaxLength;
+            };
+        }
 
 		/// <summary>
 		/// Resizes the height.

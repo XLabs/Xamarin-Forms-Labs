@@ -38,7 +38,22 @@ namespace XLabs.Forms.Controls
 		/// </summary>
 		public static readonly BindableProperty PlaceholderTextColorProperty =
 			BindableProperty.Create("PlaceholderTextColor", typeof(Color), typeof(ExtendedEntry), Color.Default);
-	
+
+        /// <summary>
+        /// The MaxLength property
+        /// </summary>
+        public static readonly BindableProperty MaxLengthProperty =
+            BindableProperty.Create("MaxLength", typeof(int), typeof(ExtendedEntry), int.MaxValue);
+
+        /// <summary>
+        /// Gets or sets the MaxLength
+        /// </summary>
+        public int MaxLength
+        {
+            get { return (int)this.GetValue(MaxLengthProperty);}
+            set { this.SetValue(MaxLengthProperty, value); }
+        }
+
 		/// <summary>
 		/// Gets or sets the Font
 		/// </summary>
