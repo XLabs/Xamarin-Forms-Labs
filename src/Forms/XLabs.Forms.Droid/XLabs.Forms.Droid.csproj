@@ -115,7 +115,6 @@
     <Compile Include="Extensions\ViewExtensions.cs" />
     <Compile Include="Pages\ExtendedMasterDetailPageRenderer.cs" />
     <Compile Include="Services\FontManager.cs" />
-    <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="XFormsApp.cs" />
   </ItemGroup>

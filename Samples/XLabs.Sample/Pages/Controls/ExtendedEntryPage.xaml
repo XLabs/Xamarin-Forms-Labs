@@ -22,6 +22,7 @@
 				<controls:ExtendedEntry Placeholder="Center Align" XAlign="Center" />
 				<controls:ExtendedEntry Placeholder="Right Align" XAlign="End" />
 				<controls:ExtendedEntry Placeholder="No border" HasBorder="false" />
+        <controls:ExtendedEntry Placeholder="MaxLength char 5" HasBorder="false" MaxLength="5"/>
 			</StackLayout>
 		</ScrollView>
 	</ContentPage.Content>
