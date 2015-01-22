@@ -184,7 +184,7 @@ namespace XLabs.Forms.Controls
         /// Sets the MaxLength Characteres.
         /// </summary>
         /// <param name="view">The view.</param>
-        private void SetPlaceholderTextColor(ExtendedEntry view)
+        private void SetMaxLength(ExtendedEntry view)
         {
             _thisPhoneTextBox.MaxLength = view.MaxLength;
         }
