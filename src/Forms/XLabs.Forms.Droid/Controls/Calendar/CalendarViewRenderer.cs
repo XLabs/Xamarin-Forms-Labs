@@ -1,6 +1,7 @@
 using Xamarin.Forms;
 
 using XLabs.Forms.Controls;
+using System.Collections.Generic;
 
 [assembly: ExportRenderer(typeof (CalendarView), typeof (CalendarViewRenderer))]
 
@@ -92,6 +93,9 @@ namespace XLabs.Forms.Controls
 				SetNavigationArrows();
 				SetColors();
 				SetFonts();
+
+				_picker.SelectDates (e.NewElement.SelectedDates);
+
 				SetNativeControl((RelativeLayout) _containerView);
 			}
 		}
@@ -317,6 +321,12 @@ namespace XLabs.Forms.Controls
 				_picker.StyleDescriptor.SelectedDateBackgroundColor = Element.ActualSelectedDateBackgroundColor.ToAndroid();
 			if (Element.ActualSelectedDateForegroundColor != Xamarin.Forms.Color.Default)
 				_picker.StyleDescriptor.SelectedDateForegroundColor = Element.ActualSelectedDateForegroundColor.ToAndroid();
+
+			/*//Selected dates
+			if (Element.SelectedDatesBackgroundColor != Xamarin.Forms.Color.Default)
+				_picker.StyleDescriptor.SelectedDateBackgroundColor = Element.SelectedDatesBackgroundColor.ToAndroid();
+			if (Element.SelectedDatesForegroundColor != Xamarin.Forms.Color.Default)
+				_picker.StyleDescriptor.SelectedDateForegroundColor = Element.SelectedDatesForegroundColor.ToAndroid();*/
 
 			//Divider
 			if (Element.DateSeparatorColor != Xamarin.Forms.Color.Default)
