@@ -36,6 +36,7 @@ namespace XLabs.Forms.Controls
 	using System.Collections.Generic;
 	using CoreGraphics;
 	using System.Globalization;
+	using System.Linq;
 
 	using UIKit;
 
@@ -54,6 +55,13 @@ namespace XLabs.Forms.Controls
 		/// </summary>
 		/// <value>The current date.</value>
 		public DateTime CurrentDate {get;set;}
+
+		/// <summary>
+		/// Gets or sets the selected dates items.
+		/// </summary>
+		/// <value>The selected dates items.</value>
+		public ICollection<DateTime> SelectedDatesItems{ get; set;}
+		 
 		/// <summary>
 		/// The _current month
 		/// </summary>
@@ -177,22 +185,21 @@ namespace XLabs.Forms.Controls
 			for (int i = 1; i <= daysInMonth; i++)
 			{
 				var viewDay = new DateTime (_currentMonth.Year, _currentMonth.Month, i);
-				var dayView = new CalendarDayView(_calendarMonthView)
-					              {
-						              Frame =
-							              new CGRect(
-							              (position - 1) * boxWidth,
-							              line * boxHeight,
-							              boxWidth,
-							              boxHeight),
-						              Today = (CurrentDate.Date == viewDay.Date),
-						              Text = i.ToString(),
-						              Active = true,
-						              Tag = i,
-						              Selected =
-							              (viewDay.Date == _calendarMonthView.CurrentSelectedDate.Date),
-						              Date = viewDay
-					              };
+				var dayView = new CalendarDayView (_calendarMonthView) {
+					Frame =
+						              new CGRect (
+						(position - 1) * boxWidth,
+						line * boxHeight,
+						boxWidth,
+						boxHeight),
+					Today = (CurrentDate.Date == viewDay.Date),
+					Text = i.ToString (),
+					Active = true,
+					Tag = i,
+					Selected = (viewDay.Date == _calendarMonthView.CurrentSelectedDate.Date 
+					|| SelectedDatesItems.Where(x => x.Equals(viewDay.Date)).Any()),
+					Date = viewDay
+				};
 
 				UpdateDayView (dayView);
 
@@ -203,8 +210,7 @@ namespace XLabs.Forms.Controls
 				DayTiles.Add (dayView);
 
 				position++;
-				if (position > 7)
-				{
+				if (position > 7) {
 					position = 1;
 					line++;
 				}
@@ -231,27 +237,6 @@ namespace XLabs.Forms.Controls
 				}
 			}
 
-//Why to add unnecesarry unclickable dates of next month?
-//			while (line < 5)
-//			{
-//				line++;
-//				for (int i = 1; i < 8; i++)
-//				{
-//					var viewDay = new DateTime (_currentMonth.Year, _currentMonth.Month, i);
-//					var dayView = new CalendarDayView (_calendarMonthView)
-//					{
-//						Frame = new RectangleF((i - 1) * boxWidth -1, line * boxHeight, boxWidth, boxHeight),
-//						Text = dayCounter.ToString(),
-//					};
-//					dayView.Date = viewDay;
-//					updateDayView (dayView);
-//
-//					AddSubview (dayView);
-//					_dayTiles.Add (dayView);
-//					dayCounter++;
-//				}
-//			}
-
 			Frame = new CGRect(Frame.Location, new CGSize(Frame.Width, (line + 1) * boxHeight));
 
 			Lines = (position == 1 ? line - 1 : line);
@@ -260,29 +245,6 @@ namespace XLabs.Forms.Controls
 				BringSubviewToFront(SelectedDayView);
 			//Console.WriteLine("Building the grid took {0} msecs",(DateTime.Now-dt).TotalMilliseconds);
 		}
-
-		/*public override void TouchesBegan (NSSet touches, UIEvent evt)
-		{
-			base.TouchesBegan (touches, evt);
-			if (SelectDayView((UITouch)touches.AnyObject)&& _calendarMonthView.OnDateSelected!=null)
-				_calendarMonthView.OnDateSelected(new DateTime(_currentMonth.Year, _currentMonth.Month, SelectedDayView.Tag));
-		}
-		
-		public override void TouchesMoved (NSSet touches, UIEvent evt)
-		{
-			base.TouchesMoved (touches, evt);
-			if (SelectDayView((UITouch)touches.AnyObject)&& _calendarMonthView.OnDateSelected!=null)
-				_calendarMonthView.OnDateSelected(new DateTime(_currentMonth.Year, _currentMonth.Month, SelectedDayView.Tag));
-		}
-		
-		public override void TouchesEnded (NSSet touches, UIEvent evt)
-		{
-			base.TouchesEnded (touches, evt);
-			if (_calendarMonthView.OnFinishedDateSelection==null) return;
-			var date = new DateTime(_currentMonth.Year, _currentMonth.Month, SelectedDayView.Tag);
-			if (_calendarMonthView.IsDateAvailable == null || _calendarMonthView.IsDateAvailable(date))
-				_calendarMonthView.OnFinishedDateSelection(date);
-		}*/
 
 		/// <summary>
 		/// Selects the day view.
@@ -306,8 +268,11 @@ namespace XLabs.Forms.Controls
 				return false;
 			}
 
-			if (SelectedDayView!=null)
-				SelectedDayView.Selected = false;
+			if (SelectedDayView != null) 
+			{
+				if (!SelectedDatesItems.Any (x => x.Date.Equals (SelectedDayView.Date)))
+					SelectedDayView.Selected = false;
+			}
 
 			BringSubviewToFront(newSelectedDayView);
 			newSelectedDayView.Selected = true;
@@ -323,6 +288,10 @@ namespace XLabs.Forms.Controls
 		/// </summary>
 		public void DeselectDayView(){
 			if (SelectedDayView==null) return;
+
+			if (SelectedDatesItems.Any (x => x.Date.Equals (SelectedDayView.Date)))
+				return;
+
 			SelectedDayView.Selected= false;
 			SelectedDayView = null;
 			SetNeedsDisplay();
