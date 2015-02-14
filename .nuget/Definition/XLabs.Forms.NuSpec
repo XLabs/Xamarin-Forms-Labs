@@ -21,7 +21,7 @@
     <language>en-US</language>
     <dependencies>
       <group>
-        <dependency id="Xamarin.Forms" version="1.3.2.6316" />
+        <dependency id="Xamarin.Forms" version="1.3.3.6323" />
         <dependency id="ExifLib.PCL" version="1.0.0" />
         <dependency id="XLabs.IoC" version="2.0.5520" />
         <dependency id="XLabs.Platform" version="2.0.5520" />
