@@ -755,10 +755,31 @@ namespace XLabs.Forms.Controls
 			}
 		}
 
+		/// <summary>
+		/// Selected Dates property.
+		/// </summary>
+		public static readonly BindableProperty SelectedDatesProperty =
+			BindableProperty.Create(
+				"SelectedDates",
+				typeof(IList<DateTime>),
+				typeof(CalendarView),
+				null,
+				BindingMode.TwoWay,
+				null, null, null, null);
 
-
-	
-
+		/// <summary>
+		/// Gets or sets the selected dates.
+		/// </summary>
+		/// <value>The selected dates.</value>
+		public IList<DateTime> SelectedDates{
+			get{
+				return (IList<DateTime>)base.GetValue (CalendarView.SelectedDatesProperty);
+			}
+			set{
+				base.SetValue (CalendarView.SelectedDatesProperty, value);
+			}
+		}
+			
 		#region ColorHelperProperties
 
 		/// <summary>
@@ -995,63 +1016,5 @@ namespace XLabs.Forms.Controls
 		/// Occurs when [date selected].
 		/// </summary>
 		public event EventHandler<DateTime> DateSelected;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		public static readonly BindableProperty SelectedDatesProperty =
-			BindableProperty.Create(
-				"SelectedDates",
-				typeof(IList<DateTime>),
-				typeof(CalendarView),
-				null,
-				BindingMode.TwoWay,
-				null, null, null, null);
-
-
-		public IList<DateTime> SelectedDates{
-			get{
-				return (IList<DateTime>)base.GetValue (CalendarView.SelectedDatesProperty);
-			}
-			set{
-				base.SetValue (CalendarView.SelectedDatesProperty, value);
-			}
-		}
-
-		/*public static readonly BindableProperty SelectedDatesForegroundColorProperty = BindableProperty.Create("SelectedDatesForegroundColor", typeof(Color), typeof(CalendarView), Color.Default, BindingMode.OneWay, null, null, null, null);
-
-
-		public Color SelectedDatesForegroundColor {
-			get {
-				return (Color)base.GetValue(CalendarView.SelectedDatesForegroundColorProperty);
-			}
-			set {
-				base.SetValue(CalendarView.SelectedDatesForegroundColorProperty, value);
-			}
-		}
-
-
-		public static readonly BindableProperty SelectedDatesBackgroundColorProperty = BindableProperty.Create("SelectedDatesBackgroundColor", typeof(Color), typeof(CalendarView), Color.Default, BindingMode.OneWay, null, null, null, null);
-
-
-		public Color SelectedDatesBackgroundColor {
-			get {
-				return (Color)base.GetValue(CalendarView.SelectedDatesBackgroundColorProperty);
-			}
-			set {
-				base.SetValue(CalendarView.SelectedDatesBackgroundColorProperty, value);
-			}
-		}*/
-
 	}
 }
