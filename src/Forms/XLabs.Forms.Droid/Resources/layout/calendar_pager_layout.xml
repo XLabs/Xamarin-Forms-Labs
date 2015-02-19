@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:baselineAligned="true">
-    <xamarin.forms.labs.droid.controls.calendar.CalendarArrowView
+    <XLabs.Forms.Controls.MonoDroid.TimesSquare.CalendarArrowView
         android:layout_width="18dp"
         android:layout_height="22dp"
         android:gravity="left"
@@ -26,7 +26,7 @@
         style="@style/CalendarTitle"
         android:text="SomeText"
         android:layout_centerInParent="true" />
-    <xamarin.forms.labs.droid.controls.calendar.CalendarArrowView
+    <XLabs.Forms.Controls.MonoDroid.TimesSquare.CalendarArrowView
         android:layout_width="18dp"
         android:layout_height="22dp"
         android:gravity="right"

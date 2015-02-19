@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿#if BUSINESS_LICENSE
+using System.IO;
 using System.Runtime.Serialization.Json;
 
 namespace XLabs.Serialization
@@ -80,3 +81,4 @@ namespace XLabs.Serialization
         }
     }
 }
+#endif

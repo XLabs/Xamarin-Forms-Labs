@@ -228,7 +228,7 @@ namespace XLabs.Forms.Controls
 		private void SatisfyInterest(GestureInterest gi,GestureResult args)
 		{
 			var commandparam = gi.GestureParameter??args.StartView.BindingContext??BindingContext;
-			if(gi.GestureCommand.CanExecuteGesture(args,gi.GestureParameter))
+			if (gi.GestureCommand != null && gi.GestureCommand.CanExecuteGesture(args, gi.GestureParameter))
 				gi.GestureCommand.ExecuteGesture(args,commandparam);
 			var handler = GestureRecognized;
 			if (handler != null)
@@ -330,6 +330,22 @@ namespace XLabs.Forms.Controls
 		/// It is very possible for a single swipe action to trigger two Swipe events:
 		/// ie:  SwipeUp and SwipeLeft
 		/// </summary>
-		Swipe
+		Swipe,
+		/// <summary>
+		/// 2 finger pinch.  Origin2 will contain the location of the second finger.
+		/// </summary>
+		Pinch,
+		/// <summary>
+		/// 1 finger move
+		/// </summary>
+		Move,
+		/// <summary>
+		/// All up events send this geture.  It can be ignored except for when you want to detect the end of a Pinch or Move.
+		/// </summary>
+		Up,
+		/// <summary>
+		/// All down events send this geture.  It can be ignored except for when you want to detect when the user start touching the screen.
+		/// </summary>
+		Down,
 	}
 }

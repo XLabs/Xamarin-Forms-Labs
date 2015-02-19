@@ -6,8 +6,7 @@ using XLabs.Forms.Controls;
 namespace XLabs.Forms.Controls
 {
 	using System;
-	using System.ComponentModel;
-
+	using Android.Views;
 	using Xamarin.Forms;
 	using Xamarin.Forms.Platform.Android;
 

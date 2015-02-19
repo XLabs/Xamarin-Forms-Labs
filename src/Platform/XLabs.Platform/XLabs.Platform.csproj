@@ -42,6 +42,7 @@
     <Folder Include="Services\Contacts\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Device\DeviceExtensions.cs" />
     <Compile Include="Device\DisplayExtensions.cs" />
     <Compile Include="Device\IAccelerometer.cs" />
     <Compile Include="Device\IBattery.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="Services\INfcDevice.cs" />
     <Compile Include="Services\IO\IFileManager.cs" />
     <Compile Include="Services\IPhoneService.cs" />
+    <Compile Include="Services\ISecureStorage.cs" />
     <Compile Include="Services\ITextToSpeechService.cs" />
     <Compile Include="Services\Media\IAudioStream.cs" />
     <Compile Include="Services\Media\IMediaPicker.cs" />

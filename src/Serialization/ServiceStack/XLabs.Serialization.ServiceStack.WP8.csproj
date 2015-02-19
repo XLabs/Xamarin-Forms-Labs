@@ -43,7 +43,7 @@
     <NoConfig>true</NoConfig>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\..\..\build\XLabs.Services.Serialization.ServiceStack.WP8.xml</DocumentationFile>
+    <DocumentationFile>..\..\..\build\XLabs.Serialization.ServiceStack.WP8.xml</DocumentationFile>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">

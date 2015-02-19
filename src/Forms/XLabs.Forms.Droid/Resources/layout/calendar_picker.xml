@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <xamarin.forms.labs.droid.controls.calendar.CalendarPickerView
+    <XLabs.Forms.Controls.MonoDroid.TimesSquare.CalendarPickerView
         android:id="@+id/calendar_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -18,7 +18,7 @@
         android:layout_marginTop="0dp"
         android:layout_marginRight="0dp"
         android:layout_marginBottom="0dp" />
-    <xamarin.forms.labs.droid.controls.calendar.CalendarArrowView
+    <XLabs.Forms.Controls.MonoDroid.TimesSquare.CalendarArrowView
         android:id="@+id/right_arrow"
         android:layout_width="18dp"
         android:layout_height="22dp"
@@ -31,7 +31,7 @@
         android:layout_marginTop="18dp"
         android:layout_marginRight="6dp"
         android:layout_marginBottom="0dp" />
-    <xamarin.forms.labs.droid.controls.calendar.CalendarArrowView
+    <XLabs.Forms.Controls.MonoDroid.TimesSquare.CalendarArrowView
         android:id="@+id/left_arrow"
         android:layout_width="18dp"
         android:layout_height="22dp"

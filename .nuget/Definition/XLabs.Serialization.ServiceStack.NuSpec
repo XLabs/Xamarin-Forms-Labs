@@ -4,7 +4,7 @@
     <id>XLabs.Serialization.ServiceStackV3</id>
     <title>XLabs - Serialization - ServiceStackV3</title>
     <tags>Xamarin XLabs Serialization ServiceStackV3</tags>
-    <version>2.0.0-pre91</version>
+    <version>2.0.5520</version>
     <authors>XLabs Team</authors>
     <licenseUrl>https://github.com/XForms/Xamarin-Forms-Labs/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/XForms/Xamarin-Forms-Labs</projectUrl>
@@ -22,7 +22,7 @@
 
     </releaseNotes>
     <dependencies>
-      <dependency id="XLabs.Serialization" version="2.0.0-pre91" />
+      <dependency id="XLabs.Serialization" version="2.0.5520" />
     </dependencies>
   </metadata>
   <files>

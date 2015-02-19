@@ -26,6 +26,11 @@ namespace XLabs.Forms.Behaviors
 		/// </summary>
 		public Point Origin { get; internal set; }
 		/// <summary>
+		/// The point, relative to the start view where the second finger of the
+		/// gesture is located (valid for GestureType.Pinch)
+		/// </summary>
+		public Point Origin2 { get; internal set; }
+		/// <summary>
 		/// The view that the gesture started in
 		/// </summary>
 		public View StartView { get; internal set; }

@@ -63,7 +63,10 @@ namespace XLabs.Ioc.Ninject
             where T : class
             where TImpl : class, T
         {
-            this.kernel.Bind<T, TImpl>();
+			if (typeof(T) == typeof(TImpl))
+				this.kernel.Bind<T>().ToSelf();
+			else
+				this.kernel.Bind<T, TImpl>();
             return this;
         }
 

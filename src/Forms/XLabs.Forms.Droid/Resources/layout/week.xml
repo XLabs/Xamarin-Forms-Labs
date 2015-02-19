@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xamarin.forms.labs.droid.controls.calendar.CalendarRowView xmlns:android="http://schemas.android.com/apk/res/android"
+<XLabs.Forms.Controls.MonoDroid.TimesSquare.CalendarRowView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
-  <xamarin.forms.labs.droid.controls.calendar.CalendarCellView
-      android:layout_width="wrap_content"
+    <XLabs.Forms.Controls.MonoDroid.TimesSquare.CalendarCellView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/CalendarCell.CalendarDate" />
-  <xamarin.forms.labs.droid.controls.calendar.CalendarCellView
-      android:layout_width="wrap_content"
+    <XLabs.Forms.Controls.MonoDroid.TimesSquare.CalendarCellView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/CalendarCell.CalendarDate" />
-  <xamarin.forms.labs.droid.controls.calendar.CalendarCellView
-      android:layout_width="wrap_content"
+    <XLabs.Forms.Controls.MonoDroid.TimesSquare.CalendarCellView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/CalendarCell.CalendarDate" />
-  <xamarin.forms.labs.droid.controls.calendar.CalendarCellView
-      android:layout_width="wrap_content"
+    <XLabs.Forms.Controls.MonoDroid.TimesSquare.CalendarCellView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/CalendarCell.CalendarDate" />
-  <xamarin.forms.labs.droid.controls.calendar.CalendarCellView
-      android:layout_width="wrap_content"
+    <XLabs.Forms.Controls.MonoDroid.TimesSquare.CalendarCellView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/CalendarCell.CalendarDate" />
-  <xamarin.forms.labs.droid.controls.calendar.CalendarCellView
-      android:layout_width="wrap_content"
+    <XLabs.Forms.Controls.MonoDroid.TimesSquare.CalendarCellView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/CalendarCell.CalendarDate" />
-  <xamarin.forms.labs.droid.controls.calendar.CalendarCellView
-      android:layout_width="wrap_content"
+    <XLabs.Forms.Controls.MonoDroid.TimesSquare.CalendarCellView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/CalendarCell.CalendarDate" />
-</xamarin.forms.labs.droid.controls.calendar.CalendarRowView>
+</XLabs.Forms.Controls.MonoDroid.TimesSquare.CalendarRowView>

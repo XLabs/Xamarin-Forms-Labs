@@ -86,6 +86,7 @@
     <Compile Include="Services\Geolocation\GeolocationContinuousListener.cs" />
     <Compile Include="Services\Geolocation\GeolocationSingleListener.cs" />
     <Compile Include="Services\Geolocation\Geolocator.cs" />
+    <Compile Include="Services\KeyVaultStorage.cs" />
     <Compile Include="Services\Media\MediaPicker.cs" />
     <Compile Include="Services\Media\MediaPickerActivity.cs" />
     <Compile Include="Services\Media\Microphone.cs" />
@@ -93,6 +94,7 @@
     <Compile Include="Services\NfcDevice.cs" />
     <Compile Include="Services\PhoneService.cs" />
     <Compile Include="Services\Reachability.cs" />
+    <Compile Include="Services\SharedPreferencesStorage.cs" />
     <Compile Include="Services\SoundService.cs" />
     <Compile Include="Services\TextToSpeechService.cs" />
   </ItemGroup>

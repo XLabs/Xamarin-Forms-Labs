@@ -56,7 +56,7 @@ namespace XLabs.Forms.Mvvm
 		protected override void OnAppearing()
 		{
 			base.OnAppearing();
-			if (BindingContext != null & BindingContext is ViewModel)
+			if (BindingContext != null && BindingContext is ViewModel)
 			{
 				var vm = (ViewModel)BindingContext;
 				vm.OnViewAppearing();
@@ -68,10 +68,10 @@ namespace XLabs.Forms.Mvvm
 		protected override void OnDisappearing()
 		{
 			base.OnDisappearing();
-			if (BindingContext != null & BindingContext is ViewModel)
+			if (BindingContext != null && BindingContext is ViewModel)
 			{
 				var vm = (ViewModel)BindingContext;
-				vm.OnViewAppearing();
+				vm.OnViewDisappearing();
 			}
         	}
 	}

@@ -71,6 +71,23 @@ namespace XLabs.Forms.Controls
 		private void HandleTouch(object sender, TouchEventArgs e)
 		{
 			_detector.OnTouchEvent(e.Event);
+
+			// Notify app for all UP events.  This can be used to know that a Pinch or Move has ended. Otherwise it can be ignored.
+			if (e.Event.Action == MotionEventActions.Up
+				|| e.Event.Action == MotionEventActions.Cancel
+				|| e.Event.Action == MotionEventActions.PointerUp
+				|| e.Event.Action == MotionEventActions.Pointer1Up
+				|| e.Event.Action == MotionEventActions.Pointer2Up
+				|| e.Event.Action == MotionEventActions.Pointer3Up)
+			{
+				// we don't return here since up events are needed for general gesture processing
+				Element.ProcessGesture(new GestureResult
+				{
+					ViewStack = Element.ExcludeChildren ? ViewsContaing(new Point(e.Event.GetX(), e.Event.GetY())) : null,
+					GestureType = GestureType.Up,
+					Direction = Directionality.None,
+				});
+			}
 		}
 
 		/// <summary>
@@ -113,6 +130,15 @@ namespace XLabs.Forms.Controls
 		/// <returns>Return false to indicate the the event has not been handled</returns>
 		public bool OnDown(MotionEvent e)
 		{
+			Element.ProcessGesture(
+				new GestureResult
+				{
+					ViewStack = Element.ExcludeChildren ? ViewsContaing(new Point(e.GetX(), e.GetY())) : null,
+					GestureType = GestureType.Down,
+					Direction = Directionality.None,
+					Origin = new Point(ConvertPixelsToDp(e.GetX(0)), ConvertPixelsToDp(e.GetY(0))),
+				});
+
 			return true;
 		}
 
@@ -179,7 +205,39 @@ namespace XLabs.Forms.Controls
 		/// <param name="distanceX"></param>
 		/// <param name="distanceY"></param>
 		/// <returns></returns>
-		public bool OnScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY){return true;}
+		public bool OnScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY)
+		{
+			// we need to check if e2 has 2 finger touch and if yes, do callback.  Then in the app we can disable scrolling and process these events....
+			if (e2.Action == MotionEventActions.Move)
+			{
+				if (e2.PointerCount == 2)
+				{
+					return !Element.ProcessGesture(
+						new GestureResult
+						{
+							ViewStack = Element.ExcludeChildren ? ViewsContaing(new Point(e2.GetX(), e2.GetY())) : null,
+							GestureType = GestureType.Pinch,
+							Direction = Directionality.None,
+							Origin = new Point(ConvertPixelsToDp(e2.GetX(0)), ConvertPixelsToDp(e2.GetY(0))),
+							Origin2 = new Point(ConvertPixelsToDp(e2.GetX(1)), ConvertPixelsToDp(e2.GetY(1))),
+						});
+				}
+				else if (e2.PointerCount == 1)
+				{
+					return !Element.ProcessGesture(
+						new GestureResult
+						{
+							ViewStack = Element.ExcludeChildren ? ViewsContaing(new Point(e2.GetX(), e2.GetY())) : null,
+							GestureType = GestureType.Move,
+							Direction = Directionality.None,
+							Origin = new Point(ConvertPixelsToDp(e2.GetX(0)), ConvertPixelsToDp(e2.GetY(0))),
+						});
+				}
+			}
+
+			return true;
+		}
+
 		 /// <summary>
 		 /// Ignored
 		 /// </summary>

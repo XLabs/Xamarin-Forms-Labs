@@ -4,12 +4,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Xamarin.Forms.Labs.ServiceStackSerializer")]
+[assembly: AssemblyTitle("XLabs.Serialization.ServiceStack")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Xamarin.Forms.Labs")]
-[assembly: AssemblyProduct("Xamarin.Forms.Labs.ServiceStackSerializer")]
-[assembly: AssemblyCopyright("Copyright © ServiceStack 2013 & Xamarin.Forms.Labs")]
+[assembly: AssemblyCompany("XLabs")]
+[assembly: AssemblyProduct("XLabs.Serialization.ServiceStack")]
+[assembly: AssemblyCopyright("Copyright © ServiceStack 2013 & XLabs")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -31,6 +31,4 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("2.0.0.0")]
-//[assembly: AssemblyVersion("3.9.60.0")]
-//[assembly: AssemblyFileVersion("2.0.0.0")]
+[assembly: AssemblyVersion("2.0.*")]

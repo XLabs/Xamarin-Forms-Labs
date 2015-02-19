@@ -181,12 +181,12 @@ namespace XLabs.Forms.Controls
 		}
 
         /// <summary>
-        /// Sets the MaxLength Characteres.
+        /// Sets the MaxLength Characters.
         /// </summary>
         /// <param name="view">The view.</param>
         private void SetMaxLength(ExtendedEntry view)
         {
-            _thisPhoneTextBox.MaxLength = view.MaxLength;
+            if (_thisPhoneTextBox != null) _thisPhoneTextBox.MaxLength = view.MaxLength;
         }
 	}
 }

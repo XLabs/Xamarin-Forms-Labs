@@ -22,6 +22,96 @@ namespace XLabs.Forms.Controls
     public class BindablePickerRenderer : ViewRenderer<BindablePicker, UITextField>
     {
         /// <summary>
+        /// Class PickerSource.
+        /// </summary>
+        private class PickerSource : UIPickerViewModel
+        {
+            /// <summary>
+            /// The _model
+            /// </summary>
+            private readonly BindablePicker _model;
+            /// <summary>
+            /// Occurs when [value changed].
+            /// </summary>
+            public event EventHandler ValueChanged;
+            /// <summary>
+            /// Gets or sets the selected item.
+            /// </summary>
+            /// <value>The selected item.</value>
+            public string SelectedItem
+            {
+                get; private set;
+            }
+
+            /// <summary>
+            /// Gets or sets the index of the selected.
+            /// </summary>
+            /// <value>The index of the selected.</value>
+            public int SelectedIndex
+            {
+                get; private set;
+            }
+
+            /// <summary>
+            /// Initializes a new instance of the <see cref="PickerSource"/> class.
+            /// </summary>
+            /// <param name="model">The model.</param>
+            public PickerSource(BindablePicker model)
+            {
+                _model = model;
+            }
+            /// <summary>
+            /// Gets the rows in component.
+            /// </summary>
+            /// <param name="picker">The picker.</param>
+            /// <param name="component">The component.</param>
+            /// <returns>System.Int32.</returns>
+            public override nint GetRowsInComponent(UIPickerView picker, nint component)
+            {
+                return _model.Items == null ? 0 : _model.Items.Count;
+            }
+
+            /// <summary>
+            /// Gets the component count.
+            /// </summary>
+            /// <param name="picker">The picker.</param>
+            /// <returns>System.Int32.</returns>
+            public override nint GetComponentCount(UIPickerView picker)
+            {
+                return 1;
+            }
+
+            /// <summary>
+            /// Gets the title.
+            /// </summary>
+            /// <param name="picker">The picker.</param>
+            /// <param name="row">The row.</param>
+            /// <param name="component">The component.</param>
+            /// <returns>System.String.</returns>
+            public override string GetTitle(UIPickerView picker, nint row, nint component)
+            {
+                return _model.Items[(int)row];
+            }
+
+            /// <summary>
+            /// Selecteds the specified picker.
+            /// </summary>
+            /// <param name="picker">The picker.</param>
+            /// <param name="row">The row.</param>
+            /// <param name="component">The component.</param>
+            public override void Selected(UIPickerView picker, nint row, nint component)
+            {
+                SelectedItem = _model.Items[(int)row];
+                SelectedIndex = (int)row;
+                var valueChanged = ValueChanged;
+                if (valueChanged != null)
+                {
+                    valueChanged.Invoke(this, EventArgs.Empty);
+                }
+            }
+        }
+
+        /// <summary>
         /// The _picker
         /// </summary>
         private UIPickerView _picker;
@@ -37,21 +127,7 @@ namespace XLabs.Forms.Controls
         /// <param name="e">The e.</param>
         protected override void OnElementChanged(ElementChangedEventArgs<BindablePicker> e)
         {
-            if (e.OldElement != null && e.OldElement.Items != null)
-            {
-                e.OldElement.Items.CollectionChanged -= RowsCollectionChanged;
-            }
-
-            if (e.NewElement != null && e.NewElement.Items != null)
-            {
-                e.NewElement.Items.CollectionChanged += RowsCollectionChanged;
-            }
-
-            if (this.Control != null || e.NewElement == null)
-            {
-                return;
-            }
-            
+            e.NewElement.Items.CollectionChanged += RowsCollectionChanged;
             var entry = new NoCaretField 
             {
                 BorderStyle = e.NewElement.HasBorder ? UITextBorderStyle.RoundedRect : UITextBorderStyle.None
@@ -103,7 +179,11 @@ namespace XLabs.Forms.Controls
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             base.OnElementPropertyChanged(sender, e);
-            if (e.PropertyName == Picker.TitleProperty.PropertyName || e.PropertyName == Picker.SelectedIndexProperty.PropertyName)
+            if (e.PropertyName == Picker.TitleProperty.PropertyName)
+            {
+                UpdatePicker();
+            }
+            else if (e.PropertyName == Picker.SelectedIndexProperty.PropertyName)
             {
                 UpdatePicker();
             }
@@ -175,17 +255,12 @@ namespace XLabs.Forms.Controls
         /// </summary>
         private void UpdatePicker()
         {
-            _picker.ReloadAllComponents();
             Control.Placeholder = Element.Title;
-            
-            if (Element.Items != null && Element.Items.Count > this.Element.SelectedIndex)
+            Control.Text = (Element.SelectedIndex <= -1 || Element.Items == null) ? string.Empty : Element.Items[Element.SelectedIndex];
+            _picker.ReloadAllComponents();
+            if (Element.SelectedIndex > -1 && Element.Items != null && Enumerable.Any(Element.Items))
             {
-                this.Control.Text = Element.Items[Element.SelectedIndex];
                 _picker.Select(Element.SelectedIndex, 0, true);
-            }
-            else
-            {
-                Control.Text = string.Empty;
             }
         }
 
@@ -198,98 +273,6 @@ namespace XLabs.Forms.Controls
             if (view != null)
             {
                 Control.BorderStyle = view.HasBorder ? UITextBorderStyle.RoundedRect : UITextBorderStyle.None;
-            }
-        }
-
-        /// <summary>
-        /// Class PickerSource.
-        /// </summary>
-        private class PickerSource : UIPickerViewModel
-        {
-            /// <summary>
-            /// The _model
-            /// </summary>
-            private readonly BindablePicker _model;
-            /// <summary>
-            /// Occurs when [value changed].
-            /// </summary>
-            public event EventHandler ValueChanged;
-            /// <summary>
-            /// Gets or sets the selected item.
-            /// </summary>
-            /// <value>The selected item.</value>
-            public string SelectedItem
-            {
-                get;
-                private set;
-            }
-
-            /// <summary>
-            /// Gets or sets the index of the selected.
-            /// </summary>
-            /// <value>The index of the selected.</value>
-            public int SelectedIndex
-            {
-                get;
-                private set;
-            }
-
-            /// <summary>
-            /// Initializes a new instance of the <see cref="PickerSource"/> class.
-            /// </summary>
-            /// <param name="model">The model.</param>
-            public PickerSource(BindablePicker model)
-            {
-                _model = model;
-            }
-            /// <summary>
-            /// Gets the rows in component.
-            /// </summary>
-            /// <param name="picker">The picker.</param>
-            /// <param name="component">The component.</param>
-            /// <returns>System.Int32.</returns>
-            public override nint GetRowsInComponent(UIPickerView picker, nint component)
-            {
-                return _model.Items == null ? 0 : _model.Items.Count;
-            }
-
-            /// <summary>
-            /// Gets the component count.
-            /// </summary>
-            /// <param name="picker">The picker.</param>
-            /// <returns>System.Int32.</returns>
-            public override nint GetComponentCount(UIPickerView picker)
-            {
-                return 1;
-            }
-
-            /// <summary>
-            /// Gets the title.
-            /// </summary>
-            /// <param name="picker">The picker.</param>
-            /// <param name="row">The row.</param>
-            /// <param name="component">The component.</param>
-            /// <returns>System.String.</returns>
-            public override string GetTitle(UIPickerView picker, nint row, nint component)
-            {
-                return _model.Items[(int)row];
-            }
-
-            /// <summary>
-            /// Selecteds the specified picker.
-            /// </summary>
-            /// <param name="picker">The picker.</param>
-            /// <param name="row">The row.</param>
-            /// <param name="component">The component.</param>
-            public override void Selected(UIPickerView picker, nint row, nint component)
-            {
-                SelectedItem = _model.Items[(int)row];
-                SelectedIndex = (int)row;
-                var valueChanged = ValueChanged;
-                if (valueChanged != null)
-                {
-                    valueChanged.Invoke(this, EventArgs.Empty);
-                }
             }
         }
     }

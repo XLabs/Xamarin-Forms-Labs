@@ -124,6 +124,7 @@
     <Compile Include="Services\Network.cs" />
     <Compile Include="Services\NfcDevice.cs" />
     <Compile Include="Services\PhoneService.cs" />
+    <Compile Include="Services\SecureStorage.cs" />
     <Compile Include="Services\SoundService.cs" />
     <Compile Include="Services\TextToSpeechService.cs" />
   </ItemGroup>

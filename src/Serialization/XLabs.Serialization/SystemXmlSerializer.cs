@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿//#if BUSINESS_LICENSE
 namespace XLabs.Serialization
 {
+    using System;
+    using System.IO;
+    using System.Runtime.Serialization;
+    using System.Text;
+
     public class SystemXmlSerializer : StreamSerializer, IXmlSerializer
     {
         public override SerializationFormat Format
@@ -77,3 +75,4 @@ namespace XLabs.Serialization
         }
     }
 }
+//#endif

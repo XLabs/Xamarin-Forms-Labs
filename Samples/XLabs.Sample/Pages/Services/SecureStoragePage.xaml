@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XLabs.Sample.Pages.Services.SecureStoragePage">
+
+	<ContentPage.Content>
+		<StackLayout>
+	    <Label Text="Key" HeightRequest="45" />
+      <Entry x:Name="KeyEntry"></Entry>
+      <Label Text="Data"></Label>
+      <Entry x:Name="DataEntry"></Entry>
+      <Button x:Name="SaveButton" Text="Save"></Button>
+      <Button x:Name="DeleteButton" Text="Delete"></Button>  
+      <Button x:Name="LoadButton" Text="Load"></Button>
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

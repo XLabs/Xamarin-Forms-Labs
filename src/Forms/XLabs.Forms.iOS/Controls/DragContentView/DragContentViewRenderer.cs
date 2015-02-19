@@ -1,9 +1,6 @@
-using System;
-using System.Collections.Generic;
-using CoreGraphics;
 using System.Linq;
 using System.Reflection;
-using System.Text;
+using CoreGraphics;
 using Foundation;
 using UIKit;
 using Xamarin.Forms;
@@ -14,137 +11,112 @@ using XLabs.Forms.Controls;
 
 namespace XLabs.Forms.Controls
 {
-	public class DragContentViewRenderer : ViewRenderer<DragContentView, UIView>
-	{
-		private UIView touchedView;
-		private View touchedElement;
-		private CGPoint offsetLocation;
-		private CGPoint homePosition;
+    public class DragContentViewRenderer : ViewRenderer<DragContentView, UIView>
+    {
+        private UIView touchedView;
+        private View touchedElement;
+        private CGPoint offsetLocation;
 
-		protected override void OnElementChanged(ElementChangedEventArgs<DragContentView> e)
-		{
-			base.OnElementChanged(e);
+        protected override void OnElementChanged(ElementChangedEventArgs<DragContentView> e)
+        {
+            base.OnElementChanged(e);
 
-			if (this.Control == null)
-			{
-				this.SetNativeControl(new UIView());
-			}
+            if (this.Control == null)
+            {
+                this.SetNativeControl(new UIView());
+            }
 
-			if (e.NewElement == null)
-			{
-				this.touchedView = null;
-				this.touchedElement = null;
-			}
-		}
+            if (e.NewElement == null)
+            {
+                this.touchedView = null;
+                this.touchedElement = null;
+            }
+        }
 
-		public override void TouchesBegan(NSSet touches, UIEvent evt)
-		{
-			base.TouchesBegan(touches, evt);
+        public override void TouchesBegan(NSSet touches, UIEvent evt)
+        {
+            base.TouchesBegan(touches, evt);
 
-			var t = touches.ToArray<UITouch>();
+            var t = touches.ToArray<UITouch>();
 
-			if (t.Length == 1)
-			{
-				var loc = t[0].LocationInView(this);
+            if (t.Length != 1) return;
+            var loc = t[0].LocationInView(this);
 
-				this.touchedView = this.HitTest(loc, evt);
+            this.touchedView = this.Subviews[0].HitTest(loc, evt);
 
-				if (this.touchedView != null)
-				{
-					this.touchedElement = GetMovedElement(this.touchedView, this.Element.Content);
-					this.homePosition = this.touchedView.Frame.Location;
-					this.offsetLocation = new CGPoint(loc.X - this.touchedView.Frame.X, loc.Y - this.touchedView.Frame.Y);
+            if (this.touchedView == null) return;
 
-					this.BringSubviewToFront(this.touchedView);
-				}
-			}
-		}
+            this.touchedElement = GetMovedElement(this.touchedView, this.Element.Content);
+            this.offsetLocation = new CGPoint(loc.X - this.touchedView.Frame.X, loc.Y - this.touchedView.Frame.Y);
 
-		public override void TouchesCancelled(NSSet touches, UIEvent evt)
-		{
-			base.TouchesCancelled(touches, evt);
-			this.touchedView = null;
-		}
+            this.BringSubviewToFront(this.touchedView);
+        }
 
-		public override void TouchesEnded(NSSet touches, UIEvent evt)
-		{
-			base.TouchesEnded(touches, evt);
+        public override void TouchesCancelled(NSSet touches, UIEvent evt)
+        {
+            base.TouchesCancelled(touches, evt);
+            this.touchedView = null;
+        }
 
-			this.touchedView = null;
-		}
+        public override void TouchesEnded(NSSet touches, UIEvent evt)
+        {
+            base.TouchesEnded(touches, evt);
 
-		public override void TouchesMoved(NSSet touches, UIEvent evt)
-		{
-			base.TouchesMoved(touches, evt);
+            this.touchedView = null;
+        }
 
-			var t = touches.ToArray<UITouch>();
+        public override void TouchesMoved(NSSet touches, UIEvent evt)
+        {
+            base.TouchesMoved(touches, evt);
 
-			if (this.touchedView != null)
-			{
-				var newLoc = t[0].LocationInView(this);
+            if (this.touchedView == null) return;
 
-				var frame = new CGRect(
-					new CGPoint(newLoc.X - this.offsetLocation.X, newLoc.Y - this.offsetLocation.Y),
-					this.touchedView.Frame.Size);
+            var newLoc = ((UITouch)touches.First()).LocationInView(this);
 
-				if (this.touchedElement != null)
-				{
-					this.touchedElement.Layout(frame.ToRectangle());
-				}
-				//else
-				//{
-				//    this.touchedView.Frame = frame;
-				//}
-			}
-		}
+            var frame = new CGRect(
+                new CGPoint(newLoc.X - this.offsetLocation.X, newLoc.Y - this.offsetLocation.Y),
+                this.touchedView.Frame.Size);
 
-		private static View GetMovedElement(object nativeView, View view)
-		{
-			View movedElement = null;
+            if (this.touchedElement != null)
+            {
+                this.touchedElement.Layout(frame.ToRectangle());
+            }
+        }
 
-			var id = GetAccessibilityId(nativeView);
+        private static View GetMovedElement(object nativeView, View view)
+        {
+            View movedElement;
 
-			if (string.IsNullOrWhiteSpace(id))
-			{
-				movedElement = null;
-			}
-			else if (view.StyleId == id)
-			{
-				movedElement = view;
-			}
-			else
-			{
-				var d = view.GetInternalChildren();
+            var id = GetAccessibilityId(nativeView);
 
-				movedElement = d == null ? null : d.OfType<View>().FirstOrDefault(a => a.StyleId == id);
-			}
+            if (string.IsNullOrWhiteSpace(id))
+            {
+                movedElement = null;
+            }
+            else if (view.StyleId == id)
+            {
+                movedElement = view;
+            }
+            else
+            {
+                var d = view.GetInternalChildren();
 
-			return movedElement;
-		}
+                movedElement = d == null ? null : d.OfType<View>().FirstOrDefault(a => a.StyleId == id);
+            }
 
-		
-#if __IOS_10__
-		private static string GetAccessibilityId(object view)
-		{
-			var ni = view.GetType().GetProperty("Control", BindingFlags.Public | BindingFlags.Instance);
-			if (ni == null)
-			{
-				return string.Empty;
-			}
+            return movedElement;
+        }
 
-			var control = ni.GetValue(view) as UIView;
-			if (control == null)
-			{
-				return string.Empty;
-			}
+        private static string GetAccessibilityId(object view)
+        {
+            var ni = view.GetType().GetProperty("Control", BindingFlags.Public | BindingFlags.Instance);
+            if (ni == null)
+            {
+                return string.Empty;
+            }
 
-			return control.AccessibilityIdentifier;
-		}
-#else
-		private static string GetAccessibilityId(object view)
-		{
-			throw new NotImplementedException("IOS 10 Not Supported");
-		}
-#endif
-	}
+            var control = ni.GetValue(view) as UIView;
+            return control == null ? string.Empty : control.AccessibilityIdentifier;
+        }
+    }
 }
