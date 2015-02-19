@@ -41,12 +41,6 @@ namespace XLabs.Forms.Controls
 			Control.Frame = Frame;
 			Control.Bounds = Bounds;
 
-            if (!string.IsNullOrWhiteSpace(e.NewElement.CheckedImage) && !string.IsNullOrWhiteSpace(e.NewElement.UncheckedImage))
-            {
-                Control.SetImage(UIImage.FromBundle(e.NewElement.CheckedImage), UIControlState.Selected);
-                Control.SetImage(UIImage.FromBundle(e.NewElement.UncheckedImage), UIControlState.Normal);
-            }
-
 			UpdateFont();
 			
 			Control.LineBreakMode = UILineBreakMode.CharacterWrap;
@@ -138,17 +132,6 @@ namespace XLabs.Forms.Controls
 				case "UncheckedText":
 					Control.UncheckedTitle = string.IsNullOrEmpty(Element.UncheckedText) ? Element.DefaultText : Element.UncheckedText;
 					break;
-                case "CheckedImage":
-                    if (string.IsNullOrEmpty(Element.CheckedImage))
-                    {
-                        Control.SetImage(UIImage.FromBundle(Element.CheckedImage), UIControlState.Selected);
-                    }
-                    break;
-                case "UncheckedImage":
-                    if (string.IsNullOrEmpty(Element.UncheckedImage))
-                    {
-                        Control.SetImage(UIImage.FromBundle(Element.UncheckedImage), UIControlState.Normal);
-                    }
 				case "FontSize":
 					UpdateFont();
 					break;

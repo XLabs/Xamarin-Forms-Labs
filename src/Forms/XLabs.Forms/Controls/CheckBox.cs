@@ -29,20 +29,6 @@ namespace XLabs.Forms.Controls
 			BindableProperty.Create<CheckBox, string>(
 				p => p.UncheckedText, string.Empty);
 
-        /// <summary>
-        /// The checked image property.
-        /// </summary>
-        public static readonly BindableProperty CheckedImageProperty =
-            BindableProperty.Create<ExtendedCheckBox, string>(
-                p => p.CheckedImage, string.Empty, BindingMode.TwoWay);
-
-        /// <summary>
-        /// The unchecked image property.
-        /// </summary>
-        public static readonly BindableProperty UncheckedImageProperty =
-            BindableProperty.Create<ExtendedCheckBox, string>(
-                p => p.UncheckedImage, string.Empty);
-
 		/// <summary>
 		/// The default text property.
 		/// </summary>
@@ -139,46 +125,6 @@ namespace XLabs.Forms.Controls
 				this.SetValue(UncheckedTextProperty, value);
 			}
 		}
-
-        /// <summary>
-        /// Gets or sets a value indicating the checked image.
-        /// </summary>
-        /// <value>The checked state.</value>
-        /// <remarks>
-        /// Overwrites the default image property if set when checkbox is checked.
-        /// </remarks>
-        public string CheckedImage
-        {
-            get
-            {
-                return this.GetValue<string>(CheckedImageProperty);
-            }
-
-            set
-            {
-                this.SetValue(CheckedImageProperty, value);
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether the control is checked.
-        /// </summary>
-        /// <value>The checked state.</value>
-        /// <remarks>
-        /// Overwrites the default image property if set when checkbox is checked.
-        /// </remarks>
-        public string UncheckedImage
-        {
-            get
-            {
-                return this.GetValue<string>(UncheckedImageProperty);
-            }
-
-            set
-            {
-                this.SetValue(UncheckedImageProperty, value);
-            }
-        }
 
 		/// <summary>
 		/// Gets or sets the text.

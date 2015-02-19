@@ -49,7 +49,6 @@
     <Compile Include="Behaviors\RelayGestureAsync.cs" />
     <Compile Include="Controls\AccessoryViewCell.cs" />
     <Compile Include="Controls\AutoCompleteView.cs" />
-    <Compile Include="Controls\CheckBoxGroup.cs" />
     <Compile Include="Controls\BindablePicker.cs" />
     <Compile Include="Controls\ButtonGroup.cs" />
     <Compile Include="Controls\CalendarView.cs" />
@@ -83,7 +82,6 @@
     <Compile Include="Controls\HyperLinkLabel.cs" />
     <Compile Include="Controls\IAutoCompleteSearchObject.cs" />
     <Compile Include="Controls\ICarouselView.cs" />
-    <Compile Include="Controls\ICheckBoxGroupItem.cs" />
     <Compile Include="Controls\IconButton.cs" />
     <Compile Include="Controls\ImageButton.cs" />
     <Compile Include="Controls\ImageButtonSourceConverter.cs" />
