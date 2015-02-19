@@ -66,6 +66,8 @@ namespace XLabs.Forms.Controls
 			Control.SetMaxAllowedDate(Element.MaxDate);
 			calendarView.SetDisplayedMonthYear(e.NewElement.DisplayedMonth, false);
 
+			var selectedDates = e.NewElement.SelectedDates;
+			calendarView.SetDates (selectedDates, false); 
 		}
 
 		/// <summary>

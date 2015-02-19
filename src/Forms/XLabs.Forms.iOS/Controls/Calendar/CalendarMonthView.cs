@@ -37,7 +37,7 @@ namespace XLabs.Forms.Controls
 	using System.Globalization;
 
 	using Foundation;
-	using UIKit;
+	using UIKit; 
 
 	public delegate void DateSelected(DateTime date);
 
@@ -173,6 +173,11 @@ namespace XLabs.Forms.Controls
 		public DateTime CurrentSelectedDate;
 
 		/// <summary>
+		/// The selected dates items.
+		/// </summary>
+		public ICollection<DateTime> SelectedDatesItems;
+
+		/// <summary>
 		/// The is date available
 		/// </summary>
 		public Func<DateTime, bool> IsDateAvailable;
@@ -274,6 +279,43 @@ namespace XLabs.Forms.Controls
 					RebuildGrid(true, animated);
 				}
 			}
+		}
+
+		public void SetDates(ICollection<DateTime> dates, bool animated)
+		{
+			SelectedDatesItems = dates;
+
+			if (_scrollView != null)
+			{
+				RebuildGrid(true, animated);
+			}
+
+			/*var right = true;
+
+			CurrentSelectedDate = newDate;
+
+			var monthsDiff = (newDate.Month - CurrentMonthYear.Month) + 12 * (newDate.Year - CurrentMonthYear.Year);
+			if (monthsDiff != 0)
+			{
+				if (monthsDiff < 0)
+				{
+					right = false;
+					monthsDiff = -monthsDiff;
+				}
+
+				for (var i = 0; i < monthsDiff; i++)
+				{
+					MoveCalendarMonths(right, animated);
+				}
+			}
+			else
+			{
+				//If we have created the layout already
+				if (_scrollView != null)
+				{
+					RebuildGrid(true, animated);
+				}
+			}*/
 		}
 
 		/// <summary>
@@ -638,7 +680,12 @@ namespace XLabs.Forms.Controls
 		/// <returns>MonthGridView.</returns>
 		private MonthGridView CreateNewGrid(DateTime date)
 		{
-			var grid = new MonthGridView(this, date) { CurrentDate = CurrentDate };
+			var grid = new MonthGridView(this, date) 
+			{ 
+				CurrentDate = CurrentDate, 
+				SelectedDatesItems = SelectedDatesItems 
+			};
+
 			grid.BuildGrid();
 			grid.Frame = new CGRect(0, 0, 320, Frame.Height - 16);
 			return grid;

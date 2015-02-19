@@ -1,5 +1,6 @@
 ﻿using System;
 using Xamarin.Forms;
+using System.Collections.Generic;
 
 namespace XLabs.Forms.Controls
 {
@@ -531,8 +532,6 @@ namespace XLabs.Forms.Controls
 			}
 		}
 
-
-
 		/**
 		 * DayOfWeekLabelForegroundColorProperty property
 		 */
@@ -756,10 +755,31 @@ namespace XLabs.Forms.Controls
 			}
 		}
 
+		/// <summary>
+		/// Selected Dates property.
+		/// </summary>
+		public static readonly BindableProperty SelectedDatesProperty =
+			BindableProperty.Create(
+				"SelectedDates",
+				typeof(IList<DateTime>),
+				typeof(CalendarView),
+				null,
+				BindingMode.TwoWay,
+				null, null, null, null);
 
-
-	
-
+		/// <summary>
+		/// Gets or sets the selected dates.
+		/// </summary>
+		/// <value>The selected dates.</value>
+		public IList<DateTime> SelectedDates{
+			get{
+				return (IList<DateTime>)base.GetValue (CalendarView.SelectedDatesProperty);
+			}
+			set{
+				base.SetValue (CalendarView.SelectedDatesProperty, value);
+			}
+		}
+			
 		#region ColorHelperProperties
 
 		/// <summary>
@@ -996,8 +1016,5 @@ namespace XLabs.Forms.Controls
 		/// Occurs when [date selected].
 		/// </summary>
 		public event EventHandler<DateTime> DateSelected;
-
-
-
 	}
 }

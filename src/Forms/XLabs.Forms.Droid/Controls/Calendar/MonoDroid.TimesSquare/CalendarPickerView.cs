@@ -1,3 +1,5 @@
+using System.Collections;
+
 namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 {
 	using System;
@@ -121,6 +123,11 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 		/// The _month counter
 		/// </summary>
 		private DateTime _monthCounter;
+
+		/// <summary>
+		/// The selected dates items.
+		/// </summary>
+		internal ICollection<DateTime> SelectedDatesItems;
 
 		//This provides styling to the calendar elements
 		//Elements holds reference to it through Month and Week cell descriptors
@@ -637,12 +644,21 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 		/// </summary>
 		private void ClearOldSelection()
 		{
-			foreach(var selectedCell in SelectedCells) {
-				//De-select the currently selected cell.
-				selectedCell.IsSelected = false;
+			if (SelectedDatesItems == null) {
+				foreach (var selectedCell in SelectedCells) {
+					//De-select the currently selected cell.
+					selectedCell.IsSelected = false;
+				}
+				SelectedCells.Clear ();
+				SelectedCals.Clear ();
+			} 
+			else {
+				foreach (var selectedCell in SelectedCells) {
+					if (!SelectedDatesItems.Where (x => x.Equals (selectedCell.DateTime)).Any()) {
+						selectedCell.IsSelected = false;
+					}
+				}
 			}
-			SelectedCells.Clear();
-			SelectedCals.Clear();
 		}
 
 		/// <summary>
@@ -726,6 +742,32 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 			return date > DateTime.MinValue;
 		}
 
+		internal bool DoSelectDates(DateTime date, MonthCellDescriptor cell)
+		{
+			var newlySelectedDate = date;
+			SetMidnight(newlySelectedDate);
+
+			//Clear any remaining range state.
+			foreach(var selectedCell in SelectedCells) {
+				selectedCell.RangeState = RangeState.None;
+			}
+
+
+			date = ApplyMultiSelect(date, newlySelectedDate);
+				
+
+			if(date > DateTime.MinValue) 
+			{
+				if(SelectedCells.Count == 0 || !SelectedCells[0].Equals(cell)) {
+					SelectedCells.Add(cell);
+					cell.IsSelected = true;
+				}
+				SelectedCals.Add(newlySelectedDate);
+			}
+			ValidateAndUpdate();
+			return date > DateTime.MinValue;
+		}
+
 		/// <summary>
 		/// Validates the and update.
 		/// </summary>
@@ -745,6 +787,25 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 		internal bool SelectDate(DateTime date)
 		{
 			return SelectDate(date, false);
+		}
+
+		internal bool SelectDates(ICollection<DateTime> dates)
+		{
+			SelectedDatesItems = dates;
+
+			foreach(var date in dates)
+			{
+				ValidateDate (date);
+
+				var cell = GetMonthCellWithIndexByDate(date);
+				if(cell == null || !IsSelectable(date)) {
+					return false;
+				}
+
+				DoSelectDates(date, cell.Cell);
+			}
+
+			return true;
 		}
 
 		/// <summary>

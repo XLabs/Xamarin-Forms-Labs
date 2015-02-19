@@ -1,4 +1,6 @@
-﻿namespace XLabs.Sample.Pages.Controls
+﻿using System.Collections.Generic;
+
+namespace XLabs.Sample.Pages.Controls
 {
 	using System;
 
@@ -24,6 +26,8 @@
 		/// </summary>
 		readonly StackLayout _stacker;
 
+		readonly Button _button;
+
 		/// <summary>
 		/// Initializes a new instance of the <see cref="CalendarPage"/> class.
 		/// </summary>
@@ -31,8 +35,6 @@
 		{
 			InitializeComponent();
   
-		   
-
 			_relativeLayout = new RelativeLayout() {
 				HorizontalOptions = LayoutOptions.FillAndExpand,
 				VerticalOptions = LayoutOptions.FillAndExpand
@@ -52,7 +54,6 @@
 				HighlightedDaysOfWeek = new DayOfWeek[]{DayOfWeek.Saturday,DayOfWeek.Sunday},
 				ShowNavigationArrows = true,
 				MonthTitleFont = Font.OfSize("Open 24 Display St",NamedSize.Medium)
-
 			};
 
 			_relativeLayout.Children.Add(_calendarView,
@@ -71,6 +72,16 @@
 				Constraint.RelativeToParent(p => p.Width),
 				Constraint.RelativeToParent(p => p.Height *1/3)
 			);
+
+			_button = new Button ();
+			_button.Text = "hola";
+			_button.Clicked += (object sender, EventArgs e) => {
+				_calendarView.SelectedDate = DateTime.Now;
+				_calendarView.NotifyDateSelected (DateTime.Now);
+				_calendarView.NotifyDisplayedMonthChanged (DateTime.Now);
+			};
+			_stacker.Children.Add (_button);
+
 			_calendarView.DateSelected += (object sender, DateTime e) =>
 			{
 				_stacker.Children.Add(new Label()
@@ -79,7 +90,18 @@
 						VerticalOptions = LayoutOptions.Start,
 						HorizontalOptions = LayoutOptions.CenterAndExpand,
 					});
+
+
 			};
+
+			var selectedDates = new List<DateTime> ();
+			var actualDate = new DateTime (DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0, 0);
+			selectedDates.Add(actualDate.AddDays(2));
+			selectedDates.Add(actualDate.AddDays(4));
+			selectedDates.Add(actualDate.AddDays(6));
+		
+			_calendarView.SelectedDates = selectedDates;
+
 		}
 	}
 }
