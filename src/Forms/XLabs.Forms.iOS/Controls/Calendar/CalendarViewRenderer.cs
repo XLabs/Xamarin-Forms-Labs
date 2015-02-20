@@ -186,9 +186,22 @@ namespace XLabs.Forms.Controls
 			if (Element.ActualSelectedDateForegroundColor != Color.Default)
 				Control.StyleDescriptor.SelectedDateForegroundColor = Element.ActualSelectedDateForegroundColor.ToUIColor();
 
+			//Selected dates
+			if (Element.ActualSelectedDatesBackgroundColor != Color.Default)
+				Control.StyleDescriptor.SelectedDatesBackgroundColor = Element.ActualSelectedDatesBackgroundColor.ToUIColor();
+			if (Element.ActualSelectedDatesForegroundColor != Color.Default)
+				Control.StyleDescriptor.SelectedDatesForegroundColor = Element.ActualSelectedDatesForegroundColor.ToUIColor();
+
+			//Selected dates inactive
+			if (Element.ActualSelectedDatesInactiveBackgroundColor != Color.Default)
+				Control.StyleDescriptor.SelectedDatesInactiveBackgroundColor = Element.ActualSelectedDatesInactiveBackgroundColor.ToUIColor();
+			if (Element.ActualSelectedDatesInactiveForegroundColor != Color.Default)
+				Control.StyleDescriptor.SelectedDatesInactiveForegroundColor = Element.ActualSelectedDatesInactiveForegroundColor.ToUIColor();
+
 			//Selection styles
 			Control.StyleDescriptor.SelectionBackgroundStyle = Element.SelectionBackgroundStyle;
 			Control.StyleDescriptor.TodayBackgroundStyle = Element.TodayBackgroundStyle;
+			Control.StyleDescriptor.SelectionDatesBackgroundStyle = Element.SelectionDatesBackgroundStyle;
 
 			//Divider
 			//TODO: Implement it on iOS

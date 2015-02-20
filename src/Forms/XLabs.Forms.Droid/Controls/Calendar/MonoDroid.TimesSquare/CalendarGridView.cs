@@ -187,54 +187,31 @@
 		/// </para></remarks>
 		protected override void OnMeasure(int widthMeasureSpec, int heightMeasureSpec)
 		{
-			Logr.D("Grid.OnMeasure w={0} h={1}", MeasureSpec.ToString(widthMeasureSpec),
-				MeasureSpec.ToString(heightMeasureSpec));
-
 			int widthMeasureSize = MeasureSpec.GetSize(widthMeasureSpec);
-			int heightMeasureSize = MeasureSpec.GetSize(heightMeasureSpec);
-			if(_oldWidthMeasureSize == widthMeasureSize && _oldHeightMeasureSize == heightMeasureSize)
-			{
-				Logr.D("SKIP Grid.OnMeasure");
+			/*if (oldWidthMeasureSize == widthMeasureSize) {
 				SetMeasuredDimension(MeasuredWidth, MeasuredHeight);
 				return;
 			}
-
-			var stopwatch = Stopwatch.StartNew();
-
-			_oldWidthMeasureSize = widthMeasureSize;
-			_oldHeightMeasureSize = heightMeasureSize;
-			int visibleChildCount = 0;
-			for(int c = 0; c < ChildCount; c++)
-			{
-				var child = GetChildAt(c);
-				if(child.Visibility == ViewStates.Visible)
-				{
-					visibleChildCount++;
-				}
-			}
-			int cellSize = Math.Min((widthMeasureSize - sidePadding * 2) / 7, heightMeasureSize / visibleChildCount);
-			//int cellSize =  widthMeasureSize / 7;
-			//Remove any extra pixels since /7 us unlikey to give whole nums.
-			widthMeasureSize = cellSize * 7 + sidePadding * 2;
+			oldWidthMeasureSize = widthMeasureSize;*/
+			int cellSize = widthMeasureSize / 7;
+			// Remove any extra pixels since /7 is unlikely to give whole nums.
+			widthMeasureSize = cellSize * 7;
 			int totalHeight = 0;
-			int rowWidthSpec = MeasureSpec.MakeMeasureSpec(widthMeasureSize - 2 * sidePadding, MeasureSpecMode.Exactly);
+			int rowWidthSpec = MeasureSpec.MakeMeasureSpec(widthMeasureSize, MeasureSpecMode.Exactly);
 			int rowHeightSpec = MeasureSpec.MakeMeasureSpec(cellSize, MeasureSpecMode.Exactly);
-			for(int c = 0; c < ChildCount; c++)
-			{
+			for (int c = 0, numChildren = ChildCount; c < numChildren; c++) {
 				var child = GetChildAt(c);
-				if(child.Visibility == ViewStates.Visible)
-				{
-					MeasureChild(child, rowWidthSpec,
-						c == 0 ? MeasureSpec.MakeMeasureSpec(cellSize, MeasureSpecMode.AtMost) : rowHeightSpec);
+				if (child.Visibility == ViewStates.Visible) {
+					if (c == 0) { // It's the header: height should be wrap_content.
+						MeasureChild(child, rowWidthSpec, MeasureSpec.MakeMeasureSpec(cellSize, MeasureSpecMode.AtMost));
+					} else {
+						MeasureChild(child, rowWidthSpec, rowHeightSpec);
+					}
 					totalHeight += child.MeasuredHeight;
 				}
 			}
-			int measuredWidth = widthMeasureSize; // Fudge factor to make the borders show up right.
-			int measuredHeight = heightMeasureSize + 2;
+			int measuredWidth = widthMeasureSize + 2; // Fudge factor to make the borders show up.
 			SetMeasuredDimension(measuredWidth, totalHeight);
-
-			stopwatch.Stop();
-			Logr.D("Grid.OnMeasure {0} ms", stopwatch.ElapsedMilliseconds);
 		}
 
 		/// <summary>

@@ -123,7 +123,8 @@ namespace XLabs.Forms.Controls
                 _headerHeight = showNavArrows ? 40 : 20;
             }
 
-            Frame = _showHeader ? new CGRect(0, 0, width, 198 + _headerHeight) : new CGRect(0, 0, width, 198);
+            Frame = _showHeader ? new CGRect(0, 0, width, 228 + _headerHeight) : new CGRect(0, 0, width, 228);
+			//Frame = _showHeader ? new CGRect(0, 0, width, 198 + _headerHeight) : new CGRect(0, 0, width, 198);
 
             BoxWidth = Convert.ToInt32(Math.Ceiling(width / 7));
 
@@ -155,7 +156,7 @@ namespace XLabs.Forms.Controls
 		/// <summary>
 		/// The box height
 		/// </summary>
-		public int BoxHeight = 30;
+		public int BoxHeight = 35;
 
 		/// <summary>
 		/// The box width
@@ -186,6 +187,11 @@ namespace XLabs.Forms.Controls
 		/// The is day marked delegate
 		/// </summary>
 		public Func<DateTime, bool> IsDayMarkedDelegate;
+
+		/// <summary>
+		/// The is selected dates marked.
+		/// </summary>
+		public Func<DateTime, bool> IsSelectedDatesMarked;
 
 		/// <summary>
 		/// The month changed
@@ -234,7 +240,6 @@ namespace XLabs.Forms.Controls
             using (var context = UIGraphics.GetCurrentContext())
             {
                 context.SetFillColor(StyleDescriptor.TitleBackgroundColor.CGColor);
-                //Console.WriteLine("Title background color is {0}",_styleDescriptor.TitleBackgroundColor.ToString());
                 context.FillRect(new CGRect(0, 0, 320, 18 + _headerHeight));
             }
 
@@ -289,33 +294,6 @@ namespace XLabs.Forms.Controls
 			{
 				RebuildGrid(true, animated);
 			}
-
-			/*var right = true;
-
-			CurrentSelectedDate = newDate;
-
-			var monthsDiff = (newDate.Month - CurrentMonthYear.Month) + 12 * (newDate.Year - CurrentMonthYear.Year);
-			if (monthsDiff != 0)
-			{
-				if (monthsDiff < 0)
-				{
-					right = false;
-					monthsDiff = -monthsDiff;
-				}
-
-				for (var i = 0; i < monthsDiff; i++)
-				{
-					MoveCalendarMonths(right, animated);
-				}
-			}
-			else
-			{
-				//If we have created the layout already
-				if (_scrollView != null)
-				{
-					RebuildGrid(true, animated);
-				}
-			}*/
 		}
 
 		/// <summary>
@@ -546,8 +524,7 @@ namespace XLabs.Forms.Controls
             AddSubview(_leftArrow);
             _rightArrow = new CalendarArrowView(new CGRect(320 - 22 - 10, 9, 18, 22))
             {
-                Color =
-                    StyleDescriptor.TitleForegroundColor
+                Color = StyleDescriptor.TitleForegroundColor
             };
             _rightArrow.TouchUpInside += HandleNextMonthTouch;
             _rightArrow.Direction = CalendarArrowView.ArrowDirection.Right;
@@ -797,6 +774,7 @@ namespace XLabs.Forms.Controls
             var attrs = new UIStringAttributes { Font = font, ForegroundColor = color, ParagraphStyle = paragraphStyle };
             var size = text.GetSizeUsingAttributes(attrs);
             var targetRect = new CGRect(
+				//rect.X + 40,
                 rect.X + (float)Math.Floor((rect.Width - size.Width) / 2f),
                 rect.Y + (float)Math.Floor((rect.Height - size.Height) / 2f),
                 size.Width,

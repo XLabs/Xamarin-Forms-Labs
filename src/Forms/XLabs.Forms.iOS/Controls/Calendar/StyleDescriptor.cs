@@ -39,6 +39,22 @@ namespace XLabs.Forms.Controls
 		/// </summary>
 		public UIColor SelectedDateBackgroundColor = Color.FromHex("#ff379bff").ToUIColor();
 		/// <summary>
+		/// The color of the selected dates background.
+		/// </summary>
+		public UIColor SelectedDatesBackgroundColor = Color.FromHex("#CE4121").ToUIColor();
+		/// <summary>
+		/// The color of the selected dates foreground.
+		/// </summary>
+		public UIColor SelectedDatesForegroundColor = Color.FromHex("#ffffffff").ToUIColor();
+		/// <summary>
+		/// The color of the selected dates background.
+		/// </summary>
+		public UIColor SelectedDatesInactiveBackgroundColor = UIColor.White;
+		/// <summary>
+		/// The color of the selected dates foreground.
+		/// </summary>
+		public UIColor SelectedDatesInactiveForegroundColor = UIColor.LightGray;
+		/// <summary>
 		/// The title foreground color
 		/// </summary>
 		public UIColor TitleForegroundColor = UIColor.DarkGray;
@@ -78,6 +94,10 @@ namespace XLabs.Forms.Controls
 		/// The selection background style
 		/// </summary>
 		public CalendarView.BackgroundStyle SelectionBackgroundStyle = CalendarView.BackgroundStyle.Fill;
+		/// <summary>
+		/// The selection dates background style.
+		/// </summary>
+		public CalendarView.BackgroundStyle SelectionDatesBackgroundStyle = CalendarView.BackgroundStyle.Fill;
 		/// <summary>
 		/// The today background style
 		/// </summary>

@@ -29,6 +29,7 @@
  OTHER DEALINGS IN THE SOFTWARE.
  
  */
+using System.Drawing;
 
 namespace XLabs.Forms.Controls
 {
@@ -134,21 +135,20 @@ namespace XLabs.Forms.Controls
 			dayView.Marked = _calendarMonthView.IsDayMarkedDelegate != null && _calendarMonthView.IsDayMarkedDelegate(dayView.Date);
 			dayView.Available = _calendarMonthView.IsDateAvailable == null || _calendarMonthView.IsDateAvailable(dayView.Date);
 			dayView.Highlighted = _calendarMonthView.HighlightedDaysOfWeek[(int)dayView.Date.DayOfWeek];
+			dayView.SelectedDatesMarked = SelectedDatesItems.Any (x => x.Equals (dayView.Date));
 		}
 
 		/// <summary>
 		/// Builds the grid.
 		/// </summary>
 		public void BuildGrid ()
-		{
-			//DateTime dt = DateTime.Now;
+		{		
 			var previousMonth = _currentMonth.AddMonths (-1);
 			var nextMonth = _currentMonth.AddMonths (1);
 			var daysInPreviousMonth = DateTime.DaysInMonth (previousMonth.Year, previousMonth.Month);
 			var daysInMonth = DateTime.DaysInMonth (_currentMonth.Year, _currentMonth.Month);
 			var firstDayOfWeek = (int) CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek;
 			WeekdayOfFirst = (int)_currentMonth.DayOfWeek;
-			//var lead = daysInPreviousMonth  - ((weekdayOfFirst+firstDayOfWeek) - 1);
 
 			var boxWidth = _calendarMonthView.BoxWidth;
 			var boxHeight = _calendarMonthView.BoxHeight;
@@ -164,11 +164,11 @@ namespace XLabs.Forms.Controls
 				var viewDay = new DateTime (previousMonth.Year, previousMonth.Month, lead);
 				var dayView = new CalendarDayView(_calendarMonthView)
 					              {
-						              Frame =
-							              new CGRect((i - 1) * boxWidth, 0, boxWidth, boxHeight),
+						              Frame = new CGRect((i - 1) * boxWidth, 0, boxWidth, boxHeight),
 						              Date = viewDay,
 						              Text = lead.ToString()
 					              };
+
 				UpdateDayView (dayView);
 				AddSubview (dayView);
 				DayTiles.Add (dayView);
@@ -196,8 +196,8 @@ namespace XLabs.Forms.Controls
 					Text = i.ToString (),
 					Active = true,
 					Tag = i,
-					Selected = (viewDay.Date == _calendarMonthView.CurrentSelectedDate.Date 
-					|| SelectedDatesItems.Where(x => x.Equals(viewDay.Date)).Any()),
+					Selected = (viewDay.Date == _calendarMonthView.CurrentSelectedDate.Date),
+					SelectedDatesMarked = SelectedDatesItems.Any (x => x.Equals (viewDay.Date)),
 					Date = viewDay
 				};
 
@@ -205,6 +205,10 @@ namespace XLabs.Forms.Controls
 
 				if (dayView.Selected)
 					SelectedDayView = dayView;
+
+				if (dayView.SelectedDatesMarked) {
+					SelectedDayView = dayView;
+				}
 
 				AddSubview (dayView);
 				DayTiles.Add (dayView);
@@ -220,20 +224,42 @@ namespace XLabs.Forms.Controls
 			int dayCounter = 1;
 			if (position != 1)
 			{
-				for (int i = position; i < 8; i++)
+				for (int i = position; i < 8; i++) 
 				{
 					var viewDay = new DateTime (nextMonth.Year, nextMonth.Month, dayCounter);
-					var dayView = new CalendarDayView (_calendarMonthView)
-					{
-						Frame = new CGRect((i - 1) * boxWidth, line * boxHeight, boxWidth, boxHeight),
-						Text = dayCounter.ToString(),
+					var dayView = new CalendarDayView (_calendarMonthView) {
+						Frame = new CGRect ((i - 1) * boxWidth, line * boxHeight, boxWidth, boxHeight),
+						Text = dayCounter.ToString (),
 					};
+
 					dayView.Date = viewDay;
 					UpdateDayView (dayView);
 
 					AddSubview (dayView);
 					DayTiles.Add (dayView);
 					dayCounter++;
+				}
+				line++;
+			}
+				
+			if (line <= 4)
+			{
+				while (line <= 4) {
+					for (int i = 1; i < 8; i++) 
+					{
+						var viewDay = new DateTime (nextMonth.Year, nextMonth.Month, dayCounter);
+						var dayView = new CalendarDayView (_calendarMonthView) {
+							Frame = new CGRect ((i - 1) * boxWidth, line * boxHeight, boxWidth, boxHeight),
+							Text = dayCounter.ToString (),
+						};
+						dayView.Date = viewDay;
+						UpdateDayView (dayView);
+
+						AddSubview (dayView);
+						DayTiles.Add (dayView);
+						dayCounter++;
+					}
+					line++;
 				}
 			}
 
@@ -243,7 +269,6 @@ namespace XLabs.Forms.Controls
 
 			if (SelectedDayView!=null)
 				BringSubviewToFront(SelectedDayView);
-			//Console.WriteLine("Building the grid took {0} msecs",(DateTime.Now-dt).TotalMilliseconds);
 		}
 
 		/// <summary>
@@ -264,7 +289,7 @@ namespace XLabs.Forms.Controls
 				var day = int.Parse(newSelectedDayView.Text);
 				_calendarMonthView.MoveCalendarMonths(day <= 15, true);
 				return false;
-			} else if (!newSelectedDayView.Active && !newSelectedDayView.Available){
+			} else if ((!newSelectedDayView.Active && !newSelectedDayView.Available)){
 				return false;
 			}
 
@@ -272,6 +297,11 @@ namespace XLabs.Forms.Controls
 			{
 				if (!SelectedDatesItems.Any (x => x.Date.Equals (SelectedDayView.Date)))
 					SelectedDayView.Selected = false;
+
+				if (SelectedDatesItems.Any (x => x.Date.Equals (SelectedDayView.Date))) {
+					SelectedDayView.SelectedDatesMarked = true;
+					SelectedDayView.Selected = false;
+				}
 			}
 
 			BringSubviewToFront(newSelectedDayView);
@@ -288,9 +318,6 @@ namespace XLabs.Forms.Controls
 		/// </summary>
 		public void DeselectDayView(){
 			if (SelectedDayView==null) return;
-
-			if (SelectedDatesItems.Any (x => x.Date.Equals (SelectedDayView.Date)))
-				return;
 
 			SelectedDayView.Selected= false;
 			SelectedDayView = null;

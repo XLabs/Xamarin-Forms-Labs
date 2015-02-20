@@ -1,3 +1,6 @@
+using XLabs.Ioc;
+using XLabs.Platform.Device;
+
 namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 {
 	using System.Diagnostics;
@@ -24,7 +27,7 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 		/// <summary>
 		/// The _cell size
 		/// </summary>
-		private int _cellSize;
+		//private int _cellSize;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="CalendarRowView"/> class.
@@ -102,23 +105,21 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 			var stopwatch = new Stopwatch();
 			stopwatch.Start();
 
+			int totalHeight = HeightCell ();
+			int totalHeightHeader = 40;
 			int totalWidth = MeasureSpec.GetSize(widthMeasureSpec);
-			int height = MeasureSpec.GetSize(heightMeasureSpec);
-			_cellSize = totalWidth / 7;
-			int cellWidthSpec = MeasureSpec.MakeMeasureSpec(_cellSize, MeasureSpecMode.Exactly);
-			int cellHeightSpec = IsHeaderRow
-				? MeasureSpec.MakeMeasureSpec(_cellSize, MeasureSpecMode.AtMost)
-				: cellWidthSpec;
-			int rowHeight = 0;
-			for(int c = 0; c < ChildCount; c++)
-			{
+			int rowHeight = totalHeight;
+			for (int c = 0, numChildren = ChildCount; c < numChildren; c++) {
 				var child = GetChildAt(c);
+				int l = ((c + 0) * totalWidth) / 7;
+				int r = ((c + 1) * totalWidth) / 7;
+				int cellSize = r - l;
+				int cellWidthSpec = MeasureSpec.MakeMeasureSpec(cellSize, MeasureSpecMode.Exactly);
+				int cellHeightSpec = IsHeaderRow
+					? MeasureSpec.MakeMeasureSpec(totalHeightHeader, MeasureSpecMode.Exactly)
+					: MeasureSpec.MakeMeasureSpec(rowHeight, MeasureSpecMode.Exactly);
 				child.Measure(cellWidthSpec, cellHeightSpec);
-				//The row height is the height of the tallest cell.
-				if(child.MeasuredHeight > rowHeight)
-				{
-					rowHeight = child.MeasuredHeight;
-				}
+				rowHeight = IsHeaderRow ? totalHeightHeader : totalHeight;
 			}
 			int widthWithPadding = totalWidth + PaddingLeft + PaddingRight;
 			int heightWithPadding = rowHeight + PaddingTop + PaddingBottom;
@@ -127,6 +128,15 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 			stopwatch.Stop();
 			Logr.D("Row.OnMeasure {0} ms", stopwatch.ElapsedMilliseconds);
 		}
+
+		static int HeightCell(){
+			var device = Resolver.Resolve<IDevice>();
+			var screenHeight = device.Display.Height;
+
+			var height = ((screenHeight / 2) / 2) + 50;
+			return (height / 5);
+		}
+
 
 		/// <summary>
 		/// Called from layout when this view should
@@ -149,16 +159,25 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 		///     <a href="http://developer.android.com/reference/android/view/ViewGroup.html#onLayout(boolean, int, int, int, int)" target="_blank">[Android Documentation]</a>
 		///   </format>
 		/// </para></remarks>
-		protected override void OnLayout(bool changed, int l, int t, int r, int b)
+		protected override void OnLayout(bool changed, int left, int top, int right, int bottom)
 		{
 			var stopwatch = new Stopwatch();
 			stopwatch.Start();
 
-			int cellHeight = b - t;
+			/*int cellHeight = b - t;
 			for(int c = 0; c < ChildCount; c++)
 			{
 				var child = GetChildAt(c);
 				child.Layout(c * _cellSize, 0, (c + 1) * _cellSize, cellHeight);
+			}*/
+
+			int cellHeight = bottom - top;
+			int width = (right - left);
+			for (int c = 0, numChildren = ChildCount; c < numChildren; c++) {
+				var child = GetChildAt(c);
+				int l = ((c + 0) * width) / 7;
+				int r = ((c + 1) * width) / 7;
+				child.Layout(l, 0, r, cellHeight);
 			}
 
 			stopwatch.Stop();

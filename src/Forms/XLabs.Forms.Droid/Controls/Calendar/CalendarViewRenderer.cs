@@ -46,7 +46,8 @@ namespace XLabs.Forms.Controls
 		/// <summary>
 		///     The _left arrow
 		/// </summary>
-		private CalendarArrowView _leftArrow;
+		private Android.Widget.ImageButton _leftArrow;
+		//private CalendarArrowView _leftArrow;
 
 		/// <summary>
 		///     The _picker
@@ -56,7 +57,8 @@ namespace XLabs.Forms.Controls
 		/// <summary>
 		///     The _right arrow
 		/// </summary>
-		private CalendarArrowView _rightArrow;
+		private Android.Widget.ImageButton _rightArrow;
+		//private CalendarArrowView _rightArrow;
 
 		/// <summary>
 		///     The _view
@@ -74,8 +76,7 @@ namespace XLabs.Forms.Controls
 			if (e.OldElement == null)
 			{
 				_view = e.NewElement;
-				var inflatorservice =
-					(LayoutInflater) Context.GetSystemService(Context.LayoutInflaterService);
+				var inflatorservice = (LayoutInflater) Context.GetSystemService(Context.LayoutInflaterService);
 				_containerView = inflatorservice.Inflate(Resource.Layout.calendar_picker, null);
 				_picker = _containerView.FindViewById<CalendarPickerView>(Resource.Id.calendar_view);
 				_picker.Init(Element.MinDate, Element.MaxDate, Element.HighlightedDaysOfWeek);
@@ -157,17 +158,14 @@ namespace XLabs.Forms.Controls
 		{
 			if (_leftArrow == null)
 			{
-				_leftArrow = _containerView.FindViewById<CalendarArrowView>(Resource.Id.left_arrow);
+				_leftArrow = _containerView.FindViewById<Android.Widget.ImageButton>(Resource.Id.left_arrow);
 				_leftArrow.Click += (object sender, EventArgs e) => { SelectMonth(_picker.CurrentItem - 1, true); };
 			}
 			if (_rightArrow == null)
 			{
-				_rightArrow = _containerView.FindViewById<CalendarArrowView>(Resource.Id.right_arrow);
-				_rightArrow.Direction = CalendarArrowView.ArrowDirection.RIGHT;
+				_rightArrow = _containerView.FindViewById<Android.Widget.ImageButton>(Resource.Id.right_arrow);
 				_rightArrow.Click += (object sender, EventArgs e) => { SelectMonth(_picker.CurrentItem + 1, true); };
 			}
-			_leftArrow.SetBackgroundColor(Color.Transparent);
-			_rightArrow.SetBackgroundColor(Color.Transparent);
 			if (Element.ShowNavigationArrows)
 			{
 				_rightArrow.Visibility = _picker.CurrentItem + 1 != _picker.MonthCount ? ViewStates.Visible : ViewStates.Invisible;
@@ -244,13 +242,13 @@ namespace XLabs.Forms.Controls
 			//Navigation color arrows
 			if (Element.ActualNavigationArrowsColor != Xamarin.Forms.Color.Default)
 			{
-				_leftArrow.Color = Element.ActualNavigationArrowsColor.ToAndroid();
-				_rightArrow.Color = Element.ActualNavigationArrowsColor.ToAndroid();
+				//_leftArrow.Color = Element.ActualNavigationArrowsColor.ToAndroid();
+				//_rightArrow.Color = Element.ActualNavigationArrowsColor.ToAndroid();
 			}
 			else
 			{
-				_leftArrow.Color = _picker.StyleDescriptor.TitleForegroundColor;
-				_rightArrow.Color = _picker.StyleDescriptor.TitleForegroundColor;
+				//_leftArrow.Color = _picker.StyleDescriptor.TitleForegroundColor;
+				//_rightArrow.Color = _picker.StyleDescriptor.TitleForegroundColor;
 			}
 
 			//Day of week label
@@ -322,11 +320,17 @@ namespace XLabs.Forms.Controls
 			if (Element.ActualSelectedDateForegroundColor != Xamarin.Forms.Color.Default)
 				_picker.StyleDescriptor.SelectedDateForegroundColor = Element.ActualSelectedDateForegroundColor.ToAndroid();
 
-			/*//Selected dates
-			if (Element.SelectedDatesBackgroundColor != Xamarin.Forms.Color.Default)
-				_picker.StyleDescriptor.SelectedDateBackgroundColor = Element.SelectedDatesBackgroundColor.ToAndroid();
-			if (Element.SelectedDatesForegroundColor != Xamarin.Forms.Color.Default)
-				_picker.StyleDescriptor.SelectedDateForegroundColor = Element.SelectedDatesForegroundColor.ToAndroid();*/
+			//Selected dates
+			if (Element.ActualSelectedDatesBackgroundColor != Xamarin.Forms.Color.Default)
+				_picker.StyleDescriptor.SelectedDatesBackgroundColor = Element.ActualSelectedDatesBackgroundColor.ToAndroid ();
+			if (Element.ActualSelectedDatesForegroundColor != Xamarin.Forms.Color.Default)
+				_picker.StyleDescriptor.SelectedDatesForegroundColor = Element.ActualSelectedDatesForegroundColor.ToAndroid();
+
+			//Selected dates inactive
+			if (Element.ActualSelectedDatesInactiveBackgroundColor != Xamarin.Forms.Color.Default)
+				_picker.StyleDescriptor.SelectedDatesInactiveBackgroundColor = Element.ActualSelectedDatesInactiveBackgroundColor.ToAndroid ();
+			if (Element.ActualSelectedDatesInactiveForegroundColor != Xamarin.Forms.Color.Default)
+				_picker.StyleDescriptor.SelectedDatesInactiveForegroundColor = Element.ActualSelectedDatesInactiveForegroundColor.ToAndroid ();
 
 			//Divider
 			if (Element.DateSeparatorColor != Xamarin.Forms.Color.Default)

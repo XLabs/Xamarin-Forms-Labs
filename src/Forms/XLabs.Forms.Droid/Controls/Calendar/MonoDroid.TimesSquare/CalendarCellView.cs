@@ -18,6 +18,10 @@
 		/// </summary>
 		private bool _isSelectable;
 		/// <summary>
+		/// The is selectable dates marked.
+		/// </summary>
+		private bool _isSelectableDatesMarked;
+		/// <summary>
 		/// The _is current month
 		/// </summary>
 		private bool _isCurrentMonth;
@@ -85,6 +89,17 @@
 		}
 
 		/// <summary>
+		/// Sets a value indicating whether this <see cref="XLabs.Forms.Controls.MonoDroid.TimesSquare.CalendarCellView"/>
+		/// selectable dates marked.
+		/// </summary>
+		/// <value><c>true</c> if selectable dates marked; otherwise, <c>false</c>.</value>
+		public bool SelectableDatesMarked {
+			set {
+				_isSelectableDatesMarked = value;
+			}
+		}
+
+		/// <summary>
 		/// Sets a value indicating whether this instance is current month.
 		/// </summary>
 		/// <value><c>true</c> if this instance is current month; otherwise, <c>false</c>.</value>
@@ -134,10 +149,14 @@
 			{
 				this.Typeface = (style.DateLabelFont);
 			}
-			if(this.Selected)
+			if(this.Selected && !_isSelectableDatesMarked)
 			{
 				SetBackgroundColor(style.SelectedDateBackgroundColor);
 				SetTextColor(style.SelectedDateForegroundColor);
+			} else if(this.Selected && _isSelectableDatesMarked)
+			{
+				SetBackgroundColor(style.SelectedDatesBackgroundColor);
+				SetTextColor(style.SelectedDatesForegroundColor);
 			} else if(_isToday)
 			{
 				SetBackgroundColor(style.TodayBackgroundColor);

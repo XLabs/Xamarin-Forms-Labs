@@ -58,7 +58,6 @@ namespace XLabs.Forms.Controls
             {
 				_arrowDirection = value;
 				SetBackgroundImage(GenerateImageForButton(Frame), UIControlState.Normal);
-				//_trianglePath = GetEquilateralTriangle(this.Width, this.Height);
 				SetNeedsDisplay();
 			}
 		}
@@ -94,36 +93,17 @@ namespace XLabs.Forms.Controls
 		/// <returns>UIImage.</returns>
 		private UIImage GenerateImageForButton(CGRect rect)
         {
-			UIGraphics.BeginImageContextWithOptions(rect.Size, false, 0);
 			UIImage image;
 
-			using(var context = UIGraphics.GetCurrentContext())
-            {
-				CGPoint p1 , p2 , p3;
-				if(_arrowDirection == ArrowDirection.Left)
-                {
-					p1 = new CGPoint(0, (rect.Height) / 2);
-					p2 = new CGPoint(rect.Width, 0);
-					p3 = new CGPoint(rect.Width, rect.Height);
-				}
-                else
-                {
-					p1 = new CGPoint(rect.Width, rect.Height / 2);
-					p2 = new CGPoint(0, 0);
-					p3 = new CGPoint(0, rect.Height);
-				}
-
-				context.SetFillColor(UIColor.Clear.CGColor);
-				context.FillRect(rect);
-				context.SetFillColor(_color.CGColor);
-				context.MoveTo(p1.X, p1.Y);
-				context.AddLineToPoint(p2.X, p2.Y);
-				context.AddLineToPoint(p3.X, p3.Y);
-				context.FillPath();
-				image = UIGraphics.GetImageFromCurrentImageContext();
+			if(_arrowDirection == ArrowDirection.Left)
+			{
+				image = UIImage.FromBundle("Images/Calendar/arrow_white_left.png");
+			}
+			else
+			{
+				image = UIImage.FromBundle("Images/Calendar/arrow_white_right.png");
 			}
 
-			UIGraphics.EndImageContext();
 			return image;
 		}
 	}

@@ -1,4 +1,6 @@
-﻿namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
+﻿using Android.Graphics.Drawables;
+
+namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 {
 	using System;
 
@@ -41,8 +43,11 @@
 			}
 			set {
 				_arrowDirection = value;
-				_trianglePath = GetEquilateralTriangle(this.Width, this.Height);
-				Invalidate();
+				//_trianglePath = GetEquilateralTriangle(this.Width, this.Height);
+				//SetBackgroundResource (Resource.Drawable.arrow_white_left);
+
+				//Background = Drawable.CreateFromPath ("Images/Calendar/arrow_white_left.png");
+				//Invalidate();
 			}
 		}
 
@@ -52,19 +57,19 @@
 		/// <value>The color.</value>
 		public Android.Graphics.Color Color {
 			set {
-				_trianglePaint.Color = value;
-				Invalidate();
+				//_trianglePaint.Color = value;
+				//Invalidate();
 			}
 		}
 
 		/// <summary>
 		/// The _triangle path
 		/// </summary>
-		Path _trianglePath;
+		//Path _trianglePath;
 		/// <summary>
 		/// The _triangle paint
 		/// </summary>
-		Paint _trianglePaint;
+		//Paint _trianglePaint;
 
 
 		/// <summary>
@@ -101,10 +106,10 @@
 		/// </summary>
 		private void SharedConstructor()
 		{
-			_trianglePaint = new Paint();
+			/*_trianglePaint = new Paint();
 			_trianglePaint.SetStyle(Android.Graphics.Paint.Style.Fill);
 			_trianglePaint.AntiAlias = true;
-			_trianglePaint.Color = Android.Graphics.Color.Black;
+			_trianglePaint.Color = Android.Graphics.Color.Black;*/
 		}
 
 
@@ -127,7 +132,7 @@
 		protected override void OnSizeChanged(int w, int h, int oldw, int oldh)
 		{
 			base.OnSizeChanged(w, h, oldw, oldh);
-			_trianglePath = GetEquilateralTriangle(w, h);
+			//_trianglePath = GetEquilateralTriangle(w, h);
 		}
 
 		/// <summary>
@@ -144,7 +149,7 @@
 		protected override void OnDraw(Canvas canvas)
 		{
 			base.OnDraw(canvas);
-			canvas.DrawPath(_trianglePath, _trianglePaint);
+			//canvas.DrawPath(_trianglePath, _trianglePaint);
 		}
 
 
@@ -154,7 +159,7 @@
 		/// <param name="width">The width.</param>
 		/// <param name="height">The height.</param>
 		/// <returns>Path.</returns>
-		private Path GetEquilateralTriangle(int width, int height)
+		/*private Path GetEquilateralTriangle(int width, int height)
 		{
 			PointF p1, p2, p3;
 			if(_arrowDirection == ArrowDirection.LEFT)
@@ -173,7 +178,7 @@
 			path.LineTo(p2.X, p2.Y);
 			path.LineTo(p3.X, p3.Y);
 			return path;
-		}
+		}*/
 
 
 	}

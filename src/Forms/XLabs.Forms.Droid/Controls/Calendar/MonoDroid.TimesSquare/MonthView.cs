@@ -4,6 +4,7 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 	using System.Collections.Generic;
 	using System.Diagnostics;
 	using System.Globalization;
+	using System.Linq;
 
 	using Android.Content;
 	using Android.Util;
@@ -178,6 +179,8 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 					{
 						var cell = week[c];
 						var cellView = (CalendarCellView)weekRow.GetChildAt(c);
+						cellView.TextAlignment = TextAlignment.Gravity;
+						cellView.Gravity = GravityFlags.Center;
 
 						cellView.Text = cell.Value.ToString();
 						cellView.Enabled = cell.IsCurrentMonth;
@@ -188,8 +191,8 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 						cellView.IsHighlighted = cell.IsHighlighted;
 						cellView.RangeState = cell.RangeState;
 						cellView.Tag = cell;
+						cellView.SelectableDatesMarked = cell.IsSelectedDatesMarked;
 						cellView.SetStyle(month.Style);
-						//Logr.D("Setting cell at {0} ms", stopWatch.ElapsedMilliseconds);
 					}
 				} else
 				{

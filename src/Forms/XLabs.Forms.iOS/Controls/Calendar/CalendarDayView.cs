@@ -29,6 +29,7 @@
  OTHER DEALINGS IN THE SOFTWARE.
  
  */
+using System.Drawing;
 
 namespace XLabs.Forms.Controls
 {
@@ -45,27 +46,27 @@ namespace XLabs.Forms.Controls
         /// <summary>
         /// The paragraph style
         /// </summary>
-        private static NSMutableParagraphStyle paragraphStyle;
+        static NSMutableParagraphStyle paragraphStyle;
 
 		/// <summary>
 		/// The _text
 		/// </summary>
-        private string _text;
+        string _text;
 
 		/// <summary>
 		/// The _old backgorund color
 		/// </summary>
-		private UIColor _oldBackgorundColor;
+		UIColor _oldBackgorundColor;
 
 		/// <summary>
 		/// The _active
 		/// </summary>
-        private bool _active, _today, _selected, _marked, _available, _highlighted;
+        bool _active, _today, _selected, _marked, _available, _highlighted, _selectedDatesMarked;
 
         /// <summary>
         /// The _MV
         /// </summary>
-        private readonly CalendarMonthView _mv;
+        readonly CalendarMonthView _mv;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CalendarDayView"/> class.
@@ -119,6 +120,12 @@ namespace XLabs.Forms.Controls
 		/// <value><c>true</c> if highlighted; otherwise, <c>false</c>.</value>
 		public bool Highlighted { get { return _highlighted; } set { _highlighted = value; SetNeedsDisplay(); } }
 
+		/// <summary>
+		/// Gets or sets a value indicating whether this <see cref="XLabs.Forms.Controls.CalendarDayView"/> selected dates.
+		/// </summary>
+		/// <value><c>true</c> if selected dates; otherwise, <c>false</c>.</value>
+		public bool SelectedDatesMarked {get { return _selectedDatesMarked; } set{ _selectedDatesMarked = value; SetNeedsDisplay();} }
+
         /// <summary>
         /// Gets or sets the date.
         /// </summary>
@@ -131,57 +138,45 @@ namespace XLabs.Forms.Controls
 		/// <param name="rect">The rect.</param>
 		public override void Draw(CGRect rect)
 		{
-		    UIImage img = null;
 			var color = _mv.StyleDescriptor.InactiveDateForegroundColor;
 			BackgroundColor = _mv.StyleDescriptor.InactiveDateBackgroundColor;
 			var backgroundStyle = CalendarView.BackgroundStyle.Fill;
 
-
-			if (!Active || !Available)
-			{
-				if (Highlighted)
-				{
+			if ((!Active || !Available) && !SelectedDatesMarked) {
+				if (Highlighted) {
 					BackgroundColor = _mv.StyleDescriptor.HighlightedDateBackgroundColor;
 				}
-				//color = UIColor.FromRGBA(0.576f, 0.608f, 0.647f, 1f);
-				//img = UIImage.FromBundle("Images/Calendar/datecell.png");
 			}
-			else if (Today && Selected)
-			{
+			else if ((!Active || !Available) && SelectedDatesMarked) {
+				color = _mv.StyleDescriptor.SelectedDatesInactiveForegroundColor;
+				BackgroundColor = _mv.StyleDescriptor.SelectedDatesInactiveBackgroundColor;
+				backgroundStyle = _mv.StyleDescriptor.SelectionDatesBackgroundStyle;
+			}
+			else if (Today && Selected) {
 				color = _mv.StyleDescriptor.SelectedDateForegroundColor;
 				BackgroundColor = _mv.StyleDescriptor.SelectedDateBackgroundColor;
 				backgroundStyle = _mv.StyleDescriptor.SelectionBackgroundStyle;
-				//img = UIImage.FromBundle("Images/Calendar/todayselected.png").CreateResizableImage(new UIEdgeInsets(4,4,4,4));
-			}
-			else if (Today)
-			{
+			} else if (Today) {
 				color = _mv.StyleDescriptor.TodayForegroundColor;
 				BackgroundColor = _mv.StyleDescriptor.TodayBackgroundColor;
 				backgroundStyle = _mv.StyleDescriptor.TodayBackgroundStyle;
-				//img = UIImage.FromBundle("Images/Calendar/today.png").CreateResizableImage(new UIEdgeInsets(4,4,4,4));
-			}
-			else if (Selected || Marked)
-			{
-				//color = UIColor.White;
+			} else if (Selected || Marked) {
 				color = _mv.StyleDescriptor.SelectedDateForegroundColor;
 				BackgroundColor = _mv.StyleDescriptor.SelectedDateBackgroundColor;
 				backgroundStyle = _mv.StyleDescriptor.SelectionBackgroundStyle;
-				//img = UIImage.FromBundle("Images/Calendar/datecellselected.png").CreateResizableImage(new UIEdgeInsets(4,4,4,4));
-			}
-			else if (Highlighted)
-			{
+			} else if (SelectedDatesMarked) {
+				color = _mv.StyleDescriptor.SelectedDatesForegroundColor;
+				BackgroundColor = _mv.StyleDescriptor.SelectedDatesBackgroundColor;
+				backgroundStyle = _mv.StyleDescriptor.SelectionDatesBackgroundStyle;
+			} else if (Highlighted) {
 				color = _mv.StyleDescriptor.HighlightedDateForegroundColor;
 				BackgroundColor = _mv.StyleDescriptor.HighlightedDateBackgroundColor;
-			}
-			else
+			}else
 			{
 				color = _mv.StyleDescriptor.DateForegroundColor;
 				BackgroundColor = _mv.StyleDescriptor.DateBackgroundColor;
-				//img = UIImage.FromBundle("Images/Calendar/datecell.png");
 			}
-
-			//if (img != null)
-			//img.Draw(new RectangleF(0, 0, _mv.BoxWidth, _mv.BoxHeight));
+				
 			var context = UIGraphics.GetCurrentContext();
 			if (_oldBackgorundColor != BackgroundColor)
 			{
@@ -252,7 +247,7 @@ namespace XLabs.Forms.Controls
 		/// <param name="dateString">The date string.</param>
 		/// <param name="color">The color.</param>
 		/// <param name="rect">The rect.</param>
-		private void DrawDateString(NSString dateString, UIColor color, CGRect rect)
+		void DrawDateString(NSString dateString, UIColor color, CGRect rect)
 		{
 			if (paragraphStyle == null)
 			{
@@ -261,7 +256,7 @@ namespace XLabs.Forms.Controls
 				paragraphStyle.Alignment = UITextAlignment.Center;
 
 			}
-			var attrs = new UIStringAttributes()
+			var attrs = new UIStringAttributes 
 			{
 				Font = _mv.StyleDescriptor.DateLabelFont,
 				ForegroundColor = color,
@@ -274,36 +269,8 @@ namespace XLabs.Forms.Controls
 										size.Width,
 										size.Height
 									);
+
 			dateString.DrawString(targetRect, attrs);
 		}
-
-		//		/*
-		//      (void) drawString: (NSString*) s
-		//           withFont: (UIFont*) font
-		//             inRect: (CGRect) contextRect {
-		//
-		//    /// Make a copy of the default paragraph style
-		//    NSMutableParagraphStyle *paragraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
-		//    /// Set line break mode
-		//    paragraphStyle.lineBreakMode = NSLineBreakByTruncatingTail;
-		//    /// Set text alignment
-		//    paragraphStyle.alignment = NSTextAlignmentCenter;
-		//
-		//    NSDictionary *attributes = @{ NSFontAttributeName: font,
-		//                                  NSForegroundColorAttributeName: [UIColor whiteColor],
-		//                                  NSParagraphStyleAttributeName: paragraphStyle };
-		//
-		//    CGSize size = [s sizeWithAttributes:attributes];
-		//
-		//    CGRect textRect = CGRectMake(contextRect.origin.x + floorf((contextRect.size.width - size.width) / 2),
-		//                                 contextRect.origin.y + floorf((contextRect.size.height - size.height) / 2),
-		//                                 size.width,
-		//                                 size.height);
-		//
-		//    [s drawInRect:textRect withAttributes:attributes];
-		//}
-		//
-		//
-		//		*/
 	}
 }

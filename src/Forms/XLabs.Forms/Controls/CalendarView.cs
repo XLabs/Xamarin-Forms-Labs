@@ -1,6 +1,8 @@
 ﻿using System;
 using Xamarin.Forms;
 using System.Collections.Generic;
+using XLabs.Ioc;
+using XLabs.Platform.Device;
 
 namespace XLabs.Forms.Controls
 {
@@ -483,6 +485,30 @@ namespace XLabs.Forms.Controls
 			}
 		}
 
+		/**
+		 * SelectionDatesBackgroundStyle property
+		 */
+		/// <summary>
+		/// The selection dates background style property
+		/// </summary>
+		public static readonly BindableProperty SelectionDatesBackgroundStyleProperty = BindableProperty.Create("SelectionDatesBackgroundStyle", typeof(BackgroundStyle), typeof(CalendarView), BackgroundStyle.Fill, BindingMode.OneWay, null, null, null, null);
+
+		/**
+		 * Background style for selecting dates the cells. It is only respected on iOS for now.
+		 */
+		/// <summary>
+		/// Gets or sets the selection dates background style.
+		/// </summary>
+		/// <value>The selection dates background style.</value>
+		public BackgroundStyle SelectionDatesBackgroundStyle {
+			get {
+				return (BackgroundStyle)base.GetValue(CalendarView.SelectionDatesBackgroundStyleProperty);
+			}
+			set {
+				base.SetValue(CalendarView.SelectionDatesBackgroundStyleProperty, value);
+			}
+		}
+
 
 		/**
 		 * SelectedDateForegroundColorProperty property
@@ -529,6 +555,102 @@ namespace XLabs.Forms.Controls
 			}
 			set {
 				base.SetValue(CalendarView.SelectedDateBackgroundColorProperty, value);
+			}
+		}
+
+		/**
+		 * SelectedDatesForegroundColorProperty property
+		 */
+		/// <summary>
+		/// The selected dates foreground color property
+		/// </summary>
+		public static readonly BindableProperty SelectedDatesForegroundColorProperty = BindableProperty.Create("SelectedDatesForegroundColor", typeof(Color), typeof(CalendarView), Color.Default, BindingMode.OneWay, null, null, null, null);
+
+		/**
+		 * Foreground color of selected dates in the calendar. Default color is platform specific.
+		 */
+		/// <summary>
+		/// Gets or sets the color of the selected dates foreground.
+		/// </summary>
+		/// <value>The color of the selected dates foreground.</value>
+		public Color SelectedDatesForegroundColor {
+			get {
+				return (Color)base.GetValue(CalendarView.SelectedDatesForegroundColorProperty);
+			}
+			set {
+				base.SetValue(CalendarView.SelectedDatesForegroundColorProperty, value);
+			}
+		}
+
+		/**
+		 * DateBackgroundColorProperty property
+		 */
+		/// <summary>
+		/// The selected dates background color property
+		/// </summary>
+		public static readonly BindableProperty SelectedDatesBackgroundColorProperty = BindableProperty.Create("SelectedDatesBackgroundColor", typeof(Color), typeof(CalendarView), Color.Default, BindingMode.OneWay, null, null, null, null);
+
+		/**
+		 * Background color of selected dates in the calendar. Default color is platform specific.
+		 */
+		/// <summary>
+		/// Gets or sets the color of the selected dates background.
+		/// </summary>
+		/// <value>The color of the selected dates background.</value>
+		public Color SelectedDatesBackgroundColor {
+			get {
+				return (Color)base.GetValue(CalendarView.SelectedDatesBackgroundColorProperty);
+			}
+			set {
+				base.SetValue(CalendarView.SelectedDatesBackgroundColorProperty, value);
+			}
+		}
+
+		/**
+		 * SelectedDatesInactiveForegroundColorProperty property
+		 */
+		/// <summary>
+		/// The selected dates Inactive foreground color property
+		/// </summary>
+		public static readonly BindableProperty SelectedDatesInactiveForegroundColorProperty = BindableProperty.Create("SelectedDatesInactiveForegroundColor", typeof(Color), typeof(CalendarView), Color.Default, BindingMode.OneWay, null, null, null, null);
+
+		/**
+		 * Foreground color of selected dates Inactive in the calendar. Default color is platform specific.
+		 */
+		/// <summary>
+		/// Gets or sets the color of the selected dates Inactive foreground.
+		/// </summary>
+		/// <value>The color of the selected dates foreground.</value>
+		public Color SelectedDatesInactiveForegroundColor {
+			get {
+				return (Color)base.GetValue(CalendarView.SelectedDatesInactiveForegroundColorProperty);
+			}
+			set {
+				base.SetValue(CalendarView.SelectedDatesInactiveForegroundColorProperty, value);
+			}
+		}
+
+		/**
+		 * DateBackgroundColorProperty property
+		 */
+		/// <summary>
+		/// The selected dates Inactive background color property
+		/// </summary>
+		public static readonly BindableProperty SelectedDatesInactiveBackgroundColorProperty = BindableProperty.Create("SelectedDatesInactiveBackgroundColor", typeof(Color), typeof(CalendarView), Color.Default, BindingMode.OneWay, null, null, null, null);
+
+		/**
+		 * Background color of selected dates in the calendar. Default color is platform specific.
+		 */
+		/// <summary>
+		/// Gets or sets the color of the selected dates Inactive background.
+		/// </summary>
+		/// <value>The color of the selected dates Inactive background.</value>
+		public Color SelectedDatesInactiveBackgroundColor {
+			get {
+				return (Color)base.GetValue(CalendarView.SelectedDatesInactiveBackgroundColorProperty);
+			}
+			set {
+				base.SetValue(CalendarView.SelectedDatesInactiveBackgroundColorProperty, value);
 			}
 		}
 
@@ -885,6 +1007,58 @@ namespace XLabs.Forms.Controls
 		}
 
 		/// <summary>
+		/// Gets the actual color of the selected dates foreground.
+		/// </summary>
+		/// <value>The actual color of the selected dates foreground.</value>
+		public Color ActualSelectedDatesForegroundColor{
+			get{
+				if(this.SelectedDatesForegroundColor != Color.Default){
+					return this.SelectedDatesForegroundColor;
+				}
+				return this.ActualDateForegroundColor;
+			}
+		}
+
+		/// <summary>
+		/// Gets the actual color of the selected dates background.
+		/// </summary>
+		/// <value>The actual color of the selected dates background.</value>
+		public Color ActualSelectedDatesBackgroundColor{
+			get{
+				if(this.SelectedDatesBackgroundColor != Color.Default){
+					return this.SelectedDatesBackgroundColor;
+				}
+				return this.ActualDateBackgroundColor;
+			}
+		}
+
+		/// <summary>
+		/// Gets the actual color of the selected dates inactive foreground.
+		/// </summary>
+		/// <value>The actual color of the selected dates inactive foreground.</value>
+		public Color ActualSelectedDatesInactiveForegroundColor{
+			get{
+				if(this.SelectedDatesInactiveForegroundColor != Color.Default){
+					return this.SelectedDatesInactiveForegroundColor;
+				}
+				return this.ActualInactiveDateForegroundColor;
+			}
+		}
+
+		/// <summary>
+		/// Gets the actual color of the selected dates inactive background.
+		/// </summary>
+		/// <value>The actual color of the selected dates inactive background.</value>
+		public Color ActualSelectedDatesInactiveBackgroundColor{
+			get{
+				if(this.SelectedDatesInactiveBackgroundColor != Color.Default){
+					return this.SelectedDatesInactiveBackgroundColor;
+				}
+				return this.ActualInactiveDateBackgroundColor;
+			}
+		}
+
+		/// <summary>
 		/// Gets the actual color of the month title foreground.
 		/// </summary>
 		/// <value>The actual color of the month title foreground.</value>
@@ -978,11 +1152,26 @@ namespace XLabs.Forms.Controls
 		public CalendarView()
 		{
 			if(Device.OS == TargetPlatform.iOS){
-				HeightRequest = 198 + 20; //This is the size of the original iOS calendar
+				HeightRequest = GetHeightCalendarByDeviceIOS(); //This is the size of the original iOS calendar
 			}else if(Device.OS == TargetPlatform.Android){
-				HeightRequest = 300; //This is the size in which Android calendar renders comfortably on most devices
+				HeightRequest = GetHeightCalendarByDeviceAndroid(); //This is the size in which Android calendar renders comfortably on most devices
 			}
+		}
 
+		static double GetHeightCalendarByDeviceAndroid(){
+			var device = Resolver.Resolve<IDevice>();
+			var screenWidth = device.Display.Width;
+
+			var height = (370 * screenWidth) / 768;
+			return height;
+		}
+
+		static double GetHeightCalendarByDeviceIOS(){
+			var device = Resolver.Resolve<IDevice>();
+			var screenWidth = device.Display.Width;
+
+			var height = (230 * screenWidth) / 640;
+			return height;
 		}
 
 		/// <summary>

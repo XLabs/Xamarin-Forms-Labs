@@ -40,6 +40,12 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 		public bool IsSelected { get; set; }
 
 		/// <summary>
+		/// Gets or sets a value indicating whether this instance is selected dates marked.
+		/// </summary>
+		/// <value><c>true</c> if this instance is selected dates marked; otherwise, <c>false</c>.</value>
+		public bool IsSelectedDatesMarked{ get; set; }
+
+		/// <summary>
 		/// Gets or sets a value indicating whether this instance is today.
 		/// </summary>
 		/// <value><c>true</c> if this instance is today; otherwise, <c>false</c>.</value>
@@ -81,8 +87,10 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 		/// <param name="value">The value.</param>
 		/// <param name="rangeState">State of the range.</param>
 		/// <param name="style">The style.</param>
+		/// <param name = "isSelectedDatesMarked"></param>
 		public MonthCellDescriptor(DateTime date, bool isCurrentMonth, bool isSelectable, bool isSelected,
-								   bool isToday, bool isHighlighted, int value, RangeState rangeState, StyleDescriptor style)
+								   bool isToday, bool isHighlighted, int value, RangeState rangeState, StyleDescriptor style,
+								   bool isSelectedDatesMarked)
 		{
 			DateTime = date;
 			Value = value;
@@ -93,6 +101,7 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 			IsSelectable = isSelectable;
 			RangeState = rangeState;
 			Style = style;
+			IsSelectedDatesMarked = isSelectedDatesMarked;
 		}
 
 		/// <summary>
@@ -124,6 +133,7 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 			+ ", IsSelectable=" + IsSelectable
 			+ ", IsHighlighted=" + IsHighlighted
 			+ ", RangeSTate=" + RangeState
+			+ ", IsSelectedDatesMarked=" + IsSelectedDatesMarked
 			+ "}";
 		}
 	}

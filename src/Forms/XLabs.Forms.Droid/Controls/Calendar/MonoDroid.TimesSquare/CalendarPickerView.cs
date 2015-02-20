@@ -1,4 +1,5 @@
 using System.Collections;
+using Android.Views;
 
 namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 {
@@ -256,7 +257,6 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 		/// </summary>
 		public void UpdateStyles()
 		{
-
 			base.SetBackgroundColor(_styleDescriptor.BackgroundColor);
 
 			Adapter.NotifyDataSetChanged();
@@ -281,24 +281,18 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 			MyAdapter = new MonthAdapter(context, this);
 			base.Adapter = MyAdapter;
 
-			//base.Divider = null;
-			//base.DividerHeight = 0;
-			this.PageMargin = 32;
-			SetPadding(0, 0, 0, 0);
 
-			//Sometimes dates could not be selected after the transform. I had to disable it. :(
-			//SetPageTransformer(true, new CalendarMonthPageTransformer());
+			//SetPadding(0, 0, 0, 0);
 
 			var bgColor = base.Resources.GetColor(Resource.Color.calendar_bg);
 			base.SetBackgroundColor(bgColor);
-			//base.CacheColorHint = bgColor;
 
 			MonthNameFormat = base.Resources.GetString(Resource.String.month_name_format);
 			WeekdayNameFormat = base.Resources.GetString(Resource.String.day_name_format);
 			FullDateFormat = CultureInfo.CurrentCulture.DateTimeFormat.LongDatePattern;
 			ClickHandler += OnCellClicked;
 			OnInvalidDateSelected += OnInvalidateDateClicked;
-			this.SetOnPageChangeListener(new OnPageChangeListener(this));
+			SetOnPageChangeListener(new OnPageChangeListener(this));
 
 
 
@@ -447,12 +441,14 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 			var minSelectedCal = GetMinDate(SelectedCals);
 			var maxSelectedCal = GetMaxDate(SelectedCals);
 
-			while((cal.Month < month.Month + 1 || cal.Year < month.Year)
-				   && cal.Year <= month.Year) {
+			var numWeeks = 0;
+			while(((cal.Month < month.Month + 1 || cal.Year < month.Year)
+				&& cal.Year <= month.Year) || numWeeks < 5) {
 				Logr.D("Building week row starting at {0}", cal);
 				var weekCells = new List<MonthCellDescriptor>();
 				cells.Add(weekCells);
-				for(int i = 0; i < 7; i++) {
+				for(int i = 0; i < 7; i++) 
+				{
 					var date = cal;
 					bool isCurrentMonth = cal.Month == month.Month;
 					bool isSelected = isCurrentMonth && ContatinsDate(SelectedCals, cal);
@@ -460,6 +456,10 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 					bool isToday = IsSameDate(cal, Today);
 					bool isHighlighted = ContatinsDate(_highlightedCals, cal) || _hlighlightedDaysOfWeek[(int)cal.DayOfWeek];
 					int value = cal.Day;
+					bool isSelectedDatesMarked = false;
+					if(SelectedDatesItems != null){
+						isSelectedDatesMarked = SelectedDatesItems.Any (x => x.Equals (date));
+					}
 
 					var rangeState = RangeState.None;
 					if(SelectedCals.Count > 1) {
@@ -473,9 +473,10 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 					}
 
 					weekCells.Add(new MonthCellDescriptor(date, isCurrentMonth, isSelectable, isSelected,
-						isToday, isHighlighted, value, rangeState, _styleDescriptor));
+						isToday, isHighlighted, value, rangeState, _styleDescriptor, isSelectedDatesMarked));
 					cal = cal.AddDays(1);
 				}
+				numWeeks++;
 			}
 			return cells;
 		}
@@ -587,6 +588,7 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 				throw new InvalidOperationException(
 					"Must have at least one month to display. Did you forget to call Init()?");
 			}
+
 			Logr.D("PickerView.OnMeasure w={0} h={1}", MeasureSpec.ToString(widthMeasureSpec),
 				MeasureSpec.ToString(heightMeasureSpec));
 			base.OnMeasure(widthMeasureSpec, heightMeasureSpec);
@@ -654,7 +656,7 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 			} 
 			else {
 				foreach (var selectedCell in SelectedCells) {
-					if (!SelectedDatesItems.Where (x => x.Equals (selectedCell.DateTime)).Any()) {
+					if (!SelectedDatesItems.Any (x => x.Equals (selectedCell.DateTime))) {
 						selectedCell.IsSelected = false;
 					}
 				}
@@ -759,8 +761,9 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 			if(date > DateTime.MinValue) 
 			{
 				if(SelectedCells.Count == 0 || !SelectedCells[0].Equals(cell)) {
-					SelectedCells.Add(cell);
 					cell.IsSelected = true;
+					cell.IsSelectedDatesMarked = true;
+					SelectedCells.Add(cell);
 				}
 				SelectedCals.Add(newlySelectedDate);
 			}

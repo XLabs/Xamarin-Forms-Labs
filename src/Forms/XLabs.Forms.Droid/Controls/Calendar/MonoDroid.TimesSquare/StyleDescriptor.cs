@@ -37,6 +37,22 @@
 		/// </summary>
 		public Android.Graphics.Color SelectedDateBackgroundColor = Color.FromHex("#ff379bff").ToAndroid();
 		/// <summary>
+		/// The color of the selected dates background.
+		/// </summary>
+		public Android.Graphics.Color SelectedDatesBackgroundColor = Color.FromHex("#CE4121").ToAndroid();
+		/// <summary>
+		/// The color of the selected dates foreground.
+		/// </summary>
+		public Android.Graphics.Color SelectedDatesForegroundColor = Color.FromHex("#ffffffff").ToAndroid();
+		/// <summary>
+		/// The color of the selected dates background.
+		/// </summary>
+		public Android.Graphics.Color SelectedDatesInactiveBackgroundColor = Color.White.ToAndroid();
+		/// <summary>
+		/// The color of the selected dates foreground.
+		/// </summary>
+		public Android.Graphics.Color SelectedDatesInactiveForegroundColor = Color.Gray.ToAndroid();
+		/// <summary>
 		/// The title foreground color
 		/// </summary>
 		public Android.Graphics.Color TitleForegroundColor = Color.FromHex("#ff778088").ToAndroid();
