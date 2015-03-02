@@ -44,6 +44,7 @@ The v.1.2 is the stable branch.
  - Phone Service (cellular network info, make phonecalls)
  - SoundService
  - Text To Speech 
+ - ScreenshotManager
 
 
 **Available Mvvm helpers (Beta)**

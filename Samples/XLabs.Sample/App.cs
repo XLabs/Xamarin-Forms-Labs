@@ -71,6 +71,8 @@ namespace XLabs.Sample
             ViewFactory.Register<SoundPage, SoundServiceViewModel>();
             ViewFactory.Register<RepeaterViewPage, RepeaterViewViewModel>();
             ViewFactory.Register<WaveRecorderPage, WaveRecorderViewModel>();
+            ViewFactory.Register<ScreenshotManagerPage, ScreenshotManagerViewModel>();
+            
 
             var mainTab = new ExtendedTabbedPage()
             {
@@ -126,6 +128,7 @@ namespace XLabs.Sample
                 "NFC",
                 "Email",
                 "SecureStorage",
+                "ScreenshotManager"
                 //"WaveRecorder",
                 //"Bluetooth",
             };
@@ -183,6 +186,9 @@ namespace XLabs.Sample
                         break;
                     case "securestorage":
                         await mainPage.Navigation.PushAsync(new SecureStoragePage());
+                        break;
+                    case "screenshotmanager":
+                        await mainPage.Navigation.PushAsync(ViewFactory.CreatePage<ScreenshotManagerViewModel, Page>() as Page);
                         break;
                 }
             };

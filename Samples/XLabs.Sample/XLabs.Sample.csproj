@@ -89,6 +89,9 @@
     <Compile Include="Pages\Controls\SegmentPage.cs" />
     <Compile Include="Pages\Controls\WebHybridTestPage.cs" />
     <Compile Include="Pages\Services\EmailPage.cs" />
+    <Compile Include="Pages\Services\ScreenshotManagerPage.xaml.cs">
+      <DependentUpon>ScreenshotManagerPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Services\SecureStoragePage.xaml.cs">
       <DependentUpon>SecureStoragePage.xaml</DependentUpon>
     </Compile>
@@ -124,6 +127,7 @@
     <Compile Include="ViewModel\GestureSampleVM.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\RepeaterViewViewModel.cs" />
+    <Compile Include="ViewModel\ScreenshotManagerViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="Pages\Controls\ExtendedLabelPage.xaml.cs">
       <DependentUpon>ExtendedLabelPage.xaml</DependentUpon>
@@ -414,6 +418,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\Controls\DragPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Services\ScreenshotManagerPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

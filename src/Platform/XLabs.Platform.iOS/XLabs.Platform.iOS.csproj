@@ -83,6 +83,7 @@
     <Compile Include="Services\Network.cs" />
     <Compile Include="Services\PhoneService.cs" />
     <Compile Include="Services\Reachability.cs" />
+    <Compile Include="Services\ScreenshotManager.cs" />
     <Compile Include="Services\SecureStorage.cs" />
     <Compile Include="Services\TextToSpeechService.cs" />
     <None Include="packages.config" />

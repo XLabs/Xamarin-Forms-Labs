@@ -95,6 +95,7 @@
     <Compile Include="Services\NfcDevice.cs" />
     <Compile Include="Services\PhoneService.cs" />
     <Compile Include="Services\Reachability.cs" />
+    <Compile Include="Services\ScreenshotManager.cs" />
     <Compile Include="Services\SharedPreferencesStorage.cs" />
     <Compile Include="Services\TextToSpeechService.cs" />
   </ItemGroup>

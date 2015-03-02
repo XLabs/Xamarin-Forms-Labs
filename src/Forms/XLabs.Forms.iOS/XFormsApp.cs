@@ -178,6 +178,7 @@ namespace XLabs.Forms
 				DependencyService.Register<EmailService> ();
 				DependencyService.Register<FileManager> ();
 				DependencyService.Register<AppleDevice> ();
+                DependencyService.Register<ScreenshotManager>();
 			}
             
 			base.OnInit(app);

@@ -67,6 +67,7 @@
     <Compile Include="Services\INfcDevice.cs" />
     <Compile Include="Services\IO\IFileManager.cs" />
     <Compile Include="Services\IPhoneService.cs" />
+    <Compile Include="Services\IScreenshotManager.cs" />
     <Compile Include="Services\ISecureStorage.cs" />
     <Compile Include="Services\ITextToSpeechService.cs" />
     <Compile Include="Services\Media\IAudioStream.cs" />

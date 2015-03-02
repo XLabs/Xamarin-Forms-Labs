@@ -343,6 +343,7 @@ namespace XLabs.Forms
 				DependencyService.Register<EmailService> ();
 				DependencyService.Register<FileManager> ();
 				DependencyService.Register<AndroidDevice> ();
+                DependencyService.Register<ScreenshotManager>();
 			}
 
 			base.OnInit(app);
