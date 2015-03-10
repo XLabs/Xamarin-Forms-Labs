@@ -13,62 +13,19 @@
 			<controls:ExtendedLabel
                 Text="Plain unspecified Extended Label" HorizontalOptions="StartAndExpand" />
 			<controls:ExtendedLabel
-                Text="Text with strikethrough - no font or size size specified"
+                FontSize="30"
+                Text="Text with strikethrough"
                 IsStrikeThrough="True"
                 HorizontalOptions="StartAndExpand" />
-			<controls:ExtendedLabel
-                Text="Text with strikethrough size 14"
-                IsStrikeThrough="True"
-                FontSize="14"
+      <controls:ExtendedLabel
+                Text="Text with IsUnderline"
+                IsUnderline="True"
                 HorizontalOptions="StartAndExpand" />
 			<controls:ExtendedLabel
-                Text="Text with strikethrough 20"
-                IsStrikeThrough="True"
-                FontSize="20"
+                Text="Text with IsDropShadow"
+                IsDropShadow="True"
                 HorizontalOptions="StartAndExpand" />
-			<controls:ExtendedLabel
-                Text="This uses 'FontName' = 'Open 24 Display St' set in XAML and 'FriendlyFontName' properties, size 20"
-                FontName="Open 24 Display St"
-                FriendlyFontName="Open 24 Display St"
-                FontSize="20"
-                HorizontalOptions="StartAndExpand" />
-			<controls:ExtendedLabel
-                Text="As above, but now with Strikethrough"
-                FontName="Open 24 Display St"
-                FriendlyFontName="Open 24 Display St"
-                FontSize="20"
-                IsStrikeThrough="True"
-                HorizontalOptions="StartAndExpand" />
-			<controls:ExtendedLabel
-                Text="This uses 'FontName' = 'Open 24 Display St.ttf'. Size 14"
-                FontName="Open 24 Display St"
-                FriendlyFontName="Open 24 Display St"
-                FontSize="14"
-                HorizontalOptions="StartAndExpand" />
-			<controls:ExtendedLabel
-              Text="This uses 'FontName' = 'Open 24 Display St.ttf'. Size is Xamarin Medium"
-              FontName="Open 24 Display St"
-              FriendlyFontName="Open 24 Display St"
-              Font="Medium"
-              HorizontalOptions="StartAndExpand" />
-			<controls:ExtendedLabel
-              Text="This uses 'FontName' = 'Open 24 Display St.ttf'. Size is Xamarin Large"
-              FontName="Open 24 Display St"
-              FriendlyFontName="Open 24 Display St"
-              Font="Large"
-              HorizontalOptions="StartAndExpand" />
-			<controls:ExtendedLabel
-                Text="This 'FontName' = 'CODE2000', but font does NOT exist, so should default to the system font."
-                FontName="CODE2000"
-                FriendlyFontName="Code2000"
-                FontSize="14"
-                HorizontalOptions="StartAndExpand" />
-			<controls:ExtendedLabel
-                Text="This uses a custom font set xaml using obsolete properties 'FontNameAndroid', 'FontNameIOS'"
-                FontNameAndroid="Open 24 Display St.ttf"
-                FontNameIOS="Open 24 Display St"
-                FontSize="20"
-                HorizontalOptions="StartAndExpand" />
+			
 		</StackLayout>
 		<!-- </ScrollView> -->
 	</ContentPage.Content>

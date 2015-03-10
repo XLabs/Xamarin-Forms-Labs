@@ -4,7 +4,7 @@
 		<id>XLabs.IoC.SimpleInjector</id>
 		<title>XLabs - IoC - SimpleInjector</title>
 		<tags>Xamarin XLabs IoC SimpleInjector</tags>
-		<version>2.0.5520</version>
+		<version>2.0.5546.35667</version>
 		<authors>XLabs Team</authors>
 		<licenseUrl>https://github.com/XForms/Xamarin-Forms-Labs/blob/master/LICENSE</licenseUrl>
 		<projectUrl>https://github.com/XForms/Xamarin-Forms-Labs</projectUrl>
@@ -23,8 +23,8 @@
 		</releaseNotes>
 		<language>en-US</language>
 		<dependencies>
-			<dependency id="SimpleInjector" version="2.7.1" />
-			<dependency id="XLabs.IoC" version="2.0.5520" />
+			<dependency id="SimpleInjector" version="2.7.2" />
+			<dependency id="XLabs.IoC" version="2.0.5546.35667" />
 		</dependencies>
 	</metadata>
 	<files>

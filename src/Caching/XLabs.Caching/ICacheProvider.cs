@@ -3,7 +3,7 @@
 namespace XLabs.Caching
 {
     /// <summary>
-    /// The CacheProvider interface.
+    /// The CacheProvider interface with expiration.
     /// </summary>
     public interface ICacheProvider : ISimpleCache
     {

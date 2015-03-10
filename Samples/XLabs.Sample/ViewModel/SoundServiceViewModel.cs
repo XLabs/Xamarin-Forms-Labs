@@ -2,12 +2,10 @@
 {
 	using System;
 	using System.Threading.Tasks;
-
+	using Platform.Services.Media;
 	using Xamarin.Forms;
 
-	using XLabs.Platform.Services.Sound;
-
-	/// <summary>
+    /// <summary>
 	/// Class SoundServiceViewModel.
 	/// </summary>
 	public class SoundServiceViewModel : XLabs.Forms.Mvvm.ViewModel

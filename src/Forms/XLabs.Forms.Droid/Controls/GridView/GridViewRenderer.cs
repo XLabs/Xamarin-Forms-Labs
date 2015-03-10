@@ -2,8 +2,6 @@
 
 using XLabs.Forms.Controls;
 
-using GridView = Android.Widget.GridView;
-
 [assembly: ExportRenderer (typeof(GridView), typeof(GridViewRenderer))]
 namespace XLabs.Forms.Controls
 {

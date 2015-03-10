@@ -1,9 +1,9 @@
-﻿namespace XLabs.Platform.Services.Sound
+namespace XLabs.Platform.Services.Media
 {
-	using System;
-	using System.Threading.Tasks;
+    using System;
+    using System.Threading.Tasks;
 
-	/// <summary>
+    /// <summary>
 	/// Interface ISoundService
 	/// Enables playing any type of sound
 	/// </summary>

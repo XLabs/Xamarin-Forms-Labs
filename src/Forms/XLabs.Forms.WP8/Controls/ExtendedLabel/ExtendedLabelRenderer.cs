@@ -29,8 +29,29 @@ namespace XLabs.Forms.Controls
 		{
 			base.OnElementChanged(e);
 
-			var view = (ExtendedLabel) Element;
-			UpdateUi(view, Control);
+			if (e.NewElement != null) {
+				var view = (ExtendedLabel) e.NewElement;
+				UpdateUi (view, Control);
+			}
+		}
+
+		/// <summary>
+		/// Raises the element property changed event.
+		/// </summary>
+		/// <param name="sender">Sender</param>
+		/// <param name="e">The event arguments</param>
+		protected override void OnElementPropertyChanged (object sender, System.ComponentModel.PropertyChangedEventArgs e)
+		{
+			base.OnElementPropertyChanged (sender, e);
+
+			if (e.PropertyName == ExtendedLabel.IsUnderlineProperty.PropertyName ||
+				e.PropertyName == ExtendedLabel.IsDropShadowProperty.PropertyName ||
+				e.PropertyName == ExtendedLabel.IsStrikeThroughProperty.PropertyName
+				) {
+				var view = (ExtendedLabel) Element;
+				var control = Control;
+				UpdateUi (view, control);
+			}
 		}
 
 
@@ -45,9 +66,8 @@ namespace XLabs.Forms.Controls
 		/// </param>
 		private void UpdateUi(ExtendedLabel view, TextBlock control)
 		{
-			if (view.FontSize > 0)
-				control.FontSize = (float) view.FontSize;
-			//control.FontSize = (view.FontSize > 0) ? (float)view.FontSize : 12.0f;
+			if (view == null || control == null)
+				return;
 
 			////need to do this ahead of font change due to unexpected behaviour if done later.
 			if (view.IsStrikeThrough)
@@ -85,38 +105,14 @@ namespace XLabs.Forms.Controls
 
 			}
 
-			if (!string.IsNullOrEmpty(view.FontName))
-			{
-				string filename = view.FontName;
-				//if no extension given then assume and add .ttf
-				if (filename.LastIndexOf(".", StringComparison.Ordinal) != filename.Length - 4)
-				{
-					filename = string.Format("{0}.ttf", filename);
-				}
-
-			    if (LocalFontFileExists(filename)) //only substitute custom font if exists
-			    {
-			        control.FontFamily =
-			            new FontFamily(string.Format(@"\Assets\Fonts\{0}#{1}", filename,
-			                string.IsNullOrEmpty(view.FriendlyFontName)
-			                    ? filename.Substring(0, filename.Length - 4)
-			                    : view.FriendlyFontName));
-			    }
-			}
-
 			if (view.IsUnderline)
 				control.TextDecorations = TextDecorations.Underline;
+
+			if (view.IsDropShadow) {
+				//TODO: Implement dropshadow
+			}
+
 		}
 
-		/// <summary>
-		/// Checks if a local resource font file exists
-		/// </summary>
-		/// <param name="filename">the filename including extension, but not path</param>
-		/// <returns></returns>
-		private static bool LocalFontFileExists(string filename)
-		{
-			return
-                System.Windows.Application.GetResourceStream(new Uri(string.Format(@"Assets/Fonts/{0}", filename), UriKind.Relative)) != null;            
-		}
 	}
 }

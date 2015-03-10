@@ -79,11 +79,11 @@
     <Compile Include="Services\Media\MediaPickerDelegate.cs" />
     <Compile Include="Services\Media\MediaPickerPopoverDelegate.cs" />
     <Compile Include="Services\Media\Microphone.cs" />
+    <Compile Include="Services\Media\SoundService.cs" />
     <Compile Include="Services\Network.cs" />
     <Compile Include="Services\PhoneService.cs" />
     <Compile Include="Services\Reachability.cs" />
     <Compile Include="Services\SecureStorage.cs" />
-    <Compile Include="Services\SoundService.cs" />
     <Compile Include="Services\TextToSpeechService.cs" />
     <None Include="packages.config" />
   </ItemGroup>
@@ -99,7 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="ExifLib">
-      <HintPath>..\..\..\packages\ExifLib.PCL.1.0.0\lib\portable-net45+sl50+win+WindowsPhoneApp81+wp80+MonoAndroid10+MonoTouch10\ExifLib.dll</HintPath>
+      <HintPath>$(SolutionDir)packages\ExifLib.PCL.1.0.0\lib\portable-net45+sl50+win+WindowsPhoneApp81+wp80+MonoAndroid10+MonoTouch10\ExifLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />

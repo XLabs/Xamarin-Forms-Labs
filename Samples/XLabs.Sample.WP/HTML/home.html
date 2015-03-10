@@ -1,18 +1,36 @@
 
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Testing CanvasJS with Xamarin C# bridge</title>
-	</head>
+    <head>
+        <title>Testing CanvasJS with Xamarin C# bridge</title>
+    </head>
 <body>
-    Testing CanvasJS with Xamarin C# bridge
+    <div id="os"></div>
 </body>
    
     <div id="chartContainer" style="height: 300px; width: 100%;"></div>
     <script type="text/javascript" src="canvasjs.min.js"></script>
+
+    <script type="text/javascript">
+        var os, h;
+
+        if (navigator.platform == "Win32") {
+            os = "WP8";
+            h = "600px";
+        } else if (navigator.appVersion.indexOf("Linux") != -1) {
+            os = "Android";
+            h = "300px";
+        } else {
+            os = navigator.platform;
+            h = "300px";
+        }
+
+        document.getElementById("os").innerHTML = "Testing CanvasJS in " + os + " with C# bridge";
+        document.getElementById("chartContainer").style.height = h;
+    </script>
     <script language="javascript">
-    	var chart;
-    	var points;
+        var chart;
+        var points;
         
         function onViewModelData(model) {
             var v;
@@ -25,24 +43,24 @@
             //Native("dataCallback", v.dataPoints);
             if (!chart)
             {
-            	points = v.dataPoints;
-				chart = new CanvasJS.Chart("chartContainer", {
-	                theme: "theme2",
-	                title: {
-	                    text: v.title
-	                },
-	                data: [{ type: "column", dataPoints: v.dataPoints }]
-	            });
-           	}
-           	else
-           	{
-           		chart.options.data = null;
-           		chart.options.data  = [{ type: "column", dataPoints: v.dataPoints }];
-           		//chart.options.data[0].dataPoints = null;
-           		//chart.options.data[0].dataPoints = v.dataPoints;
-           		//update(v.dataPoints);
-	            //chart.data.dataPoints = v.dataPoints;
-           	}
+                points = v.dataPoints;
+                chart = new CanvasJS.Chart("chartContainer", {
+                    theme: "theme2",
+                    title: {
+                        text: v.title
+                    },
+                    data: [{ type: "column", dataPoints: v.dataPoints }]
+                });
+            }
+            else
+            {
+                chart.options.data = null;
+                chart.options.data  = [{ type: "column", dataPoints: v.dataPoints }];
+                //chart.options.data[0].dataPoints = null;
+                //chart.options.data[0].dataPoints = v.dataPoints;
+                //update(v.dataPoints);
+                //chart.data.dataPoints = v.dataPoints;
+            }
             
 
             chart.render();
@@ -60,7 +78,7 @@
         }
 
         function onUpdateFinished(){
-        	Native("chartUpdated", chart);
+            Native("chartUpdated", chart);
         }
     </script>
     

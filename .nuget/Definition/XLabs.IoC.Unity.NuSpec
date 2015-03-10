@@ -4,7 +4,7 @@
 		<id>XLabs.IoC.Unity</id>
 		<title>XLabs - IoC - Unity</title>
 		<tags>Xamarin XLabs IoC Unity</tags>
-		<version>2.0.5520</version>
+		<version>2.0.5546.35667</version>
 		<authors>XLabs Team</authors>
 		<licenseUrl>https://github.com/XForms/Xamarin-Forms-Labs/blob/master/LICENSE</licenseUrl>
 		<projectUrl>https://github.com/XForms/Xamarin-Forms-Labs</projectUrl>
@@ -24,7 +24,7 @@
 		<language>en-US</language>
 		<dependencies>
 			<dependency id="Unity" version="3.5.1404" />
-			<dependency id="XLabs.IoC" version="2.0.5520" />
+			<dependency id="XLabs.IoC" version="2.0.5546.35667" />
 		</dependencies>
 	</metadata>
 	<files>

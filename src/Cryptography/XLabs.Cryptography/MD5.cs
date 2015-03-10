@@ -42,20 +42,13 @@
 // 04/26/2014
 // Changed namespace
 
-using System;
-using System.IO;
-using System.Text;
-
-namespace Xamarin.Forms.Labs.Cryptography
+namespace XLabs.Cryptography
 {
-	public class MD5CryptoServiceProvider : MD5
-	{
-		public MD5CryptoServiceProvider()
-			: base()
-		{
-		}
-	}
-	/// <summary>
+    using System;
+    using System.IO;
+    using System.Text;
+
+    /// <summary>
 	/// Summary description for MD5.
 	/// </summary>
 	public class MD5 : IDisposable
@@ -70,23 +63,11 @@ namespace Xamarin.Forms.Labs.Cryptography
 
 		static public string GetMd5String(String source)
 		{
-			MD5 md = MD5CryptoServiceProvider.Create();
-			byte[] hash;
+			var md = Create();
+			var hash = md.ComputeHash(Encoding.UTF8.GetBytes(source));
 
-			//Create a new instance of ASCIIEncoding to 
-			//convert the string into an array of Unicode bytes.
-			UTF8Encoding enc = new UTF8Encoding();
-			//            ASCIIEncoding enc = new ASCIIEncoding();
-
-			//Convert the string into an array of bytes.
-			byte[] buffer = enc.GetBytes(source);
-
-			//Create the hash value from the array of bytes.
-			hash = md.ComputeHash(buffer);
-
-			StringBuilder sb = new StringBuilder();
-			foreach (byte b in hash)
-				sb.Append(b.ToString("x2"));
+			var sb = new StringBuilder();
+			foreach (byte b in hash) sb.Append(b.ToString("x2"));
 			return sb.ToString();
 		}
 
@@ -113,7 +94,7 @@ namespace Xamarin.Forms.Labs.Cryptography
 		private const byte S42 = 10;
 		private const byte S43 = 15;
 		private const byte S44 = 21;
-		static private byte[] PADDING = new byte[] {
+		static private readonly byte[] Padding = {
 			0x80, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
@@ -186,17 +167,17 @@ namespace Xamarin.Forms.Labs.Cryptography
 		/// <summary>
 		/// state (ABCD)
 		/// </summary>
-		uint[] state = new uint[4];
+		readonly uint[] state = new uint[4];
 
 		/// <summary>
 		/// number of bits, modulo 2^64 (lsb first)
 		/// </summary>
-		uint[] count = new uint[2];
+		readonly uint[] count = new uint[2];
 
 		/// <summary>
 		/// input buffer
 		/// </summary>
-		byte[] buffer = new byte[64];
+		readonly byte[] buffer = new byte[64];
 		#endregion
 
 		internal MD5()
@@ -212,13 +193,13 @@ namespace Xamarin.Forms.Labs.Cryptography
 		/// </remarks>
 		public virtual void Initialize()
 		{
-			count[0] = count[1] = 0;
+			this.count[0] = this.count[1] = 0;
 
 			// Load magic initialization constants.
-			state[0] = 0x67452301;
-			state[1] = 0xefcdab89;
-			state[2] = 0x98badcfe;
-			state[3] = 0x10325476;
+			this.state[0] = 0x67452301;
+			this.state[1] = 0xefcdab89;
+			this.state[2] = 0x98badcfe;
+			this.state[3] = 0x10325476;
 		}
 
 		/// <summary>
@@ -282,20 +263,20 @@ namespace Xamarin.Forms.Labs.Cryptography
 			// Pad out to 56 mod 64.
 			index = (int)((uint)(this.count[0] >> 3) & 0x3f);
 			padLen = (index < 56) ? (56 - index) : (120 - index);
-			HashCore(PADDING, 0, padLen);
+			HashCore(Padding, 0, padLen);
 
 			// Append length (before padding)
 			HashCore(bits, 0, 8);
 
 			// Store state in digest 
-			Encode(digest, 0, state, 0, 16);
+			Encode(digest, 0, this.state, 0, 16);
 
 			// Zeroize sensitive information.
-			count[0] = count[1] = 0;
-			state[0] = 0;
-			state[1] = 0;
-			state[2] = 0;
-			state[3] = 0;
+			this.count[0] = this.count[1] = 0;
+			this.state[0] = 0;
+			this.state[1] = 0;
+			this.state[2] = 0;
+			this.state[3] = 0;
 
 			// initialize again, to be ready to use
 			Initialize();
@@ -310,7 +291,7 @@ namespace Xamarin.Forms.Labs.Cryptography
 		/// <param name="offset"></param>
 		private void Transform(byte[] block, int offset)
 		{
-			uint a = state[0], b = state[1], c = state[2], d = state[3];
+			uint a = this.state[0], b = this.state[1], c = this.state[2], d = this.state[3];
 			uint[] x = new uint[16];
 			Decode(x, 0, block, offset, 64);
 
@@ -386,10 +367,10 @@ namespace Xamarin.Forms.Labs.Cryptography
 			II(ref c, d, a, b, x[2], S43, 0x2ad7d2bb); /* 63 */
 			II(ref b, c, d, a, x[9], S44, 0xeb86d391); /* 64 */
 
-			state[0] += a;
-			state[1] += b;
-			state[2] += c;
-			state[3] += d;
+			this.state[0] += a;
+			this.state[1] += b;
+			this.state[2] += c;
+			this.state[3] += d;
 
 			// Zeroize sensitive information.
 			for (int i = 0; i < x.Length; i++)
@@ -432,7 +413,7 @@ namespace Xamarin.Forms.Labs.Cryptography
 			int i, j;
 			int end = inputOffset + count;
 			for (i = outputOffset, j = inputOffset; j < end; i++, j += 4)
-				output[i] = ((uint)input[j]) | (((uint)input[j + 1]) << 8) | (((uint)input[j + 2]) << 16) | (((uint)input[j + 3]) << 24);
+				output[i] = input[j] | (((uint)input[j + 1]) << 8) | (((uint)input[j + 2]) << 16) | (((uint)input[j + 3]) << 24);
 		}
 		#endregion
 
@@ -461,14 +442,14 @@ namespace Xamarin.Forms.Labs.Cryptography
 			{
 				if (this.State != 0)
 					throw new InvalidOperationException();
-				return (byte[])HashValue.Clone();
+				return (byte[])this.HashValue.Clone();
 			}
 		}
 		public virtual int HashSize
 		{
 			get
 			{
-				return HashSizeValue;
+				return this.HashSizeValue;
 			}
 		}
 		protected int HashSizeValue = 128;
@@ -501,8 +482,8 @@ namespace Xamarin.Forms.Labs.Cryptography
 		{
 			Initialize();
 			HashCore(buffer, offset, count);
-			HashValue = HashFinal();
-			return (byte[])HashValue.Clone();
+			this.HashValue = HashFinal();
+			return (byte[])this.HashValue.Clone();
 		}
 
 		public byte[] ComputeHash(Stream inputStream)
@@ -514,8 +495,8 @@ namespace Xamarin.Forms.Labs.Cryptography
 			{
 				HashCore(buffer, 0, count);
 			}
-			HashValue = HashFinal();
-			return (byte[])HashValue.Clone();
+			this.HashValue = HashFinal();
+			return (byte[])this.HashValue.Clone();
 		}
 
 		public int TransformBlock(
@@ -582,7 +563,7 @@ namespace Xamarin.Forms.Labs.Cryptography
 				Initialize();
 			}
 			HashCore(inputBuffer, inputOffset, inputCount);
-			HashValue = HashFinal();
+			this.HashValue = HashFinal();
 			byte[] buffer = new byte[inputCount];
 			Buffer.BlockCopy(inputBuffer, inputOffset, buffer, 0, inputCount);
 			this.State = 0;

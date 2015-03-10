@@ -58,28 +58,6 @@ namespace XLabs.Forms.Controls
 		}
 
 		/// <summary>
-		///     Webs the view manipulation started.
-		/// </summary>
-		/// <param name="sender">The sender.</param>
-		/// <param name="e">The <see cref="ManipulationStartedEventArgs" /> instance containing the event data.</param>
-		/// <exception cref="System.NotImplementedException"></exception>
-		private void WebViewManipulationStarted(object sender, ManipulationStartedEventArgs e)
-		{
-			throw new NotImplementedException();
-		}
-
-		/// <summary>
-		///     Hybrids the web view renderer manipulation completed.
-		/// </summary>
-		/// <param name="sender">The sender.</param>
-		/// <param name="e">The <see cref="ManipulationCompletedEventArgs" /> instance containing the event data.</param>
-		/// <exception cref="System.NotImplementedException"></exception>
-		private void HybridWebViewRendererManipulationCompleted(object sender, ManipulationCompletedEventArgs e)
-		{
-			throw new NotImplementedException();
-		}
-
-		/// <summary>
 		///     Touches the frame reported.
 		/// </summary>
 		/// <param name="sender">The sender.</param>

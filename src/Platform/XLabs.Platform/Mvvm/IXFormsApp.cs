@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace XLabs.Platform.Mvvm
 {
-	using XLabs.Enums;
+	using Enums;
 
 	/// <summary>
 	/// Interface IXFormsApp

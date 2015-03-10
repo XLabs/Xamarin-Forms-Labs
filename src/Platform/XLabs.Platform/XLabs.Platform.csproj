@@ -40,6 +40,7 @@
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
     <Folder Include="Services\Contacts\" />
+    <Folder Include="Services\Sound\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Device\DeviceExtensions.cs" />
@@ -70,15 +71,15 @@
     <Compile Include="Services\ITextToSpeechService.cs" />
     <Compile Include="Services\Media\IAudioStream.cs" />
     <Compile Include="Services\Media\IMediaPicker.cs" />
+    <Compile Include="Services\Media\ISoundService.cs" />
     <Compile Include="Services\Media\MediaExtensions.cs" />
     <Compile Include="Services\Media\MediaFile.cs" />
     <Compile Include="Services\Media\MediaFileNoteFoundException.cs" />
     <Compile Include="Services\Media\MediaStorageOptions.cs" />
+    <Compile Include="Services\Media\SoundFile.cs" />
+    <Compile Include="Services\Media\SoundFinishedEventArgs.cs" />
     <Compile Include="Services\Media\WaveRecorder.cs" />
     <Compile Include="Services\NetworkStatus.cs" />
-    <Compile Include="Services\Sound\ISoundService.cs" />
-    <Compile Include="Services\Sound\SoundFile.cs" />
-    <Compile Include="Services\Sound\SoundFinishedEventArgs.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\XLabs.Core\XLabs.Core.csproj">
@@ -88,7 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="ExifLib">
-      <HintPath>..\..\..\packages\ExifLib.PCL.1.0.0\lib\portable-net45+sl50+win+WindowsPhoneApp81+wp80+MonoAndroid10+MonoTouch10\ExifLib.dll</HintPath>
+      <HintPath>$(SolutionDir)packages\ExifLib.PCL.1.0.0\lib\portable-net45+sl50+win+WindowsPhoneApp81+wp80+MonoAndroid10+MonoTouch10\ExifLib.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

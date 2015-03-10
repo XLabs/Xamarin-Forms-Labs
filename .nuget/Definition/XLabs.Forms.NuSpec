@@ -4,7 +4,7 @@
     <id>XLabs.Forms</id>
     <title>XLabs - Forms</title>
     <tags>Xamarin.Forms XLabs</tags>
-    <version>2.0.5520</version>
+    <version>2.0.5546.35667</version>
     <authors>XLabs Team</authors>
     <licenseUrl>https://github.com/XForms/Xamarin-Forms-Labs/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/XForms/Xamarin-Forms-Labs</projectUrl>
@@ -21,11 +21,11 @@
     <language>en-US</language>
     <dependencies>
       <group>
-        <dependency id="Xamarin.Forms" version="1.3.4.6332" />
-        <dependency id="XLabs.IoC" version="2.0.5520" />
-        <dependency id="XLabs.Platform" version="2.0.5520" />
-        <dependency id="XLabs.Core" version="2.0.5520" />
-        <dependency id="XLabs.Serialization" version="2.0.5520" />
+        <dependency id="Xamarin.Forms" version="1.4.0.6341" />
+        <dependency id="XLabs.IoC" version="2.0.5546.35667" />
+        <dependency id="XLabs.Platform" version="2.0.5546.35667" />
+        <dependency id="XLabs.Core" version="2.0.5546.35667" />
+        <dependency id="XLabs.Serialization" version="2.0.5546.35667" />
       </group>
     </dependencies>
     <frameworkAssemblies>

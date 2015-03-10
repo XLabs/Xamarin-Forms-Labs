@@ -120,12 +120,12 @@
     <Compile Include="Services\Geolocation\CoordinateExtensions.cs" />
     <Compile Include="Services\Geolocation\Geolocator.cs" />
     <Compile Include="Services\Media\MediaPicker.cs" />
+    <Compile Include="Services\Media\SoundService.cs" />
     <Compile Include="Services\Media\XnaMicrophone.cs" />
     <Compile Include="Services\Network.cs" />
     <Compile Include="Services\NfcDevice.cs" />
     <Compile Include="Services\PhoneService.cs" />
     <Compile Include="Services\SecureStorage.cs" />
-    <Compile Include="Services\SoundService.cs" />
     <Compile Include="Services\TextToSpeechService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -140,7 +140,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="ExifLib">
-      <HintPath>..\..\..\packages\ExifLib.PCL.1.0.0\lib\portable-net45+sl50+win+WindowsPhoneApp81+wp80+MonoAndroid10+MonoTouch10\ExifLib.dll</HintPath>
+      <HintPath>$(SolutionDir)packages\ExifLib.PCL.1.0.0\lib\portable-net45+sl50+win+WindowsPhoneApp81+wp80+MonoAndroid10+MonoTouch10\ExifLib.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

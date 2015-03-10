@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace XLabs.Ioc
+﻿namespace XLabs.Ioc
 {
+    using System;
+
     /// <summary>
     /// Interface for dependency container. Extends on <see cref="IResolver"/> by providing the 
     /// ability to register services.

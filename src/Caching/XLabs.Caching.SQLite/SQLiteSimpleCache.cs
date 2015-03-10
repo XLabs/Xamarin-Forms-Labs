@@ -19,6 +19,12 @@ namespace XLabs.Caching.SQLite
         private readonly IByteSerializer serializer;
         private readonly SQLiteAsyncConnection asyncConnection;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SQLiteSimpleCache"/> class.
+        /// </summary>
+        /// <param name="platform">SQLite platform.</param>
+        /// <param name="connection">SQLite connection string.</param>
+        /// <param name="defaultSerializer">Byte serializer to use.</param>
         public SQLiteSimpleCache(ISQLitePlatform platform, SQLiteConnectionString connection, IByteSerializer defaultSerializer)
             : base(platform, connection)
         {
@@ -138,11 +144,23 @@ namespace XLabs.Caching.SQLite
 
         #endregion
 
+        /// <summary>
+        /// Gets the object from the table.
+        /// </summary>
+        /// <typeparam name="T">Type of object.</typeparam>
+        /// <param name="item">Table item.</param>
+        /// <returns>Object T if item found, otherwise default{T}.</returns>
         protected virtual T GetObject<T>(SQliteCacheTable item)
         {
             return (item != null) ? this.serializer.Deserialize<T>(item.Blob) : default(T);
         }
 
+        /// <summary>
+        /// Gets bytes from the object.
+        /// </summary>
+        /// <typeparam name="T">Type of object.</typeparam>
+        /// <param name="obj">Object to turn into bytes.</param>
+        /// <returns>Byte array.</returns>
         protected virtual byte[] GetBytes<T>(T obj)
         {
             return this.serializer.SerializeToBytes(obj);

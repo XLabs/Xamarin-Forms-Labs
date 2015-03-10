@@ -51,7 +51,7 @@ function ChangeNuSpecVersion( [string] $nuSpecFilePath, [string] $version="0.0.0
 		$idAttribute = $dependency.Attributes( "id" ) | Select-Object -First 1
 		if ( $idAttribute -ne $null )
 		{
-			if ( $idAttribute.Value -eq "XLabs" )
+			if ( $idAttribute.Value -like "XLabs.*" )
 			{
 				$dependency.SetAttributeValue( "version", "[$version]" )
 			}

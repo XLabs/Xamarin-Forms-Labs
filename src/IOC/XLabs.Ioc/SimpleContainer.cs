@@ -13,24 +13,24 @@ namespace XLabs.Ioc
 		/// <summary>
 		/// The _resolver
 		/// </summary>
-		private readonly IResolver _resolver;
+		private readonly IResolver resolver;
 		/// <summary>
 		/// The _services
 		/// </summary>
-		private readonly Dictionary<Type, List<object>> _services;
+		private readonly Dictionary<Type, List<object>> services;
 		/// <summary>
 		/// The _registered services
 		/// </summary>
-		private readonly Dictionary<Type, List<Func<IResolver, object>>> _registeredServices;
+		private readonly Dictionary<Type, List<Func<IResolver, object>>> registeredServices;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="SimpleContainer" /> class.
 		/// </summary>
 		public SimpleContainer()
 		{
-			this._resolver = new Resolver(this.ResolveAll);
-			this._services = new Dictionary<Type, List<object>>();
-			this._registeredServices = new Dictionary<Type, List<Func<IResolver, object>>>();
+			this.resolver = new Resolver(this.ResolveAll);
+			this.services = new Dictionary<Type, List<object>>();
+			this.registeredServices = new Dictionary<Type, List<Func<IResolver, object>>>();
 		}
 
 		#region IDependencyContainer Members
@@ -40,7 +40,7 @@ namespace XLabs.Ioc
 		/// <returns>An instance of <see cref="IResolver" /></returns>
 		public IResolver GetResolver()
 		{
-			return this._resolver;
+			return this.resolver;
 		}
 
 		/// <summary>
@@ -54,10 +54,10 @@ namespace XLabs.Ioc
 			var type = typeof(T);
 			List<object> list;
 
-			if (!this._services.TryGetValue(type, out list))
+			if (!this.services.TryGetValue(type, out list))
 			{
 				list = new List<object>();
-				this._services.Add(type, list);
+				this.services.Add(type, list);
 			}
 
 			list.Add(instance);
@@ -90,10 +90,10 @@ namespace XLabs.Ioc
 			var type = typeof(T);
 			List<object> list;
 
-			if (!this._services.TryGetValue(type, out list))
+			if (!this.services.TryGetValue(type, out list))
 			{
 				list = new List<object>();
-				this._services.Add(type, list);
+				this.services.Add(type, list);
 			}
 
 			var instance = Activator.CreateInstance<TImpl>() as TImpl;
@@ -122,10 +122,10 @@ namespace XLabs.Ioc
 		public IDependencyContainer Register(Type type, Type impl)
 		{
 			List<Func<IResolver, object>> list;
-			if (!this._registeredServices.TryGetValue(type, out list))
+			if (!this.registeredServices.TryGetValue(type, out list))
 			{
 				list = new List<Func<IResolver, object>>();
-				this._registeredServices.Add(type, list);
+				this.registeredServices.Add(type, list);
 			}
 
 			list.Add(t => Activator.CreateInstance(impl));
@@ -143,10 +143,10 @@ namespace XLabs.Ioc
 		{
 			var type = typeof(T);
 			List<Func<IResolver, object>> list;
-			if (!this._registeredServices.TryGetValue(type, out list))
+			if (!this.registeredServices.TryGetValue(type, out list))
 			{
 				list = new List<Func<IResolver, object>>();
-				this._registeredServices.Add(type, list);
+				this.registeredServices.Add(type, list);
 			}
 
 			list.Add(func);
@@ -162,7 +162,7 @@ namespace XLabs.Ioc
 		private IEnumerable<object> ResolveAll(Type type)
 		{
 			List<object> list;
-			if (this._services.TryGetValue(type, out list))
+			if (this.services.TryGetValue(type, out list))
 			{
 				foreach (var service in list)
 				{
@@ -171,11 +171,11 @@ namespace XLabs.Ioc
 			}
 
 			List<Func<IResolver, object>> getter;
-			if (this._registeredServices.TryGetValue(type, out getter))
+			if (this.registeredServices.TryGetValue(type, out getter))
 			{
 				foreach (var serviceFunc in getter)
 				{
-					yield return serviceFunc(this._resolver);
+					yield return serviceFunc(this.resolver);
 				}
 			}
 		}
@@ -190,7 +190,7 @@ namespace XLabs.Ioc
 			/// <summary>
 			/// The _resolve object delegate
 			/// </summary>
-			private readonly Func<Type, IEnumerable<object>> _resolveObjectDelegate;
+			private readonly Func<Type, IEnumerable<object>> resolveObjectDelegate;
 
 			/// <summary>
 			/// Initializes a new instance of the <see cref="Resolver"/> class.
@@ -198,7 +198,7 @@ namespace XLabs.Ioc
 			/// <param name="resolveObjectDelegate">The resolve object delegate.</param>
 			internal Resolver(Func<Type, IEnumerable<object>> resolveObjectDelegate)
 			{
-				this._resolveObjectDelegate = resolveObjectDelegate;
+				this.resolveObjectDelegate = resolveObjectDelegate;
 			}
 
 			#region IResolver Members
@@ -230,7 +230,7 @@ namespace XLabs.Ioc
 			/// <returns>All instances of {T} if successful, otherwise null.</returns>
 			public IEnumerable<T> ResolveAll<T>() where T : class
 			{
-				return this._resolveObjectDelegate(typeof(T)).Cast<T>();
+				return this.resolveObjectDelegate(typeof(T)).Cast<T>();
 			}
 
 			/// <summary>
@@ -240,7 +240,7 @@ namespace XLabs.Ioc
 			/// <returns>All instances of type if found as <see cref="object" />, otherwise null.</returns>
 			public IEnumerable<object> ResolveAll(Type type)
 			{
-				return this._resolveObjectDelegate(type);
+				return this.resolveObjectDelegate(type);
 			}
 
 			/// <summary>

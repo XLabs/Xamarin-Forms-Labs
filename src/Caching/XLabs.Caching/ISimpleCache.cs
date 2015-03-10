@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace XLabs.Caching
+﻿namespace XLabs.Caching
 {
+    using System;
+    using System.Collections.Generic;
+
     /// <summary>
-    /// A common cache provider interface.
+    /// A common cache provider interface without expiration.
     /// </summary>
     public interface ISimpleCache : IDisposable
     {

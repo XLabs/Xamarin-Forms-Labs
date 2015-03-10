@@ -13,27 +13,6 @@
 
 			BindingContext = ViewModelLocator.Main;
 
-			var label = new ExtendedLabel
-			{
-				Text = "From code, using Device.OnPlatform, Underlined",
-				FontName = "Open 24 Display St.ttf",
-				FriendlyFontName = Device.OnPlatform("", "", "Open 24 Display St"),
-				IsUnderline = true,
-				FontSize = 22,
-			};
-
-			var label2 = new ExtendedLabel
-			{
-				Text = "From code, Strikethrough",
-				FontName = "Open 24 Display St.ttf",
-				FriendlyFontName = Device.OnPlatform("", "", "Open 24 Display St"),
-				IsUnderline = false,
-				IsStrikeThrough = true,
-				FontSize = 22,
-			};
-
-			var font = Font.OfSize("Open 24 Display St", 22);
-
 			var label3 = new ExtendedLabel
 			{
 				Text = "From code, Strikethrough and using Font property",
@@ -54,12 +33,9 @@
 				Text = "Standard Label created using code",
 			};
 
-			label3.Font = font;
-
+		
 			stkRoot.Children.Add(label4);
 			stkRoot.Children.Add(label3);
-			stkRoot.Children.Add(label2);
-			stkRoot.Children.Add(label);
 			stkRoot.Children.Add(label5);
 		}
 	}

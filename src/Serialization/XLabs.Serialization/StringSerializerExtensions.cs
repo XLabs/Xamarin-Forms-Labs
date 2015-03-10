@@ -12,6 +12,7 @@ namespace XLabs.Serialization
         /// <summary>
         /// Serializes to stream.
         /// </summary>
+		/// <param name="serializer">The serializer.</param>
         /// <param name="obj">Object to serialize.</param>
         /// <param name="stream">Stream to serialize to.</param>
         public static void SerializeToStream(this IStringSerializer serializer, object obj, Stream stream)
@@ -26,7 +27,7 @@ namespace XLabs.Serialization
         }
 
         /// <summary>
-        /// Deserializes from stream.
+        /// Deserialize from stream.
         /// </summary>
         /// <returns>The deserialized object.</returns>
         /// <param name="serializer">The string serializer.</param>
@@ -39,7 +40,7 @@ namespace XLabs.Serialization
         }
 
         /// <summary>
-        /// Deserializes from stream.
+        /// Deserialize from stream.
         /// </summary>
         /// <returns>The deserialized object.</returns>
         /// <param name="serializer">The string serializer.</param>
@@ -54,6 +55,7 @@ namespace XLabs.Serialization
         /// <summary>
         /// Serializes to writer.
         /// </summary>
+		/// <param name="serializer">The serializer.</param>
         /// <param name="obj">Object to serialize.</param>
         /// <param name="writer">Writer.</param>
         public static void SerializeToWriter(this IStringSerializer serializer, object obj, TextWriter writer)
@@ -62,15 +64,25 @@ namespace XLabs.Serialization
         }
 
         /// <summary>
-        /// Deserializes from reader.
+		/// Deserialize from reader.
         /// </summary>
-        /// <returns>The serialized object from reader.</returns>
+		/// <typeparam name="T"></typeparam>
+		/// <param name="serializer">The serializer.</param>
         /// <param name="reader">Reader to deserialize from.</param>
+		/// <returns>The serialized object from reader.</returns>
         public static T DeserializeFromReader<T>(this IStringSerializer serializer, TextReader reader)
         {
             return serializer.Deserialize<T>(reader.ReadToEnd());
         }
 
+		/// <summary>
+		/// Deserializes from bytes.
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <param name="serializer">The serializer.</param>
+		/// <param name="data">The data.</param>
+		/// <param name="encoding">The encoding.</param>
+		/// <returns>T.</returns>
         public static T DeserializeFromBytes<T>(this IStringSerializer serializer, byte[] data, Encoding encoding = null)
         {
             var encoder = encoding ?? Encoding.UTF8;
@@ -78,6 +90,14 @@ namespace XLabs.Serialization
             return serializer.Deserialize<T>(str);
         }
 
+		/// <summary>
+		/// Deserializes from bytes.
+		/// </summary>
+		/// <param name="serializer">The serializer.</param>
+		/// <param name="data">The data.</param>
+		/// <param name="type">The type.</param>
+		/// <param name="encoding">The encoding.</param>
+		/// <returns>System.Object.</returns>
         public static object DeserializeFromBytes(this IStringSerializer serializer, byte[] data, Type type, Encoding encoding = null)
         {
             var encoder = encoding ?? Encoding.UTF8;
@@ -85,6 +105,13 @@ namespace XLabs.Serialization
             return serializer.Deserialize(str, type);
         }
 
+		/// <summary>
+		/// Gets the serialized bytes.
+		/// </summary>
+		/// <param name="serializer">The serializer.</param>
+		/// <param name="obj">The object.</param>
+		/// <param name="encoding">The encoding.</param>
+		/// <returns>System.Byte[].</returns>
         public static byte[] GetSerializedBytes(this IStringSerializer serializer, object obj, Encoding encoding = null)
         {
             var encoder = encoding ?? Encoding.UTF8;

@@ -70,40 +70,40 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Autofac">
-      <HintPath>..\packages\Autofac.3.5.2\lib\portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\Autofac.dll</HintPath>
+      <HintPath>$(SolutionDir)packages\Autofac.3.5.2\lib\portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\Autofac.dll</HintPath>
     </Reference>
     <Reference Include="ExifLib">
-      <HintPath>..\..\src\Xamarin.Forms.Labs\packages\ExifLib.PCL.1.0.0\lib\portable-net45+sl50+win+WindowsPhoneApp81+wp80+MonoAndroid10+MonoTouch10\ExifLib.dll</HintPath>
+      <HintPath>$(SolutionDir)packages\ExifLib.PCL.1.0.0\lib\portable-net45+sl50+win+WindowsPhoneApp81+wp80+MonoAndroid10+MonoTouch10\ExifLib.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Phone.Controls.Toolkit">
-      <HintPath>..\packages\WPtoolkit.4.2013.08.16\lib\wp8\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
+      <HintPath>$(SolutionDir)packages\WPtoolkit.4.2013.08.16\lib\wp8\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.Unity">
-      <HintPath>..\packages\Unity.3.5.1405-prerelease\lib\wp80\Microsoft.Practices.Unity.dll</HintPath>
+      <HintPath>$(SolutionDir)packages\Unity.3.5.1405-prerelease\lib\wp80\Microsoft.Practices.Unity.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention">
-      <HintPath>..\packages\Unity.3.5.1405-prerelease\lib\wp80\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+      <HintPath>$(SolutionDir)packages\Unity.3.5.1405-prerelease\lib\wp80\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
     </Reference>
     <Reference Include="Ninject">
-      <HintPath>..\packages\Ninject.3.2.3-unstable-001\lib\sl4-windowsphone71\Ninject.dll</HintPath>
+      <HintPath>$(SolutionDir)packages\Ninject.3.2.3-unstable-001\lib\sl4-windowsphone71\Ninject.dll</HintPath>
     </Reference>
     <Reference Include="SimpleInjector">
-      <HintPath>..\packages\SimpleInjector.2.6.0-beta1\lib\portable-net4+sl4+wp8+win8+wpa81\SimpleInjector.dll</HintPath>
+      <HintPath>$(SolutionDir)packages\SimpleInjector.2.6.0-beta1\lib\portable-net4+sl4+wp8+win8+wpa81\SimpleInjector.dll</HintPath>
     </Reference>
     <Reference Include="SimpleInjector.Diagnostics">
-      <HintPath>..\packages\SimpleInjector.2.6.0-beta1\lib\portable-net4+sl4+wp8+win8+wpa81\SimpleInjector.Diagnostics.dll</HintPath>
+      <HintPath>$(SolutionDir)packages\SimpleInjector.2.6.0-beta1\lib\portable-net4+sl4+wp8+win8+wpa81\SimpleInjector.Diagnostics.dll</HintPath>
     </Reference>
     <Reference Include="WPControls">
-      <HintPath>..\..\src\Xamarin.Forms.Labs\packages\WPControls.1.5.2\lib\wp8\WPControls.dll</HintPath>
+      <HintPath>$(SolutionDir)packages\WPControls.1.5.2\lib\wp8\WPControls.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Forms.Core">
-      <HintPath>..\packages\Xamarin.Forms.1.2.3.6246-pre1\lib\WP80\Xamarin.Forms.Core.dll</HintPath>
+      <HintPath>$(SolutionDir)packages\Xamarin.Forms.1.2.3.6246-pre1\lib\WP80\Xamarin.Forms.Core.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Forms.Platform.WP8">
-      <HintPath>..\packages\Xamarin.Forms.1.2.3.6246-pre1\lib\WP80\Xamarin.Forms.Platform.WP8.dll</HintPath>
+      <HintPath>$(SolutionDir)packages\Xamarin.Forms.1.2.3.6246-pre1\lib\WP80\Xamarin.Forms.Platform.WP8.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Forms.Xaml">
-      <HintPath>..\packages\Xamarin.Forms.1.2.3.6246-pre1\lib\WP80\Xamarin.Forms.Xaml.dll</HintPath>
+      <HintPath>$(SolutionDir)packages\Xamarin.Forms.1.2.3.6246-pre1\lib\WP80\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -239,3 +239,4 @@
     <Error Condition="!Exists('..\packages\Xamarin.Forms.1.2.3.6246-pre1\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.Forms.1.2.3.6246-pre1\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets'))" />
   </Target>
 </Project>
+

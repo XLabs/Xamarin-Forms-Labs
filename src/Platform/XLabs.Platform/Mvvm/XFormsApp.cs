@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace XLabs.Platform.Mvvm
 {
-	using XLabs.Enums;
+	using Enums;
 
 	/// <summary>
 	/// Class XFormsApp.
@@ -14,7 +14,7 @@ namespace XLabs.Platform.Mvvm
 		/// <summary>
 		/// The _orientation
 		/// </summary>
-		private Orientation _orientation;
+		private Orientation orientation;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="XFormsApp{TApp}"/> class.
@@ -58,13 +58,13 @@ namespace XLabs.Platform.Mvvm
 		{ 
 			get
 			{
-				return _orientation;
+				return this.orientation;
 			}
 
 			protected set
 			{
-				_orientation = value;
-				Rotation.Invoke<Orientation>(this, _orientation);
+				this.orientation = value;
+				Rotation.Invoke(this, this.orientation);
 			}
 		}
 

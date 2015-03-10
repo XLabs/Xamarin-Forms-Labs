@@ -1,8 +1,8 @@
-﻿namespace XLabs.Platform.Services.Sound
+namespace XLabs.Platform.Services.Media
 {
-	using System;
+    using System;
 
-	/// <summary>
+    /// <summary>
 	/// Class SoundFinishedEventArgs.
 	/// </summary>
 	public class SoundFinishedEventArgs : EventArgs

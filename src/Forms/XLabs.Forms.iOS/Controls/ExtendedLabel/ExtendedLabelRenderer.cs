@@ -28,11 +28,11 @@ namespace XLabs.Forms.Controls
 		protected override void OnElementChanged(ElementChangedEventArgs<Label> e)
 		{
 			base.OnElementChanged(e);
-
-			var view = (ExtendedLabel)Element;
-
-			UpdateUi(view, Control);
-			SetPlaceholder(view);
+			if (e.NewElement != null) {
+				var view = (ExtendedLabel)e.NewElement;
+				UpdateUi (view, Control);
+			}
+			
 		}
 
 		/// <summary>
@@ -46,25 +46,13 @@ namespace XLabs.Forms.Controls
 
 			var view = (ExtendedLabel)Element;
 
-			if (e.PropertyName == Label.TextProperty.PropertyName)
-			{
-				SetPlaceholder(view);
+			if (e.PropertyName == ExtendedLabel.IsUnderlineProperty.PropertyName ||
+				e.PropertyName == ExtendedLabel.IsDropShadowProperty.PropertyName ||
+				e.PropertyName == ExtendedLabel.IsStrikeThroughProperty.PropertyName
+				) {
+					UpdateUi (view,Control);
 			}
-
-			if (e.PropertyName == Label.FormattedTextProperty.PropertyName)
-			{
-				SetPlaceholder(view);
-			}
-
-			if (e.PropertyName == ExtendedLabel.PlaceholderProperty.PropertyName)
-			{
-				SetPlaceholder(view);
-			}
-
-			if (e.PropertyName == ExtendedLabel.FormattedPlaceholderProperty.PropertyName)
-			{
-				SetPlaceholder(view);
-			}
+			
 		}
 
 		/// <summary>
@@ -78,39 +66,8 @@ namespace XLabs.Forms.Controls
 		/// </param>
 		private void UpdateUi(ExtendedLabel view, UILabel control)
 		{
-			// Prefer font set through Font property.
-			if (view.Font == Font.Default)
-			{
-				if (view.FontSize > 0)
-				{
-					control.Font = UIFont.FromName(control.Font.Name, (float)view.FontSize);
-				}
-
-				if (!string.IsNullOrEmpty(view.FontName))
-				{
-					var fontName = Path.GetFileNameWithoutExtension(view.FontName);
-
-					var font = UIFont.FromName(fontName, control.Font.PointSize);
-
-					if (font != null)
-					{
-						control.Font = font;
-					}
-				}
-
-				#region ======= This is for backward compatability with obsolete attrbute 'FontNameIOS' ========
-				if (!string.IsNullOrEmpty(view.FontNameIOS))
-				{
-					var font = UIFont.FromName(view.FontNameIOS, (view.FontSize > 0) ? (float)view.FontSize : 12.0f);
-
-					if (font != null)
-					{
-						control.Font = font;
-					}
-				}
-				#endregion ====== End of obsolete section ==========================================================
-			}
-
+			if (view == null || control == null)
+				return;
 			//Do not create attributed string if it is not necesarry
 			if (!view.IsUnderline && !view.IsStrikeThrough && !view.IsDropShadow)
 			{
@@ -140,37 +97,15 @@ namespace XLabs.Forms.Controls
 				control.TextColor = view.TextColor.ToUIColor();
 			}
 
+		
 			control.AttributedText = new NSMutableAttributedString(control.Text,
 																   control.Font,
 																   underlineStyle: underline,
 																   strikethroughStyle: strikethrough,
-																   shadow: dropShadow); ;
+																   shadow: dropShadow);
+		
 		}
 
-		private void SetPlaceholder(ExtendedLabel view)
-		{
-			if (!string.IsNullOrWhiteSpace(view.Text))
-			{
-				var formattedString = view.FormattedText ?? view.Text;
-
-				Control.AttributedText = formattedString.ToAttributed(view.Font, view.TextColor);
-
-				LayoutSubviews();
-
-				return;
-			}
-
-			if (string.IsNullOrWhiteSpace(view.Placeholder) && view.FormattedPlaceholder == null)
-			{
-				return;
-			}
-
-			var formattedPlaceholder = view.FormattedPlaceholder ?? view.Placeholder;
-
-			Control.AttributedText = formattedPlaceholder.ToAttributed(view.Font, view.TextColor);
-
-			LayoutSubviews();
-		}
 	}
 }
 

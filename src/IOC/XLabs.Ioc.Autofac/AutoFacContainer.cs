@@ -1,12 +1,8 @@
-﻿using Autofac;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace XLabs.Ioc.Autofac
+﻿namespace XLabs.Ioc.Autofac
 {
+    using System;
+    using global::Autofac;
+
     /// <summary>
     /// The AutoFac container wrapper
     /// Allows registering a AutoFac container with the IDependencyContainer interface
@@ -17,6 +13,7 @@ namespace XLabs.Ioc.Autofac
         /// The container.
         /// </summary>
         private readonly IContainer container;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="AutofacContainer"/> class.
         /// </summary>
@@ -27,90 +24,80 @@ namespace XLabs.Ioc.Autofac
         {
             this.container = container;
         }
+
         /// <summary>
-        /// The get resolver.
+        /// Gets the resolver from the container
         /// </summary>
-        /// <returns>
-        /// The <see cref="IResolver"/>.
-        /// </returns>
+        /// <returns>An instance of <see cref="IResolver"/></returns>
         public IResolver GetResolver()
         {
             return new AutofacResolver(this.container);
         }
+
         /// <summary>
-        /// The register.
+        /// Registers an instance of T to be stored in the container.
         /// </summary>
-        /// <param name="instance">
-        /// The instance.
-        /// </param>
-        /// <typeparam name="T">
-        /// </typeparam>
-        /// <returns>
-        /// The <see cref="IDependencyContainer"/>.
-        /// </returns>
+        /// <typeparam name="T">Type of instance</typeparam>
+        /// <param name="instance">Instance of type T.</param>
+        /// <returns>An instance of <see cref="IDependencyContainer"/></returns>
         public IDependencyContainer Register<T>(T instance) where T : class
         {
             var builder = new ContainerBuilder();
             builder.Register<T>(t => instance);
-            builder.Update(container);
+            builder.Update(this.container);
             return this;
         }
+
         /// <summary>
-        /// The register.
+        /// Registers a type to instantiate for type T.
         /// </summary>
-        /// <typeparam name="T">
-        /// </typeparam>
-        /// <typeparam name="TImpl">
-        /// </typeparam>
-        /// <returns>
-        /// The <see cref="IDependencyContainer"/>.
-        /// </returns>
+        /// <typeparam name="T">Type of instance</typeparam>
+        /// <typeparam name="TImpl">Type to register for instantiation.</typeparam>
+        /// <returns>An instance of <see cref="IDependencyContainer"/></returns>
         public IDependencyContainer Register<T, TImpl>()
             where T : class
             where TImpl : class, T
         {
             var builder = new ContainerBuilder();
             builder.RegisterType<TImpl>().As<T>();
-            builder.Update(container);
+            builder.Update(this.container);
             return this;
         }
+
         /// <summary>
-        /// The register.
+        /// Tries to register a type
         /// </summary>
-        /// <param name="type">
-        /// The type.
-        /// </param>
-        /// <typeparam name="T">
-        /// </typeparam>
-        /// <returns>
-        /// The <see cref="IDependencyContainer"/>.
-        /// </returns>
+        /// <typeparam name="T">Type of instance</typeparam>
+        /// <param name="type">Type of implementation</param>
+        /// <returns>An instance of <see cref="IDependencyContainer"/></returns>
         public IDependencyContainer Register<T>(Type type) where T : class
         {
             var builder = new ContainerBuilder();
             builder.RegisterType(type);
-            builder.Update(container);
+            builder.Update(this.container);
             return this;
         }
+
         /// <summary>
-        /// The register.
+        /// Tries to register a type
         /// </summary>
-        /// <param name="type">
-        /// The type.
-        /// </param>
-        /// <param name="impl">
-        /// The impl.
-        /// </param>
-        /// <returns>
-        /// The <see cref="IDependencyContainer"/>.
-        /// </returns>
+        /// <param name="type">Type to register.</param>
+        /// <param name="impl">Type that implements registered type.</param>
+        /// <returns>An instance of <see cref="IDependencyContainer"/></returns>
         public IDependencyContainer Register(Type type, Type impl)
         {
             var builder = new ContainerBuilder();
             builder.RegisterType(impl).As(type);
-            builder.Update(container);
+            builder.Update(this.container);
             return this;
         }
+
+        /// <summary>
+        /// Registers a function which returns an instance of type T.
+        /// </summary>
+        /// <typeparam name="T">Type of instance.</typeparam>
+        /// <param name="func">Function which returns an instance of T.</param>
+        /// <returns>An instance of <see cref="IDependencyContainer"/></returns>
         public IDependencyContainer Register<T>(Func<IResolver, T> func) where T : class
         {
             var builder = new ContainerBuilder();
@@ -119,14 +106,19 @@ namespace XLabs.Ioc.Autofac
             return this;
         }
 
-
+        /// <summary>
+        /// Registers a type to instantiate for type T as singleton.
+        /// </summary>
+        /// <typeparam name="T">Type of instance</typeparam>
+        /// <typeparam name="TImpl">Type to register for instantiation.</typeparam>
+        /// <returns>An instance of <see cref="IDependencyContainer"/></returns>
         public IDependencyContainer RegisterSingle<T, TImpl>()
             where T : class
             where TImpl : class, T
         {
             var builder = new ContainerBuilder();
             builder.RegisterType<TImpl>().As<T>().SingleInstance();
-            builder.Update(container);
+            builder.Update(this.container);
             return this;
         }
     }

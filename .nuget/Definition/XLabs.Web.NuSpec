@@ -4,7 +4,7 @@
     <id>XLabs.Web</id>
     <title>XLabs - Web</title>
     <tags>Xamarin XLabs</tags>
-    <version>2.0.5520</version>
+    <version>2.0.5546.35667</version>
     <authors>XLabs Team</authors>
     <licenseUrl>https://github.com/XForms/Xamarin-Forms-Labs/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/XForms/Xamarin-Forms-Labs</projectUrl>
@@ -21,14 +21,14 @@
     <language>en-US</language>
     <dependencies>
       <group targetFramework="MonoAndroid">
-        <dependency id="XLabs.Serialization" version="2.0.5520" />
+        <dependency id="XLabs.Serialization" version="2.0.5546.35667" />
       </group>
       <group targetFramework="Xamarin.iOS10">
-        <dependency id="XLabs.Serialization" version="2.0.5520" />
+        <dependency id="XLabs.Serialization" version="2.0.5546.35667" />
       </group>
       <group targetFramework="wp80">
         <dependency id="Microsoft.Net.Http" version="2.2.28" />
-        <dependency id="XLabs.Serialization" version="2.0.5520" />
+        <dependency id="XLabs.Serialization" version="2.0.5546.35667" />
       </group>
     </dependencies>
   </metadata>

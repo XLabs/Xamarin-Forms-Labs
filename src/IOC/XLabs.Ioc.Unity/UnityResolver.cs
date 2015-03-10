@@ -31,7 +31,7 @@ namespace XLabs.Ioc.Unity
 		{
 			try
 			{
-				return container.Resolve<T>();
+				return this.container.Resolve<T>();
 			}
 			catch (ResolutionFailedException)
 			{
@@ -48,7 +48,7 @@ namespace XLabs.Ioc.Unity
 		{
 			try
 			{
-				return container.Resolve(type);
+				return this.container.Resolve(type);
 			}
 			catch (ResolutionFailedException)
 			{
@@ -63,7 +63,7 @@ namespace XLabs.Ioc.Unity
 		/// <returns>All instances of {T} if successful, otherwise null.</returns>
 		public IEnumerable<T> ResolveAll<T>() where T : class
 		{
-			return container.ResolveAll<T>();
+			return this.container.ResolveAll<T>();
 		}
 
 		/// <summary>
@@ -73,7 +73,7 @@ namespace XLabs.Ioc.Unity
 		/// <returns>All instances of type if found as <see cref="object"/>, otherwise null.</returns>
 		public IEnumerable<object> ResolveAll(Type type)
 		{
-			return container.ResolveAll(type);
+			return this.container.ResolveAll(type);
 		}
 
 		/// <summary>

@@ -28,6 +28,8 @@ namespace XLabs.Forms.Controls
 		{
 			base.OnElementChanged(e);
 
+			if (Element == null) return;
+
 			BackgroundColor = Element.BackgroundColor.ToUIColor();
 
 			if (Control == null)

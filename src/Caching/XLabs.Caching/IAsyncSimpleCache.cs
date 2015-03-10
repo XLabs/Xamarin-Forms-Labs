@@ -1,11 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace XLabs.Caching
+﻿namespace XLabs.Caching
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
+    /// <summary>
+    /// Async simple caching interface without expiration.
+    /// </summary>
     public interface IAsyncSimpleCache : IDisposable
     {
         /// <summary>
