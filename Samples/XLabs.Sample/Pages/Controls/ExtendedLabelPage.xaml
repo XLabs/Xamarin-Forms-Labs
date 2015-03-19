@@ -25,6 +25,10 @@
                 Text="Text with IsDropShadow"
                 IsDropShadow="True"
                 HorizontalOptions="StartAndExpand" />
+      <controls:ExtendedLabel
+                Placeholder="Label with Placeholder"
+                HorizontalOptions="StartAndExpand" />
+      
 			
 		</StackLayout>
 		<!-- </ScrollView> -->
