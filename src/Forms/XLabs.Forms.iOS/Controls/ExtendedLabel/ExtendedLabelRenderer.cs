@@ -48,7 +48,9 @@ namespace XLabs.Forms.Controls
 
 			if (e.PropertyName == ExtendedLabel.IsUnderlineProperty.PropertyName ||
 				e.PropertyName == ExtendedLabel.IsDropShadowProperty.PropertyName ||
-				e.PropertyName == ExtendedLabel.IsStrikeThroughProperty.PropertyName
+				e.PropertyName == ExtendedLabel.IsStrikeThroughProperty.PropertyName ||
+                e.PropertyName == ExtendedLabel.PlaceholderProperty.PropertyName ||
+                e.PropertyName == ExtendedLabel.TextProperty.PropertyName
 				) {
 					UpdateUi (view,Control);
 			}
@@ -68,6 +70,16 @@ namespace XLabs.Forms.Controls
 		{
 			if (view == null || control == null)
 				return;
+
+            // if text is null or empty, try to set the "placeholder"
+            if (string.IsNullOrEmpty(view.Text) && !string.IsNullOrEmpty(view.Placeholder))
+            {
+                this.Control.Text = view.Placeholder;
+                this.Control.TextColor = Color.Gray.ToUIColor();
+
+                return;
+            }
+
 			//Do not create attributed string if it is not necesarry
 			if (!view.IsUnderline && !view.IsStrikeThrough && !view.IsDropShadow)
 			{

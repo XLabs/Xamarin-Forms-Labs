@@ -33,10 +33,15 @@
 				Text = "Standard Label created using code",
 			};
 
+            var label6 = new ExtendedLabel
+            {
+                Placeholder = "From code, Placeholder with empty Text"
+            };
 		
 			stkRoot.Children.Add(label4);
 			stkRoot.Children.Add(label3);
 			stkRoot.Children.Add(label5);
+            stkRoot.Children.Add(label6);
 		}
 	}
 }

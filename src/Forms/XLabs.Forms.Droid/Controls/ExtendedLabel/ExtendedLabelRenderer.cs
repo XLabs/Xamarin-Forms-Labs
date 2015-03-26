@@ -88,6 +88,10 @@ namespace XLabs.Forms.Controls
 				//TODO:: Needs implementation
 			}
 
+            if(this.Control.Hint != view.Placeholder)
+            {
+                this.Control.Hint = view.Placeholder;
+            }
 		}
 	}
 }
