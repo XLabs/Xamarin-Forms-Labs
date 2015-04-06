@@ -82,6 +82,42 @@
                     </OnPlatform>
                 </controls:ImageButton.Source>
             </controls:ImageButton>
+          
+          <StackLayout Orientation="Horizontal">
+            <Switch IsToggled="{Binding ButtonEnabled}" WidthRequest="125" MinimumHeightRequest="25"></Switch>
+            <controls:ImageButton x:Name="EnabledButton" BackgroundColor="#a2e2ef" Text="{Binding EnabledButtonTitle}"
+                      TextColor="#000000" HeightRequest="125"
+                      HorizontalOptions="FillAndExpand"
+                      IsEnabled="{Binding ButtonEnabled}"
+                      Orientation="ImageOnBottom" ImageHeightRequest="100" ImageWidthRequest="100">
+              <controls:ImageButton.Source>
+                <OnPlatform x:TypeArguments="ImageSource">
+                  <OnPlatform.iOS>
+                    <FileImageSource File="icon_twitter" />
+                  </OnPlatform.iOS>
+                  <OnPlatform.Android>
+                    <FileImageSource File="icon_google.png" />
+                  </OnPlatform.Android>
+                  <OnPlatform.WinPhone>
+                    <FileImageSource File="Images/icon_microsoft.png" />
+                  </OnPlatform.WinPhone>
+                </OnPlatform>
+              </controls:ImageButton.Source>
+              <controls:ImageButton.DisabledSource>
+                <OnPlatform x:TypeArguments="ImageSource">
+                  <OnPlatform.iOS>
+                    <FileImageSource File="imgNotAvailable.png" />
+                  </OnPlatform.iOS>
+                  <OnPlatform.Android>
+                    <FileImageSource File="imgNotAvailable.png" />
+                  </OnPlatform.Android>
+                  <OnPlatform.WinPhone>
+                    <FileImageSource File="Images/imgNotAvailable.png" />
+                  </OnPlatform.WinPhone>
+                </OnPlatform>
+              </controls:ImageButton.DisabledSource>
+            </controls:ImageButton>
+          </StackLayout>
 <!--
             <controls:IconButton Text="Twitter + Font Awesome" BackgroundColor="#01abdf" TextColor="#ffffff"
                                  Orientation="ImageToLeft" Icon="{x:Static icons:Icons.Twitter}" IconColor="#ffffff"

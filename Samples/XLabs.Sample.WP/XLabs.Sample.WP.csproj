@@ -123,6 +123,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\XLabs.Sample.iOS\imgNotAvailable.png">
+      <Link>Images\imgNotAvailable.png</Link>
+    </Content>
     <Content Include="Assets\Fonts\Roboto-Light.ttf" />
     <Content Include="Assets\Fonts\Open 24 Display St.ttf" />
     <BundleResource Include="SplashScreenImage.screen-720p.jpg" />
