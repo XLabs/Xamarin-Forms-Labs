@@ -84,6 +84,7 @@
     <Compile Include="Pages\Controls\RadioButtonPage.xaml.cs">
       <DependentUpon>RadioButtonPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Controls\RepeaterViewTemplateSelectorPage.cs" />
     <Compile Include="Pages\Controls\RepeaterViewPage.cs" />
     <Compile Include="Pages\Controls\ExtendedSliderPage.cs" />
     <Compile Include="Pages\Controls\SegmentedControlViewPage.xaml.cs">
@@ -126,6 +127,7 @@
     <Compile Include="ViewModel\CameraViewModel.cs" />
     <Compile Include="ViewModel\GestureSampleVM.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\RepeaterViewTemplateSelectorViewModel.cs" />
     <Compile Include="ViewModel\RepeaterViewViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="Pages\Controls\ExtendedLabelPage.xaml.cs">
