@@ -2,9 +2,9 @@
 namespace XLabs.Forms.Controls
 {
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using System.Collections.Specialized;
-    using System.Linq;
 
     /// <summary>
     /// Small utility class that takes
@@ -15,13 +15,13 @@ namespace XLabs.Forms.Controls
     /// from source type T to targeted type TSyncType which
     /// is then inserted into the target collection
     /// </summary>
-    public class CollectionChangedHandle<TSyncType,T> : IDisposable  where T:class where TSyncType:class
+    public class CollectionChangedHandle<TSyncType> : IDisposable where TSyncType : class
     {
-        private readonly Func<T, TSyncType> _projector;
-        private readonly Action<TSyncType,T,int> _postadd;
-        private readonly Action<TSyncType> _cleanup;        
+        private readonly Func<object, TSyncType> _projector;
+        private readonly Action<TSyncType, object, int> _postadd;
+        private readonly Action<TSyncType> _cleanup;
         private readonly INotifyCollectionChanged _itemsSourceCollectionChangedImplementation;
-        private readonly IEnumerable<T> _sourceCollection;
+        private readonly IEnumerable _sourceCollection;
         private readonly IList<TSyncType> _target;
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace XLabs.Forms.Controls
         /// <param name="projector">A function that returns {TSyncType} for a {T}</param>
         /// <param name="postadd">A functino called right after insertion into the synced collection</param>
         /// <param name="cleanup">A function that performs any needed cleanup when {TSyncType} is removed from the <see cref="target"/></param>
-        public CollectionChangedHandle(IList<TSyncType> target, IEnumerable<T> source, Func<T,TSyncType> projector, Action<TSyncType,T,int> postadd = null, Action<TSyncType> cleanup = null)
+        public CollectionChangedHandle(IList<TSyncType> target, IEnumerable source, Func<object, TSyncType> projector, Action<TSyncType, object, int> postadd = null, Action<TSyncType> cleanup = null)
         {
             if (source == null) return;
             this._itemsSourceCollectionChangedImplementation = source as INotifyCollectionChanged;
@@ -68,7 +68,12 @@ namespace XLabs.Forms.Controls
             else
             {
                 //Create a temp list to prevent multiple enumeration issues
-                var tlist = new List<T>(_sourceCollection);
+
+                var tlist = new List<object>();
+                foreach (var item in _sourceCollection)
+                {
+                    tlist.Add(item);
+                }
 
                 if (args.OldItems != null)
                 {
@@ -80,8 +85,8 @@ namespace XLabs.Forms.Controls
                 if (args.NewItems == null) return; 
                 foreach (var obj in args.NewItems)
                 {
-                    var item = obj as T;
-                    if (item == null)  continue; 
+                    var item = obj;
+                    if (item == null) continue;
                     var index = tlist.IndexOf(item);
                     var newsyncitem = this._projector(item);
                     this._target.Insert(index, newsyncitem);
@@ -96,8 +101,10 @@ namespace XLabs.Forms.Controls
         private void InitialPopulation()
         {
             SafeClearTarget();
-            foreach (var t in this._sourceCollection.Where(x => x != null))
+            foreach (var t in this._sourceCollection)
             {
+                if (t == null)
+                    continue;
                 _target.Add(this._projector(t));
             }
         }
