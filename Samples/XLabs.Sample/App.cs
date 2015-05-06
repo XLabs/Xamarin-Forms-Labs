@@ -292,24 +292,27 @@ namespace XLabs.Sample
 
             listView.ItemTemplate.SetBinding(TextCell.TextProperty, "Key");
 
-            listView.ItemSelected += async (sender, e) =>
+            listView.ItemTapped += async (sender, e) =>
             {
+                var list = sender as ListView;
+                if (list != null)
+                {
+                    list.SelectedItem = null;
+                }
+
                 Type result = null;
 
                 // This is actually some type of bug with Xamarin.
                 // On iOS the SortedDiectionary entries are DictionaryEntries
                 // on WP, they are KeyValuePairs.
                 // Using the wrong type causes a casting exception.
-                switch (Device.OS)
+                if (e.Item is DictionaryEntry)
                 {
-                    case TargetPlatform.Android:
-                    case TargetPlatform.iOS:
-                        var item = (DictionaryEntry) e.SelectedItem;
-                        result = (Type)item.Value;
-                        break;
-                    case TargetPlatform.WinPhone:
-                        result = ((KeyValuePair<string, Type>)e.SelectedItem).Value;
-                        break;
+                    result = ((DictionaryEntry)e.Item).Value as Type;
+                }
+                else
+                {
+                    result = ((KeyValuePair<string, Type>)e.Item).Value;
                 }
 
                 await ShowPage(mainPage, result);
