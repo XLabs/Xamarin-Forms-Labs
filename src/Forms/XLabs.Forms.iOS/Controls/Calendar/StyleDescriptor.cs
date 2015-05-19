@@ -73,11 +73,11 @@ namespace XLabs.Forms.Controls
 		/// <summary>
 		/// The day of week label foreground color
 		/// </summary>
-		public UIColor DayOfWeekLabelForegroundColor =  UIColor.White;
+		public UIColor DayOfWeekLabelForegroundColor =  UIColor.Blue;
 		/// <summary>
 		/// The day of week label background color
 		/// </summary>
-		public UIColor DayOfWeekLabelBackgroundColor = UIColor.LightGray;
+		public UIColor DayOfWeekLabelBackgroundColor = UIColor.Blue;
 		/// <summary>
 		/// The highlighted date foreground color
 		/// </summary>
@@ -85,7 +85,7 @@ namespace XLabs.Forms.Controls
 		/// <summary>
 		/// The highlighted date background color
 		/// </summary>
-		public UIColor HighlightedDateBackgroundColor = Color.FromHex("#ccffcc").ToUIColor();
+		public UIColor HighlightedDateBackgroundColor = UIColor.Blue;
 		/// <summary>
 		/// The date separator color
 		/// </summary>
@@ -113,7 +113,7 @@ namespace XLabs.Forms.Controls
 		/// <summary>
 		/// The should highlight days of week label
 		/// </summary>
-		public bool 	ShouldHighlightDaysOfWeekLabel = false;
+		public bool ShouldHighlightDaysOfWeekLabel = false;
 
 	}
 }

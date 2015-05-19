@@ -121,13 +121,19 @@ namespace XLabs.Forms
 			public static int ad16 = 2130837504;
 			
 			// aapt resource value: 0x7f020001
-			public static int arrow_white_left = 2130837505;
+			public static int arrow_gray_left = 2130837505;
 			
 			// aapt resource value: 0x7f020002
-			public static int arrow_white_righ = 2130837506;
+			public static int arrow_gray_righ = 2130837506;
 			
 			// aapt resource value: 0x7f020003
-			public static int calendar_bg_selector = 2130837507;
+			public static int arrow_white_left = 2130837507;
+			
+			// aapt resource value: 0x7f020004
+			public static int arrow_white_righ = 2130837508;
+			
+			// aapt resource value: 0x7f020005
+			public static int calendar_bg_selector = 2130837509;
 			
 			static Drawable()
 			{

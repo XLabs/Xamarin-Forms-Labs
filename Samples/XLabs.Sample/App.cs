@@ -32,7 +32,7 @@ namespace XLabs.Sample
 	{
 		public App ()
 		{
-			Init ();
+			//Init ();
 			MainPage = GetMainPage ();
 		}
 		/// <summary>
@@ -216,7 +216,7 @@ namespace XLabs.Sample
 				{"ExtendedSlider", typeof(ExtendedSliderPage)},
 				{"GridView", typeof(GridViewPage)},
 				{"HybridWebView", typeof(CanvasWebHybrid)},
-				{"WebHybridTestPage", typeof(WebHybridTestPage)},
+				//{"WebHybridTestPage", typeof(WebHybridTestPage)},
 				{"ImageButton", typeof(ButtonPage)},
 				{"ImageGallery", typeof(ImageGalleryPage)},
 				{"Popup", typeof(PopupPage)},

@@ -79,18 +79,18 @@
 			var app = new XFormsAppiOS();
 			app.Init(this);
 
-			var documents = app.AppDataDirectory;
-			var pathToDatabase = Path.Combine(documents, "xforms.db");
+			//var documents = app.AppDataDirectory;
+			//var pathToDatabase = Path.Combine(documents, "xforms.db");
 
-			resolverContainer.Register<IDevice>(t => AppleDevice.CurrentDevice)
-				.Register<IDisplay>(t => t.Resolve<IDevice>().Display)
-				.Register<IJsonSerializer, XLabs.Serialization.ServiceStack.JsonSerializer>()
-				//.Register<IJsonSerializer, Services.Serialization.SystemJsonSerializer>()
-				.Register<IXFormsApp>(app)
-				.Register<IDependencyContainer>(t => resolverContainer)
-				.Register<ISimpleCache>(
+			resolverContainer.Register<IDevice> (t => AppleDevice.CurrentDevice)
+				.Register<IDisplay> (t => t.Resolve<IDevice> ().Display)
+				.Register<IJsonSerializer, XLabs.Serialization.ServiceStack.JsonSerializer> ()
+			//.Register<IJsonSerializer, Services.Serialization.SystemJsonSerializer>()
+				.Register<IXFormsApp> (app)
+				.Register<IDependencyContainer> (t => resolverContainer);
+				/*.Register<ISimpleCache>(
 					t => new SQLiteSimpleCache(new SQLite.Net.Platform.XamarinIOS.SQLitePlatformIOS(),
-						new SQLite.Net.SQLiteConnectionString(pathToDatabase, true), t.Resolve<IJsonSerializer>()));
+						new SQLite.Net.SQLiteConnectionString(pathToDatabase, true), t.Resolve<IJsonSerializer>()));*/
 			
 			Resolver.SetResolver(resolverContainer.GetResolver());
 		}

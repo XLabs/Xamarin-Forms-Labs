@@ -24,7 +24,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginRight="6dp"
         android:layout_marginBottom="0dp"
-        android:background="@drawable/arrow_white_righ" />
+        android:background="@drawable/arrow_gray_righ" />
     <ImageButton
         android:id="@+id/left_arrow"
         android:layout_width="21dp"
@@ -41,5 +41,5 @@
         android:paddingTop="4dp"
         android:layout_marginRight="6dp"
         android:layout_marginBottom="0dp"
-        android:background="@drawable/arrow_white_left" />
+        android:background="@drawable/arrow_gray_left" />
 </RelativeLayout>

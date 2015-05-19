@@ -28,6 +28,7 @@
  OTHER DEALINGS IN THE SOFTWARE.
  
  */
+using Xamarin.Forms;
 
 namespace XLabs.Forms.Controls
 {
@@ -124,7 +125,6 @@ namespace XLabs.Forms.Controls
             }
 
             Frame = _showHeader ? new CGRect(0, 0, width, 228 + _headerHeight) : new CGRect(0, 0, width, 228);
-			//Frame = _showHeader ? new CGRect(0, 0, width, 198 + _headerHeight) : new CGRect(0, 0, width, 198);
 
             BoxWidth = Convert.ToInt32(Math.Ceiling(width / 7));
 
@@ -741,7 +741,7 @@ namespace XLabs.Forms.Controls
 					StyleDescriptor.DayOfWeekLabelForegroundColor.SetColor();
 				}
 			
-				DrawCenteredString( new NSString(today.ToString("ddd")),UIColor.White, dateRectangle, font);
+				DrawCenteredString(new NSString(today.ToString("ddd")), UIColor.FromRGB(45,51,50), dateRectangle, font);
 				today = originalDay;
 			}
 

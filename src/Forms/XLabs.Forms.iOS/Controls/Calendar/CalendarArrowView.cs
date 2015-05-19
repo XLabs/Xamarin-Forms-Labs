@@ -97,11 +97,11 @@ namespace XLabs.Forms.Controls
 
 			if(_arrowDirection == ArrowDirection.Left)
 			{
-				image = UIImage.FromBundle("Images/Calendar/arrow_white_left.png");
+				image = UIImage.FromBundle("Images/Calendar/arrow_gray_left.png");
 			}
 			else
 			{
-				image = UIImage.FromBundle("Images/Calendar/arrow_white_right.png");
+				image = UIImage.FromBundle("Images/Calendar/arrow_gray_right.png");
 			}
 
 			return image;
