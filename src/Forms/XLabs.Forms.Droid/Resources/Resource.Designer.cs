@@ -40,41 +40,41 @@ namespace XLabs.Forms
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f050000
-			public static int calendar_active_month_bg = 2131034112;
+			// aapt resource value: 0x7f040000
+			public static int calendar_active_month_bg = 2130968576;
 			
-			// aapt resource value: 0x7f050001
-			public static int calendar_bg = 2131034113;
+			// aapt resource value: 0x7f040001
+			public static int calendar_bg = 2130968577;
 			
-			// aapt resource value: 0x7f050002
-			public static int calendar_divider = 2131034114;
+			// aapt resource value: 0x7f040002
+			public static int calendar_divider = 2130968578;
 			
-			// aapt resource value: 0x7f050005
-			public static int calendar_highlighted_day_bg = 2131034117;
+			// aapt resource value: 0x7f040005
+			public static int calendar_highlighted_day_bg = 2130968581;
 			
-			// aapt resource value: 0x7f050003
-			public static int calendar_inactive_month_bg = 2131034115;
+			// aapt resource value: 0x7f040003
+			public static int calendar_inactive_month_bg = 2130968579;
 			
-			// aapt resource value: 0x7f050004
-			public static int calendar_selected_day_bg = 2131034116;
+			// aapt resource value: 0x7f040004
+			public static int calendar_selected_day_bg = 2130968580;
 			
-			// aapt resource value: 0x7f050006
-			public static int calendar_selected_range_bg = 2131034118;
+			// aapt resource value: 0x7f040006
+			public static int calendar_selected_range_bg = 2130968582;
 			
-			// aapt resource value: 0x7f050008
-			public static int calendar_text_active = 2131034120;
+			// aapt resource value: 0x7f040008
+			public static int calendar_text_active = 2130968584;
 			
-			// aapt resource value: 0x7f050007
-			public static int calendar_text_inactive = 2131034119;
+			// aapt resource value: 0x7f040007
+			public static int calendar_text_inactive = 2130968583;
 			
-			// aapt resource value: 0x7f050009
-			public static int calendar_text_selected = 2131034121;
+			// aapt resource value: 0x7f040009
+			public static int calendar_text_selected = 2130968585;
 			
-			// aapt resource value: 0x7f05000b
-			public static int calendar_text_selector = 2131034123;
+			// aapt resource value: 0x7f04000b
+			public static int calendar_text_selector = 2130968587;
 			
-			// aapt resource value: 0x7f05000a
-			public static int calendar_text_unselectable = 2131034122;
+			// aapt resource value: 0x7f04000a
+			public static int calendar_text_unselectable = 2130968586;
 			
 			static Color()
 			{
@@ -89,20 +89,20 @@ namespace XLabs.Forms
 		public partial class Dimension
 		{
 			
-			// aapt resource value: 0x7f060000
-			public static int calendar_day_headers_paddingbottom = 2131099648;
+			// aapt resource value: 0x7f050000
+			public static int calendar_day_headers_paddingbottom = 2131034112;
 			
-			// aapt resource value: 0x7f060002
-			public static int calendar_month_title_bottommargin = 2131099650;
+			// aapt resource value: 0x7f050002
+			public static int calendar_month_title_bottommargin = 2131034114;
 			
-			// aapt resource value: 0x7f060001
-			public static int calendar_month_topmargin = 2131099649;
+			// aapt resource value: 0x7f050001
+			public static int calendar_month_topmargin = 2131034113;
 			
-			// aapt resource value: 0x7f060003
-			public static int calendar_text_medium = 2131099651;
+			// aapt resource value: 0x7f050003
+			public static int calendar_text_medium = 2131034115;
 			
-			// aapt resource value: 0x7f060004
-			public static int calendar_text_small = 2131099652;
+			// aapt resource value: 0x7f050004
+			public static int calendar_text_small = 2131034116;
 			
 			static Dimension()
 			{
@@ -204,26 +204,26 @@ namespace XLabs.Forms
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f040001
-			public static int ApplicationName = 2130968577;
+			// aapt resource value: 0x7f060006
+			public static int ApplicationName = 2131099654;
 			
-			// aapt resource value: 0x7f040000
-			public static int Hello = 2130968576;
+			// aapt resource value: 0x7f060005
+			public static int Hello = 2131099653;
 			
-			// aapt resource value: 0x7f040003
-			public static int day_name_format = 2130968579;
+			// aapt resource value: 0x7f060001
+			public static int day_name_format = 2131099649;
 			
-			// aapt resource value: 0x7f040006
-			public static int full_date_format = 2130968582;
+			// aapt resource value: 0x7f060004
+			public static int full_date_format = 2131099652;
 			
-			// aapt resource value: 0x7f040004
-			public static int invalid_date = 2130968580;
+			// aapt resource value: 0x7f060002
+			public static int invalid_date = 2131099650;
 			
-			// aapt resource value: 0x7f040002
-			public static int library_name = 2130968578;
+			// aapt resource value: 0x7f060000
+			public static int library_name = 2131099648;
 			
-			// aapt resource value: 0x7f040005
-			public static int month_name_format = 2130968581;
+			// aapt resource value: 0x7f060003
+			public static int month_name_format = 2131099651;
 			
 			static String()
 			{
