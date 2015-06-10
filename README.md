@@ -86,13 +86,13 @@ Using the controls
 -----------
 
 
-Add Xamarin.Forms.Labs.Controls reference to your projects , main pcl, ios, android, and wp.
+Add XLabs.Forms.Controls reference to your projects , main pcl, ios, android, and wp.
 
 Xaml :
 
 Reference the assembly namespace 
 
-     xmlns:controls="clr-namespace:Xamarin.Forms.Labs.Controls;assembly=XLabs.Forms"
+     xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
 
 Render your control:
 
