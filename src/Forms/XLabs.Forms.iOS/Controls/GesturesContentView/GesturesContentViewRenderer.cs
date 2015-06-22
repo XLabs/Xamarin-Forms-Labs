@@ -64,7 +64,7 @@ namespace XLabs.Forms.Controls
 					if (x.State == UIGestureRecognizerState.Ended)
 					{
 						var viewpoint = x.LocationInView(this);
-						Element.ProcessGesture(new GestureResult { GestureType = GestureType.DoubleTap, Direction = Directionality.None, Origin = viewpoint.ToPoint() });                        
+						Element.ProcessGesture(new GestureResult { GestureType = GestureType.LongPress, Direction = Directionality.None, Origin = viewpoint.ToPoint() });                        
 					}
 				}));
 			// Swipe
