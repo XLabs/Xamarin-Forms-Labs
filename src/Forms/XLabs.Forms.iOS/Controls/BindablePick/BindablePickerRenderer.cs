@@ -138,7 +138,7 @@ namespace XLabs.Forms.Controls
 
             _picker = new UIPickerView 
             {
-                DataSource = new PickerSource (e.NewElement)
+				Model = new PickerSource (e.NewElement),
             };
 
             var width = UIScreen.MainScreen.Bounds.Width;
