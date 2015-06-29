@@ -88,6 +88,11 @@ namespace XLabs.Forms.Controls
 				control.PaintFlags = control.PaintFlags | PaintFlags.StrikeThruText;
 			}
 
+			if (view.IsDropShadow)
+			{
+				control.SetShadowLayer (1.5, 2, 2, view.DropShadowColor.ToAndroid());
+			}
+
 		}
 
 		/// <summary>

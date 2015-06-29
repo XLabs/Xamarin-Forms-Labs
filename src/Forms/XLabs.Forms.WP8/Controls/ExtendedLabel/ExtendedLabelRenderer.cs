@@ -10,6 +10,7 @@ namespace XLabs.Forms.Controls
 	using System.Windows;
 	using System.Windows.Controls;
 	using System.Windows.Media;
+	using System.Windows.Media.Effects;
 
 	using Xamarin.Forms;
 	using Xamarin.Forms.Platform.WinPhone;
@@ -106,6 +107,18 @@ namespace XLabs.Forms.Controls
 
 			if (view.IsUnderline)
 				control.TextDecorations = TextDecorations.Underline;
+
+			if (view.IsDropShadow)
+			{
+				control.Effect = 
+					new DropShadowEffect
+					{
+						Color = view.DropShadowColor,
+						Direction = 315,
+						ShadowDepth = 0,
+						Opacity = 0.5
+					};
+			}
 		}
 
 		/// <summary>
