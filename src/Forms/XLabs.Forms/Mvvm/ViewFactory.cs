@@ -142,16 +142,38 @@ namespace XLabs.Forms.Mvvm
 			return page;
 		}
 
-		/// <summary>
-		/// Creates the page.
-		/// </summary>
-		/// <typeparam name="TViewModel">The type of the view model.</typeparam>
-		/// <typeparam name="TPage">The type of the t page.</typeparam>
-		/// <param name="initialiser">The create action.</param>
-		/// <returns>Page for the ViewModel.</returns>
-		/// <exception cref="System.InvalidOperationException">Unknown View for ViewModel.</exception>
-		public static object CreatePage<TViewModel, TPage>(Action<TViewModel, TPage> initialiser = null)
-			where TViewModel : class, IViewModel
+        /// <summary>
+        /// Creates the page.
+        /// </summary>
+        /// <typeparam name="TViewModel">The type of the view model.</typeparam>
+        /// <typeparam name="TPage">The type of the t page.</typeparam>
+        /// <param name="initialiser">The create action.</param>
+        /// <returns>Page for the ViewModel.</returns>
+        /// <exception cref="System.InvalidOperationException">Unknown View for ViewModel.</exception>
+        public static object CreatePage<TViewModel>(Action<TViewModel, object> initialiser = null)
+            where TViewModel : class, IViewModel
+            {
+            Action<object, object> i = (o1, o2) =>
+            {
+                if (initialiser != null)
+                    {
+                    initialiser((TViewModel)o1, o2);
+                    }
+            };
+
+            return CreatePage(typeof(TViewModel), i);
+            }
+
+	    /// <summary>
+	    /// Creates the page.
+	    /// </summary>
+	    /// <typeparam name="TViewModel">The type of the view model.</typeparam>
+	    /// <typeparam name="TPage">The type of the t page.</typeparam>
+	    /// <param name="initialiser">The create action.</param>
+	    /// <returns>Page for the ViewModel.</returns>
+	    /// <exception cref="System.InvalidOperationException">Unknown View for ViewModel.</exception>
+	    public static TPage CreatePage<TViewModel, TPage>(Action<TViewModel, TPage> initialiser = null)
+	        where TViewModel : class, IViewModel where TPage : Page
 		{
 			Action<object, object> i = (o1, o2) =>
 			{
@@ -161,7 +183,7 @@ namespace XLabs.Forms.Mvvm
 				}
 			};
 
-			return CreatePage(typeof (TViewModel), i);
+			return (TPage) CreatePage(typeof (TViewModel), i);
 		}
 	}
 }
