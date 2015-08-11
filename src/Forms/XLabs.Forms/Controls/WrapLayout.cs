@@ -159,17 +159,17 @@ namespace XLabs.Forms.Controls
 
                 height = Math.Max(height, size.Request.Height);
 
-                var newWidth = width + size.Request.Width + Spacing;
+                var newWidth = width + size.Request.Width;
 
                 if (newWidth > widthConstraint)
                 {
                     rowCount++;
-                    widthUsed = Math.Max(width, widthUsed);
+                    widthUsed = Math.Max(width - Spacing, widthUsed);
                     width = size.Request.Width;
                 }
                 else
                 {
-                    width = newWidth;
+                    width = newWidth + Spacing;
                 }
 
                 minHeight = Math.Max(minHeight, size.Minimum.Height);
@@ -182,7 +182,7 @@ namespace XLabs.Forms.Controls
             }
 
             width = Math.Max(width, widthUsed);
-            height = (height + Spacing)*rowCount;   // - Spacing;
+            height = (height + Spacing)*rowCount - Spacing;
             //height *= rowCount;  // take max height
 
             return new SizeRequest(new Size(width, height), new Size(minWidth, minHeight));
