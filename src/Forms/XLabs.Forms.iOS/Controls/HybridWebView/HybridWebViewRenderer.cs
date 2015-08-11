@@ -1,157 +1,183 @@
 using Xamarin.Forms;
-
 using XLabs.Forms.Controls;
 
 [assembly: ExportRenderer(typeof(HybridWebView), typeof(HybridWebViewRenderer))]
 
 namespace XLabs.Forms.Controls
 {
-	using System;
+    using System;
+    using System.Diagnostics;
+    using Foundation;
+    using UIKit;
+    using WebKit;
+    using Xamarin.Forms;
+    using Xamarin.Forms.Platform.iOS;
 
-	using Foundation;
-	using UIKit;
+    /// <summary>
+    /// The hybrid web view renderer.
+    /// </summary>
+    public partial class HybridWebViewRenderer : ViewRenderer<HybridWebView, WKWebView>, IWKScriptMessageHandler
+    {
+        private UISwipeGestureRecognizer leftSwipeGestureRecognizer;
+        private UISwipeGestureRecognizer rightSwipeGestureRecognizer;
 
-	using Xamarin.Forms;
-	using Xamarin.Forms.Platform.iOS;
+        private WKUserContentController userController;
 
-	using Size = Xamarin.Forms.Size;
+        /// <summary>
+        /// Gets the desired size of the view.
+        /// </summary>
+        /// <returns>The desired size.</returns>
+        /// <param name="widthConstraint">Width constraint.</param>
+        /// <param name="heightConstraint">Height constraint.</param>
+        /// <remarks>
+        /// We need to override this method and set the request to 0. Otherwise on view refresh
+        /// we will get incorrect view height and might lose the ability to scroll the webview
+        /// completely.
+        /// </remarks>
+        public override SizeRequest GetDesiredSize(double widthConstraint, double heightConstraint)
+        {
+            return new SizeRequest(Size.Zero, Size.Zero);
+        }
 
-	/// <summary>
-	/// The hybrid web view renderer.
-	/// </summary>
-	public partial class HybridWebViewRenderer : ViewRenderer<HybridWebView, UIWebView>
-	{
-		//private UIWebView webView;
-		private UISwipeGestureRecognizer _leftSwipeGestureRecognizer;
-		private UISwipeGestureRecognizer _rightSwipeGestureRecognizer;
+        #region Navigation delegates
 
-		public HybridWebViewRenderer()
-		{
+        /// <summary>
+        /// Handles <see cref="WKWebView"/> load finished event.
+        /// </summary>
+        /// <param name="webView">Web view who has finished loading.</param>
+        /// <param name="navigation">Navigation object.</param>
+        [Export("webView:didFinishNavigation:")]
+        public void DidFinishNavigation(WKWebView webView, WKNavigation navigation)
+        {
+            this.Element.OnLoadFinished(webView, EventArgs.Empty);
+        }
 
-		}
+        /// <summary>
+        /// Handles <see cref="WKWebView"/> load start event.
+        /// </summary>
+        /// <param name="webView">Web view who has started loading.</param>
+        /// <param name="navigation">Navigation object.</param>
+        [Export("webView:didStartProvisionalNavigation:")]
+        public void DidStartProvisionalNavigation(WKWebView webView, WKNavigation navigation)
+        {
+            Element.OnNavigating(webView.Url);
+        }
 
-		/// <summary>
-		/// The on element changed callback.
-		/// </summary>
-		/// <param name="e">
-		/// The event arguments.
-		/// </param>
-		protected override void OnElementChanged(ElementChangedEventArgs<HybridWebView> e)
-		{
-			base.OnElementChanged(e);
+        #endregion
 
-			if (Control == null)
-			{
-				var webView = new UIWebView();
-				webView.LoadFinished += LoadFinished;
-				webView.ShouldStartLoad += HandleStartLoad;
-				//this.InjectNativeFunctionScript();
-				SetNativeControl(webView);
+        /* 
+         * This is a hack to because the base wasn't working 
+         * when within a stacklayout
+         */
+        public override void LayoutSubviews()
+        {
+            base.LayoutSubviews();
+            Control.ScrollView.Frame = Control.Bounds;
+        }
 
-				//webView.AutoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight;
-				//webView.ScalesPageToFit = true;
+        /// <summary>
+        /// Implements a method from interface <see cref="IWKScriptMessageHandler"/>.
+        /// </summary>
+        /// <param name="userContentController">User controller sending the message.</param>
+        /// <param name="message">The message being sent.</param>
+        public void DidReceiveScriptMessage(WKUserContentController userContentController, WKScriptMessage message)
+        {
+            this.Element.MessageReceived(message.Body.ToString());
+        }
 
-				_leftSwipeGestureRecognizer = new UISwipeGestureRecognizer(() => Element.OnLeftSwipe(this, EventArgs.Empty))
-				{
-					Direction = UISwipeGestureRecognizerDirection.Left
-				};
+        /// <summary>
+        /// The on element changed callback.
+        /// </summary>
+        /// <param name="e">
+        /// The event arguments.
+        /// </param>
+        protected override void OnElementChanged(ElementChangedEventArgs<HybridWebView> e)
+        {
+            base.OnElementChanged(e);
 
-				_rightSwipeGestureRecognizer = new UISwipeGestureRecognizer(()=> Element.OnRightSwipe(this, EventArgs.Empty))
-				{
-					Direction = UISwipeGestureRecognizerDirection.Right
-				};
+            if (Control == null)
+            {
+                this.userController = new WKUserContentController();
+                var config = new WKWebViewConfiguration()
+                {
+                    UserContentController = this.userController
+                };
 
-				Control.AddGestureRecognizer(_leftSwipeGestureRecognizer);
-				Control.AddGestureRecognizer(_rightSwipeGestureRecognizer);
-			}
+                var script = new WKUserScript(new NSString(NativeFunction + GetFuncScript()), WKUserScriptInjectionTime.AtDocumentEnd, false);
 
-			if (e.NewElement == null)
-			{
-				Control.RemoveGestureRecognizer(_leftSwipeGestureRecognizer);
-				Control.RemoveGestureRecognizer(_rightSwipeGestureRecognizer);
-			}
+                this.userController.AddUserScript(script);
 
-			this.Unbind(e.OldElement);
-			this.Bind();
-		}
+                this.userController.AddScriptMessageHandler(this, "native");
 
-		partial void HandleCleanup() {
-			if (Control != null) {
-				Control.LoadFinished -= this.LoadFinished;
-				Control.ShouldStartLoad -= this.HandleStartLoad;
-				Control.RemoveGestureRecognizer(_leftSwipeGestureRecognizer);
-				Control.RemoveGestureRecognizer(_rightSwipeGestureRecognizer);
-			}
-		}
+                var webView = new WKWebView(this.Frame, config) { WeakNavigationDelegate = this };
 
-		/// <summary>
-		/// Gets the desired size of the view.
-		/// </summary>
-		/// <returns>The desired size.</returns>
-		/// <param name="widthConstraint">Width constraint.</param>
-		/// <param name="heightConstraint">Height constraint.</param>
-		/// <remarks>
-		/// We need to override this method and set the request to 0. Otherwise on view refresh
-		/// we will get incorrect view height and might lose the ability to scroll the webview
-		/// completely.
-		/// </remarks>
-		public override SizeRequest GetDesiredSize(double widthConstraint, double heightConstraint)
-		{
-			return new SizeRequest(Size.Zero, Size.Zero);
-		}
+                SetNativeControl(webView);
 
-		void LoadFinished(object sender, EventArgs e)
-		{
-			InjectNativeFunctionScript();
-			Element.OnLoadFinished(sender, e);
-		}
+                //webView.AutoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight;
+                //webView.ScalesPageToFit = true;
 
-		private bool HandleStartLoad(UIWebView webView, NSUrlRequest request, UIWebViewNavigationType navigationType)
-		{
-			var shouldStartLoad = !this.CheckRequest(request.Url.RelativeString);
-			if (shouldStartLoad) 
-			{
-				Element.OnNavigating(new Uri(request.Url.AbsoluteUrl.AbsoluteString));
-			}
-			return shouldStartLoad;
-		}
+                this.leftSwipeGestureRecognizer = new UISwipeGestureRecognizer(() => Element.OnLeftSwipe(this, EventArgs.Empty))
+                {
+                    Direction = UISwipeGestureRecognizerDirection.Left
+                };
 
-		partial void Inject(string script)
-		{
-			InvokeOnMainThread(() => Control.EvaluateJavascript(script));
-		}
+                this.rightSwipeGestureRecognizer = new UISwipeGestureRecognizer(() => Element.OnRightSwipe(this, EventArgs.Empty))
+                {
+                    Direction = UISwipeGestureRecognizerDirection.Right
+                };
 
-		/* 
-		 * This is a hack to because the base wasn't working 
-		 * when within a stacklayout
-		 */
-		public override void LayoutSubviews()
-		{
-			base.LayoutSubviews();
-			Control.ScrollView.Frame = Control.Bounds;
-		}
+                webView.AddGestureRecognizer(this.leftSwipeGestureRecognizer);
+                webView.AddGestureRecognizer(this.rightSwipeGestureRecognizer);
+            }
 
-		partial void Load(Uri uri)
-		{
-			if (uri != null)
-			{
-				Control.LoadRequest(new NSUrlRequest(new NSUrl(uri.AbsoluteUri)));
-			}
-		}
+            if (e.NewElement == null && this.Control != null)
+            {
+                this.Control.RemoveGestureRecognizer(this.leftSwipeGestureRecognizer);
+                this.Control.RemoveGestureRecognizer(this.rightSwipeGestureRecognizer);
+            }
 
-		partial void LoadFromContent(object sender, string contentFullName)
-		{
-			Element.Uri = new Uri(NSBundle.MainBundle.BundlePath + "/" + contentFullName);
-		}
+            this.Unbind(e.OldElement);
+            this.Bind();
+        }
 
-		partial void LoadContent(object sender, string contentFullName)
-		{
-			Control.LoadHtmlString(contentFullName, new NSUrl(NSBundle.MainBundle.BundlePath, true));
-		}
+        partial void HandleCleanup()
+        {
+            if (Control == null) return;
+            Control.RemoveGestureRecognizer(this.leftSwipeGestureRecognizer);
+            Control.RemoveGestureRecognizer(this.rightSwipeGestureRecognizer);
+        }
 
-		partial void LoadFromString(string html)
-		{
-			this.LoadContent(null, html);
-		}
-	}
+        partial void Inject(string script)
+        {
+            InvokeOnMainThread(() => Control.EvaluateJavaScript(new NSString(script), (r, e) =>
+            {
+                if (e != null)
+                    //System.Diagnostics.Debug.WriteLine(r);
+                    Debug.WriteLine(e);
+            }));
+        }
+
+        partial void Load(Uri uri)
+        {
+            if (uri != null)
+            {
+                Control.LoadRequest(new NSUrlRequest(new NSUrl(uri.AbsoluteUri)));
+            }
+        }
+
+        partial void LoadFromContent(object sender, string contentFullName)
+        {
+            Element.Uri = new Uri(NSBundle.MainBundle.BundlePath + "/" + contentFullName);
+        }
+
+        partial void LoadContent(object sender, string contentFullName)
+        {
+            Control.LoadHtmlString(new NSString(contentFullName), new NSUrl(NSBundle.MainBundle.BundlePath, true));
+        }
+
+        partial void LoadFromString(string html)
+        {
+            this.LoadContent(null, html);
+        }
+    }
 }

@@ -51,6 +51,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\XLabs.Core\XLabs.Core.csproj">
+      <Project>{15D9C404-F7E2-49F0-ACC9-63C4C008C860}</Project>
+      <Name>XLabs.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\XLabs.Platform\XLabs.Platform.csproj">
       <Project>{2A4D9DD4-326C-4824-AA3C-A9ED45CC898C}</Project>
       <Name>XLabs.Platform</Name>

@@ -11,7 +11,7 @@ namespace XLabs.Forms.Controls
 		/// The HasBorder property
 		/// </summary>
 		public static readonly BindableProperty HasBorderProperty =
-			BindableProperty.Create("HasBorder", typeof(bool), typeof(ExtendedEntry), true);
+			BindableProperty.Create("HasBorder", typeof(bool), typeof(ExtendedTimePicker), true);
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="ExtendedTimePicker"/> class.

@@ -31,72 +31,72 @@
 
 namespace XLabs.Forms.Controls
 {
-	using System;
-	using System.Collections.Generic;
-	using CoreGraphics;
-	using System.Globalization;
+    using System;
+    using System.Collections.Generic;
+    using CoreGraphics;
+    using System.Globalization;
 
-	using Foundation;
-	using UIKit;
+    using Foundation;
+    using UIKit;
 
-	public delegate void DateSelected(DateTime date);
+    public delegate void DateSelected(DateTime date);
 
-	public delegate void MonthChanged(DateTime monthSelected);
+    public delegate void MonthChanged(DateTime monthSelected);
 
-	/// <summary>
-	/// Class CalendarMonthView.
-	/// </summary>
-	public class CalendarMonthView : UIView
-	{
-		/// <summary>
-		/// The _calendar is loaded
-		/// </summary>
-		private bool _calendarIsLoaded;
+    /// <summary>
+    /// Class CalendarMonthView.
+    /// </summary>
+    public class CalendarMonthView : UIView
+    {
+        /// <summary>
+        /// The _calendar is loaded
+        /// </summary>
+        private bool _calendarIsLoaded;
 
-		/// <summary>
-		/// The _left arrow
-		/// </summary>
-		private CalendarArrowView _leftArrow;
+        /// <summary>
+        /// The _left arrow
+        /// </summary>
+        private CalendarArrowView _leftArrow;
 
-		/// <summary>
-		/// The _max date time
-		/// </summary>
-		private DateTime? _maxDateTime;
+        /// <summary>
+        /// The _max date time
+        /// </summary>
+        private DateTime? _maxDateTime;
 
-		/// <summary>
-		/// The _min date time
-		/// </summary>
-		private DateTime? _minDateTime;
+        /// <summary>
+        /// The _min date time
+        /// </summary>
+        private DateTime? _minDateTime;
 
-		/// <summary>
-		/// The _month grid view
-		/// </summary>
-		private MonthGridView _monthGridView;
+        /// <summary>
+        /// The _month grid view
+        /// </summary>
+        private MonthGridView _monthGridView;
 
-		/// <summary>
-		/// The _right arrow
-		/// </summary>
-		private CalendarArrowView _rightArrow;
+        /// <summary>
+        /// The _right arrow
+        /// </summary>
+        private CalendarArrowView _rightArrow;
 
-		/// <summary>
-		/// The _scroll view
-		/// </summary>
-		private UIScrollView _scrollView;
+        /// <summary>
+        /// The _scroll view
+        /// </summary>
+        private UIScrollView _scrollView;
 
-		/// <summary>
-		/// The _header height
-		/// </summary>
-		private readonly int _headerHeight;
+        /// <summary>
+        /// The _header height
+        /// </summary>
+        private readonly int _headerHeight;
 
-		/// <summary>
-		/// The _show header
-		/// </summary>
-		private readonly bool _showHeader;
+        /// <summary>
+        /// The _show header
+        /// </summary>
+        private readonly bool _showHeader;
 
-		/// <summary>
-		/// The _show nav arrows
-		/// </summary>
-		private readonly bool _showNavArrows;
+        /// <summary>
+        /// The _show nav arrows
+        /// </summary>
+        private readonly bool _showNavArrows;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CalendarMonthView"/> class.
@@ -152,73 +152,73 @@ namespace XLabs.Forms.Controls
             AddGestureRecognizer(swipeUp);
         }
 
-		/// <summary>
-		/// The box height
-		/// </summary>
-		public int BoxHeight = 30;
+        /// <summary>
+        /// The box height
+        /// </summary>
+        public int BoxHeight = 30;
 
-		/// <summary>
-		/// The box width
-		/// </summary>
-		public int BoxWidth = 46;
+        /// <summary>
+        /// The box width
+        /// </summary>
+        public int BoxWidth = 46;
 
-		/// <summary>
-		/// The current month year
-		/// </summary>
-		public DateTime CurrentMonthYear;
+        /// <summary>
+        /// The current month year
+        /// </summary>
+        public DateTime CurrentMonthYear;
 
-		/// <summary>
-		/// The current selected date
-		/// </summary>
-		public DateTime CurrentSelectedDate;
+        /// <summary>
+        /// The current selected date
+        /// </summary>
+        public DateTime CurrentSelectedDate;
 
-		/// <summary>
-		/// The is date available
-		/// </summary>
-		public Func<DateTime, bool> IsDateAvailable;
+        /// <summary>
+        /// The is date available
+        /// </summary>
+        public Func<DateTime, bool> IsDateAvailable;
 
-		/// <summary>
-		/// The is day marked delegate
-		/// </summary>
-		public Func<DateTime, bool> IsDayMarkedDelegate;
+        /// <summary>
+        /// The is day marked delegate
+        /// </summary>
+        public Func<DateTime, bool> IsDayMarkedDelegate;
 
-		/// <summary>
-		/// The month changed
-		/// </summary>
-		public Action<DateTime> MonthChanged;
+        /// <summary>
+        /// The month changed
+        /// </summary>
+        public Action<DateTime> MonthChanged;
 
-		/// <summary>
-		/// The on date selected
-		/// </summary>
-		public Action<DateTime> OnDateSelected;
+        /// <summary>
+        /// The on date selected
+        /// </summary>
+        public Action<DateTime> OnDateSelected;
 
-		/// <summary>
-		/// The on finished date selection
-		/// </summary>
-		public Action<DateTime> OnFinishedDateSelection;
+        /// <summary>
+        /// The on finished date selection
+        /// </summary>
+        public Action<DateTime> OnFinishedDateSelection;
 
-		/// <summary>
-		/// The swiped up
-		/// </summary>
-		public Action SwipedUp;
+        /// <summary>
+        /// The swiped up
+        /// </summary>
+        public Action SwipedUp;
 
-		/// <summary>
-		/// Gets the highlighted days of week.
-		/// </summary>
-		/// <value>The highlighted days of week.</value>
-		public Dictionary<int, bool> HighlightedDaysOfWeek { get; private set; }
+        /// <summary>
+        /// Gets the highlighted days of week.
+        /// </summary>
+        /// <value>The highlighted days of week.</value>
+        public Dictionary<int, bool> HighlightedDaysOfWeek { get; private set; }
 
-		/// <summary>
-		/// Gets or sets the current date.
-		/// </summary>
-		/// <value>The current date.</value>
-		protected DateTime CurrentDate { get; set; }
+        /// <summary>
+        /// Gets or sets the current date.
+        /// </summary>
+        /// <value>The current date.</value>
+        protected DateTime CurrentDate { get; set; }
 
-		/// <summary>
-		/// Gets the style descriptor.
-		/// </summary>
-		/// <value>The style descriptor.</value>
-		public StyleDescriptor StyleDescriptor { get; private set; }
+        /// <summary>
+        /// Gets the style descriptor.
+        /// </summary>
+        /// <value>The style descriptor.</value>
+        public StyleDescriptor StyleDescriptor { get; private set; }
 
         /// <summary>
         /// Draws the specified rect.
@@ -241,200 +241,200 @@ namespace XLabs.Forms.Controls
             }
         }
 
-		/// <summary>
-		/// Sets the date.
-		/// </summary>
-		/// <param name="newDate">The new date.</param>
-		/// <param name="animated">if set to <c>true</c> [animated].</param>
-		public void SetDate(DateTime newDate, bool animated)
-		{
-			var right = true;
+        /// <summary>
+        /// Sets the date.
+        /// </summary>
+        /// <param name="newDate">The new date.</param>
+        /// <param name="animated">if set to <c>true</c> [animated].</param>
+        public void SetDate(DateTime newDate, bool animated)
+        {
+            var right = true;
 
-			CurrentSelectedDate = newDate;
+            CurrentSelectedDate = newDate;
 
-			var monthsDiff = (newDate.Month - CurrentMonthYear.Month) + 12 * (newDate.Year - CurrentMonthYear.Year);
-			if (monthsDiff != 0)
-			{
-				if (monthsDiff < 0)
-				{
-					right = false;
-					monthsDiff = -monthsDiff;
-				}
+            var monthsDiff = (newDate.Month - CurrentMonthYear.Month) + 12 * (newDate.Year - CurrentMonthYear.Year);
+            if (monthsDiff != 0)
+            {
+                if (monthsDiff < 0)
+                {
+                    right = false;
+                    monthsDiff = -monthsDiff;
+                }
 
-				for (var i = 0; i < monthsDiff; i++)
-				{
-					MoveCalendarMonths(right, animated);
-				}
-			}
-			else
-			{
-				//If we have created the layout already
-				if (_scrollView != null)
-				{
-					RebuildGrid(true, animated);
-				}
-			}
-		}
+                for (var i = 0; i < monthsDiff; i++)
+                {
+                    MoveCalendarMonths(right, animated);
+                }
+            }
+            else
+            {
+                //If we have created the layout already
+                if (_scrollView != null)
+                {
+                    RebuildGrid(true, animated);
+                }
+            }
+        }
 
-		/// <summary>
-		/// Sets the maximum allowed date.
-		/// </summary>
-		/// <param name="maxDate">The maximum date.</param>
-		public void SetMaxAllowedDate(DateTime? maxDate)
-		{
-			_maxDateTime = maxDate;
-		}
+        /// <summary>
+        /// Sets the maximum allowed date.
+        /// </summary>
+        /// <param name="maxDate">The maximum date.</param>
+        public void SetMaxAllowedDate(DateTime? maxDate)
+        {
+            _maxDateTime = maxDate;
+        }
 
-		/// <summary>
-		/// Sets the minimum allowed date.
-		/// </summary>
-		/// <param name="minDate">The minimum date.</param>
-		public void SetMinAllowedDate(DateTime? minDate)
-		{
-			_minDateTime = minDate;
-		}
+        /// <summary>
+        /// Sets the minimum allowed date.
+        /// </summary>
+        /// <param name="minDate">The minimum date.</param>
+        public void SetMinAllowedDate(DateTime? minDate)
+        {
+            _minDateTime = minDate;
+        }
 
-		/// <summary>
-		/// Highlights the days of weeks.
-		/// </summary>
-		/// <param name="daysOfWeeks">The days of weeks.</param>
-		public void HighlightDaysOfWeeks(DayOfWeek[] daysOfWeeks)
-		{
-			HighlightedDaysOfWeek = new Dictionary<int, bool>();
-			for (var i = 0; i <= 6; i++)
-			{
-				HighlightedDaysOfWeek[i] = false;
-			}
-			foreach (var dOw in daysOfWeeks)
-			{
-				HighlightedDaysOfWeek[(int)dOw] = true;
-			}
-		}
+        /// <summary>
+        /// Highlights the days of weeks.
+        /// </summary>
+        /// <param name="daysOfWeeks">The days of weeks.</param>
+        public void HighlightDaysOfWeeks(DayOfWeek[] daysOfWeeks)
+        {
+            HighlightedDaysOfWeek = new Dictionary<int, bool>();
+            for (var i = 0; i <= 6; i++)
+            {
+                HighlightedDaysOfWeek[i] = false;
+            }
+            foreach (var dOw in daysOfWeeks)
+            {
+                HighlightedDaysOfWeek[(int)dOw] = true;
+            }
+        }
 
-		/// <summary>
-		/// Sets the displayed month year.
-		/// </summary>
-		/// <param name="newDate">The new date.</param>
-		/// <param name="animated">if set to <c>true</c> [animated].</param>
-		public void SetDisplayedMonthYear(DateTime newDate, bool animated)
-		{
-			var right = true;
-			var monthsDiff = (newDate.Month - CurrentMonthYear.Month) + 12 * (newDate.Year - CurrentMonthYear.Year);
-			if (monthsDiff != 0)
-			{
-				if (monthsDiff < 0)
-				{
-					right = false;
-					monthsDiff = -monthsDiff;
-				}
+        /// <summary>
+        /// Sets the displayed month year.
+        /// </summary>
+        /// <param name="newDate">The new date.</param>
+        /// <param name="animated">if set to <c>true</c> [animated].</param>
+        public void SetDisplayedMonthYear(DateTime newDate, bool animated)
+        {
+            var right = true;
+            var monthsDiff = (newDate.Month - CurrentMonthYear.Month) + 12 * (newDate.Year - CurrentMonthYear.Year);
+            if (monthsDiff != 0)
+            {
+                if (monthsDiff < 0)
+                {
+                    right = false;
+                    monthsDiff = -monthsDiff;
+                }
 
-				for (var i = 0; i < monthsDiff; i++)
-				{
-					MoveCalendarMonths(right, animated);
-				}
-			}
-			else
-			{
-				//If we have created the layout already
-				if (_scrollView != null)
-				{
-					RebuildGrid(true, animated);
-				}
-			}
-		}
+                for (var i = 0; i < monthsDiff; i++)
+                {
+                    MoveCalendarMonths(right, animated);
+                }
+            }
+            else
+            {
+                //If we have created the layout already
+                if (_scrollView != null)
+                {
+                    RebuildGrid(true, animated);
+                }
+            }
+        }
 
-		/// <summary>
-		/// Sets the needs display.
-		/// </summary>
-		public override void SetNeedsDisplay()
-		{
-			base.SetNeedsDisplay();
-			if (_monthGridView != null)
-			{
-				_monthGridView.Update();
-			}
-		}
+        /// <summary>
+        /// Sets the needs display.
+        /// </summary>
+        public override void SetNeedsDisplay()
+        {
+            base.SetNeedsDisplay();
+            if (_monthGridView != null)
+            {
+                _monthGridView.Update();
+            }
+        }
 
-		/// <summary>
-		/// Layouts the subviews.
-		/// </summary>
-		public override void LayoutSubviews()
-		{
-			if (_calendarIsLoaded)
-			{
-				return;
-			}
+        /// <summary>
+        /// Layouts the subviews.
+        /// </summary>
+        public override void LayoutSubviews()
+        {
+            if (_calendarIsLoaded)
+            {
+                return;
+            }
 
-			_scrollView = new UIScrollView
-				              {
-					              ContentSize = new CGSize(320, 260),
-					              ScrollEnabled = false,
-					              Frame = new CGRect(0, 16 + _headerHeight, 320, Frame.Height - 16),
-					              BackgroundColor = StyleDescriptor.BackgroundColor
-				              };
+            _scrollView = new UIScrollView
+                              {
+                                  ContentSize = new CGSize(320, 260),
+                                  ScrollEnabled = false,
+                                  Frame = new CGRect(0, 16 + _headerHeight, 320, Frame.Height - 16),
+                                  BackgroundColor = StyleDescriptor.BackgroundColor
+                              };
 
-			//_shadow = new UIImageView(UIImage.FromBundle("Images/Calendar/shadow.png"));
+            //_shadow = new UIImageView(UIImage.FromBundle("Images/Calendar/shadow.png"));
 
-			//LoadButtons();
+            //LoadButtons();
 
-			LoadNavArrows();
-			SetNavigationArrows(false);
-			LoadInitialGrids();
+            LoadNavArrows();
+            SetNavigationArrows(false);
+            LoadInitialGrids();
 
-			BackgroundColor = UIColor.Clear;
+            BackgroundColor = UIColor.Clear;
 
-			AddSubview(_scrollView);
+            AddSubview(_scrollView);
 
-			//AddSubview(_shadow);
+            //AddSubview(_shadow);
 
-			_scrollView.AddSubview(_monthGridView);
+            _scrollView.AddSubview(_monthGridView);
 
-			_calendarIsLoaded = true;
-		}
+            _calendarIsLoaded = true;
+        }
 
-		/// <summary>
-		/// Deselects the date.
-		/// </summary>
-		public void DeselectDate()
-		{
-			if (_monthGridView != null)
-			{
-				_monthGridView.DeselectDayView();
-			}
-		}
+        /// <summary>
+        /// Deselects the date.
+        /// </summary>
+        public void DeselectDate()
+        {
+            if (_monthGridView != null)
+            {
+                _monthGridView.DeselectDayView();
+            }
+        }
 
-		/// <summary>
-		/// Moves the calendar months.
-		/// </summary>
-		/// <param name="right">if set to <c>true</c> [right].</param>
-		/// <param name="animated">if set to <c>true</c> [animated].</param>
-		public void MoveCalendarMonths(bool right, bool animated)
-		{
-			var newDate = CurrentMonthYear.AddMonths(right ? 1 : -1);
-			if ((_minDateTime != null && newDate < _minDateTime.Value.Date)
-			    || (_maxDateTime != null && newDate > _maxDateTime.Value.Date))
-			{
-				if (animated)
-				{
-					var oldX = _monthGridView.Center.X;
+        /// <summary>
+        /// Moves the calendar months.
+        /// </summary>
+        /// <param name="right">if set to <c>true</c> [right].</param>
+        /// <param name="animated">if set to <c>true</c> [animated].</param>
+        public void MoveCalendarMonths(bool right, bool animated)
+        {
+            var newDate = CurrentMonthYear.AddMonths(right ? 1 : -1);
+            if ((_minDateTime != null && newDate < _minDateTime.Value.Date)
+                || (_maxDateTime != null && newDate > _maxDateTime.Value.Date))
+            {
+                if (animated)
+                {
+                    var oldX = _monthGridView.Center.X;
 
-					_monthGridView.Center = new CGPoint(oldX, _monthGridView.Center.Y);
-					Animate(
-						0.25,
-						() => _monthGridView.Center = new CGPoint(_monthGridView.Center.X - (right ? 40 : -40), _monthGridView.Center.Y),
-						() => { Animate(0.25, () => { _monthGridView.Center = new CGPoint(oldX, _monthGridView.Center.Y); }); });
-				}
-				return;
-			}
+                    _monthGridView.Center = new CGPoint(oldX, _monthGridView.Center.Y);
+                    Animate(
+                        0.25,
+                        () => _monthGridView.Center = new CGPoint(_monthGridView.Center.X - (right ? 40 : -40), _monthGridView.Center.Y),
+                        () => { Animate(0.25, () => { _monthGridView.Center = new CGPoint(oldX, _monthGridView.Center.Y); }); });
+                }
+                return;
+            }
 
-			CurrentMonthYear = newDate;
-			SetNavigationArrows(animated);
-			//If we have created the layout already
-			if (_scrollView != null)
-			{
-				RebuildGrid(right, animated);
-			}
-		}
+            CurrentMonthYear = newDate;
+            SetNavigationArrows(animated);
+            //If we have created the layout already
+            if (_scrollView != null)
+            {
+                RebuildGrid(right, animated);
+            }
+        }
 
         /// <summary>
         /// Rebuilds the grid.
@@ -473,7 +473,7 @@ namespace XLabs.Forms.Controls
             /*_scrollView.Frame = new RectangleF(
                 _scrollView.Frame.Location,
                 new SizeF(_scrollView.Frame.Width, this.Frame.Height-16));
-			
+            
             _scrollView.ContentSize = _scrollView.Frame.Size;*/
 
             SetNeedsDisplay();
@@ -519,7 +519,7 @@ namespace XLabs.Forms.Controls
             _leftButton.SetImage(UIImage.FromBundle("Images/Calendar/leftarrow.png"), UIControlState.Normal);
             AddSubview(_leftButton);
             _leftButton.Frame = new RectangleF(10, 0, 44, 42);
-			
+            
             _rightButton = UIButton.FromType(UIButtonType.Custom);
             _rightButton.TouchUpInside += HandleNextMonthTouch;
             _rightButton.SetImage(UIImage.FromBundle("Images/Calendar/rightarrow.png"), UIControlState.Normal);
@@ -547,27 +547,27 @@ namespace XLabs.Forms.Controls
             MoveCalendarMonths(true, true);
         }
 
-		/// <summary>
-		/// Sets the navigation arrows.
-		/// </summary>
-		/// <param name="animated">if set to <c>true</c> [animated].</param>
-		private void SetNavigationArrows(bool animated)
-		{
-			var isMin = false;
-			var isMax = false;
-			if (_minDateTime != null)
-			{
-				isMin = CurrentMonthYear.Month == _minDateTime.Value.Month && CurrentMonthYear.Year == _minDateTime.Value.Year;
-			}
-			if (_maxDateTime != null)
-			{
-				isMax = CurrentMonthYear.Month == _maxDateTime.Value.Month && CurrentMonthYear.Year == _maxDateTime.Value.Year;
-			}
+        /// <summary>
+        /// Sets the navigation arrows.
+        /// </summary>
+        /// <param name="animated">if set to <c>true</c> [animated].</param>
+        private void SetNavigationArrows(bool animated)
+        {
+            var isMin = false;
+            var isMax = false;
+            if (_minDateTime != null)
+            {
+                isMin = CurrentMonthYear.Month == _minDateTime.Value.Month && CurrentMonthYear.Year == _minDateTime.Value.Year;
+            }
+            if (_maxDateTime != null)
+            {
+                isMax = CurrentMonthYear.Month == _maxDateTime.Value.Month && CurrentMonthYear.Year == _maxDateTime.Value.Year;
+            }
 
-		    if (!_showNavArrows) return;
+            if (!_showNavArrows) return;
 
-		    Action action = () =>
-		    {
+            Action action = () =>
+            {
                 if (isMin && _leftArrow.Enabled)
                 {
                     _leftArrow.Enabled = false;
@@ -589,17 +589,17 @@ namespace XLabs.Forms.Controls
                     _rightArrow.Enabled = true;
                     _rightArrow.Alpha = 1;
                 }
-		    };
+            };
 
-		    if (animated)
-		    {
-		        Animate(0.250, action);
-		    }
-		    else
-		    {
-		        action();
-		    }
-		}
+            if (animated)
+            {
+                Animate(0.250, action);
+            }
+            else
+            {
+                action();
+            }
+        }
 
         /// <summary>
         /// ps the month view swiped up.
@@ -631,109 +631,109 @@ namespace XLabs.Forms.Controls
             MoveCalendarMonths(true, true);
         }
 
-		/// <summary>
-		/// Creates the new grid.
-		/// </summary>
-		/// <param name="date">The date.</param>
-		/// <returns>MonthGridView.</returns>
-		private MonthGridView CreateNewGrid(DateTime date)
-		{
-			var grid = new MonthGridView(this, date) { CurrentDate = CurrentDate };
-			grid.BuildGrid();
-			grid.Frame = new CGRect(0, 0, 320, Frame.Height - 16);
-			return grid;
-		}
+        /// <summary>
+        /// Creates the new grid.
+        /// </summary>
+        /// <param name="date">The date.</param>
+        /// <returns>MonthGridView.</returns>
+        private MonthGridView CreateNewGrid(DateTime date)
+        {
+            var grid = new MonthGridView(this, date) { CurrentDate = CurrentDate };
+            grid.BuildGrid();
+            grid.Frame = new CGRect(0, 0, 320, Frame.Height - 16);
+            return grid;
+        }
 
-		/// <summary>
-		/// Loads the initial grids.
-		/// </summary>
-		private void LoadInitialGrids()
-		{
-			_monthGridView = CreateNewGrid(CurrentMonthYear);
+        /// <summary>
+        /// Loads the initial grids.
+        /// </summary>
+        private void LoadInitialGrids()
+        {
+            _monthGridView = CreateNewGrid(CurrentMonthYear);
 
-			/*var rect = _scrollView.Frame;
-			rect.Size = new SizeF { Height = (_monthGridView.Lines + 1) * 44, Width = rect.Size.Width };
-			_scrollView.Frame = rect;*/
+            /*var rect = _scrollView.Frame;
+            rect.Size = new SizeF { Height = (_monthGridView.Lines + 1) * 44, Width = rect.Size.Width };
+            _scrollView.Frame = rect;*/
 
-			//Frame = new RectangleF(Frame.X, Frame.Y, _scrollView.Frame.Size.Width, _scrollView.Frame.Size.Height+16);
+            //Frame = new RectangleF(Frame.X, Frame.Y, _scrollView.Frame.Size.Width, _scrollView.Frame.Size.Height+16);
 
-			/*var imgRect = _shadow.Frame;
-			imgRect.Y = rect.Size.Height - 132;
-			_shadow.Frame = imgRect;*/
-		}
+            /*var imgRect = _shadow.Frame;
+            imgRect.Y = rect.Size.Height - 132;
+            _shadow.Frame = imgRect;*/
+        }
 
-		/// <summary>
-		/// Draws the month label.
-		/// </summary>
-		/// <param name="rect">The rect.</param>
-		private void DrawMonthLabel(CGRect rect)
-		{
-			var r = new CGRect(new CGPoint(0, 2), new CGSize { Width = 320, Height = _headerHeight });
-			//			_styleDescriptor.TitleForegroundColor.SetColor();
-			//			DrawString(CurrentMonthYear.ToString("MMMM yyyy"), 
-			//				r, _styleDescriptor.MonthTitleFont,
-			//				UILineBreakMode.WordWrap, UITextAlignment.Center);
-			DrawCenteredString(
-				(NSString)CurrentMonthYear.ToString("MMMM yyyy"),
-				StyleDescriptor.TitleForegroundColor,
-				r,
-				StyleDescriptor.MonthTitleFont);
-		}
+        /// <summary>
+        /// Draws the month label.
+        /// </summary>
+        /// <param name="rect">The rect.</param>
+        private void DrawMonthLabel(CGRect rect)
+        {
+            var r = new CGRect(new CGPoint(0, 2), new CGSize { Width = 320, Height = _headerHeight });
+            //			_styleDescriptor.TitleForegroundColor.SetColor();
+            //			DrawString(CurrentMonthYear.ToString("MMMM yyyy"), 
+            //				r, _styleDescriptor.MonthTitleFont,
+            //				UILineBreakMode.WordWrap, UITextAlignment.Center);
+            DrawCenteredString(
+                (NSString)CurrentMonthYear.ToString("MMMM yyyy"),
+                StyleDescriptor.TitleForegroundColor,
+                r,
+                StyleDescriptor.MonthTitleFont);
+        }
 
-		/// <summary>
-		/// Draws the day labels.
-		/// </summary>
-		/// <param name="rect">The rect.</param>
-		private void DrawDayLabels(CGRect rect)
-		{
-			var font = StyleDescriptor.DateLabelFont;
+        /// <summary>
+        /// Draws the day labels.
+        /// </summary>
+        /// <param name="rect">The rect.</param>
+        private void DrawDayLabels(CGRect rect)
+        {
+            var font = StyleDescriptor.DateLabelFont;
 
-			var context = UIGraphics.GetCurrentContext();
-			context.SaveState();
-			var firstDayOfWeek = (int)CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek;
-			var today = CurrentDate;
-			var originalDay = today;
-			for (var i = 0; i < 7; i++)
-			{
-				var offset = firstDayOfWeek - (int)today.DayOfWeek + i;
-				today = today.AddDays(offset);
-				var dateRectangle = new CGRect(i * BoxWidth, 2 + _headerHeight, BoxWidth, 15);
-				if (StyleDescriptor.ShouldHighlightDaysOfWeekLabel && HighlightedDaysOfWeek[(int)today.DayOfWeek])
-				{
-					context.SetFillColor(StyleDescriptor.HighlightedDateBackgroundColor.CGColor);
-				}
-				else
-				{
-					context.SetFillColor(StyleDescriptor.DayOfWeekLabelBackgroundColor.CGColor);
-				}
+            var context = UIGraphics.GetCurrentContext();
+            context.SaveState();
+            var firstDayOfWeek = (int)CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek;
+            var today = CurrentDate;
+            var originalDay = today;
+            for (var i = 0; i < 7; i++)
+            {
+                var offset = firstDayOfWeek - (int)today.DayOfWeek + i;
+                today = today.AddDays(offset);
+                var dateRectangle = new CGRect(i * BoxWidth, 2 + _headerHeight, BoxWidth, 15);
+                if (StyleDescriptor.ShouldHighlightDaysOfWeekLabel && HighlightedDaysOfWeek[(int)today.DayOfWeek])
+                {
+                    context.SetFillColor(StyleDescriptor.HighlightedDateBackgroundColor.CGColor);
+                }
+                else
+                {
+                    context.SetFillColor(StyleDescriptor.DayOfWeekLabelBackgroundColor.CGColor);
+                }
 
-				context.FillRect(dateRectangle);
-				if (StyleDescriptor.ShouldHighlightDaysOfWeekLabel && HighlightedDaysOfWeek[(int)today.DayOfWeek])
-				{
-					StyleDescriptor.HighlightedDateForegroundColor.SetColor();
-				}
-				else
-				{
-					StyleDescriptor.DayOfWeekLabelForegroundColor.SetColor();
-				}
-			
-				DrawCenteredString( new NSString(today.ToString("ddd")),UIColor.White, dateRectangle, font);
-				today = originalDay;
-			}
+                context.FillRect(dateRectangle);
+                if (StyleDescriptor.ShouldHighlightDaysOfWeekLabel && HighlightedDaysOfWeek[(int)today.DayOfWeek])
+                {
+                    StyleDescriptor.HighlightedDateForegroundColor.SetColor();
+                }
+                else
+                {
+                    StyleDescriptor.DayOfWeekLabelForegroundColor.SetColor();
+                }
+            
+                DrawCenteredString( new NSString(today.ToString("ddd")),UIColor.White, dateRectangle, font);
+                today = originalDay;
+            }
 
-			//			var i = 0;
-			//			foreach (var d in Enum.GetNames(typeof(DayOfWeek)))
-			//			{
-			//				var dateRectangle = new RectangleF(i*BoxWidth, 2 + headerHeight, BoxWidth, 10);
-			//				context.SetFillColorWithColor(_styleDescriptor.DayOfWeekLabelBackgroundColor.CGColor);
-			//				context.FillRect(dateRectangle);
-			//				_styleDescriptor.DayOfWeekLabelForegroundColor.SetColor();
-			//				DrawString(d.Substring(0, 3),dateRectangle, font,
-			//					UILineBreakMode.WordWrap, UITextAlignment.Center);
-			//				i++;
-			//			}
-			context.RestoreState();
-		}
+            //			var i = 0;
+            //			foreach (var d in Enum.GetNames(typeof(DayOfWeek)))
+            //			{
+            //				var dateRectangle = new RectangleF(i*BoxWidth, 2 + headerHeight, BoxWidth, 10);
+            //				context.SetFillColorWithColor(_styleDescriptor.DayOfWeekLabelBackgroundColor.CGColor);
+            //				context.FillRect(dateRectangle);
+            //				_styleDescriptor.DayOfWeekLabelForegroundColor.SetColor();
+            //				DrawString(d.Substring(0, 3),dateRectangle, font,
+            //					UILineBreakMode.WordWrap, UITextAlignment.Center);
+            //				i++;
+            //			}
+            context.RestoreState();
+        }
 
         /// <summary>
         /// Draws the centered string.
@@ -756,5 +756,5 @@ namespace XLabs.Forms.Controls
                 size.Height);
             text.DrawString(targetRect, attrs);
         }
-	}
+    }
 }

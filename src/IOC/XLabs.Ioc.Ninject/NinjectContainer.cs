@@ -69,7 +69,7 @@ namespace XLabs.Ioc.Ninject
             }
             else
             {
-                this.kernel.Bind<T, TImpl>();
+                this.kernel.Bind<T>().To<TImpl>();
             }
 
             return this;

@@ -18,26 +18,26 @@
 		/// Navigates to.
 		/// </summary>
 		/// <param name="pageKey">The page key.</param>
-		/// <param name="parameter">The parameter.</param>
+		/// <param name="args">The arguments.</param>
 		/// <param name="animated">if set to <c>true</c> [animated].</param>
-		void NavigateTo(string pageKey, object parameter = null, bool animated = true);
+		void NavigateTo(string pageKey, bool animated = true, params object[] args);
 
 		/// <summary>
 		/// Navigates to.
 		/// </summary>
 		/// <param name="pageType">Type of the page.</param>
-		/// <param name="parameter">The parameter.</param>
+		/// <param name="args">The arguments.</param>
 		/// <param name="animated">if set to <c>true</c> [animated].</param>
-		void NavigateTo(Type pageType, object parameter = null, bool animated = true);
+		void NavigateTo(Type pageType, bool animated = true, params object[] args);
 
 
 		/// <summary>
 		/// Navigates to.
 		/// </summary>
 		/// <typeparam name="T"></typeparam>
-		/// <param name="parameter">The parameter.</param>
+		/// <param name="args">The arguments.</param>
 		/// <param name="animated">if set to <c>true</c> [animated].</param>
-		void NavigateTo<T>(object parameter = null, bool animated = true) where T : class;
+		void NavigateTo<T>(bool animated = true, params object[] args) where T : class;
 
 		/// <summary>
 		/// Goes back.

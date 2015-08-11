@@ -43,50 +43,50 @@ namespace XLabs.Forms.Controls
                 // todo: handle this scenario properly
             }
 
-            if (e.NewElement == null)
+            if (e.NewElement != null)
             {
-                return;
-            }
-
-            var entry = new NoCaretField { BorderStyle = UITextBorderStyle.RoundedRect };
-            entry.Started += this.OnStarted;
-            entry.Ended += this.OnEnded;
-            this._picker = new UIDatePicker 
-            {
-                Mode = UIDatePickerMode.Time,
-                TimeZone = new NSTimeZone ("UTC")
-            };
-
-            nfloat width = UIScreen.MainScreen.Bounds.Width;
-            var uIToolbar = new UIToolbar (new CGRect (0, 0, width, 44)) 
-            {
-                BarStyle = UIBarStyle.Default,
-                Translucent = true
-            };
-
-            var uIBarButtonItem = new UIBarButtonItem (UIBarButtonSystemItem.FlexibleSpace);
-            var uIBarButtonItem2 = new UIBarButtonItem (
-                UIBarButtonSystemItem.Done, 
-                delegate 
+                if (Control == null)
                 {
-                    entry.ResignFirstResponder ();
-                });
+                    var entry = new NoCaretField { BorderStyle = UITextBorderStyle.RoundedRect };
+                    entry.Started += this.OnStarted;
+                    entry.Ended += this.OnEnded;
+                    this._picker = new UIDatePicker {
+                        Mode = UIDatePickerMode.Time,
+                        TimeZone = new NSTimeZone ("UTC")
+                    };
 
-            uIToolbar.SetItems (new[] { uIBarButtonItem, uIBarButtonItem2 }, false);
+                    nfloat width = UIScreen.MainScreen.Bounds.Width;
+                    var uIToolbar = new UIToolbar (new CGRect (0, 0, width, 44)) {
+                        BarStyle = UIBarStyle.Default,
+                        Translucent = true
+                    };
 
-            if (Device.Idiom == TargetIdiom.Phone) 
-            {
-                entry.InputView = this._picker;
-                entry.InputAccessoryView = uIToolbar;
-            } 
-            else 
-            {
-                entry.InputView = new UIView (CGRect.Empty);
-                entry.InputAccessoryView = new UIView (CGRect.Empty);
+                    var uIBarButtonItem = new UIBarButtonItem (UIBarButtonSystemItem.FlexibleSpace);
+                    var uIBarButtonItem2 = new UIBarButtonItem (
+                        UIBarButtonSystemItem.Done,
+                        delegate
+                        {
+                            entry.ResignFirstResponder ();
+                        });
+
+                    uIToolbar.SetItems (new[] { uIBarButtonItem, uIBarButtonItem2 }, false);
+
+                    if (Device.Idiom == TargetIdiom.Phone)
+                    {
+                        entry.InputView = this._picker;
+                        entry.InputAccessoryView = uIToolbar;
+                    }
+                    else
+                    {
+                        entry.InputView = new UIView (CGRect.Empty);
+                        entry.InputAccessoryView = new UIView (CGRect.Empty);
+                    }
+
+                    this._picker.ValueChanged += this.HandleValueChanged;
+                    SetNativeControl (entry);
+                }
             }
-
-            this._picker.ValueChanged += this.HandleValueChanged;
-            SetNativeControl (entry);
+          
             UpdateTime();
 
             SetBorder();
@@ -153,7 +153,7 @@ namespace XLabs.Forms.Controls
         /// </summary>
         private void UpdateTime ()
         {
-            if (this.Element == null) return;
+            if (this.Element == null || Control == null) return;
 
             this._picker.Date = new DateTime (1, 1, 1).Add (this.Element.Time).ToNSDate ();
             this.Control.Text = DateTime.Today.Add (this.Element.Time).ToString (this.Element.Format);
@@ -182,6 +182,28 @@ namespace XLabs.Forms.Controls
             if (this.Element == null) return;
 
             this.Element.Time = this._picker.Date.ToDateTime() - new DateTime(1, 1, 1);
+        }
+
+        protected override void Dispose (bool disposing)
+        {
+            base.Dispose (disposing);
+            if (disposing && this._picker != null)
+            {
+                this._picker.ValueChanged -= this.HandleValueChanged;
+                this._picker.Dispose ();
+                this._picker = null;
+                if (this._popOver != null)
+                {
+                    this._popOver.Dispose ();
+                    this._popOver = null;
+                }
+                if (Control != null)
+                {
+                    Control.Started -= this.OnStarted;
+                    Control.Ended -= this.OnEnded;
+                }
+
+            }
         }
     }
 }

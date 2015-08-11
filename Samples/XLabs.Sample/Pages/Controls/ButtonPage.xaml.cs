@@ -1,7 +1,7 @@
 ﻿namespace XLabs.Sample.Pages.Controls
 {
     using System;
-    using Data;
+    using XLabs.Data;
     using Xamarin.Forms;
 
     using XLabs.Forms.Controls;

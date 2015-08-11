@@ -1,3 +1,4 @@
+#if !NETFX_CORE
 using System;
 using System.IO;
 using System.IO.IsolatedStorage;
@@ -66,3 +67,4 @@ namespace XLabs.Platform.Services.IO
         }
     }
 }
+#endif

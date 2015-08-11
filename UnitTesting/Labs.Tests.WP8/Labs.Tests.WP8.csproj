@@ -10,8 +10,9 @@
     <RootNamespace>Labs.Tests.WP8</RootNamespace>
     <AssemblyName>Labs.Tests.WP8</AssemblyName>
     <TargetFrameworkIdentifier>WindowsPhone</TargetFrameworkIdentifier>
-    <TargetFrameworkVersion>v8.0</TargetFrameworkVersion>
-    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
+    <SilverlightVersion>
+    </SilverlightVersion>
     <SilverlightApplication>true</SilverlightApplication>
     <WPTestProject>true</WPTestProject>
     <SupportedCultures>
@@ -22,11 +23,13 @@
     <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
     <SilverlightAppEntry>Labs.Tests.WP8.App</SilverlightAppEntry>
     <ValidateXaml>false</ValidateXaml>
-    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
     <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
     <NuGetPackageImportStamp>e1bb5cf5</NuGetPackageImportStamp>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
+    <DefaultLanguage>en-US</DefaultLanguage>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -38,6 +41,8 @@
     <NoConfig>true</NoConfig>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>
+    </PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <DebugType>pdbonly</DebugType>
@@ -48,6 +53,8 @@
     <NoConfig>true</NoConfig>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>
+    </PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|ARM' ">
     <DebugSymbols>true</DebugSymbols>
@@ -59,6 +66,8 @@
     <NoConfig>true</NoConfig>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>
+    </PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|ARM' ">
     <DebugType>pdbonly</DebugType>
@@ -69,6 +78,8 @@
     <NoConfig>true</NoConfig>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>
+    </PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
@@ -89,8 +100,8 @@
       <HintPath>..\..\packages\Ninject.3.2.3-unstable-012\lib\sl4-windowsphone71\Ninject.dll</HintPath>
     </Reference>
     <Reference Include="SimpleInjector, Version=2.8.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\SimpleInjector.2.8.0-beta2\lib\portable-net4+sl4+wp8+win8+wpa81\SimpleInjector.dll</HintPath>
+      <HintPath>..\..\packages\SimpleInjector.2.8.0\lib\portable-net4+sl4+wp8+win8+wpa81\SimpleInjector.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="WPControls">
       <HintPath>$(SolutionDir)packages\WPControls.1.5.2\lib\wp8\WPControls.dll</HintPath>
@@ -110,6 +121,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Tests\WpSecureStorage.cs" />
+    <Compile Include="Tests\WpSecureStorageWithEntropy.cs" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -122,6 +135,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
     <None Include="packages.config" />
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml">
@@ -133,6 +149,12 @@
     <Content Include="Assets\ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\BadgeLogo.png" />
+    <Content Include="Assets\Logo.png" />
+    <Content Include="Assets\SplashScreen.png" />
+    <Content Include="Assets\SquareTile150x150.png" />
+    <Content Include="Assets\SquareTile71x71.png" />
+    <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Tiles\FlipCycleTileLarge.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -142,6 +164,7 @@
     <Content Include="Assets\Tiles\FlipCycleTileSmall.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\WideLogo.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\AppResources.resx">
@@ -173,6 +196,14 @@
     <ProjectReference Include="..\..\src\IOC\XLabs.Ioc\XLabs.Ioc.csproj">
       <Project>{2e200799-1170-49bf-a4aa-2a9228f8a213}</Project>
       <Name>XLabs.Ioc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Platform\XLabs.Platform.WP8\XLabs.Platform.WP8.csproj">
+      <Project>{c721d749-63d9-4da4-acd4-8d028ad0a3d0}</Project>
+      <Name>XLabs.Platform.WP8</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Platform\XLabs.Platform\XLabs.Platform.csproj">
+      <Project>{2a4d9dd4-326c-4824-aa3c-a9ed45cc898c}</Project>
+      <Name>XLabs.Platform</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\Serialization\JsonNET\XLabs.Serialization.JsonNET.csproj">
       <Project>{fce4e482-0df8-43ac-b574-8aaf74770d1c}</Project>
@@ -213,6 +244,7 @@
   <Import Project="..\SerializationTests\SerializationTests.projitems" Label="Shared" Condition="Exists('..\SerializationTests\SerializationTests.projitems')" />
   <Import Project="..\DeviceTests\DeviceTests.projitems" Label="Shared" Condition="Exists('..\DeviceTests\DeviceTests.projitems')" />
   <Import Project="..\IocTests\IocTests.projitems" Label="Shared" Condition="Exists('..\IocTests\IocTests.projitems')" />
+  <Import Project="..\SecureStorageTests\SecureStorageTests.projitems" Label="Shared" Condition="Exists('..\SecureStorageTests\SecureStorageTests.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

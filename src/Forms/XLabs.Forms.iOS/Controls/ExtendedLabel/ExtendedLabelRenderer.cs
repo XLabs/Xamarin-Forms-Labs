@@ -28,8 +28,14 @@ namespace XLabs.Forms.Controls
         protected override void OnElementChanged(ElementChangedEventArgs<Label> e)
         {
             base.OnElementChanged(e);
-            SetPlaceholder();
+
+            var view = e.NewElement as ExtendedLabel;
+
             //UpdateUi(view, this.Control);
+            if (view != null)
+            {
+                SetPlaceholder (view);
+            }
         }
 
         /// <summary>
@@ -41,7 +47,10 @@ namespace XLabs.Forms.Controls
         {
             base.OnElementPropertyChanged(sender, e);
 
-            if (e.PropertyName == Label.TextProperty.PropertyName ||
+            var view = Element as ExtendedLabel;
+
+            if (view != null &&
+                e.PropertyName == Label.TextProperty.PropertyName ||
                 e.PropertyName == Label.FormattedTextProperty.PropertyName || 
                 e.PropertyName == ExtendedLabel.PlaceholderProperty.PropertyName ||
                 e.PropertyName == ExtendedLabel.FormattedPlaceholderProperty.PropertyName ||
@@ -49,7 +58,7 @@ namespace XLabs.Forms.Controls
                 e.PropertyName == ExtendedLabel.IsStrikeThroughProperty.PropertyName ||
                 e.PropertyName == ExtendedLabel.IsUnderlineProperty.PropertyName)
             {
-                SetPlaceholder();
+                SetPlaceholder(view);
             }
         }
 
@@ -109,7 +118,7 @@ namespace XLabs.Forms.Controls
             {
                 dropShadow = new NSShadow
                 {
-                    ShadowColor = UIColor.DarkGray,
+                    ShadowColor = view.DropShadowColor.ToUIColor(),
                     ShadowBlurRadius = 1.4f,
                     ShadowOffset = new CoreGraphics.CGSize(new CoreGraphics.CGPoint(0.3f, 0.8f))
                 };
@@ -130,10 +139,8 @@ namespace XLabs.Forms.Controls
                                                                    shadow: dropShadow); ;
         }
 
-        private void SetPlaceholder()
+        private void SetPlaceholder(ExtendedLabel view)
         {
-            var view = this.Element as ExtendedLabel;
-
             if (view == null)
             {
                 return;

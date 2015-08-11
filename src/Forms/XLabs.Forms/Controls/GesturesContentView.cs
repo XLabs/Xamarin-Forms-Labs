@@ -124,7 +124,7 @@ namespace XLabs.Forms.Controls
 		internal bool ProcessGesture(GestureResult gesture)
 		{
 			//Check the view stack first
-			if (ExcludeChildren && gesture.ViewStack != null && _viewInterests.All(x => x.View != gesture.ViewStack[0])) return false;//The innermost (source) is not an actual interested view
+			if (ExcludeChildren && gesture.ViewStack != null && gesture.ViewStack.Count != 0 && _viewInterests.All(x => x.View != gesture.ViewStack[0])) return false;//The innermost (source) is not an actual interested view
 			var interestedview = InterestedView(gesture.Origin);
 			if (interestedview == null) return false;
 			gesture.StartView = interestedview.View;

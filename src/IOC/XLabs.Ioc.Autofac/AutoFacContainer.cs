@@ -43,7 +43,7 @@
         public IDependencyContainer Register<T>(T instance) where T : class
         {
             var builder = new ContainerBuilder();
-            builder.Register<T>(t => instance);
+            builder.Register<T>(t => instance).As<T>();
             builder.Update(this.container);
             return this;
         }
@@ -73,7 +73,7 @@
         public IDependencyContainer Register<T>(Type type) where T : class
         {
             var builder = new ContainerBuilder();
-            builder.RegisterType(type);
+            builder.RegisterType(type).As<T>();
             builder.Update(this.container);
             return this;
         }

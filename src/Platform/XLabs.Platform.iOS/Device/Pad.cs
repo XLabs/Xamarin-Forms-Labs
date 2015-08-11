@@ -143,7 +143,13 @@ namespace XLabs.Platform.Device
             /// The i pad mini3 Wifi
             /// </summary>
             [Description("iPad Mini 3 Wifi")]
-            IPadMini3Wifi
+            IPadMini3Wifi,
+
+            /// <summary>
+            /// The i pad mini3 Wifi
+            /// </summary>
+            [Description("iPad Mini 3 Wifi & LTE")]
+            IPadMini3Lte
         }
 
         /// <summary>

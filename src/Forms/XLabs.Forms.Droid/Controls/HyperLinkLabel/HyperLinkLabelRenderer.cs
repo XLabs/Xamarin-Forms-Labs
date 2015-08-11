@@ -6,20 +6,20 @@ using XLabs.Forms.Controls;
 
 namespace XLabs.Forms.Controls
 {
-	using Android.Text.Util;
+    using Android.Text.Util;
 
-	using Xamarin.Forms;
-	using Xamarin.Forms.Platform.Android;
+    using Xamarin.Forms;
+    using Xamarin.Forms.Platform.Android;
 
-	/// <summary>
-	/// Class HyperLinkLabelRenderer.
-	/// </summary>
-	public class HyperLinkLabelRenderer : LabelRenderer
+    /// <summary>
+    /// Class HyperLinkLabelRenderer.
+    /// </summary>
+    public class HyperLinkLabelRenderer : LabelRenderer
     {
-		/// <summary>
-		/// Called when [element changed].
-		/// </summary>
-		/// <param name="e">The e.</param>
+        /// <summary>
+        /// Called when [element changed].
+        /// </summary>
+        /// <param name="e">The e.</param>
         protected override void OnElementChanged(ElementChangedEventArgs<Label> e)
         {
             base.OnElementChanged(e);

@@ -11,24 +11,30 @@
     <iconUrl>https://raw.githubusercontent.com/XForms/Xamarin-Forms-Labs/master/src/Xamarin.Forms.Labs/Design/Icons/nuget/icon_nuget.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>
-      XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.
+      XLabs.Forms is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.
 
       This package contains the cross-platform XLabs Forms framework and controls.
     </description>
     <summary>
-      XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.
+      XLabs.Forms is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.
     </summary>
+    <releaseNotes>
+      Please change your Windows Phone project to target WP8.1 SilverLight. WP8.0 is no longer supported by XLabs.
+      
+      Xamarin Forms updated to 1.4.3.6376.
+          
+    </releaseNotes>
     <language>en-US</language>
     <dependencies>
       <group>
-        <dependency id="Xamarin.Forms" version="1.4.2.6359" />
+        <dependency id="Xamarin.Forms" version="1.4.3.6376" />
         <dependency id="XLabs.IoC" version="2.0.5603" />
         <dependency id="XLabs.Platform" version="2.0.5603" />
         <dependency id="XLabs.Core" version="2.0.5603" />
         <dependency id="XLabs.Serialization" version="2.0.5603" />
       </group>
-      <group targetFramework="wp8">
-        <dependency id="Xamarin.Forms" version="1.4.2.6359" />
+      <group targetFramework="wp81">
+        <dependency id="Xamarin.Forms" version="1.4.3.6376" />
         <dependency id="WPControls" version="1.5.2" />
         <dependency id="XLabs.IoC" version="2.0.5603" />
         <dependency id="XLabs.Platform" version="2.0.5603" />
@@ -36,8 +42,7 @@
         <dependency id="XLabs.Serialization" version="2.0.5603" />
       </group>
       <group targetFramework="wpa81">
-        <dependency id="Xamarin.Forms" version="1.4.2.6359" />
-        <dependency id="WPControls" version="1.5.2" />
+        <dependency id="Xamarin.Forms" version="1.4.3.6376" />
         <dependency id="XLabs.IoC" version="2.0.5603" />
         <dependency id="XLabs.Platform" version="2.0.5603" />
         <dependency id="XLabs.Core" version="2.0.5603" />
@@ -49,16 +54,11 @@
     </frameworkAssemblies>
   </metadata>
   <files>
-    <file src="..\..\build\**\XLabs.Forms.dll" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
-    <file src="..\..\build\**\XLabs.Forms.dll.mdb" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
-    <file src="..\..\build\**\XLabs.Forms.pdb" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
-    <file src="..\..\build\**\XLabs.Forms.xml" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
-
-    <file src="..\..\build\**\XLabs.Forms.dll" target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1" />
-    <file src="..\..\build\**\XLabs.Forms.dll.mdb" target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1" />
-    <file src="..\..\build\**\XLabs.Forms.pdb" target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1" />
-    <file src="..\..\build\**\XLabs.Forms.xml" target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1" />
-    
+    <file src="..\..\build\**\XLabs.Platform.dll" target="lib\portable-net45+netcore45+wpa81+wp8" />
+    <file src="..\..\build\**\XLabs.Platform.dll.mdb" target="lib\portable-net45+netcore45+wpa81+wp8" />
+    <file src="..\..\build\**\XLabs.Platform.pdb" target="lib\portable-net45+netcore45+wpa81+wp8" />
+    <file src="..\..\build\**\XLabs.Platform.xml" target="lib\portable-net45+netcore45+wpa81+wp8" />
+        
     <file src="..\..\build\**\XLabs.Forms.iOS.dll" target="lib\Xamarin.iOS10" />
     <file src="..\..\build\**\XLabs.Forms.iOS.dll.mdb" target="lib\Xamarin.iOS10" />
     <file src="..\..\build\**\XLabs.Forms.iOS.pdb" target="lib\Xamarin.iOS10" />
@@ -85,6 +85,15 @@
     <file src="..\..\build\**\XLabs.Forms.dll.mdb" target="lib\wp8" />
     <file src="..\..\build\**\XLabs.Forms.pdb" target="lib\wp8" />
     <file src="..\..\build\**\XLabs.Forms.xml" target="lib\wp8" />
+
+    <file src="..\..\build\**\XLabs.Forms.WP8.dll" target="lib\wpa81" />
+    <file src="..\..\build\**\XLabs.Forms.WP8.dll.mdb" target="lib\wp81" />
+    <file src="..\..\build\**\XLabs.Forms.WP8.pdb" target="lib\wpa81" />
+    <file src="..\..\build\**\XLabs.Forms.WP8.xml" target="lib\wpa81" />
+    <file src="..\..\build\**\XLabs.Forms.dll" target="lib\wpa81" />
+    <file src="..\..\build\**\XLabs.Forms.dll.mdb" target="lib\wpa81" />
+    <file src="..\..\build\**\XLabs.Forms.pdb" target="lib\wpa81" />
+    <file src="..\..\build\**\XLabs.Forms.xml" target="lib\wpa81" />
 
     <!-- Source Files for Symbol Server -->
     <file src="..\..\src\Forms\**\*.cs" target="src" />

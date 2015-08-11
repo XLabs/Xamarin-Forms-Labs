@@ -160,7 +160,7 @@ namespace XLabs.Platform.Services.Media
             return Task.Run<SoundFile>(
                 async () =>
                     {
-                        if (this.player == null || string.Compare(filename, CurrentFile.Filename) > 0)
+                        if (this.player == null || string.Compare(filename, CurrentFile.Filename) != 0)
                         {
                             await SetMediaAsync(filename);
                         }

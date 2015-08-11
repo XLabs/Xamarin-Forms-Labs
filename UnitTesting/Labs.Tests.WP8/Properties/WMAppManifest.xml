@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
+<Deployment xmlns="http://schemas.microsoft.com/windowsphone/2014/deployment" AppPlatformVersion="8.1">
   <DefaultLanguage xmlns="" code="en-US" />
   <App xmlns="" ProductID="{1652df32-49a4-43b2-8c82-534bfd96135e}" Title="Labs.Tests.WP8" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Labs.Tests.WP8 author" Description="Sample description" Publisher="Labs.Tests.WP8" PublisherID="{d513ddeb-f8e8-481e-8b1c-425a470e5cc2}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
@@ -16,16 +16,11 @@
           <Count>0</Count>
           <BackgroundImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileMedium.png</BackgroundImageURI>
           <Title>Labs.Tests.WP8</Title>
-          <BackContent>
-          </BackContent>
-          <BackBackgroundImageURI>
-          </BackBackgroundImageURI>
-          <BackTitle>
-          </BackTitle>
-          <DeviceLockImageURI>
-          </DeviceLockImageURI>
-          <HasLarge>
-          </HasLarge>
+          <BackContent></BackContent>
+          <BackBackgroundImageURI></BackBackgroundImageURI>
+          <BackTitle></BackTitle>
+          <DeviceLockImageURI></DeviceLockImageURI>
+          <HasLarge></HasLarge>
         </TemplateFlip>
       </PrimaryToken>
     </Tokens>

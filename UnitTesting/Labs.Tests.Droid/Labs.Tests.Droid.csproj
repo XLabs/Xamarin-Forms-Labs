@@ -18,7 +18,7 @@
     <NuGetPackageImportStamp>f7f9dc35</NuGetPackageImportStamp>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <AndroidUseLatestPlatformSdk>true</AndroidUseLatestPlatformSdk>
+    <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
     <DevInstrumentationEnabled>True</DevInstrumentationEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -44,10 +44,6 @@
     <DefineConstants>__ANDROID__</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Autofac.3.5.2\lib\portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\Autofac.dll</HintPath>
-    </Reference>
     <Reference Include="ExifLib">
       <HintPath>$(SolutionDir)packages\ExifLib.PCL.1.0.0\lib\portable-net45+sl50+win+WindowsPhoneApp81+wp80+MonoAndroid10+MonoTouch10\ExifLib.dll</HintPath>
     </Reference>
@@ -55,13 +51,6 @@
       <HintPath>$(SolutionDir)packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Android.Export" />
-    <Reference Include="SimpleInjector">
-      <HintPath>..\..\packages\SimpleInjector.2.7.3\lib\portable-net4+sl4+wp8+win8+wpa81\SimpleInjector.dll</HintPath>
-    </Reference>
-    <Reference Include="SimpleInjector.Diagnostics">
-      <HintPath>..\..\packages\SimpleInjector.2.7.3\lib\portable-net4+sl4+wp8+win8+wpa81\SimpleInjector.Diagnostics.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -74,11 +63,19 @@
     <Reference Include="Xamarin.Android.Support.v4">
       <HintPath>..\..\packages\Xamarin.Android.Support.v4.22.0.0.0\lib\MonoAndroid10\Xamarin.Android.Support.v4.dll</HintPath>
     </Reference>
+    <Reference Include="Autofac">
+      <HintPath>..\..\packages\Autofac.3.5.2\lib\portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleInjector, Version=2.8.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99">
+      <HintPath>..\..\packages\SimpleInjector.2.8.0\lib\portable-net4+sl4+wp8+win8+wpa81\SimpleInjector.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests\KeyVaultTests.cs" />
+    <Compile Include="Tests\PreferenceStorageTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -93,58 +90,67 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\IOC\XLabs.Ioc.Autofac\XLabs.Ioc.Autofac.csproj">
-      <Project>{f8c821a9-155e-48bc-8998-1ed9de5cef1a}</Project>
+      <Project>{F8C821A9-155E-48BC-8998-1ED9DE5CEF1A}</Project>
       <Name>XLabs.Ioc.Autofac</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\IOC\XLabs.Ioc.Ninject\XLabs.Ioc.Ninject.csproj">
-      <Project>{ec5686a6-9846-4b09-8288-cb7396331b54}</Project>
+      <Project>{EC5686A6-9846-4B09-8288-CB7396331B54}</Project>
       <Name>XLabs.Ioc.Ninject</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\IOC\XLabs.Ioc.SimpleInjector\XLabs.Ioc.SimpleInjector.csproj">
-      <Project>{526f68e5-b35b-45fb-a54f-25793d2a1678}</Project>
+      <Project>{526F68E5-B35B-45FB-A54F-25793D2A1678}</Project>
       <Name>XLabs.Ioc.SimpleInjector</Name>
       <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\..\src\IOC\XLabs.Ioc.TinyIOC\XLabs.Ioc.TinyIOC.Droid.csproj">
-      <Project>{9da37747-6e12-40c8-8de6-0775af6421ec}</Project>
+      <Project>{9DA37747-6E12-40C8-8DE6-0775AF6421EC}</Project>
       <Name>XLabs.Ioc.TinyIOC.Droid</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\IOC\XLabs.Ioc.Unity\XLabs.Ioc.Unity.csproj">
-      <Project>{4d2d1468-bbb3-434a-84ac-b85eb7147a40}</Project>
+      <Project>{4D2D1468-BBB3-434A-84AC-B85EB7147A40}</Project>
       <Name>XLabs.Ioc.Unity</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\IOC\XLabs.Ioc\XLabs.Ioc.csproj">
-      <Project>{2e200799-1170-49bf-a4aa-2a9228f8a213}</Project>
+      <Project>{2E200799-1170-49BF-A4AA-2A9228F8A213}</Project>
       <Name>XLabs.Ioc</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\src\Platform\XLabs.Platform.Droid\XLabs.Platform.Droid.csproj">
+      <Project>{F422FD34-E431-4758-A981-03552A7BCF13}</Project>
+      <Name>XLabs.Platform.Droid</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Platform\XLabs.Platform\XLabs.Platform.csproj">
+      <Project>{2A4D9DD4-326C-4824-AA3C-A9ED45CC898C}</Project>
+      <Name>XLabs.Platform</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\Serialization\JsonNET\XLabs.Serialization.JsonNET.csproj">
-      <Project>{fce4e482-0df8-43ac-b574-8aaf74770d1c}</Project>
+      <Project>{FCE4E482-0DF8-43AC-B574-8AAF74770D1C}</Project>
       <Name>XLabs.Serialization.JsonNET</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\Serialization\ProtoBuf.Net\XLabs.Serialization.ProtoBuf.csproj">
-      <Project>{3bc0d126-89bf-4cc0-8395-8fbba85b2a54}</Project>
+      <Project>{3BC0D126-89BF-4CC0-8395-8FBBA85B2A54}</Project>
       <Name>XLabs.Serialization.ProtoBuf</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\Serialization\ServiceStack\XLabs.Serialization.ServiceStack.Android.csproj">
-      <Project>{bbca9f84-607a-4ff0-929f-0bb8b7c62ad4}</Project>
+      <Project>{BBCA9F84-607A-4FF0-929F-0BB8B7C62AD4}</Project>
       <Name>XLabs.Serialization.ServiceStack.Android</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\Serialization\SystemTextJson\XLabs.Serialization.SystemTextJson.Droid.csproj">
-      <Project>{ba9decc3-d9ba-4752-a655-4c3b555185d3}</Project>
+      <Project>{BA9DECC3-D9BA-4752-A655-4C3B555185D3}</Project>
       <Name>XLabs.Serialization.SystemTextJson.Droid</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\Serialization\XLabs.Serialization\XLabs.Serialization.csproj">
-      <Project>{8e7f7522-f018-466a-aa8a-147ee9341ba0}</Project>
+      <Project>{8E7F7522-F018-466A-AA8A-147EE9341BA0}</Project>
       <Name>XLabs.Serialization</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\XLabs.Core\XLabs.Core.csproj">
-      <Project>{15d9c404-f7e2-49f0-acc9-63c4c008c860}</Project>
+      <Project>{15D9C404-F7E2-49F0-ACC9-63C4C008C860}</Project>
       <Name>XLabs.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="..\SerializationTests\SerializationTests.projitems" Label="Shared" Condition="Exists('..\SerializationTests\SerializationTests.projitems')" />
   <Import Project="..\DeviceTests\DeviceTests.projitems" Label="Shared" Condition="Exists('..\DeviceTests\DeviceTests.projitems')" />
   <Import Project="..\IocTests\IocTests.projitems" Label="Shared" Condition="Exists('..\IocTests\IocTests.projitems')" />
+  <Import Project="..\SecureStorageTests\SecureStorageTests.projitems" Label="Shared" Condition="Exists('..\SecureStorageTests\SecureStorageTests.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

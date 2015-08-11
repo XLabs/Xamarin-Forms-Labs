@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
 using Autofac;
 
 namespace XLabs.Ioc.Autofac
@@ -53,7 +54,7 @@ namespace XLabs.Ioc.Autofac
 		/// <returns>All instances of {T} if successful, otherwise null.</returns>
 		public IEnumerable<T> ResolveAll<T>() where T : class
 		{
-			return new[] { this.Resolve<T>() };
+			return this.Resolve<IEnumerable<T>>();
 		}
 
 		/// <summary>
@@ -63,7 +64,11 @@ namespace XLabs.Ioc.Autofac
 		/// <returns>All instances of type if found as <see cref="object"/>, otherwise null.</returns>
 		public IEnumerable<object> ResolveAll(Type type)
 		{
-			return new[] { this.Resolve(type) };
+			Type listType = typeof(IEnumerable<>);
+			Type[] typeArgs = {type};
+			Type typeConstructed = listType.MakeGenericType(typeArgs);
+
+			return (IEnumerable<object>)this.Resolve(typeConstructed);
 		}
 
 		/// <summary>

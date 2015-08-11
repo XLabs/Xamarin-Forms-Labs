@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+	<metadata>
+		<id>XLabs.Settings.XamSettings</id>
+		<title>XLabs - Settings - XamSettings</title>
+		<tags>Xamarin XLabs Settings XamSettings</tags>
+		<version>2.0.5564</version>
+		<authors>XLabs Team</authors>
+		<licenseUrl>https://github.com/XForms/Xamarin-Forms-Labs/blob/master/LICENSE</licenseUrl>
+		<projectUrl>https://github.com/XForms/Xamarin-Forms-Labs</projectUrl>
+		<iconUrl>https://raw.githubusercontent.com/XForms/Xamarin-Forms-Labs/master/src/Xamarin.Forms.Labs/Design/Icons/nuget/icon_nuget.png</iconUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>
+			XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.
+
+			This package contains helpers to work with Settigns and XamSettings
+		</description>
+		<summary>
+			XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.
+		</summary>
+		<releaseNotes>
+
+		</releaseNotes>
+		<language>en-US</language>
+		<dependencies>
+			<dependency id="Xam.Plugins.Settings" version="1.5.1" />
+			<dependency id="XLabs.Settings" version="2.0.5677" />
+		</dependencies>
+	</metadata>
+	<files>
+		<file src="..\..\build\**\XLabs.Settigns.XamSettings.dll" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
+		<file src="..\..\build\**\XLabs.Settings.XamSettings.dll.mdb" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
+		<file src="..\..\build\**\XLabs.Settings.XamSettings.pdb" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
+		<file src="..\..\build\**\XLabs.Settings.XamSettings.xml" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
+
+		<file src="..\..\build\**\XLabs.Settings.XamSettings.dll" target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1" />
+		<file src="..\..\build\**\XLabs.Settings.XamSettings.dll.mdb" target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1" />
+		<file src="..\..\build\**\XLabs.Settings.XamSettings.pdb" target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1" />
+		<file src="..\..\build\**\XLabs.Settings.XamSettings.xml" target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1" />
+		
+		<!-- Source Files for Symbol Server -->
+		<file src="..\..\src\Settings\XLabs.Settings.XamSettings\**\*.cs" target="src" />
+	</files>
+</package>

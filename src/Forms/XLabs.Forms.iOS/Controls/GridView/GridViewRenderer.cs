@@ -96,28 +96,34 @@ namespace XLabs.Forms.Controls
         protected override void OnElementChanged (ElementChangedEventArgs<GridView> e)
         {
             base.OnElementChanged (e);
-
-            var collectionView = new GridCollectionView
+            if (e.OldElement != null)
             {
-                AllowsMultipleSelection = false,
-                SelectionEnable = e.NewElement.SelectionEnabled,
-                ContentInset =
-                    new UIEdgeInsets((float) this.Element.Padding.Top, (float) this.Element.Padding.Left,
-                        (float) this.Element.Padding.Bottom, (float) this.Element.Padding.Right),
-                BackgroundColor = this.Element.BackgroundColor.ToUIColor(),
-                ItemSize = new CoreGraphics.CGSize((float) this.Element.ItemWidth, (float) this.Element.ItemHeight),
-                RowSpacing = this.Element.RowSpacing,
-                ColumnSpacing = this.Element.ColumnSpacing
-            };
-            //set padding
+                Unbind (e.OldElement);
+            }
+            if (e.NewElement != null)
+            {
+                if (Control == null)
+                {
+                    var collectionView = new GridCollectionView {
+                        AllowsMultipleSelection = false,
+                        SelectionEnable = e.NewElement.SelectionEnabled,
+                        ContentInset =  new UIEdgeInsets ((float)this.Element.Padding.Top, (float)this.Element.Padding.Left, (float)this.Element.Padding.Bottom, (float)this.Element.Padding.Right),
+                        BackgroundColor = this.Element.BackgroundColor.ToUIColor (),
+                        ItemSize = new CoreGraphics.CGSize ((float)this.Element.ItemWidth, (float)this.Element.ItemHeight),
+                        RowSpacing = this.Element.RowSpacing,
+                        ColumnSpacing = this.Element.ColumnSpacing
+                    };
+                    
+                    Bind (e.NewElement);
 
-            Unbind (e.OldElement);
-            Bind (e.NewElement);
+                    collectionView.Source = this.DataSource;
+                    //collectionView.Delegate = this.GridViewDelegate;
 
-            collectionView.Source = this.DataSource;
-            //collectionView.Delegate = this.GridViewDelegate;
+                    SetNativeControl (collectionView);
+                }
+            }
 
-            SetNativeControl (collectionView);
+        
         }
 
         /// <summary>
@@ -128,7 +134,7 @@ namespace XLabs.Forms.Controls
         {
             if (oldElement == null) return;
 
-            oldElement.PropertyChanging += this.ElementPropertyChanging;
+            oldElement.PropertyChanging -= this.ElementPropertyChanging;
             oldElement.PropertyChanged -= this.ElementPropertyChanged;
                 
             var itemsSource = oldElement.ItemsSource as INotifyCollectionChanged;
@@ -214,6 +220,17 @@ namespace XLabs.Forms.Controls
             {
                 return _dataSource ?? (_dataSource = new GridDataSource (GetCell, RowsInSection,ItemSelected));
             }
-        }           
+        }
+
+        protected override void Dispose (bool disposing)
+        {
+            base.Dispose (disposing);
+            if (disposing && _dataSource != null)
+            {
+                Unbind (Element);
+                _dataSource.Dispose ();
+                _dataSource = null;
+            }
+        }
     }
 }

@@ -16,24 +16,12 @@ Task RestorePackages {
 Task Publish -Depends Package {
     $version = getVersionBase
     
-#    $projects | % {
-#        Get-ChildItem | Where-Object -FilterScript {
-#            ($_.Name.Contains("$project.$version")) -and !($_.Name.Contains(".symbols")) -and ($_.Extension -eq '.nupkg')    
-#        } | % {
-#            exec { nuget push $_.Fullname }
-#        }
-#    }
 	exec { & ".\.nuget\Push All.ps1"}	
 }
 
 Task Package -Depends {
     $version = getVersionBase
     
-#    $projects | % {
-#        Get-ChildItem -Path "$_\*.csproj" | % {
-#            exec { nuget pack -sym $_.Fullname -Prop Configuration=$configuration }
-#        }        
-#    }
 	exec { & ".\.nuget\Build All.ps1" "-version $version -preRelease $preRelease"}
 }
 

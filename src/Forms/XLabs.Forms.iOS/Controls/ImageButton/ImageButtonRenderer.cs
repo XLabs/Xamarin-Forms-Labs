@@ -52,6 +52,9 @@ namespace XLabs.Forms.Controls
             var targetButton = Control;
             if (imageButton != null && targetButton != null && imageButton.Source != null)
             {
+                // Matches Android ImageButton behavior
+                targetButton.LineBreakMode = UIKit.UILineBreakMode.WordWrap;
+
                 var width = this.GetWidth(imageButton.ImageWidthRequest);
                 var height = this.GetHeight(imageButton.ImageHeightRequest);
 

@@ -31,26 +31,23 @@ namespace XLabs.Forms.Controls
         {
             base.OnElementChanged(e);
 
-            if (this.Control != null)
+            if (e.OldElement != null)
             {
-                this.Control.OnDateSelected -= OnDateSelected;
-                this.Control.MonthChanged -= MonthChanged;
+
             }
 
-            if (this.Element == null)
+            if (e.NewElement != null)
             {
-                return;
+                if (Control == null)
+                {
+                    bool showNav = this.Element.ShowNavigationArrows;
+                    var calendarView = new CalendarMonthView (DateTime.MinValue, true, showNav);
+                    SetNativeControl (calendarView);
+                    this.Control.OnDateSelected += OnDateSelected;
+                    this.Control.MonthChanged += MonthChanged;
+                }
             }
-
-            if (this.Control == null)
-            {
-                var calendarView = new CalendarMonthView(DateTime.MinValue, true, this.Element.ShowNavigationArrows);
-                SetNativeControl(calendarView);
-            }
-
-            this.Control.OnDateSelected += OnDateSelected;
-            this.Control.MonthChanged += MonthChanged;
-
+         
             this.Control.HighlightDaysOfWeeks(this.Element.HighlightedDaysOfWeek);
             SetColors();
             SetFonts();
@@ -250,6 +247,22 @@ namespace XLabs.Forms.Controls
                 }
             });
 
+        }
+
+        bool disposed;
+        protected override void Dispose (bool disposing)
+        {
+            if (disposing && !disposed)
+            {
+                if (this.Control != null)
+                {
+                    this.Control.OnDateSelected -= OnDateSelected;
+                    this.Control.MonthChanged -= MonthChanged;
+                    this.Control.Dispose ();
+                }
+                disposed = true;
+            }
+            base.Dispose (disposing);
         }
     }
 }

@@ -10,7 +10,7 @@ namespace XLabs.Sample
     using System.Linq;
     using System.Reflection;
     using System.Threading.Tasks;
-
+    using Pages.Samples;
     using Xamarin.Forms;
 
     using XLabs.Forms.Controls;
@@ -93,6 +93,7 @@ namespace XLabs.Sample
             var controls = GetControlsPage(mainPage);
             var services = GetServicesPage(mainPage);
             var charts = GetChartingPage(mainPage);
+            var samples = GetSamplesPage(mainPage);
 
             var mvvm = ViewFactory.CreatePage<MvvmSampleViewModel, Page>();
 
@@ -100,6 +101,7 @@ namespace XLabs.Sample
             mainTab.Children.Add(services);
             mainTab.Children.Add(charts);
             mainTab.Children.Add(mvvm as Page);
+            mainTab.Children.Add(samples);
 
             return mainPage;
         }
@@ -137,6 +139,10 @@ namespace XLabs.Sample
 
             lstServices.ItemSelected += async (sender, e) =>
             {
+                if (e.SelectedItem == null) return;
+
+                lstServices.SelectedItem = null;
+
                 switch (e.SelectedItem.ToString().ToLower())
                 {
                     case "texttospeech":
@@ -269,6 +275,29 @@ namespace XLabs.Sample
             var controls = new ContentPage
             {
                 Title = "Charts",
+                Icon = Device.OnPlatform("pie30_32.png", "pie30_32.png", "Images/pie30_32.png"),
+                Content = BuildListView(mainPage, listItems),
+            };
+
+            return controls;
+        }
+
+        /// <summary>
+        /// Gets the samples page.
+        /// </summary>
+        /// <param name="mainPage">The main page.</param>
+        /// <returns>Content Page.</returns>
+        private static ContentPage GetSamplesPage(VisualElement mainPage)
+        {
+            var listItems = new SortedDictionary<string, Type>
+            {
+                 {"US Presidents Circle Image", typeof(UsPresidentList)},
+                 {"Web hybrid func callback", typeof(WebHybridSamplePage)}
+            };
+
+            var controls = new ContentPage
+            {
+                Title = "Samples",
                 Icon = Device.OnPlatform("pie30_32.png", "pie30_32.png", "Images/pie30_32.png"),
                 Content = BuildListView(mainPage, listItems),
             };

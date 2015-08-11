@@ -199,6 +199,24 @@ namespace XLabs.Forms.Controls
 		}
 
 		/// <summary>
+		/// This is the drop shadow color property
+		/// </summary>
+		public static readonly BindableProperty DropShadowColorProperty =
+			BindableProperty.Create<ExtendedLabel, Color>(p => p.DropShadowColor, default(Color));
+
+		public Color DropShadowColor 
+		{
+			get 
+			{
+				return (Color)GetValue (DropShadowColorProperty);
+			}
+			set 
+			{
+				SetValue (DropShadowColorProperty, value);
+			}
+		}
+
+		/// <summary>
 		/// The placeholder property.
 		/// </summary>
 		public static readonly BindableProperty PlaceholderProperty = 

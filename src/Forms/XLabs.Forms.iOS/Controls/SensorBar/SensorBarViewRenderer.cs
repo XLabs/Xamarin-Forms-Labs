@@ -7,13 +7,13 @@ using XLabs.Forms.Controls.SensorBar;
 
 namespace XLabs.Forms.Controls
 {
-	using System.ComponentModel;
+    using System.ComponentModel;
 
-	using Xamarin.Forms.Platform.iOS;
+    using Xamarin.Forms.Platform.iOS;
 
-	using XLabs.Forms.Controls.SensorBar;
+    using XLabs.Forms.Controls.SensorBar;
 
-	/// <summary>
+    /// <summary>
     /// The sensor bar view renderer.
     /// </summary>
     public class SensorBarViewRenderer : ViewRenderer<SensorBarView, UISensorBar>
@@ -37,19 +37,19 @@ namespace XLabs.Forms.Controls
             SetNativeControl(_sensorBar);
         }
 
-		/// <summary>
-		/// Handles the <see cref="E:PropertyChanged" /> event.
-		/// </summary>
-		/// <param name="sender">The sender.</param>
-		/// <param name="e">The <see cref="PropertyChangedEventArgs"/> instance containing the event data.</param>
+        /// <summary>
+        /// Handles the <see cref="E:PropertyChanged" /> event.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="PropertyChangedEventArgs"/> instance containing the event data.</param>
         private void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             SetProperties ();
         }
 
-		/// <summary>
-		/// Sets the properties.
-		/// </summary>
+        /// <summary>
+        /// Sets the properties.
+        /// </summary>
         private void SetProperties()
         {
             _sensorBar.CurrentValue = Element.CurrentValue;

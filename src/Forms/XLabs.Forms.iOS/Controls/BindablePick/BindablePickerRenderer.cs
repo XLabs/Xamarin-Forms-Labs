@@ -127,47 +127,57 @@ namespace XLabs.Forms.Controls
         /// <param name="e">The e.</param>
         protected override void OnElementChanged(ElementChangedEventArgs<BindablePicker> e)
         {
-            e.NewElement.Items.CollectionChanged += RowsCollectionChanged;
-            var entry = new NoCaretField 
+            if (e.OldElement != null)
             {
-                BorderStyle = e.NewElement.HasBorder ? UITextBorderStyle.RoundedRect : UITextBorderStyle.None
-            };
-
-            entry.Started += OnStarted;
-            entry.Ended += OnEnded;
-
-            _picker = new UIPickerView 
-            {
-                DataSource = new PickerSource (e.NewElement)
-            };
-
-            var width = UIScreen.MainScreen.Bounds.Width;
-            var uIToolbar = new UIToolbar (new CGRect (0, 0, width, 44)) 
-            {
-                BarStyle = UIBarStyle.Default,
-                Translucent = true
-            };
-
-            var uIBarButtonItem = new UIBarButtonItem (UIBarButtonSystemItem.FlexibleSpace);
-            var uIBarButtonItem2 = new UIBarButtonItem (
-                UIBarButtonSystemItem.Done, 
-                delegate { entry.ResignFirstResponder (); });
-
-            uIToolbar.SetItems (new[] { uIBarButtonItem, uIBarButtonItem2 }, false);
-
-            if (Device.Idiom == TargetIdiom.Phone) 
-            {
-                entry.InputView = _picker;
-                entry.InputAccessoryView = uIToolbar;
-            } 
-            else 
-            {
-                entry.InputView = new UIView (CGRect.Empty);
-                entry.InputAccessoryView = new UIView (CGRect.Empty);
+                e.OldElement.Items.CollectionChanged -= RowsCollectionChanged;
             }
+            if (e.NewElement != null)
+            {
+                if (Control == null)
+                {
+                    var entry = new NoCaretField {
+                        BorderStyle = e.NewElement.HasBorder ? UITextBorderStyle.RoundedRect : UITextBorderStyle.None
+                    };
 
-            ((PickerSource)_picker.DataSource).ValueChanged += HandleValueChanged;
-            SetNativeControl(entry);
+                    entry.Started += OnStarted;
+                    entry.Ended += OnEnded;
+
+                    _picker = new UIPickerView {
+                        DataSource = new PickerSource (e.NewElement)
+                    };
+
+                    var width = UIScreen.MainScreen.Bounds.Width;
+                    var uIToolbar = new UIToolbar (new CGRect (0, 0, width, 44)) {
+                        BarStyle = UIBarStyle.Default,
+                        Translucent = true
+                    };
+
+                    var uIBarButtonItem = new UIBarButtonItem (UIBarButtonSystemItem.FlexibleSpace);
+                    var uIBarButtonItem2 = new UIBarButtonItem (
+                        UIBarButtonSystemItem.Done,
+                        delegate {
+                            entry.ResignFirstResponder ();
+                        });
+
+                    uIToolbar.SetItems (new[] { uIBarButtonItem, uIBarButtonItem2 }, false);
+
+                    if (Device.Idiom == TargetIdiom.Phone)
+                    {
+                        entry.InputView = _picker;
+                        entry.InputAccessoryView = uIToolbar;
+                    }
+                    else
+                    {
+                        entry.InputView = new UIView (CGRect.Empty);
+                        entry.InputAccessoryView = new UIView (CGRect.Empty);
+                    }
+                    SetNativeControl (entry);
+                    ((PickerSource)_picker.DataSource).ValueChanged += HandleValueChanged;
+                }
+
+                e.NewElement.Items.CollectionChanged += RowsCollectionChanged;
+            }
+          
             UpdatePicker();
         }
 
@@ -255,6 +265,9 @@ namespace XLabs.Forms.Controls
         /// </summary>
         private void UpdatePicker()
         {
+            if (Control == null)
+                return;
+
             Control.Placeholder = Element.Title;
             Control.Text = (Element.SelectedIndex <= -1 || Element.Items == null) ? string.Empty : Element.Items[Element.SelectedIndex];
             _picker.ReloadAllComponents();

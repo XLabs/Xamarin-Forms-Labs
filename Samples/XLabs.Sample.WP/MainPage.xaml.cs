@@ -8,18 +8,21 @@
 
 	using XLabs.Forms.Extensions;
 
-	public partial class MainPage : PhoneApplicationPage
+	public partial class MainPage
 	{
 		// Constructor
 		public MainPage()
 		{
 			InitializeComponent();
-			// Sample code to localize the ApplicationBar
-			Forms.Init();
+            SupportedOrientations = SupportedPageOrientation.PortraitOrLandscape;
+
+            // Sample code to localize the ApplicationBar
+            Forms.Init();
 
 			XLabs.Sample.App.Init();
 			Thread.Sleep(2000);
-			Content = XLabs.Sample.App.GetMainPage().ConvertPageToUIElement(this);
+			//Content = XLabs.Sample.App.GetMainPage().ConvertPageToUIElement(this);
+            LoadApplication(new XLabs.Sample.App());
 			//BuildLocalizedApplicationBar();
 		}
 

@@ -43,7 +43,10 @@ namespace XLabs.Forms.Controls
 			base.OnElementChanged (e);
 
 			var view = (ExtendedEditor)Element;
-			Control.Font = view.Font.ToUIFont ();
+			if (view != null)
+			{
+				Control.Font = view.Font.ToUIFont();
+			}
 
 			if (e.OldElement == null)
 			{

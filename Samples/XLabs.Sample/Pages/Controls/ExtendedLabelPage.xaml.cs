@@ -45,6 +45,7 @@
 			var label4 = new ExtendedLabel
 			{
 				IsDropShadow = true,
+				DropShadowColor = Color.Red,
 				Text = "From code, Dropshadow with TextColor",
 				TextColor = Color.Green
 			};

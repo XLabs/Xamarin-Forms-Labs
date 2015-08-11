@@ -160,8 +160,8 @@ namespace XLabs.Forms
         /// Called when [initialize].
         /// </summary>
         /// <param name="app">The application.</param>
-		/// <param name="initServices">Should initialize services.</param>
-		protected override void OnInit(XFormsApplicationDelegate app, bool initServices = true)
+        /// <param name="initServices">Should initialize services.</param>
+        protected override void OnInit(XFormsApplicationDelegate app, bool initServices = true)
         {
             AppContext.FinishedLaunchingEvent += (o, e) => { OnStartup(); };
             AppContext.WillTerminateEvent += (o, e) => { OnClosing(); };
@@ -169,18 +169,18 @@ namespace XLabs.Forms
             AppContext.WillEnterForegroundEvent += (o, e) => { OnResumed(); };
             AppDataDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 
-			if (initServices) {
-				DependencyService.Register<TextToSpeechService> ();
-				DependencyService.Register<Geolocator> ();
-				DependencyService.Register<MediaPicker> ();
-				DependencyService.Register<SoundService> ();
-				DependencyService.Register<SoundService> ();
-				DependencyService.Register<EmailService> ();
-				DependencyService.Register<FileManager> ();
-				DependencyService.Register<AppleDevice> ();
-			}
+            if (initServices) {
+                DependencyService.Register<TextToSpeechService> ();
+                DependencyService.Register<Geolocator> ();
+                DependencyService.Register<MediaPicker> ();
+                DependencyService.Register<SoundService> ();
+                DependencyService.Register<SoundService> ();
+                DependencyService.Register<EmailService> ();
+                DependencyService.Register<FileManager> ();
+                DependencyService.Register<AppleDevice> ();
+            }
             
-			base.OnInit(app);
+            base.OnInit(app);
         }
     }
 }

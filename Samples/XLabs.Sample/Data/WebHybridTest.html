@@ -1,0 +1,56 @@
+﻿<html>
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+    </head>
+    <body>
+        <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+        <h1>HTML page</h1>
+        <button onclick="sendData(this.innerHTML)">Action to C#</button>
+        <button onclick="sendFunc(this.innerHTML)">Func to C#</button>
+
+        <br/>
+
+        <p id="res">LOG: </p>
+
+
+        <script type="text/javascript">
+
+            function dolog(s) {
+                $('#res').text($('#res').text() + " " + s);
+            }
+
+            function sendData(o) {
+                try {
+                    dolog("Action");
+                    Native("dataCallback", o);
+                    dolog("Action Done");
+                } catch (err) {
+                    dolog(err);
+                }
+            }
+
+            function sendFunc(o) {
+                try {
+                    dolog("Func");
+                    NativeFunc("funcCallback", o, function (cbData) {
+                        Native("dataCallback", cbData);
+                    });
+                } catch (e) {
+                    dolog(e);
+                } 
+            }
+
+            //NativeFuncs = [];
+            
+            //function NativeFunc(action, data, callback){  
+            //    var callbackIdx = NativeFuncs.push(callback) - 1;
+            //    window.external.notify(JSON.stringify({ a: action, d: data, c: callbackIdx }));
+            //}
+            //if (typeof (window.NativeFuncsReady) !== 'undefined') {
+            //     window.NativeFuncsReady();
+            //}
+        </script>
+
+    </body>
+</html>

@@ -11,12 +11,12 @@
     <iconUrl>https://raw.githubusercontent.com/XForms/Xamarin-Forms-Labs/master/src/Xamarin.Forms.Labs/Design/Icons/nuget/icon_nuget.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>
-      XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.
+      XLabs is a open source project that aims to provide a powerful and cross platform set of controls tailored to work with Xamarin.
 
       This package contains the core cross-platform framework for all of XLabs.
     </description>
     <summary>
-      XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.
+      XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin.
     </summary>
     <releaseNotes>
 
@@ -32,6 +32,7 @@
       <frameworkAssembly assemblyName="Mono.Android.Export" targetFramework="MonoAndroid" />
     </frameworkAssemblies>
     <references>
+      <!--
       <group targetFramework="MonoAndroid">
         <reference file="XLabs.Platform.dll"/>
         <reference file="XLabs.Platform.Droid.dll"/>
@@ -48,9 +49,19 @@
         <reference file="XLabs.Platform.dll"/>
         <reference file="XLabs.Platform.WP8.dll"/>
       </group>
+      <group targetFramework="netcore45"> 
+        <reference file="XLabs.Platform.dll" /> 
+      </group>
+      -->
     </references>
   </metadata>
   <files>
+
+    <file src="..\..\build\**\XLabs.Platform.dll" target="lib\portable-net45+netcore45+wpa81+wp8" />
+    <file src="..\..\build\**\XLabs.Platform.dll.mdb" target="lib\portable-net45+netcore45+wpa81+wp8" />
+    <file src="..\..\build\**\XLabs.Platform.pdb" target="lib\portable-net45+netcore45+wpa81+wp8" />
+    <file src="..\..\build\**\XLabs.Platform.xml" target="lib\portable-net45+netcore45+wpa81+wp8" />
+
     <file src="..\..\build\**\XLabs.Platform.dll" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
     <file src="..\..\build\**\XLabs.Platform.dll.mdb" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
     <file src="..\..\build\**\XLabs.Platform.pdb" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
@@ -88,7 +99,7 @@
     <file src="..\..\build\**\XLabs.Platform.pdb" target="lib\wp8" />
     <file src="..\..\build\**\XLabs.Platform.xml" target="lib\wp8" />
     <file src="..\..\build\**\XLabs.Platform.WinRT.winmd" target="lib\wp8" />
-    
+
     <file src="..\..\build\**\XLabs.Platform.WP8.dll" target="lib\wpa81" />
     <file src="..\..\build\**\XLabs.Platform.WP8.dll.mdb" target="lib\wpa81" />
     <file src="..\..\build\**\XLabs.Platform.WP8.pdb" target="lib\wpa81" />

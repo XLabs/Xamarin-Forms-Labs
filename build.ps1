@@ -3,16 +3,13 @@ Param(
     [string[]]$task_list = @(),
 
 	[Parameter()]
-    [string]$BuildMetaData,
-
-	[Parameter()]
-    [string]$version = $null
+    [string]$version = $null,
 	
 	[Parameter()]
     [string]$preRelease = $null,
 	
 	[Parameter()]
-    [string]$configuration = "Release"
+    [string]$configuration = "Release",
 	
 	[Parameter()]
 	[bool]$versionUpdate = $false
@@ -40,9 +37,6 @@ $properties = @{
     # from any source control, as we dont commit build artifacts to source
     # control
     "deploy_folder" = 'deploy';
-
-	# Build number metadata that will be appended to semver numers
-	"build_meta" = $BuildMetaData;
 
 	# List of projects to use when building NuGet Packages (Note: Not used for XLabs)
     "projects" = @(

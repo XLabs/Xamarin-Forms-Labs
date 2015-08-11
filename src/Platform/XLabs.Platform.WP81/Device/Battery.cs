@@ -2,6 +2,7 @@
 {
     using System;
 
+
     /// <summary>
     /// Windows Phone Battery class.
     /// </summary>
@@ -26,7 +27,7 @@
         /// </summary>
         partial void StartChargerMonitoring()
         {
-            //DeviceStatus.PowerSourceChanged += OnPowerSourceChanged;
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -34,7 +35,7 @@
         /// </summary>
         partial void StopChargerMonitoring()
         {
-            //DeviceStatus.PowerSourceChanged -= OnPowerSourceChanged;
+            throw new NotImplementedException();
         }
 
         #endregion

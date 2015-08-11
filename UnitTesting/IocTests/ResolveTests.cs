@@ -127,6 +127,36 @@ namespace IocTests
             Assert.IsTrue(service.Service is Service);
         }
 
+        [Test]
+        public void RegisterMultipleGeneric()
+        {
+            var container = this.GetEmptyContainer();
+
+            container.Register<IService, Service>().Register<IService, Service1>().Register<IService, Service2>();
+
+            var resolver = container.GetResolver();
+
+            var services = resolver.ResolveAll<IService>().DefaultIfEmpty(null).ToList();
+
+            Assert.IsNotNull(services);
+            Assert.IsTrue(services.Count() == 3);
+        }
+
+        [Test]
+        public void RegisterMultipleType()
+        {
+            var container = this.GetEmptyContainer();
+
+            container.Register<IService>(typeof(Service)).Register<IService>(typeof(Service1)).Register<IService>(typeof(Service2));
+
+            var resolver = container.GetResolver();
+
+            var services = resolver.ResolveAll(typeof(IService)).DefaultIfEmpty(null).ToList();
+
+            Assert.IsNotNull(services);
+            Assert.IsTrue(services.Count() == 3);
+        }
+
         public class InvalidClass : IDependencyContainer
         {
             public InvalidClass()

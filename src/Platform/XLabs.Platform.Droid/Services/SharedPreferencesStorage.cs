@@ -64,6 +64,16 @@
             }
         }
 
+        /// <summary>
+        /// Checks if the storage contains a key.
+        /// </summary>
+        /// <param name="key">The key to search.</param>
+        /// <returns>True if the storage has the key, otherwise false.</returns>
+        public bool Contains(string key)
+        {
+            return this.preferences.Contains(key);
+        }
+
         #endregion
     }
 }
