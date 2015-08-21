@@ -18,7 +18,7 @@
 			var viewModel = new RepeaterViewViewModel();
 			BindingContext = viewModel;
 
-			var repeater = new RepeaterView<Thing>
+			var repeater = new RepeaterView
 			{
 				Spacing = 10,
 				ItemsSource = viewModel.Things,

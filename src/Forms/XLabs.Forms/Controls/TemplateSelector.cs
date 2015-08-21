@@ -34,6 +34,17 @@ namespace XLabs.Forms.Controls
             {
                 Templates = new DataTemplateCollection();
             }
+
+            /// <summary>
+            /// Adds a DataTemplate to the selectory
+            /// </summary>
+            /// <param name="template">The template to add</param>
+            /// <param name="type">The Type this DataTemplate applies to</param>
+            public void Add(DataTemplate template, Type type = null)
+            {
+                Templates.Add(new DataTemplateWrapper() { WrappedTemplate = template, Type = type });
+            }
+
             /// <summary>
             ///  Clears the cache when the set of templates change
             /// </summary>
@@ -191,7 +202,7 @@ namespace XLabs.Forms.Controls
         {
             bool IsDefault { get; set; }
             DataTemplate WrappedTemplate { get; set; }
-            Type Type { get; }
+            Type Type { get; set; }
         }
         /// <summary>
         /// Wrapper for a DataTemplate.
@@ -200,10 +211,25 @@ namespace XLabs.Forms.Controls
         /// </summary>
         /// <typeparam name="T">The object type that this DataTemplateWrapper matches</typeparam>
         [ContentProperty("WrappedTemplate")]
-        public class DataTemplateWrapper<T> : BindableObject, IDataTemplateWrapper
+        public class DataTemplateWrapper : BindableObject, IDataTemplateWrapper
         {
-            public static readonly BindableProperty WrappedTemplateProperty = BindableProperty.Create<DataTemplateWrapper<T>, DataTemplate>(x => x.WrappedTemplate, null);
-            public static readonly BindableProperty IsDefaultProperty = BindableProperty.Create<DataTemplateWrapper<T>, bool>(x => x.IsDefault, false);
+            public static readonly BindableProperty WrappedTemplateProperty = BindableProperty.Create<DataTemplateWrapper, DataTemplate>(x => x.WrappedTemplate, null);
+            public static readonly BindableProperty IsDefaultProperty = BindableProperty.Create<DataTemplateWrapper, bool>(x => x.IsDefault, false);
+
+	        /// <summary>
+	        /// Default constructor
+	        /// </summary>
+	        public DataTemplateWrapper()
+	        {
+	        }
+	        /// <summary>
+	        /// Constructor that takes in a type.
+	        /// </summary>
+	        /// <param name="type">The type of object this DataTemplate applies to</param>
+	        public DataTemplateWrapper(Type type)
+	        {
+	            Type = type;
+	        }
 
             public bool IsDefault
             {
@@ -216,10 +242,7 @@ namespace XLabs.Forms.Controls
                 set { SetValue(WrappedTemplateProperty, value); }
             }
 
-            public Type Type
-            {
-                get { return typeof(T); }
-            }
+            public Type Type { get; set; }
         }
 
         /// <summary>

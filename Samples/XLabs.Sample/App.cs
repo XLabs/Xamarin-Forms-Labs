@@ -70,6 +70,7 @@ namespace XLabs.Sample
             ViewFactory.Register<CacheServicePage, CacheServiceViewModel>();
             ViewFactory.Register<SoundPage, SoundServiceViewModel>();
             ViewFactory.Register<RepeaterViewPage, RepeaterViewViewModel>();
+            ViewFactory.Register<RepeaterViewTemplateSelectorPage, RepeaterViewTemplateSelectorViewModel>();
             ViewFactory.Register<WaveRecorderPage, WaveRecorderViewModel>();
 
             var mainTab = new ExtendedTabbedPage()
@@ -234,6 +235,7 @@ namespace XLabs.Sample
                 {"Popup", typeof(PopupPage)},
                 {"RadioButton",typeof(RadioButtonPage)},
                 {"RepeaterView", typeof(RepeaterViewPage)},
+                {"RepeaterViewTemplateSelector", typeof(RepeaterViewTemplateSelectorPage)},
                 {"Segment", typeof(SegmentPage)},
                 {"Separator", typeof(SeparatorPage)},
                 {"WebImage", typeof(WebImagePage)},
