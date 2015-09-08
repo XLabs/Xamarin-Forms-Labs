@@ -88,6 +88,7 @@
     <Compile Include="Controls\HybridWebView\HybridWebViewRenderer.cs" />
     <Compile Include="Controls\HyperLinkLabel\HyperLinkLabelRenderer.cs" />
     <Compile Include="Controls\IconButton\IconButtonRenderer.cs" />
+    <Compile Include="Controls\IconLabel\IconLabelRenderer.cs" />
     <Compile Include="Controls\ImageButton\ImageButtonRenderer.cs" />
     <Compile Include="Controls\ImageGallery\ImageGalleryRenderer.cs" />
     <Compile Include="Controls\ImageGallery\ImageGalleryView.cs" />

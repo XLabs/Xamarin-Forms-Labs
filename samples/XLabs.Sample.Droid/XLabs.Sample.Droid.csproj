@@ -99,6 +99,7 @@
   <ItemGroup>
     <None Include="app.config" />
     <AndroidAsset Include="Assets\fonts\Open 24 Display St.ttf" />
+    <AndroidAsset Include="Assets\fonts\fontawesome-webfont.ttf" />
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />

@@ -81,6 +81,8 @@
     <Compile Include="Pages\Controls\GestureSample.xaml.cs">
       <DependentUpon>GestureSample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Controls\IconButtonPage.cs" />
+    <Compile Include="Pages\Controls\IconLabelPage.cs" />
     <Compile Include="Pages\Controls\PopupPage.xaml.cs">
       <DependentUpon>PopupPage.xaml</DependentUpon>
     </Compile>
