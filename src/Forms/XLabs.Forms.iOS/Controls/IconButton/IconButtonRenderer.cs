@@ -20,126 +20,180 @@ namespace XLabs.Forms.Controls
 	/// </summary>
 	public class IconButtonRenderer : ButtonRenderer
 	{
-		/// <summary>
-		/// Gets the underlying element typed as an <see cref="IconButton"/>
-		/// </summary>
-		private IconButton IconButton
-		{
-			get { return (IconButton) Element; }
-		}
+        /// <summary>
+        /// Gets the underlying element typed as an <see cref="IconButton"/>
+        /// </summary>
+        private IconButton IconButton
+        {
+            get { return (IconButton)Element; }
+        }
 
-		private static void SetText(IconButton iconButton, UIButton targetButton)
-		{
-			var renderedIcon = iconButton.Icon;
+        private static void SetText(IconButton iconButton, UIButton targetButton)
+        {
+            var renderedIcon = iconButton.Icon;
 
-			// if no IconFontName is provided on the IconButton, default to FontAwesome
-			var iconFontName = string.IsNullOrEmpty(iconButton.IconFontName)
-				? "fontawesome"
-				: iconButton.IconFontName;
+            // if no IconFontName is provided on the IconButton, default to FontAwesome
+            var iconFontName = string.IsNullOrEmpty(iconButton.IconFontName)
+                ? "fontawesome"
+                : iconButton.IconFontName;
 
-			var iconSize = iconButton.IconSize == default(float)
-				? 17f
-				: iconButton.IconSize;
-
-			var faFont = UIFont.FromName(iconFontName, iconSize);
-
-			// set the icon to either be on the left or right of the button's text
-			string combinedText = iconButton.Orientation == ImageOrientation.ImageToLeft 
-				? string.Format("{0}  {1}", renderedIcon, iconButton.Text) 
-				: string.Format("{0}  {1}", iconButton.Text, renderedIcon);
+            var iconSize = iconButton.IconSize == default(float)
+                ? 17f
+                : iconButton.IconSize;
 
 
-			// string attributes for the icon
-			var iconAttributes = new UIStringAttributes
-			{
-				ForegroundColor = iconButton.IconColor.ToUIColor(),
-				BackgroundColor = targetButton.BackgroundColor,
-				Font = faFont,
-				TextAttachment = new NSTextAttachment()
-			};
 
-			// string attributes for the button's text. 
-			// TODO: Calculate an appropriate BaselineOffset for the main button text in order to center it vertically relative to the icon
-			var btnAttributes = new UIStringAttributes
-			{
-				BackgroundColor = iconButton.BackgroundColor.ToUIColor(),
-				ForegroundColor = iconButton.TextColor.ToUIColor(),
-				Font = GetButtonFont(iconButton,targetButton)
-			};
+            var faFont = UIFont.FromName(iconFontName, iconSize);
+            string combinedText = null;
+            string separator = " ";
+            if (iconButton.ShowIconSeparator)
+                separator = " | ";
+            switch (iconButton.Orientation)
+            {
+                case ImageOrientation.ImageToLeft:
+                    if (string.IsNullOrEmpty(iconButton.Text))
+                        combinedText = renderedIcon;
+                    else
+                    {
 
-			// Give the overall string the attributes of the button's text
-			var prettyString = new NSMutableAttributedString(combinedText,btnAttributes);
-
-			// Set the font for only the icon (1 char)
-			prettyString.SetAttributes(iconAttributes.Dictionary,
-				iconButton.Orientation == ImageOrientation.ImageToLeft
-					? new NSRange(0, 1)
-					: new NSRange(prettyString.Length - 1, 1));
-
-
-			// set the final formatted string as the button's text
-			targetButton.SetAttributedTitle(prettyString, UIControlState.Normal);
-
-			// center the button's contents
-			targetButton.HorizontalAlignment = UIControlContentHorizontalAlignment.Center;
-			targetButton.TitleLabel.TextAlignment = UITextAlignment.Center;
-		}
-
-		/// <summary>
-		/// Gets the font for the button (applied to all button text EXCEPT the icon)
-		/// </summary>
-		/// <param name="iconButton"></param>
-		/// <param name="targetButton"></param>
-		/// <returns></returns>
-		private static UIFont GetButtonFont(IconButton iconButton, UIButton targetButton)
-		{
-			UIFont btnTextFont = iconButton.Font.ToUIFont();
-
-			if (iconButton.Font != Font.Default && btnTextFont != null)
-				return btnTextFont;
-			else if (iconButton.Font == Font.Default)
-				return UIFont.SystemFontOfSize(17f);
-
-			return btnTextFont;
-		}
+                        combinedText = renderedIcon + separator + iconButton.Text;
+                    }
+                    break;
+                case ImageOrientation.ImageToRight:
+                    if (string.IsNullOrEmpty(iconButton.Text))
+                        combinedText = renderedIcon;
+                    else
+                        combinedText = iconButton.Text + separator + renderedIcon;
+                    break;
+                case ImageOrientation.ImageOnTop:
+                    if (string.IsNullOrEmpty(iconButton.Text))
+                        combinedText = renderedIcon;
+                    else
+                        combinedText = renderedIcon + separator + iconButton.Text;
+                    break;
+                case ImageOrientation.ImageOnBottom:
+                    if (string.IsNullOrEmpty(iconButton.Text))
+                        combinedText = renderedIcon;
+                    else
+                        combinedText = renderedIcon + separator + iconButton.Text;
+                    break;
+            }
+          
 
 
-		/// <summary>
-		/// Handles the initial drawing of the button
-		/// </summary>
-		/// <param name="e">Information on the <see cref="IconButton"/></param>
-		protected override void OnElementChanged(ElementChangedEventArgs<Button> e)
-		{
-			base.OnElementChanged(e);
-			var iconButton = IconButton;
-			var targetButton = Control;
-			
-			if (iconButton != null && targetButton != null && !string.IsNullOrEmpty(iconButton.Icon))
-				SetText(iconButton, targetButton);
-		}
+            // string attributes for the icon
+            var iconAttributes = new UIStringAttributes
+            {
+                ForegroundColor = iconButton.IconColor.ToUIColor(),
+                BackgroundColor = targetButton.BackgroundColor,
+                Font = faFont,
+                TextAttachment = new NSTextAttachment()
+            };
 
-		/// <summary>
-		/// Called when the underlying model's properties are changed.
-		/// </summary>
-		/// <param name="sender">Model sending the change event.</param>
-		/// <param name="e">Event arguments.</param>
-		protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
-		{
-			base.OnElementPropertyChanged(sender, e);
+           
+            // string attributes for the button's text. 
+            // TODO: Calculate an appropriate BaselineOffset for the main button text in order to center it vertically relative to the icon
+            var btnAttributes = new UIStringAttributes
+            {
+                BackgroundColor = iconButton.BackgroundColor.ToUIColor(),
+                ForegroundColor = iconButton.TextColor.ToUIColor(),
+                Font = GetButtonFont(iconButton, targetButton),
 
-			// Only update the text if the icon or button text changes
-			if (e.PropertyName == IconButton.IconProperty.PropertyName || e.PropertyName == Controls.IconButton.TextProperty.PropertyName)
-			{
-				var sourceButton = Element as IconButton;
-				if (sourceButton != null && sourceButton.Icon != null)
-				{
-					var iconButton = IconButton;
-					var targetButton = Control;
-					if (iconButton != null && targetButton != null && iconButton.Icon != null)
-						SetText(iconButton, targetButton);
-				}
-			}
-		}
+            };
+            if (!string.IsNullOrEmpty(iconButton.Text))
+                btnAttributes.BaselineOffset = 3;
+
+            // Give the overall string the attributes of the button's text
+            var prettyString = new NSMutableAttributedString(combinedText, btnAttributes);
+
+            // Set the font for only the icon (1 char)
+            prettyString.SetAttributes(iconAttributes.Dictionary,
+                iconButton.Orientation == ImageOrientation.ImageToLeft
+                    ? new NSRange(0, 1)
+                    : new NSRange(prettyString.Length - 1, 1));
+
+
+            //prettyString.SetAttributes(separationBarAttributes.Dictionary,
+            //    iconButton.Orientation == ImageOrientation.ImageToLeft
+            //        ? new NSRange(2, 1)
+            //        : new NSRange(prettyString.Length - 2, 1));
+
+            // set the final formatted string as the button's text
+            targetButton.SetAttributedTitle(prettyString, UIControlState.Normal);
+
+            if (iconButton.TextAlignement == TextAlignment.Center)
+            {
+                // center the button's contents
+                targetButton.HorizontalAlignment = UIControlContentHorizontalAlignment.Center;
+                targetButton.TitleLabel.TextAlignment = UITextAlignment.Center;
+            }
+            else if (iconButton.TextAlignement == TextAlignment.End)
+            {
+                targetButton.HorizontalAlignment = UIControlContentHorizontalAlignment.Right;
+                targetButton.TitleLabel.TextAlignment = UITextAlignment.Right;
+            }
+            else if (iconButton.TextAlignement == TextAlignment.Start)
+            {
+                targetButton.HorizontalAlignment = UIControlContentHorizontalAlignment.Left;
+                targetButton.TitleLabel.TextAlignment = UITextAlignment.Left;
+            }
+        }
+
+        /// <summary>
+        /// Gets the font for the button (applied to all button text EXCEPT the icon)
+        /// </summary>
+        /// <param name="iconButton"></param>
+        /// <param name="targetButton"></param>
+        /// <returns></returns>
+        private static UIFont GetButtonFont(IconButton iconButton, UIButton targetButton)
+        {
+            UIFont btnTextFont = iconButton.Font.ToUIFont();
+
+            if (iconButton.Font != Font.Default && btnTextFont != null)
+                return btnTextFont;
+            else if (iconButton.Font == Font.Default)
+                return UIFont.SystemFontOfSize(17f);
+
+            return btnTextFont;
+        }
+
+
+        /// <summary>
+        /// Handles the initial drawing of the button
+        /// </summary>
+        /// <param name="e">Information on the <see cref="IconButton"/></param>
+        protected override void OnElementChanged(ElementChangedEventArgs<Button> e)
+        {
+            base.OnElementChanged(e);
+            var iconButton = IconButton;
+            var targetButton = Control;
+
+            if (iconButton != null && targetButton != null && !string.IsNullOrEmpty(iconButton.Icon))
+                SetText(iconButton, targetButton);
+        }
+
+        /// <summary>
+        /// Called when the underlying model's properties are changed.
+        /// </summary>
+        /// <param name="sender">Model sending the change event.</param>
+        /// <param name="e">Event arguments.</param>
+        protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            base.OnElementPropertyChanged(sender, e);
+
+            // Only update the text if the icon or button text changes
+            if (e.PropertyName == IconButton.IconProperty.PropertyName || e.PropertyName == Controls.IconButton.TextProperty.PropertyName)
+            {
+                var sourceButton = Element as IconButton;
+                if (sourceButton != null && sourceButton.Icon != null)
+                {
+                    var iconButton = IconButton;
+                    var targetButton = Control;
+                    if (iconButton != null && targetButton != null && iconButton.Icon != null)
+                        SetText(iconButton, targetButton);
+                }
+            }
+        }
 
 	}
 }

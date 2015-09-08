@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Xamarin.Forms.Labs.Controls;assembly=Xamarin.Forms.Labs"
+             x:Class="Xamarin.Forms.Labs.Sample.Pages.Controls.DragPage">
+  <controls:DragContentView>
+    <StackLayout>
+      <StackLayout.Padding>
+        <OnPlatform x:TypeArguments="Thickness"
+                  iOS="20,40,20,20"
+                  Android="20,20,20,20"
+                  WinPhone="20,20,20,20" />
+      </StackLayout.Padding>
+      <Label Text="Label 1" VerticalOptions="Center" HorizontalOptions="Center" />
+      <Label Text="Label 2" VerticalOptions="Center" HorizontalOptions="Center" />
+    </StackLayout>
+  </controls:DragContentView>
+  
+</ContentPage>

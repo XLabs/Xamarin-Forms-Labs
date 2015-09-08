@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-
 <dict>
 	<key>CFBundleDisplayName</key>
 	<string>Xamarin.Forms.Labs.Sample.iOS</string>
@@ -65,7 +64,7 @@
 		<string>Icon-Small-40@2x.png</string>
 		<string>Icon-Small.png</string>
 	</array>
-  <key>NSLocationWhenInUseUsageDescription</key>
-  <string>Can I track your location</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Can I track your location</string>
 </dict>
 </plist>

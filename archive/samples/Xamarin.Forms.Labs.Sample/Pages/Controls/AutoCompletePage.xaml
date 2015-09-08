@@ -31,7 +31,7 @@
 				Placeholder="type 'firstname'"
 				ShowSearch="True"
 				SearchBackgroundColor="Blue"
-				SugestionBackgroundColor="Yellow"
+				SugestionBackgroundColor="Green"
 				SearchCommand="{Binding SearchCommand}"
 				Sugestions="{Binding Items, Mode=TwoWay}"
 				SelectedCommand = "{Binding CellSelectedCommand}"

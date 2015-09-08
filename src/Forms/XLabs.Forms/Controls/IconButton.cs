@@ -10,12 +10,36 @@ namespace XLabs.Forms.Controls
 	/// </summary>
 	public class IconButton : Button
 	{
+
+        /// <summary>
+        /// Backing field for the orientation property.
+        /// </summary>
+        public static readonly BindableProperty TextAlignementProperty =
+            BindableProperty.Create<IconButton, TextAlignment>(
+                p => p.TextAlignement, TextAlignment.Center);
+
+
+        /// <summary>
+        /// Gets or sets The orientation of the image relative to the text.
+        /// </summary> 
+        /// <value>
+        /// The Orientation property gets/sets the value of the backing field, OrientationProperty.
+        /// </value> 
+        public TextAlignment TextAlignement
+        {
+            get { return (TextAlignment)GetValue(TextAlignementProperty); }
+            set { SetValue(TextAlignementProperty, value); }
+        }
+
+
 		/// <summary>
 		/// Backing field for the orientation property.
 		/// </summary>
 		public static readonly BindableProperty OrientationProperty =
 			BindableProperty.Create<IconButton, ImageOrientation>(
 				p => p.Orientation, ImageOrientation.ImageToLeft);
+
+
 
 
 		/// <summary>
@@ -49,6 +73,26 @@ namespace XLabs.Forms.Controls
 			get { return (string)GetValue(IconProperty); }
 			set { SetValue(IconProperty, value); }
 		}
+
+        /// <summary>
+        /// Backing field for the ShowIconSeparator property
+        /// </summary>
+        public static readonly BindableProperty ShowIconSeparatorProperty =
+            BindableProperty.Create<IconLabel, bool>(
+            p => p.ShowIconSeparator, default(bool));
+
+
+        /// <summary>
+        /// Indicate if | separator must be place between the icon and the text
+        /// </summary>
+        /// <value>
+        /// 
+        /// </value>
+        public bool ShowIconSeparator
+        {
+            get { return (bool)GetValue(ShowIconSeparatorProperty); }
+            set { SetValue(ShowIconSeparatorProperty, value); }
+        }
 
 		/// <summary>
 		/// Backing field for the icon color property

@@ -87,6 +87,7 @@
     <Compile Include="Controls\IAutoCompleteSearchObject.cs" />
     <Compile Include="Controls\ICarouselView.cs" />
     <Compile Include="Controls\IconButton.cs" />
+    <Compile Include="Controls\IconLabel.cs" />
     <Compile Include="Controls\ImageButton.cs" />
     <Compile Include="Controls\ImageButtonSourceConverter.cs" />
     <Compile Include="Controls\ImageGallery.cs" />
