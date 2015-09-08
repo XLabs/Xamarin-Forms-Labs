@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2A4D9DD4-326C-4824-AA3C-A9ED45CC898C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XLabs.Platform</RootNamespace>
+    <AssemblyName>XLabs.Platform</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile259</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\build\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\..\..\build\XLabs.Platform.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\build\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\..\..\build\XLabs.Platform.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .NET Framework is automatically included -->
+    <Folder Include="Services\Contacts\" />
+    <Folder Include="Services\Sound\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Device\DeviceExtensions.cs" />
+    <Compile Include="Device\DisplayExtensions.cs" />
+    <Compile Include="Device\IAccelerometer.cs" />
+    <Compile Include="Device\IBattery.cs" />
+    <Compile Include="Device\IBluetoothDevice.cs" />
+    <Compile Include="Device\IBluetoothHub.cs" />
+    <Compile Include="Device\IDevice.cs" />
+    <Compile Include="Device\IDisplay.cs" />
+    <Compile Include="Device\IGyroscope.cs" />
+    <Compile Include="Device\ISensor.cs" />
+    <Compile Include="Device\Sensor.cs" />
+    <Compile Include="Extensions\PositionExtensions.cs" />
+    <Compile Include="Mvvm\IXFormsApp.cs" />
+    <Compile Include="Mvvm\XFormsApp.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Email\IEmailService.cs" />
+    <Compile Include="Services\GeoLocation\IGeolocator.cs" />
+    <Compile Include="Services\GeoLocation\Position.cs" />
+    <Compile Include="Services\GeoLocation\PositionExtensions.cs" />
+    <Compile Include="Services\INavigationService.cs" />
+    <Compile Include="Services\INetwork.cs" />
+    <Compile Include="Services\INfcDevice.cs" />
+    <Compile Include="Services\IO\IFileManager.cs" />
+    <Compile Include="Services\IPhoneService.cs" />
+    <Compile Include="Services\ISecureStorage.cs" />
+    <Compile Include="Services\ITextToSpeechService.cs" />
+    <Compile Include="Services\Media\IAudioStream.cs" />
+    <Compile Include="Services\Media\IMediaPicker.cs" />
+    <Compile Include="Services\Media\ISoundService.cs" />
+    <Compile Include="Services\Media\MediaExtensions.cs" />
+    <Compile Include="Services\Media\MediaFile.cs" />
+    <Compile Include="Services\Media\MediaFileNoteFoundException.cs" />
+    <Compile Include="Services\Media\MediaStorageOptions.cs" />
+    <Compile Include="Services\Media\SoundFile.cs" />
+    <Compile Include="Services\Media\SoundFinishedEventArgs.cs" />
+    <Compile Include="Services\Media\WaveRecorder.cs" />
+    <Compile Include="Services\NetworkStatus.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\XLabs.Core\XLabs.Core.csproj">
+      <Project>{15D9C404-F7E2-49F0-ACC9-63C4C008C860}</Project>
+      <Name>XLabs.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="ExifLib">
+      <HintPath>..\..\..\packages\ExifLib.PCL.1.0.1\lib\portable-net45+sl50+win+WindowsPhoneApp81+wp80+Xamarin.iOS10+MonoAndroid10+MonoTouch10\ExifLib.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

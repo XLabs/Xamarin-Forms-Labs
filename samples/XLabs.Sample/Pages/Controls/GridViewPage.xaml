@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<mvvm:BaseView xmlns="http://xamarin.com/schemas/2014/forms"
+			   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			   xmlns:mvvm="clr-namespace:XLabs.Forms.Mvvm;assembly=XLabs.Forms"
+			   xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+			   x:Class="XLabs.Sample.Pages.Controls.GridViewPage"
+			   Title="GridView">
+	<mvvm:BaseView.Content>
+		<controls:GridView
+					x:Name="GrdView"
+					RowSpacing="5"
+					Padding="5"
+					ColumnSpacing = "5"
+					ItemWidth ="152"
+					ItemHeight = "200"
+					ItemsSource="{Binding Images}"
+				>
+			<controls:GridView.ItemTemplate>
+				<DataTemplate >
+					<ViewCell>
+						<ViewCell.View>
+							<Image Source="{Binding}" />
+						</ViewCell.View>
+					</ViewCell>
+				</DataTemplate>
+			</controls:GridView.ItemTemplate>
+		</controls:GridView>
+	</mvvm:BaseView.Content>
+</mvvm:BaseView>

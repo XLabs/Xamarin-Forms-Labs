@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 using MonoTouch.NUnit.UI;
 
 namespace Labs.Tests.iOS
@@ -11,7 +11,7 @@ namespace Labs.Tests.iOS
     // The UIApplicationDelegate for the application. This class is responsible for launching the
     // User Interface of the application, as well as listening (and optionally responding) to
     // application events from iOS.
-    [Register("UnitTestAppDelegate")]
+    [Foundation.Register("UnitTestAppDelegate")]
     public partial class UnitTestAppDelegate : UIApplicationDelegate
     {
         // class-level declarations

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PackageConfiguration Condition="'$(Configuration)' == ''">Debug</PackageConfiguration>
+    <PackageConfiguration Condition="'$(Configuration)' == 'Debug'">Debug</PackageConfiguration>
+    <PackageConfiguration Condition="'$(Configuration)' == 'Release'">Retail</PackageConfiguration>
+  </PropertyGroup>
+  <PropertyGroup>
+    <IncludePath>$(FrameworkSDKRoot)\..\..\Windows Phone\v8.0\ExtensionSDKs\SQLite.WP80\3.8.7.4\DesignTime\CommonConfiguration\Neutral;$(IncludePath)</IncludePath>
+    <LibraryPath>$(FrameworkSDKRoot)\..\..\Windows Phone\v8.0\ExtensionSDKs\SQLite.WP80\3.8.7.4\DesignTime\$(PackageConfiguration)\$(PlatformTarget);$(LibraryPath)</LibraryPath>
+    <PropertySheetDisplayName>SQLite.WP80, 3.8.7.4</PropertySheetDisplayName>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <Link>
+      <AdditionalDependencies>sqlite3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+</Project>

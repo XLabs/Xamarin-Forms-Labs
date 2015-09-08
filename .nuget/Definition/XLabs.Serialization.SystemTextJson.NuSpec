@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <metadata>
+    <id>XLabs.Serialization.SystemTextJson</id>
+    <title>XLabs - Serialization - SystemTextJson</title>
+    <tags>Xamarin XLabs Serialization SystemTextJson</tags>
+    <version>2.0.5603</version>
+    <authors>XLabs Team</authors>
+    <licenseUrl>https://github.com/XForms/Xamarin-Forms-Labs/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/XForms/Xamarin-Forms-Labs</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/XLabs/Xamarin-Forms-Labs/master/Design/Icons/nuget/icon_nuget.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+      XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin mobile.
+
+      This package contains serializer wrapper for SystemTextJson. It currently supports Android and Windows Phone platforms.
+    </description>
+    <summary>
+      XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin mobile.
+    </summary>
+    <releaseNotes>
+
+    </releaseNotes>
+    <dependencies>
+      <dependency id="XLabs.Serialization" version="2.0.5603" />
+      <dependency id="System.Text.Json.Mobile" version="2.0.0.6" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\..\build\**\XLabs.Serialization.SystemTextJson.Droid.dll*" target="lib\MonoAndroid" />
+    <file src="..\..\build\**\XLabs.Serialization.SystemTextJson.Droid.dll.mdb*" target="lib\MonoAndroid" />
+    <file src="..\..\build\**\XLabs.Serialization.SystemTextJson.Droid.pdb*" target="lib\MonoAndroid" />
+    <file src="..\..\build\**\XLabs.Serialization.SystemTextJson.Droid.xml*" target="lib\MonoAndroid" />
+
+    <file src="..\..\build\**\XLabs.Serialization.SystemTextJson.WP8.dll*" target="lib\wp8" />
+    <file src="..\..\build\**\XLabs.Serialization.SystemTextJson.WP8.dll.mdb*" target="lib\wp8" />
+    <file src="..\..\build\**\XLabs.Serialization.SystemTextJson.WP8.pdb*" target="lib\wp8" />
+    <file src="..\..\build\**\XLabs.Serialization.SystemTextJson.WP8.xml*" target="lib\wp8" />
+
+    <file src="..\..\build\**\XLabs.Serialization.SystemTextJson.WP8.dll*" target="lib\wpa81" />
+    <file src="..\..\build\**\XLabs.Serialization.SystemTextJson.WP8.dll.mdb*" target="lib\wpa81" />
+    <file src="..\..\build\**\XLabs.Serialization.SystemTextJson.WP8.pdb*" target="lib\wpa81" />
+    <file src="..\..\build\**\XLabs.Serialization.SystemTextJson.WP8.xml*" target="lib\wpa81" />
+    
+    <!-- Source Files for Symbol Server -->
+  </files>
+</package>

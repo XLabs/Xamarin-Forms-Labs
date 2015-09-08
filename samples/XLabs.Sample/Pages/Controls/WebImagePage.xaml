@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+					   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+					   x:Class="XLabs.Sample.Pages.Controls.WebImagePage"
+             Title="Web Image">
+  <StackLayout>
+    <controls:WebImage ImageUrl="http://www.stockvault.net/data/2011/05/31/124348/small.jpg" DefaultImage="imgNotAvailable.png"/>
+  </StackLayout>
+
+</ContentPage>

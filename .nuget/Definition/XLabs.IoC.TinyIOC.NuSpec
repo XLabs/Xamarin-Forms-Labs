@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+	<metadata>
+		<id>XLabs.IoC.TinyIoC</id>
+		<title>XLabs - IoC - TinyIoC</title>
+		<tags>Xamarin XLabs IoC TinyIoC</tags>
+		<version>2.0.5603</version>
+		<authors>XLabs Team</authors>
+		<licenseUrl>https://github.com/XForms/Xamarin-Forms-Labs/blob/master/LICENSE</licenseUrl>
+		<projectUrl>https://github.com/XForms/Xamarin-Forms-Labs</projectUrl>
+		<iconUrl>https://raw.githubusercontent.com/XLabs/Xamarin-Forms-Labs/master/Design/Icons/nuget/icon_nuget.png</iconUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>
+			XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.
+
+			This package contains helpers to work with IoC and TinyIOC
+		</description>
+		<summary>
+			XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.
+		</summary>
+		<releaseNotes>
+
+		</releaseNotes>
+		<language>en-US</language>
+		<dependencies>
+			<dependency id="XLabs.IoC" version="2.0.5603" />
+		</dependencies>
+	</metadata>
+	<files>
+		<file src="..\..\build\**\XLabs.IoC.TinyIoC.dll" target="lib\net45" />
+		<file src="..\..\build\**\XLabs.IoC.TinyIoC.dll.mdb" target="lib\net45" />
+		<file src="..\..\build\**\XLabs.IoC.TinyIoC.pdb" target="lib\net45" />
+		<file src="..\..\build\**\XLabs.IoC.TinyIoC.xml" target="lib\net45" />
+
+		<file src="..\..\build\**\XLabs.IoC.TinyIoC.Droid.dll" target="lib\MonoAndroid" />
+		<file src="..\..\build\**\XLabs.IoC.TinyIoC.Droid.dll.mdb" target="lib\MonoAndroid" />
+		<file src="..\..\build\**\XLabs.IoC.TinyIoC.Droid.pdb" target="lib\MonoAndroid" />
+		<file src="..\..\build\**\XLabs.IoC.TinyIoC.Droid.xml" target="lib\MonoAndroid" />
+
+		<file src="..\..\build\**\XLabs.IoC.TinyIoC.iOS.dll" target="lib\Xamarin.iOS10" />
+		<file src="..\..\build\**\XLabs.IoC.TinyIoC.iOS.dll.mdb" target="lib\Xamarin.iOS10" />
+		<file src="..\..\build\**\XLabs.IoC.TinyIoC.iOS.pdb" target="lib\Xamarin.iOS10" />
+		<file src="..\..\build\**\XLabs.IoC.TinyIoC.iOS.xml" target="lib\Xamarin.iOS10" />
+
+		<file src="..\..\build\**\XLabs.IoC.TinyIoC.WP8.dll" target="lib\wp8" />
+		<file src="..\..\build\**\XLabs.IoC.TinyIoC.WP8.dll.mdb" target="lib\wp8" />
+		<file src="..\..\build\**\XLabs.IoC.TinyIoC.WP8.pdb" target="lib\wp8" />
+		<file src="..\..\build\**\XLabs.IoC.TinyIoC.WP8.xml" target="lib\wp8" />
+
+		<file src="..\..\build\**\XLabs.IoC.TinyIoC.WP8.dll" target="lib\wpa81" />
+		<file src="..\..\build\**\XLabs.IoC.TinyIoC.WP8.dll.mdb" target="lib\wpa81" />
+		<file src="..\..\build\**\XLabs.IoC.TinyIoC.WP8.pdb" target="lib\wpa81" />
+		<file src="..\..\build\**\XLabs.IoC.TinyIoC.WP8.xml" target="lib\wpa81" />
+		
+		<!-- Source Files for Symbol Server -->
+		<file src="..\..\src\IoC\XLabs.IoC.TinyIOC\**\*.cs" target="src" />
+	</files>
+</package>

@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+			 x:Class="XLabs.Sample.Pages.Controls.CircleImagePage">
+	<StackLayout Orientation="Vertical">
+		<StackLayout Orientation="Horizontal">
+			<controls:CircleImage HeightRequest="75" WidthRequest="100" HorizontalOptions="Fill" Aspect="AspectFill">
+				<controls:CircleImage.Source>
+					<OnPlatform x:TypeArguments="ImageSource">
+						<OnPlatform.iOS>
+							<FileImageSource File="panic.jpg" />
+						</OnPlatform.iOS>
+						<OnPlatform.Android>
+							<FileImageSource File="panic.jpg" />
+						</OnPlatform.Android>
+						<OnPlatform.WinPhone>
+							<FileImageSource File="Images/panic.jpg" />
+						</OnPlatform.WinPhone>
+					</OnPlatform>
+				</controls:CircleImage.Source>
+			</controls:CircleImage>
+			<Label Text="Aspect Fill" />
+		</StackLayout>
+		<StackLayout Orientation="Horizontal">
+			<controls:CircleImage HeightRequest="75" WidthRequest="100" HorizontalOptions="Fill" Aspect="Fill" Source="panic.jpg">
+				<controls:CircleImage.Source>
+					<OnPlatform x:TypeArguments="ImageSource">
+						<OnPlatform.iOS>
+							<FileImageSource File="panic.jpg" />
+						</OnPlatform.iOS>
+						<OnPlatform.Android>
+							<FileImageSource File="panic.jpg" />
+						</OnPlatform.Android>
+						<OnPlatform.WinPhone>
+							<FileImageSource File="Images/panic.jpg" />
+						</OnPlatform.WinPhone>
+					</OnPlatform>
+				</controls:CircleImage.Source>
+			</controls:CircleImage>
+			<Label Text="Fill" />
+		</StackLayout>
+		<StackLayout Orientation="Horizontal">
+			<controls:CircleImage HeightRequest="75" WidthRequest="100" HorizontalOptions="Fill" Aspect="AspectFit" Source="panic.jpg">
+				<controls:CircleImage.Source>
+					<OnPlatform x:TypeArguments="ImageSource">
+						<OnPlatform.iOS>
+							<FileImageSource File="panic.jpg" />
+						</OnPlatform.iOS>
+						<OnPlatform.Android>
+							<FileImageSource File="panic.jpg" />
+						</OnPlatform.Android>
+						<OnPlatform.WinPhone>
+							<FileImageSource File="Images/panic.jpg" />
+						</OnPlatform.WinPhone>
+					</OnPlatform>
+				</controls:CircleImage.Source>
+			</controls:CircleImage>
+			<Label Text="Aspect Fit" />
+		</StackLayout>
+	</StackLayout>
+</ContentPage>

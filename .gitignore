@@ -71,6 +71,9 @@ ipch/
 *.vsp
 *.vspx
 
+# Visual Studio cache dir
+*.sln.ide/
+
 # TFS 2012 Local Workspace
 $tf/
 
@@ -185,3 +188,5 @@ src/Xamarin.Forms.Labs/Xamarin.Forms.Labs.userprefs
 *.jf
 
 ReleaseBuild/*
+
+src/Forms/XLabs.Forms.Droid/Resources/Resource.Designer.cs

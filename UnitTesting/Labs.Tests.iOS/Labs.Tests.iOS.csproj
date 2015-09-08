@@ -3,13 +3,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
-    <ProjectTypeGuids>{6BC8ED88-2882-458C-8E55-DFD12B67127B};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <ProjectGuid>{2873F9D8-66EF-4CD6-9314-6728638B5ECB}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>Labs.Tests.iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <AssemblyName>LabsTestsiOS</AssemblyName>
-    <NuGetPackageImportStamp>029f40c7</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>95766ebf</NuGetPackageImportStamp>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -23,6 +25,10 @@
     <MtouchLink>None</MtouchLink>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchDebug>true</MtouchDebug>
+    <MtouchUseRefCounting>true</MtouchUseRefCounting>
+    <MtouchI18n>
+    </MtouchI18n>
+    <MtouchArch>i386</MtouchArch>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>full</DebugType>
@@ -91,40 +97,29 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Autofac">
-      <HintPath>..\packages\Autofac.3.5.2\lib\portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\Autofac.dll</HintPath>
+      <HintPath>..\..\packages\Autofac.3.5.2\lib\portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\Autofac.dll</HintPath>
     </Reference>
-    <Reference Include="ExifLib">
-      <HintPath>..\..\src\Xamarin.Forms.Labs\packages\ExifLib.PCL.1.0.0\lib\portable-net45+sl50+win+WindowsPhoneApp81+wp80+MonoAndroid10+MonoTouch10\ExifLib.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.ServiceLocation">
-      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Unity">
-      <HintPath>..\packages\Unity.3.5.1405-prerelease\lib\portable-net45+wp80+win8+wpa81+MonoAndroid10+MonoTouch10\Microsoft.Practices.Unity.dll</HintPath>
-    </Reference>
-    <Reference Include="SimpleInjector">
-      <HintPath>..\packages\SimpleInjector.2.6.0-beta1\lib\portable-net4+sl4+wp8+win8+wpa81\SimpleInjector.dll</HintPath>
-    </Reference>
-    <Reference Include="SimpleInjector.Diagnostics">
-      <HintPath>..\packages\SimpleInjector.2.6.0-beta1\lib\portable-net4+sl4+wp8+win8+wpa81\SimpleInjector.Diagnostics.dll</HintPath>
+    <Reference Include="Ninject">
+      <HintPath>..\..\packages\Portable.Ninject.3.3.1\lib\Xamarin.iOS\Ninject.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Collections" />
+    <Reference Include="System.ComponentModel" />
+    <Reference Include="System.Diagnostics.Contracts" />
+    <Reference Include="System.Diagnostics.Debug" />
+    <Reference Include="System.Diagnostics.Tools" />
+    <Reference Include="System.Globalization" />
+    <Reference Include="System.Linq" />
+    <Reference Include="System.Linq.Expressions" />
+    <Reference Include="System.ObjectModel" />
+    <Reference Include="System.Reflection" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
-    <Reference Include="monotouch" />
+    <Reference Include="Xamarin.iOS" />
     <Reference Include="MonoTouch.NUnitLite" />
-    <Reference Include="Xamarin.Forms.Core">
-      <HintPath>..\packages\Xamarin.Forms.1.2.3.6246-pre1\lib\MonoTouch10\Xamarin.Forms.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Forms.Platform.iOS">
-      <HintPath>..\packages\Xamarin.Forms.1.2.3.6246-pre1\lib\MonoTouch10\Xamarin.Forms.Platform.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Ninject">
-      <HintPath>..\packages\Portable.Ninject.3.3\lib\monotouch\Ninject.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Forms.Xaml">
-      <HintPath>..\packages\Xamarin.Forms.1.2.3.6246-pre1\lib\MonoTouch10\Xamarin.Forms.Xaml.dll</HintPath>
+    <Reference Include="SimpleInjector, Version=2.8.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99">
+      <HintPath>..\..\packages\SimpleInjector.2.8.0\lib\portable-net4+sl4+wp8+win8+wpa81\SimpleInjector.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -138,67 +133,75 @@
   <ItemGroup>
     <Compile Include="DeviceTests.cs" />
     <Compile Include="Main.cs" />
+    <Compile Include="Tests\SecKeyTests.cs" />
     <Compile Include="UnitTestAppDelegate.cs" />
   </ItemGroup>
   <Import Project="..\SerializationTests\SerializationTests.projitems" Label="Shared" Condition="Exists('..\SerializationTests\SerializationTests.projitems')" />
   <Import Project="..\DeviceTests\DeviceTests.projitems" Label="Shared" Condition="Exists('..\DeviceTests\DeviceTests.projitems')" />
   <Import Project="..\IocTests\IocTests.projitems" Label="Shared" Condition="Exists('..\IocTests\IocTests.projitems')" />
-  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
+  <Import Project="..\SecureStorageTests\SecureStorageTests.projitems" Label="Shared" Condition="Exists('..\SecureStorageTests\SecureStorageTests.projitems')" />
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Xamarin.Forms.Labs\Xamarin.Forms.Labs\Xamarin.Forms.Labs.csproj">
-      <Project>{4D10DF5E-883D-468B-A854-4A53C7FE75AC}</Project>
-      <Name>Xamarin.Forms.Labs</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\Xamarin.Forms.Labs\Xamarin.Forms.Labs.iOS\Xamarin.Forms.Labs.iOS.csproj">
-      <Project>{31ACBE7A-3A07-46A5-804D-0C70454B3DC9}</Project>
-      <Name>Xamarin.Forms.Labs.iOS</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\XLabs\IOC\XLabs.Ioc.Autofac\XLabs.Ioc.Autofac.csproj">
-      <Project>{f8c821a9-155e-48bc-8998-1ed9de5cef1a}</Project>
+    <ProjectReference Include="..\..\src\IOC\XLabs.Ioc.Autofac\XLabs.Ioc.Autofac.csproj">
+      <Project>{F8C821A9-155E-48BC-8998-1ED9DE5CEF1A}</Project>
       <Name>XLabs.Ioc.Autofac</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\XLabs\IOC\XLabs.Ioc.Ninject\XLabs.Ioc.Ninject.csproj">
-      <Project>{ec5686a6-9846-4b09-8288-cb7396331b54}</Project>
+    <ProjectReference Include="..\..\src\IOC\XLabs.Ioc.Ninject\XLabs.Ioc.Ninject.csproj">
+      <Project>{EC5686A6-9846-4B09-8288-CB7396331B54}</Project>
       <Name>XLabs.Ioc.Ninject</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\XLabs\IOC\XLabs.Ioc.SimpleInjector\XLabs.Ioc.SimpleInjector.csproj">
-      <Project>{526f68e5-b35b-45fb-a54f-25793d2a1678}</Project>
+    <ProjectReference Include="..\..\src\IOC\XLabs.Ioc.SimpleInjector\XLabs.Ioc.SimpleInjector.csproj">
+      <Project>{526F68E5-B35B-45FB-A54F-25793D2A1678}</Project>
       <Name>XLabs.Ioc.SimpleInjector</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\XLabs\IOC\XLabs.Ioc.TinyIOC\XLabs.Ioc.TinyIOC.iOS.csproj">
-      <Project>{eb39302a-1e5a-424a-86c3-a418213bcd5a}</Project>
+    <ProjectReference Include="..\..\src\IOC\XLabs.Ioc.TinyIOC\XLabs.Ioc.TinyIOC.iOS.csproj">
+      <Project>{EB39302A-1E5A-424A-86C3-A418213BCD5A}</Project>
       <Name>XLabs.Ioc.TinyIOC.iOS</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\XLabs\IOC\XLabs.Ioc.Unity\XLabs.Ioc.Unity.csproj">
-      <Project>{4d2d1468-bbb3-434a-84ac-b85eb7147a40}</Project>
+    <ProjectReference Include="..\..\src\IOC\XLabs.Ioc.Unity\XLabs.Ioc.Unity.csproj">
+      <Project>{4D2D1468-BBB3-434A-84AC-B85EB7147A40}</Project>
       <Name>XLabs.Ioc.Unity</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\XLabs\IOC\XLabs.Ioc\XLabs.Ioc.csproj">
-      <Project>{2e200799-1170-49bf-a4aa-2a9228f8a213}</Project>
+    <ProjectReference Include="..\..\src\IOC\XLabs.Ioc\XLabs.Ioc.csproj">
+      <Project>{2E200799-1170-49BF-A4AA-2A9228F8A213}</Project>
       <Name>XLabs.Ioc</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\XLabs\Serialization\JsonNET\XLabs.Serialization.JsonNET.csproj">
-      <Project>{fce4e482-0df8-43ac-b574-8aaf74770d1c}</Project>
+    <ProjectReference Include="..\..\src\Platform\XLabs.Platform.iOS\XLabs.Platform.iOS.csproj">
+      <Project>{8D5A69A1-2F3A-4FB6-9067-3A0D6A0567A0}</Project>
+      <Name>XLabs.Platform.iOS</Name>
+      <IsAppExtension>False</IsAppExtension>
+      <IsWatchApp>False</IsWatchApp>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Platform\XLabs.Platform\XLabs.Platform.csproj">
+      <Project>{2A4D9DD4-326C-4824-AA3C-A9ED45CC898C}</Project>
+      <Name>XLabs.Platform</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Serialization\JsonNET\XLabs.Serialization.JsonNET.csproj">
+      <Project>{FCE4E482-0DF8-43AC-B574-8AAF74770D1C}</Project>
       <Name>XLabs.Serialization.JsonNET</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\XLabs\Serialization\ProtoBuf.Net\XLabs.Serialization.ProtoBuf.csproj">
-      <Project>{3bc0d126-89bf-4cc0-8395-8fbba85b2a54}</Project>
+    <ProjectReference Include="..\..\src\Serialization\ProtoBuf.Net\XLabs.Serialization.ProtoBuf.csproj">
+      <Project>{3BC0D126-89BF-4CC0-8395-8FBBA85B2A54}</Project>
       <Name>XLabs.Serialization.ProtoBuf</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\XLabs\Serialization\ServiceStack\XLabs.Serialization.ServiceStack.iOS.csproj">
-      <Project>{1f13e224-725f-41c4-9d3f-ad9850a90912}</Project>
+    <ProjectReference Include="..\..\src\Serialization\ServiceStack\XLabs.Serialization.ServiceStack.iOS.csproj">
+      <Project>{1F13E224-725F-41C4-9D3F-AD9850A90912}</Project>
       <Name>XLabs.Serialization.ServiceStack.iOS</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\XLabs\Serialization\XLabs.Serialization\XLabs.Serialization.csproj">
-      <Project>{8e7f7522-f018-466a-aa8a-147ee9341ba0}</Project>
+    <ProjectReference Include="..\..\src\Serialization\XLabs.Serialization\XLabs.Serialization.csproj">
+      <Project>{8E7F7522-F018-466A-AA8A-147EE9341BA0}</Project>
       <Name>XLabs.Serialization</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\src\XLabs.Core\XLabs.Core.csproj">
+      <Project>{15D9C404-F7E2-49F0-ACC9-63C4C008C860}</Project>
+      <Name>XLabs.Core</Name>
+    </ProjectReference>
   </ItemGroup>
-  <Import Project="..\packages\Xamarin.Forms.1.2.3.6246-pre1\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.2.3.6246-pre1\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Xamarin.Forms.1.2.3.6246-pre1\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.Forms.1.2.3.6246-pre1\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets'))" />
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
   </Target>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
 </Project>

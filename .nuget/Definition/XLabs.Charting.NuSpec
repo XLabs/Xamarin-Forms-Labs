@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+	<metadata>
+		<id>XLabs.Forms.Charting</id>
+		<title>XLabs - Forms - Charting</title>
+		<tags>Xamarin Xamarin.Forms XLabs charting charts chart</tags>
+		<version>2.0.5603</version>
+		<authors>XLabs Team</authors> 
+		<licenseUrl>https://github.com/XForms/Xamarin-Forms-Labs/blob/master/LICENSE</licenseUrl>
+		<projectUrl>https://github.com/XForms/Xamarin-Forms-Labs</projectUrl>
+		<iconUrl>https://raw.githubusercontent.com/XLabs/Xamarin-Forms-Labs/master/Design/Icons/nuget/icon_nuget.png</iconUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>
+			XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.
+
+			This package contains charting controls to use in yur Xamarin Forms application.
+		</description>
+		<summary>
+			XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.
+		</summary>
+		<releaseNotes>
+
+		</releaseNotes>
+		<language>en-US</language>
+		<dependencies>
+			<group>
+				<dependency id="Xamarin.Forms" version="1.4.1.6349" />
+			</group>
+		</dependencies>
+	</metadata>
+	<files>
+		<file src="..\..\build\**\XLabs.Forms.Charting.dll*" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
+		<file src="..\..\build\**\XLabs.Forms.Charting.dll.mdb*" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
+		<file src="..\..\build\**\XLabs.Forms.Charting.pdb*" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
+		<file src="..\..\build\**\XLabs.Forms.Charting.xml*" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
+		
+		<file src="..\..\build\**\XLabs.Forms.Charting.Droid.dll*" target="lib\MonoAndroid" />
+		<file src="..\..\build\**\XLabs.Forms.Charting.Droid.dll.mdb*" target="lib\MonoAndroid" />
+		<file src="..\..\build\**\XLabs.Forms.Charting.Droid.pdb*" target="lib\MonoAndroid" />
+		<file src="..\..\build\**\XLabs.Forms.Charting.Droid.xml*" target="lib\MonoAndroid" />
+		<file src="..\..\build\**\XLabs.Forms.Charting.dll*" target="lib\MonoAndroid" />
+		<file src="..\..\build\**\XLabs.Forms.Charting.dll.mdb*" target="lib\MonoAndroid" />
+		<file src="..\..\build\**\XLabs.Forms.Charting.pdb*" target="lib\MonoAndroid" />
+		<file src="..\..\build\**\XLabs.Forms.Charting.xml*" target="lib\MonoAndroid" />
+		
+		<file src="..\..\build\**\XLabs.Forms.Charting.iOS.dll*" target="lib\Xamarin.iOS10" />
+		<file src="..\..\build\**\XLabs.Forms.Charting.iOS.dll.mdb*" target="lib\Xamarin.iOS10" />
+		<file src="..\..\build\**\XLabs.Forms.Charting.iOS.pdb*" target="lib\Xamarin.iOS10" />
+		<file src="..\..\build\**\XLabs.Forms.Charting.iOS.xml*" target="lib\Xamarin.iOS10" />
+		<file src="..\..\build\**\XLabs.Forms.Charting.dll*" target="lib\Xamarin.iOS10" />
+		<file src="..\..\build\**\XLabs.Forms.Charting.dll.mdb*" target="lib\Xamarin.iOS10" />
+		<file src="..\..\build\**\XLabs.Forms.Charting.pdb*" target="lib\Xamarin.iOS10" />
+		<file src="..\..\build\**\XLabs.Forms.Charting.xml*" target="lib\Xamarin.iOS10" />
+		
+		<file src="..\..\build\**\XLabs.Forms.Charting.WP.dll*" target="lib\wp8" />
+		<file src="..\..\build\**\XLabs.Forms.Charting.WP.dll.mdb*" target="lib\wp8" />
+		<file src="..\..\build\**\XLabs.Forms.Charting.WP.pdb*" target="lib\wp8" />
+		<file src="..\..\build\**\XLabs.Forms.Charting.WP.xml*" target="lib\wp8" />
+		<file src="..\..\build\**\XLabs.Forms.Charting.dll*" target="lib\wp8" />
+		<file src="..\..\build\**\XLabs.Forms.Charting.dll.mdb*" target="lib\wp8" />
+		<file src="..\..\build\**\XLabs.Forms.Charting.pdb*" target="lib\wp8" />
+		<file src="..\..\build\**\XLabs.Forms.Charting.xml*" target="lib\wp8" />
+		
+		<!-- Source Files for Symbol Server -->
+		<file src="..\..\src\Forms\Charting\**\*.cs" target="src" />
+	</files>
+</package>

@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+	<metadata>
+		<id>XLabs.Serialization.ProtoBuf</id>
+		<title>XLabs - Serialization - ProtoBuf</title>
+		<tags>Xamarin XLabs Serialization ProtoBuf</tags>
+		<version>2.0.5603</version>
+		<authors>XLabs Team</authors>
+		<licenseUrl>https://github.com/XForms/Xamarin-Forms-Labs/blob/master/LICENSE</licenseUrl>
+		<projectUrl>https://github.com/XForms/Xamarin-Forms-Labs</projectUrl>
+		<iconUrl>https://raw.githubusercontent.com/XLabs/Xamarin-Forms-Labs/master/Design/Icons/nuget/icon_nuget.png</iconUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>
+			XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.
+
+			This package contains helpers for serialization with ProtoBuf
+		</description>
+		<summary>
+			XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.
+		</summary>
+		<releaseNotes>
+
+		</releaseNotes>
+		<dependencies>
+			<dependency id="protobuf-net" version="2.0.0.668" />
+			<dependency id="XLabs.Serialization" version="2.0.5603" />
+		</dependencies>
+	</metadata>
+	<files>	
+		<file src="..\..\build\**\XLabs.Serialization.ProtoBuf.dll*" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
+		<file src="..\..\build\**\XLabs.Serialization.ProtoBuf.mdb*" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
+		<file src="..\..\build\**\XLabs.Serialization.ProtoBuf.pdb*" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
+		<file src="..\..\build\**\XLabs.Serialization.ProtoBuf.xml*" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
+
+		<file src="..\..\build\**\XLabs.Serialization.ProtoBuf.dll*" target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1" />
+		<file src="..\..\build\**\XLabs.Serialization.ProtoBuf.mdb*" target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1" />
+		<file src="..\..\build\**\XLabs.Serialization.ProtoBuf.pdb*" target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1" />
+		<file src="..\..\build\**\XLabs.Serialization.ProtoBuf.xml*" target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1" />
+
+		<!-- Source Files for Symbol Server -->
+		<file src="..\..\src\Serialization\ProtoBuf.NET\**\*.cs" target="src" />
+	</files>
+</package>

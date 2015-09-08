@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+    x:Class="XLabs.Sample.Pages.Controls.ExtendedCellPage" 
+	BackgroundColor="Gray" Title="Extended Cells">
+	<ContentPage.Content>
+		<StackLayout x:Name="StkRoot" Padding="10,0,10,0">
+			<controls:ExtendedLabel Text="This sample shows how to show/hide the separator and set it's padding and color, also Cell BackgroundColor and show discloursure on IOS"
+        					FontNameAndroid="fonts/Roboto-Light.ttf"
+        					FontNameIOS="Roboto-Light"
+        					FontSize="12"
+        					HorizontalOptions="StartAndExpand"
+							 VerticalOptions="Center" />
+
+			<ListView ItemsSource="{Binding Images}">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<controls:ExtendedViewCell SeparatorPadding="0,0,0,0" BackgroundColor="Red"
+												   SeparatorColor="Blue" ShowDisclousure="True">
+							<controls:ExtendedViewCell.View>
+								<Grid  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="10,5,5,5" HeightRequest="100">
+									<controls:ExtendedLabel Text="{Binding FirstName}"
+        								FontNameAndroid="fonts/Roboto-Light.ttf"
+        								FontNameIOS="Roboto-Light"
+        								FontSize="22"
+        								HorizontalOptions="StartAndExpand"
+								 		VerticalOptions="Center" />
+								</Grid>
+							</controls:ExtendedViewCell.View>
+						</controls:ExtendedViewCell>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+
+			<ListView ItemsSource="{Binding Images}">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<controls:ExtendedEntryCell Text="{Binding}" IsPassword="True" />
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>
+

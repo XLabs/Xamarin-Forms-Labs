@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 #if WINDOWS_PHONE
 using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
@@ -8,13 +8,13 @@ using Test = Microsoft.VisualStudio.TestPlatform.UnitTestFramework.TestMethodAtt
 using NUnit.Framework;
 #endif
 
-#if WINDOWS_PHONE
-using PlatformDevice = Xamarin.Forms.Labs.WindowsPhoneDevice;
-#elif __IOS__
-using PlatformDevice = Xamarin.Forms.Labs.AppleDevice;
-#elif __ANDROID__
-using PlatformDevice = Xamarin.Forms.Labs.AndroidDevice;
-#endif
+//#if WINDOWS_PHONE
+//using PlatformDevice = Xamarin.Forms.Labs.WindowsPhoneDevice;
+//#elif __IOS__
+//using PlatformDevice = Xamarin.Forms.Labs.AppleDevice;
+//#elif __ANDROID__
+//using PlatformDevice = XLabs..AndroidDevice;
+//#endif
 
 namespace DeviceTests
 {

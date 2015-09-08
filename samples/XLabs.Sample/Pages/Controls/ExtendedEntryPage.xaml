@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+			 x:Class="XLabs.Sample.Pages.Controls.ExtendedEntryPage"
+			 Title="Extended Entry">
+	<ContentPage.Content>
+		<ScrollView>
+			<StackLayout Padding="0,40,0,0" x:Name="StackLayout">
+				<controls:ExtendedEntry Placeholder="Default placeholder text" />
+				<controls:ExtendedEntry Placeholder="Default Password placeholder text" IsPassword="true" />
+				<controls:ExtendedEntry Placeholder="RED placeholder text" PlaceholderTextColor="Red" />
+				<controls:ExtendedEntry Placeholder="RED Password placeholder text" IsPassword="true"
+										PlaceholderTextColor="Red" />
+				<controls:ExtendedEntry Placeholder="Custom font"/>
+				<controls:ExtendedEntry Placeholder="Font 40 Size" Font="40" />
+				<controls:ExtendedEntry Placeholder="Large Font" Font="Large" />
+				<controls:ExtendedEntry Placeholder="Medium Font" Font="Medium" />
+				<controls:ExtendedEntry Placeholder="Small Font" Font="Small" />
+				<controls:ExtendedEntry Placeholder="Italic Font" Font="Italic" />
+				<controls:ExtendedEntry Placeholder="Center Align" XAlign="Center" />
+				<controls:ExtendedEntry Placeholder="Right Align" XAlign="End" />
+				<controls:ExtendedEntry Placeholder="No border" HasBorder="false" />
+        <controls:ExtendedEntry Placeholder="MaxLength char 5" HasBorder="false" MaxLength="5"/>
+			</StackLayout>
+		</ScrollView>
+	</ContentPage.Content>
+</ContentPage>

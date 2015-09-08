@@ -1,0 +1,450 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{DC133A2F-E49E-49E3-B43D-BFB957CB5482}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>XLabs.Sample</RootNamespace>
+    <AssemblyName>XLabs.Sample</AssemblyName>
+    <TargetFrameworkProfile>Profile78</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\src\Xamarin.Forms.Labs\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <NuGetPackageImportStamp>1177dc9d</NuGetPackageImportStamp>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <DocumentationFile>bin\Debug\XLabs.Sample.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="App.cs" />
+    <Compile Include="Data\IImageListSource.cs" />
+    <Compile Include="Data\ImageListItem.cs" />
+    <Compile Include="Data\JsonImageListSource.cs" />
+    <Compile Include="Pages\Controls\CarouselSample.xaml.cs">
+      <DependentUpon>CarouselSample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Controls\ButtonGroupPage.cs" />
+    <Compile Include="Pages\Controls\ButtonPage.xaml.cs">
+      <DependentUpon>ButtonPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Controls\Charts\BarChartPage.xaml.cs">
+      <DependentUpon>BarChartPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Controls\Charts\BoundChartPage.xaml.cs">
+      <DependentUpon>BoundChartPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Controls\Charts\BoundChartViewModel.cs" />
+    <Compile Include="Pages\Controls\Charts\CombinationPage.xaml.cs">
+      <DependentUpon>CombinationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Controls\Charts\LineChartPage.xaml.cs">
+      <DependentUpon>LineChartPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Controls\Charts\PieChartPage.xaml.cs">
+      <DependentUpon>PieChartPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Controls\CircleImagePage.xaml.cs">
+      <DependentUpon>CircleImagePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Controls\DragPage.xaml.cs">
+      <DependentUpon>DragPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Controls\DynamicList\BasicList.cs" />
+    <Compile Include="Pages\Controls\DynamicList\DynamicListView.xaml.cs">
+      <DependentUpon>DynamicListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Controls\ExtendedButtonPage.xaml.cs">
+      <DependentUpon>ExtendedButtonPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Controls\ExtendedEntryPage.xaml.cs">
+      <DependentUpon>ExtendedEntryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Controls\GestureSample.xaml.cs">
+      <DependentUpon>GestureSample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Controls\PopupPage.xaml.cs">
+      <DependentUpon>PopupPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Controls\RadioButtonPage.xaml.cs">
+      <DependentUpon>RadioButtonPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Controls\RepeaterViewPage.cs" />
+    <Compile Include="Pages\Controls\ExtendedSliderPage.cs" />
+    <Compile Include="Pages\Controls\SegmentedControlViewPage.xaml.cs">
+      <DependentUpon>SegmentedControlViewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Controls\SegmentPage.cs" />
+    <Compile Include="Pages\Controls\UsPresidentList.cs" />
+    <Compile Include="Pages\Controls\WebHybridTestPage.cs" />
+    <Compile Include="Pages\Samples\WebHybridSamplePage.cs" />
+    <Compile Include="Pages\Services\EmailPage.cs" />
+    <Compile Include="Pages\Services\GyroscopePage.cs" />
+    <Compile Include="Pages\Services\SecureStoragePage.xaml.cs">
+      <DependentUpon>SecureStoragePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Services\WaveRecorderPage.xaml.cs">
+      <DependentUpon>WaveRecorderPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Controls\WebImagePage.xaml.cs">
+      <DependentUpon>WebImagePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Services\AbsoluteLayoutWithDisplayInfoPage.cs" />
+    <EmbeddedResource Include="Data\PresidentList.json" />
+    <None Include="packages.config" />
+    <None Include="Pages\Services\BluetoothPage.cs" />
+    <Compile Include="Pages\Services\CameraPage.xaml.cs">
+      <DependentUpon>CameraPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Services\ExtendedDeviceInfoPage.cs" />
+    <Compile Include="Pages\Services\FontManagerPage.cs" />
+    <Compile Include="Pages\Services\NfcDevicePage.cs" />
+    <Compile Include="Pages\Controls\ValidatorSample.xaml.cs">
+      <DependentUpon>ValidatorSample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Pages\Controls\CalendarPage.xaml.cs">
+      <DependentUpon>CalendarPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Services\TextToSpeechPage.xaml.cs">
+      <DependentUpon>TextToSpeechPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\CameraViewModel.cs" />
+    <Compile Include="ViewModel\GestureSampleVM.cs" />
+    <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\MovieSearchViewModel.cs" />
+    <Compile Include="ViewModel\RepeaterViewViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="Pages\Controls\ExtendedLabelPage.xaml.cs">
+      <DependentUpon>ExtendedLabelPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Controls\AutoCompletePage.xaml.cs">
+      <DependentUpon>AutoCompletePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Services\PhoneServicePage.xaml.cs">
+      <DependentUpon>PhoneServicePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\MvvmSampleViewModel.cs" />
+    <Compile Include="ViewModel\NewPageViewModel.cs" />
+    <Compile Include="Pages\Mvvm\MvvmSamplePage.xaml.cs">
+      <DependentUpon>MvvmSamplePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Mvvm\NewPageView.xaml.cs">
+      <DependentUpon>NewPageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\WaveRecorderViewModel.cs" />
+    <Compile Include="ViewModel\WebHybridViewModel.cs" />
+    <Compile Include="Pages\Mvvm\CanvasWebHybrid.xaml.cs">
+      <DependentUpon>CanvasWebHybrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\GeolocatorViewModel.cs" />
+    <Compile Include="Pages\Services\GeolocatorPage.xaml.cs">
+      <DependentUpon>GeolocatorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Services\AcceleratorSensorPage.cs" />
+    <Compile Include="Pages\Services\CacheServicePage.xaml.cs">
+      <DependentUpon>CacheServicePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\CacheServiceViewModel.cs" />
+    <Compile Include="Pages\Controls\ExtendedCellPage.xaml.cs">
+      <DependentUpon>ExtendedCellPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Services\SoundPage.xaml.cs">
+      <DependentUpon>SoundPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\SoundServiceViewModel.cs" />
+    <Compile Include="Pages\Controls\GridViewPage.xaml.cs">
+      <DependentUpon>GridViewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Controls\ExtendedScrollView.xaml.cs">
+      <DependentUpon>ExtendedScrollView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Controls\CheckBoxPage.xaml.cs">
+      <DependentUpon>CheckBoxPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Controls\ImageGalleryPage.xaml.cs">
+      <DependentUpon>ImageGalleryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Controls\CameraViewPage.xaml.cs">
+      <DependentUpon>CameraViewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Controls\SeparatorPage.cs" />
+    <Compile Include="ViewModel\AutoCompleteViewModel.cs" />
+    <Compile Include="Model\TestModel.cs" />
+    <Compile Include="Pages\Samples\WebPageLoadSample.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Services\CameraPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Services\CacheServicePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Controls\ExtendedCellPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Services\SoundPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Controls\GridViewPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <LogicalName>GridViewPage.xaml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Controls\ExtendedScrollView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <LogicalName>ExtendedScrollView.xaml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Controls\CheckBoxPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <LogicalName>CheckBoxPage.xaml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Controls\ImageGalleryPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <LogicalName>ImageGallery.xaml</LogicalName>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Controls\CameraViewPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Controls\CalendarPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Services\TextToSpeechPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Controls\ExtendedLabelPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Controls\AutoCompletePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Services\PhoneServicePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Mvvm\MvvmSamplePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Mvvm\NewPageView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Mvvm\CanvasWebHybrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Services\GeolocatorPage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Caching\XLabs.Caching\XLabs.Caching.csproj">
+      <Project>{8DEA9048-3715-4F76-9C7C-390A4256D833}</Project>
+      <Name>XLabs.Caching</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Forms\Charting\XLabs.Forms.Charting\XLabs.Forms.Charting.csproj">
+      <Project>{4263404D-89B9-411B-9929-70FA85EAEC33}</Project>
+      <Name>XLabs.Forms.Charting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Forms\XLabs.Forms\XLabs.Forms.csproj">
+      <Project>{DC0BDD11-9352-44E4-BCEB-8AE56794BB41}</Project>
+      <Name>XLabs.Forms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\IOC\XLabs.Ioc\XLabs.Ioc.csproj">
+      <Project>{2E200799-1170-49BF-A4AA-2A9228F8A213}</Project>
+      <Name>XLabs.Ioc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Platform\XLabs.Platform\XLabs.Platform.csproj">
+      <Project>{2A4D9DD4-326C-4824-AA3C-A9ED45CC898C}</Project>
+      <Name>XLabs.Platform</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Serialization\XLabs.Serialization\XLabs.Serialization.csproj">
+      <Project>{8E7F7522-F018-466A-AA8A-147EE9341BA0}</Project>
+      <Name>XLabs.Serialization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\XLabs.Core\XLabs.Core.csproj">
+      <Project>{15D9C404-F7E2-49F0-ACC9-63C4C008C860}</Project>
+      <Name>XLabs.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Controls\ButtonPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Settings.StyleCop" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Controls\WebImagePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Controls\DynamicList\DynamicListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Controls\Charts\CombinationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Controls\Charts\LineChartPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Controls\Charts\BarChartPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Controls\Charts\PieChartPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Controls\Charts\BoundChartPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Controls\PopupPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Controls\ExtendedEntryPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Services\WaveRecorderPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Controls\CircleImagePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Controls\SegmentedControlViewPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Controls\GestureSample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Controls\ValidatorSample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Controls\CarouselSample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="SQLite.Net">
+      <HintPath>..\..\packages\SQLite.Net-PCL.2.5.1\lib\portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1\SQLite.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Core, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\packages\Xamarin.Forms.1.4.4.6392\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Platform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\packages\Xamarin.Forms.1.4.4.6392\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Xaml, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\packages\Xamarin.Forms.1.4.4.6392\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Controls\RadioButtonPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Xamarin.Forms.1.4.4.6392\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Forms.1.4.4.6392\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets'))" />
+  </Target>
+  <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <Import Project="..\..\packages\Xamarin.Forms.1.3.2.6299-pre1\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.1.3.2.6299-pre1\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Services\SecureStoragePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Controls\DragPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Controls\ExtendedButtonPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Data\WebHybridTest.html" />
+  </ItemGroup>
+  <Import Project="..\..\packages\Xamarin.Forms.1.4.4.6392\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.1.4.4.6392\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
+</Project>

@@ -1,10 +1,7 @@
-using System;
-using NUnit.Framework;
-using Xamarin.Forms.Labs;
-using Xamarin.Forms.Labs.iOS;
-
 namespace Labs.Tests.iOS
 {
+    using NUnit.Framework;
+
     [TestFixture]
     public class DeviceTests
     {

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 x:Class="XLabs.Sample.Pages.Services.PhoneServicePage"
+			 Title="Phone Service">
+	<ContentPage.Content>
+		<StackLayout>
+			<Entry Text="{Binding NumberToCall, Mode=TwoWay}" />
+			<Button x:Name="BtnSpeak" Text="Call" WidthRequest="200" HeightRequest="100" Command="{Binding CallCommand}" />
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>
+

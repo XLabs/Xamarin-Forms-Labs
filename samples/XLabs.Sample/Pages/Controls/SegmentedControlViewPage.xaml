@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+			 x:Class="XLabs.Sample.Pages.Controls.SegmentedControlViewPage">
+	<ContentPage.Content>
+		<StackLayout x:Name="Stack" Padding="5,40,5,5">
+			<controls:SegmentedControlView x:Name="Filter" SegmentsItens="Mine;Active;Popular" TintColor="Blue" SelectedItem="{Binding Filter, Mode=TwoWay}" HeightRequest="44" />
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

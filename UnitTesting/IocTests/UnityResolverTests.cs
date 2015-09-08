@@ -1,7 +1,4 @@
-﻿//#if !__IOS__
-using System;
-using System.Collections.Generic;
-using System.Text;
+//#if !__IOS__
 
 #if WINDOWS_PHONE
 using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
@@ -13,20 +10,20 @@ using NUnit.Framework;
 
 namespace IocTests
 {
-    using Xamarin.Forms.Labs.Services;
-    using Xamarin.Forms.Labs.Services.Unity;
+    using XLabs.Ioc;
+    using XLabs.Ioc.Unity;
 
     [TestFixture()]
     public class UnityResolverTests : ResolveTests
     {
 
-        protected override Xamarin.Forms.Labs.Services.IResolver GetEmptyResolver()
+        protected override IResolver GetEmptyResolver()
         {
             return GetEmptyContainer().GetResolver();
             //return new UnityResolver(new Microsoft.Practices.Unity.UnityContainer());
         }
 
-        protected override Xamarin.Forms.Labs.Services.IDependencyContainer GetEmptyContainer()
+        protected override IDependencyContainer GetEmptyContainer()
         {
             return new UnityDependencyContainer();
         }

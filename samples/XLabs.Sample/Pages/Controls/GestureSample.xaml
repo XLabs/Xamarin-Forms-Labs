@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:lp="clr-namespace:XLabs.Forms.Pages;assembly=XLabs.Forms"
+             xmlns:lcon="clr-namespace:XLabs.Forms.Converter;assembly=XLabs.Forms"
+             xmlns:lb="clr-namespace:XLabs.Forms.Behaviors;assembly=XLabs.Forms"
+             xmlns:lc="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+			 x:Class="XLabs.Sample.Pages.Controls.GestureSample">
+
+	<StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+		<StackLayout.Padding>
+			<OnPlatform x:TypeArguments="Thickness"
+						iOS="20,40,20,20"
+						Android="20,20,20,20"
+						WinPhone="20,20,20,20" />
+		</StackLayout.Padding>
+		<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+			<Button Text="Clear Gesture list" Command="{Binding ClearGestures}"/>
+			<Button Text="Toggle Exclude Children" Command="{Binding ToggleChildren}"/>
+		</StackLayout>
+
+		<StackLayout>
+			<Label HorizontalOptions="Center" Text="{Binding FrameText}"/>
+			<lc:GesturesContentView  ExcludeChildren="{Binding ExcludeChildren}">
+				<!--Enclosing gesture content view MUST be present-->
+				<!--Same as any content view a GesturesContentView can only have one direct child-->
+				<StackLayout>
+					<Frame OutlineColor="White" Padding="10,0" HorizontalOptions="FillAndExpand" HeightRequest="50">
+						<lb:Gestures.Interests>
+							<lb:GestureCollection>
+								<lb:GestureInterest GestureType="SingleTap" GestureCommand="{Binding DumpGesture}" GestureParameter="{Binding GestureCount}"/>
+								<lb:GestureInterest GestureType="DoubleTap" GestureCommand="{Binding DumpGesture}" GestureParameter="{Binding GestureCount}"/>
+								<lb:GestureInterest GestureType="LongPress" GestureCommand="{Binding DumpGesture}" GestureParameter="{Binding GestureCount}"/>
+								<!--Left,up will get all gestures to the left and up, but will ignore left or left down so we can have another left-->
+								<lb:GestureInterest GestureType="Swipe" Direction="Left,Up" GestureCommand="{Binding DumpGesture}" GestureParameter="{Binding GestureCount}"/>
+								<!--This left will get left and left down-->
+								<lb:GestureInterest GestureType="Swipe" Direction="Left" GestureCommand="{Binding DumpGesture}" GestureParameter="{Binding GestureCount}"/>
+								<lb:GestureInterest GestureType="Swipe" Direction="Right" GestureCommand="{Binding DumpGesture}" GestureParameter="{Binding GestureCount}"/>
+								<lb:GestureInterest GestureType="Swipe" Direction="Up" GestureCommand="{Binding DumpGesture}" GestureParameter="{Binding GestureCount}"/>
+								<lb:GestureInterest GestureType="Swipe" Direction="Down" GestureCommand="{Binding DumpGesture}" GestureParameter="{Binding GestureCount}"/>
+							</lb:GestureCollection>
+						</lb:Gestures.Interests>
+						<Label HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding LabelText}" BackgroundColor="Green"/>
+					</Frame>
+					<Label Text="This frame only accepts taps events"/>
+					<Frame OutlineColor="White" Padding="10,0" HorizontalOptions="FillAndExpand" HeightRequest="25">
+						<lb:Gestures.Interests>
+							<lb:GestureCollection>
+								<lb:GestureInterest GestureType="SingleTap" GestureCommand="{Binding DumpGesture}" GestureParameter="{Binding GestureCount}"/>
+								<lb:GestureInterest GestureType="DoubleTap" GestureCommand="{Binding DumpGesture}" GestureParameter="{Binding GestureCount}"/>
+								<lb:GestureInterest GestureType="LongPress" GestureCommand="{Binding DumpGesture}" GestureParameter="{Binding GestureCount}"/>
+							</lb:GestureCollection>
+						</lb:Gestures.Interests>
+						<Label VerticalOptions="Start" HorizontalOptions="Center" Text="Tap only area"/>
+					</Frame>
+				</StackLayout>
+			</lc:GesturesContentView>
+
+		</StackLayout>
+		<ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+			<ListView ItemsSource="{Binding Gestures}"/>
+		</ScrollView>
+	</StackLayout>
+
+
+</ContentPage>

@@ -1,7 +1,3 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
 #if WINDOWS_PHONE
 using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
 using TestFixture = Microsoft.VisualStudio.TestPlatform.UnitTestFramework.TestClassAttribute;
@@ -12,15 +8,16 @@ using NUnit.Framework;
 
 namespace IocTests
 {
-    using Xamarin.Forms.Labs.Services;
-    using Xamarin.Forms.Labs.Services.SimpleInjectorContainer;
+    using SimpleInjector;
+    using XLabs.Ioc;
+    using XLabs.Ioc.SimpleInjectorContainer;
 
     [TestFixture()]
     public class SimpleInjectorResolveTests : ResolveTests
     {
         protected override IResolver GetEmptyResolver()
         {
-            return new SimpleInjectorResolver(new SimpleInjector.Container());
+            return new SimpleInjectorResolver(new Container());
         }
 
         protected override IDependencyContainer GetEmptyContainer()

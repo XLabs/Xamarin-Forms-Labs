@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+					   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:charting="clr-namespace:XLabs.Forms.Charting.Controls;assembly=XLabs.Forms.Charting"
+					   x:Class="XLabs.Sample.Pages.Controls.Charts.PieChartPage">
+  <StackLayout x:Name="PageLayout">
+
+    <charting:Chart x:Name="PieChart" WidthRequest="300" HeightRequest="500">
+
+      <charting:Chart.Series>
+        <charting:Series Type="Pie">
+
+          <charting:Series.Points>
+            <charting:DataPoint Label="Jan" Value="25" Color="Blue"/>
+            <charting:DataPoint Label="Feb" Value="40" Color="Green"/>
+            <charting:DataPoint Label="March" Value="45" Color="Yellow"/>
+          </charting:Series.Points>
+
+        </charting:Series>
+      </charting:Chart.Series>
+
+    </charting:Chart>
+
+  </StackLayout>
+</ContentPage>

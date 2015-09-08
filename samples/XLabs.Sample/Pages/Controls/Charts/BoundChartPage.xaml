@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:charting="clr-namespace:XLabs.Forms.Charting.Controls;assembly=XLabs.Forms.Charting"
+			 x:Class="XLabs.Sample.Pages.Controls.Charts.BoundChartPage">
+  <StackLayout x:Name="PageLayout" Orientation="Vertical">
+    <StackLayout Orientation="Horizontal">
+      <Button Text="Yellow" Command="{Binding ChangeColorYellowCommand}" />
+      <Button Text="Green"  Command="{Binding ChangeColorGreenCommand}" />
+      <Button Text="White"  Command="{Binding ChangeColorWhiteCommand}" />
+    </StackLayout>
+    <StackLayout Orientation="Horizontal">
+      <Button Text="Change source chart" Command="{Binding ChangeSourceCommand}" />
+    </StackLayout>
+    
+    <charting:Chart x:Name="CombinationChart" Color="{Binding Color}" WidthRequest="450" HeightRequest="600" Spacing="10" DataSource="{Binding ChartData}" XPath="Item1" YPath="Item2">
+
+      <charting:Chart.Series>
+        <charting:Series Type="Bar" Color="Red" />
+        <charting:Series Type="Bar" Color="Blue" />
+        <charting:Series Type="Line" Color="Green" />
+      </charting:Chart.Series>
+
+    </charting:Chart>
+
+  </StackLayout>
+</ContentPage>

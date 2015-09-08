@@ -1,7 +1,3 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
 #if WINDOWS_PHONE
 using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
 using TestFixture = Microsoft.VisualStudio.TestPlatform.UnitTestFramework.TestClassAttribute;
@@ -12,8 +8,8 @@ using NUnit.Framework;
 
 namespace IocTests
 {
-    using Xamarin.Forms.Labs.Services;
-    using Xamarin.Forms.Labs.Services.Ninject;
+    using XLabs.Ioc;
+    using XLabs.Ioc.Ninject;
 
     [TestFixture()]
     public class NinjectResolveTests : ResolveTests

@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E11E6AB0-2D1D-4B50-A835-7C6B342797EF}</ProjectGuid>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XLabs.Forms</RootNamespace>
+    <AssemblyName>XLabs.Forms.Droid</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <NuGetPackageImportStamp>29fac22a</NuGetPackageImportStamp>
+    <TargetFrameworkVersion>v5.1</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\build\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;__ANDROID__</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidLinkMode>None</AndroidLinkMode>
+    <DocumentationFile>..\..\..\build\XLabs.Forms.Droid.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\build\</OutputPath>
+    <DefineConstants>TRACE;__ANDROID__</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <DocumentationFile>..\..\..\build\XLabs.Forms.Droid.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FormsViewGroup, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Xamarin.Forms.1.4.4.6392\lib\MonoAndroid10\FormsViewGroup.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Mono.Android" />
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Collections" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ObjectModel" />
+    <Reference Include="System.Threading.Tasks" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Xamarin.Android.Support.v4">
+      <HintPath>..\..\..\packages\Xamarin.Android.Support.v4.22.1.1.1\lib\MonoAndroid403\Xamarin.Android.Support.v4.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Core, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Xamarin.Forms.1.4.4.6392\lib\MonoAndroid10\Xamarin.Forms.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Xamarin.Forms.1.4.4.6392\lib\MonoAndroid10\Xamarin.Forms.Platform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Platform.Android, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Xamarin.Forms.1.4.4.6392\lib\MonoAndroid10\Xamarin.Forms.Platform.Android.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Xaml, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Xamarin.Forms.1.4.4.6392\lib\MonoAndroid10\Xamarin.Forms.Xaml.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\XLabs.Forms\services\FontManager.designer.cs">
+      <Link>Services\FontManager.designer.cs</Link>
+      <DependentUpon>..\Services\FontManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Calendar\CalendarViewRenderer.cs" />
+    <Compile Include="Controls\Calendar\MonoDroid.TimesSquare\CalendarArrowView.cs" />
+    <Compile Include="Controls\Calendar\MonoDroid.TimesSquare\CalendarCellView.cs" />
+    <Compile Include="Controls\Calendar\MonoDroid.TimesSquare\CalendarGridView.cs" />
+    <Compile Include="Controls\Calendar\MonoDroid.TimesSquare\CalendarMonthPageTransformer.cs" />
+    <Compile Include="Controls\Calendar\MonoDroid.TimesSquare\CalendarPickerView.cs" />
+    <Compile Include="Controls\Calendar\MonoDroid.TimesSquare\CalendarRowView.cs" />
+    <Compile Include="Controls\Calendar\MonoDroid.TimesSquare\Logr.cs" />
+    <Compile Include="Controls\Calendar\MonoDroid.TimesSquare\MonthAdapter.cs" />
+    <Compile Include="Controls\Calendar\MonoDroid.TimesSquare\MonthCellDescriptor.cs" />
+    <Compile Include="Controls\Calendar\MonoDroid.TimesSquare\MonthDescriptor.cs" />
+    <Compile Include="Controls\Calendar\MonoDroid.TimesSquare\MonthView.cs" />
+    <Compile Include="Controls\Calendar\MonoDroid.TimesSquare\StyleDescriptor.cs" />
+    <Compile Include="Controls\CameraView\CameraViewRenderer.cs" />
+    <Compile Include="Controls\CheckBox\CheckBoxRenderer.cs" />
+    <Compile Include="Controls\CircleImage\CircleImageRenderer.cs" />
+    <Compile Include="Controls\DragContentView\DragContentViewRenderer.cs" />
+    <Compile Include="Controls\DynamicListView\DynamicListViewRenderer.cs" />
+    <Compile Include="Controls\ExtendedButton\ExtendedButtonRenderer.cs" />
+    <Compile Include="Controls\ExtendedEditor\ExtendedEditorRenderer.cs" />
+    <Compile Include="Controls\ExtendedEntryCell\ExtendedEntryCellRenderer.cs" />
+    <Compile Include="Controls\ExtendedEntry\ExtendedEntryRenderer.cs" />
+    <Compile Include="Controls\ExtendedLabel\ExtendedLabelRenderer.cs" />
+    <Compile Include="Controls\ExtendedScrollView\ExtendedScrollViewRenderer.cs" />
+    <Compile Include="Controls\ExtendedSwitch\ExtendedSwitchRenderer.cs" />
+    <Compile Include="Controls\ExtendedTableView\ExtendedTableViewRenderer.cs" />
+    <Compile Include="Controls\ExtendedTextCell\ExtendedTextCellRenderer.cs" />
+    <Compile Include="Controls\GesturesContentView\GesturesContentViewRenderer.cs" />
+    <Compile Include="Controls\GradientContentView\GradientContentViewRenderer.cs" />
+    <Compile Include="Controls\GridView\GridViewRenderer.cs" />
+    <Compile Include="..\XLabs.Forms\Controls\HybridWebViewRenderer.designer.cs">
+      <Link>Controls\HybridWebView\HybridWebViewRenderer.designer.cs</Link>
+    </Compile>
+    <Compile Include="Controls\HybridWebView\HybridWebViewRenderer.cs" />
+    <Compile Include="Controls\HyperLinkLabel\HyperLinkLabelRenderer.cs" />
+    <Compile Include="..\XLabs.Forms\Controls\ImageButtonRenderer.shared.cs">
+      <Link>Controls\ImageButtonRenderer\ImageButtonRenderer.designer.cs</Link>
+    </Compile>
+    <Compile Include="Controls\ImageButton\ImageButtonRenderer.cs" />
+    <Compile Include="Controls\ImageGallery\ImageGalleryRenderer.cs" />
+    <Compile Include="Controls\RadioButton\RadioButtonRenderer.cs" />
+    <Compile Include="Controls\SensorBar\SensorBarDroidView.cs" />
+    <Compile Include="Controls\SensorBar\SensorBarViewRenderer.cs" />
+    <Compile Include="Controls\Separator\SeparatorDroidView.cs" />
+    <Compile Include="Controls\Separator\SeparatorRenderer.cs" />
+    <Compile Include="Controls\WebImage\WebImageRenderer.cs" />
+    <Compile Include="Extensions\AlignmentExtensions.cs" />
+    <Compile Include="Extensions\FontExtensions.cs" />
+    <Compile Include="Extensions\ViewExtensions.cs" />
+    <Compile Include="Pages\ExtendedMasterDetailPageRenderer.cs" />
+    <Compile Include="Services\FontManager.cs" />
+    <Compile Include="Resources\Resource.Designer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XFormsApp.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Resources\AboutResources.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\Strings.xml" />
+    <AndroidResource Include="Resources\color\calendar_text_selector.xml" />
+    <AndroidResource Include="Resources\values\attrs.xml" />
+    <AndroidResource Include="Resources\values\colors.xml" />
+    <AndroidResource Include="Resources\values\dimens.xml" />
+    <AndroidResource Include="Resources\values\styles.xml" />
+    <AndroidResource Include="Resources\layout\dialog.xml" />
+    <AndroidResource Include="Resources\layout\month.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\week.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\calendar_bg_selector.xml" />
+    <AndroidResource Include="Resources\layout\calendar_picker.xml" />
+    <AndroidResource Include="Resources\drawable\ad16.jpg" />
+    <AndroidResource Include="Resources\layout\calendar_pager_layout.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\IOC\XLabs.Ioc\XLabs.Ioc.csproj">
+      <Project>{2E200799-1170-49BF-A4AA-2A9228F8A213}</Project>
+      <Name>XLabs.Ioc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Platform\XLabs.Platform.Droid\XLabs.Platform.Droid.csproj">
+      <Project>{F422FD34-E431-4758-A981-03552A7BCF13}</Project>
+      <Name>XLabs.Platform.Droid</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Platform\XLabs.Platform\XLabs.Platform.csproj">
+      <Project>{2A4D9DD4-326C-4824-AA3C-A9ED45CC898C}</Project>
+      <Name>XLabs.Platform</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\XLabs.Core\XLabs.Core.csproj">
+      <Project>{15D9C404-F7E2-49F0-ACC9-63C4C008C860}</Project>
+      <Name>XLabs.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XLabs.Forms\XLabs.Forms.csproj">
+      <Project>{DC0BDD11-9352-44E4-BCEB-8AE56794BB41}</Project>
+      <Name>XLabs.Forms</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Controls\Calendar\MonoDroid.TimesSquare\License.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Behavior\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Import Project="..\..\..\packages\Xamarin.Forms.1.4.4.6392\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\..\packages\Xamarin.Forms.1.4.4.6392\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\..\packages\Xamarin.Forms.1.4.4.6392\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\Xamarin.Forms.1.4.4.6392\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+	   Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

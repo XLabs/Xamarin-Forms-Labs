@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Linq;
-
-using Xamarin.Forms.Labs.Services.Serialization;
-using System.IO;
-
 namespace SerializationTests
 {
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Text;
+    using XLabs.Serialization;
+
     public static class SerializerTestExtensions
     {
         public static bool CanSerializeString<T>(this IStringSerializer serializer, T item)
@@ -30,13 +28,12 @@ namespace SerializationTests
 
         public static bool CanSerializeStream<T>(this IStreamSerializer serializer, T item)
         {
-            T obj;
             var encoder = Encoding.UTF8;
             using (var stream = new StreamReader(new MemoryStream(), encoder))
             {
                 serializer.Serialize<T>(item, stream.BaseStream);
                 stream.BaseStream.Position = 0;
-                obj = serializer.Deserialize<T>(stream.BaseStream);
+                var obj = serializer.Deserialize<T>(stream.BaseStream);
                 return obj.Equals(item);
             }
         }

@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+					   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                        xmlns:controls="clr-namespace:Xamarin.Forms.Labs.Controls;assembly=Xamarin.Forms.Labs"
+					   x:Class="Xamarin.Forms.Labs.Sample.Pages.Controls.CheckBoxPage">
+  <StackLayout>
+    <StackLayout.BackgroundColor>
+      <OnPlatform x:TypeArguments="Color"
+                  iOS="White"
+                  Android="White"
+                  WinPhone="Black"/>
+    </StackLayout.BackgroundColor>
+    <controls:CheckBox DefaultText="Default text" HorizontalOptions="FillAndExpand" TextColor="Green" FontSize="25" FontName="AmericanTypewriter"/>
+    <controls:CheckBox DefaultText="Default text" CheckedText="Checked" UncheckedText="Unchecked" TextColor="Blue" HorizontalOptions="FillAndExpand" />
+    <controls:CheckBox DefaultText="This is a very long string. A very long string. A really very long string." TextColor="Blue" HorizontalOptions="FillAndExpand" />
+    <controls:CheckBox DefaultText="Normal length text again." HorizontalOptions="FillAndExpand" FontSize="25">
+      <controls:CheckBox.TextColor>
+        <OnPlatform x:TypeArguments="Color"
+                          iOS="Black"
+                          Android="Black"
+                          WinPhone="White"/>
+      </controls:CheckBox.TextColor>
+    </controls:CheckBox>
+    <ListView x:Name="listView">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <ViewCell.View>
+              <controls:CheckBox DefaultText="{Binding}" CheckedText="{Binding}" UncheckedText="{Binding}" HorizontalOptions="FillAndExpand" TextColor="White" FontSize="25" />
+            </ViewCell.View>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </StackLayout>
+</ContentPage>

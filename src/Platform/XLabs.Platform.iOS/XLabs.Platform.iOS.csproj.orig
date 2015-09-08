@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8D5A69A1-2F3A-4FB6-9067-3A0D6A0567A0}</ProjectGuid>
+    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>XLabs.Platform</RootNamespace>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <AssemblyName>XLabs.Platform.iOS</AssemblyName>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkIdentifier>Xamarin.iOS</TargetFrameworkIdentifier>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\build\</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <MtouchDebug>true</MtouchDebug>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <DocumentationFile>..\..\..\build\XLabs.Platform.iOS.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\build\</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DocumentationFile>..\..\..\build\XLabs.Platform.iOS.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\XLabs.Platform\services\io\FileManager.cs">
+      <Link>Services\IO\FileManager.cs</Link>
+    </Compile>
+    <Compile Include="Device\Accelerometer.cs" />
+    <Compile Include="Device\AppleDevice.cs" />
+    <Compile Include="Device\Battery.cs" />
+    <Compile Include="Device\BluetoothDevice.cs" />
+    <Compile Include="Device\BluetoothHub.cs" />
+    <Compile Include="Device\Display.cs" />
+    <Compile Include="Device\Gyroscope.cs" />
+    <Compile Include="Device\Pad.cs" />
+    <Compile Include="Device\Phone.cs" />
+    <Compile Include="Device\Pod.cs" />
+    <Compile Include="Device\Simulator.cs" />
+    <Compile Include="Extensions\EnumExtensions.cs" />
+    <Compile Include="Extensions\NSDataStream.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Extensions\UIViewExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Email\EmailService.cs" />
+    <Compile Include="Services\Geolocation\GeolocationSingleUpdateDelegate.cs" />
+    <Compile Include="Services\Geolocation\Geolocator.cs" />
+    <Compile Include="Services\Media\MediaPicker.cs" />
+    <Compile Include="Services\Media\MediaPickerController.cs" />
+    <Compile Include="Services\Media\MediaPickerDelegate.cs" />
+    <Compile Include="Services\Media\MediaPickerPopoverDelegate.cs" />
+    <Compile Include="Services\Media\Microphone.cs" />
+    <Compile Include="Services\Media\SoundService.cs" />
+    <Compile Include="Services\Network.cs" />
+    <Compile Include="Services\PhoneService.cs" />
+    <Compile Include="Services\Reachability.cs" />
+    <Compile Include="Services\SecureStorage.cs" />
+    <Compile Include="Services\TextToSpeechService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\XLabs.Core\XLabs.Core.csproj">
+      <Project>{15D9C404-F7E2-49F0-ACC9-63C4C008C860}</Project>
+      <Name>XLabs.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XLabs.Platform\XLabs.Platform.csproj">
+      <Project>{2A4D9DD4-326C-4824-AA3C-A9ED45CC898C}</Project>
+      <Name>XLabs.Platform</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="ExifLib, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\ExifLib.PCL.1.0.1\lib\portable-net45+sl50+win+WindowsPhoneApp81+wp80+Xamarin.iOS10+MonoAndroid10+MonoTouch10\ExifLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Xamarin.iOS" />
+  </ItemGroup>
+<<<<<<< HEAD
+  <Import Project="..\XLabs.Platform.Shared\XLabs.Platform.Shared.projitems" Label="Shared" Condition="Exists('..\XLabs.Platform.Shared\XLabs.Platform.Shared.projitems')" />
+=======
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+>>>>>>> edc72cc... References added to ExifLib.PCL & package updated to 2.0.5610.2
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+</Project>

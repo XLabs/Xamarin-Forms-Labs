@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+	<metadata>
+		<id>XLabs.Serialization.ServiceStackV3</id>
+		<title>XLabs - Serialization - ServiceStackV3</title>
+		<tags>Xamarin XLabs Serialization ServiceStackV3</tags>
+		<version>2.0.5603</version>
+		<authors>XLabs Team</authors>
+		<licenseUrl>https://github.com/XForms/Xamarin-Forms-Labs/blob/master/LICENSE</licenseUrl>
+		<projectUrl>https://github.com/XForms/Xamarin-Forms-Labs</projectUrl>
+		<iconUrl>https://raw.githubusercontent.com/XLabs/Xamarin-Forms-Labs/master/Design/Icons/nuget/icon_nuget.png</iconUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>
+			XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.
+
+			This package contains serializer based on ServiceStack V3 - Copyright (c) 2007-2013, Demis Bellot, ServiceStack.
+		</description>
+		<summary>
+			XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.
+		</summary>
+		<releaseNotes>
+
+		</releaseNotes>
+		<dependencies>
+			<dependency id="XLabs.Serialization" version="2.0.5603" />
+		</dependencies>
+	</metadata>
+	<files>
+		<file src="..\..\build\**\XLabs.Serialization.ServiceStack.dll*" target="lib\net45" />
+		<file src="..\..\build\**\XLabs.Serialization.ServiceStack.dll.mdb*" target="lib\net45" />
+		<file src="..\..\build\**\XLabs.Serialization.ServiceStack.pdb*" target="lib\net45" />
+		<file src="..\..\build\**\XLabs.Serialization.ServiceStack.xml*" target="lib\net45" />
+
+		<file src="..\..\build\**\XLabs.Serialization.ServiceStack.Droid.dll*" target="lib\MonoAndroid" />
+		<file src="..\..\build\**\XLabs.Serialization.ServiceStack.Droid.dll.mdb*" target="lib\MonoAndroid" />
+		<file src="..\..\build\**\XLabs.Serialization.ServiceStack.Droid.pdb*" target="lib\MonoAndroid" />
+		<file src="..\..\build\**\XLabs.Serialization.ServiceStack.Droid.xml*" target="lib\MonoAndroid" />
+
+		<file src="..\..\build\**\XLabs.Serialization.ServiceStack.iOS.dll*" target="lib\Xamarin.iOS10" />
+		<file src="..\..\build\**\XLabs.Serialization.ServiceStack.iOS.dll.mdb*" target="lib\Xamarin.iOS10" />
+		<file src="..\..\build\**\XLabs.Serialization.ServiceStack.iOS.pdb*" target="lib\Xamarin.iOS10" />
+		<file src="..\..\build\**\XLabs.Serialization.ServiceStack.iOS.xml*" target="lib\Xamarin.iOS10" />
+
+		<file src="..\..\build\**\XLabs.Serialization.ServiceStack.WP8.dll*" target="lib\wp8" />
+		<file src="..\..\build\**\XLabs.Serialization.ServiceStack.WP8.dll.mdb*" target="lib\wp8" />
+		<file src="..\..\build\**\XLabs.Serialization.ServiceStack.WP8.pdb*" target="lib\wp8" />
+		<file src="..\..\build\**\XLabs.Serialization.ServiceStack.WP8.xml*" target="lib\wp8" />
+
+		<file src="..\..\build\**\XLabs.Serialization.ServiceStack.WP8.dll*" target="lib\wpa81" />
+		<file src="..\..\build\**\XLabs.Serialization.ServiceStack.WP8.dll.mdb*" target="lib\wpa81" />
+		<file src="..\..\build\**\XLabs.Serialization.ServiceStack.WP8.pdb*" target="lib\wpa81" />
+		<file src="..\..\build\**\XLabs.Serialization.ServiceStack.WP8.xml*" target="lib\wpa81" />
+		
+		<!-- Source Files for Symbol Server -->
+	</files>
+</package>

@@ -1,0 +1,315 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{73BD362B-8AFA-4306-86E0-CD99789A6629}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XLabs.Serialization.ServiceStack</RootNamespace>
+    <AssemblyName>XLabs.Serialization.ServiceStack</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\build\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>..\..\..\build\XLabs.Serialization.ServiceStack.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\build\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>..\..\..\build\XLabs.Serialization.ServiceStack.XML</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'MonoTouch|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\build\monotouch\</OutputPath>
+    <DefineConstants>MONOTOUCH;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>..\..\..\build\monotouch\XLabs.Serialization.ServiceStack.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Xlabs.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyUtils.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CollectionExtensions.cs" />
+    <Compile Include="Common\DeserializeKeyValuePair.cs" />
+    <Compile Include="Common\DeserializeDynamic.cs" />
+    <Compile Include="Common\DateTimeSerializer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common\DeserializeArray.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common\DeserializeBuiltin.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common\DeserializeCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common\DeserializeDictionary.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common\DeserializeListWithElements.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common\DeserializeSpecializedCollections.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common\DeserializeTuple.cs" />
+    <Compile Include="Common\DeserializeType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common\DeserializeTypeRef.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common\DeserializeTypeRefJson.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common\DeserializeTypeRefJsv.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common\DeserializeTypeUtils.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common\ITypeSerializer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common\JsDelegates.cs" />
+    <Compile Include="Common\JsReader.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common\JsState.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common\JsWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common\StaticParseMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common\WriteDictionary.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common\WriteLists.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common\WriteType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CsvConfig.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CsvSerializer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CsvStreamExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CsvWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DateTimeExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CsvAttribute.cs" />
+    <Compile Include="DynamicJson.cs" />
+    <Compile Include="DynamicProxy.cs" />
+    <Compile Include="Env.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ITracer.cs" />
+    <Compile Include="ITypeSerializer.Generic.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="JsConfig.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="JsConfigScope.cs" />
+    <Compile Include="JsonObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="JsonSerializer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="JsonSerializer.Generic.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Json\JsonReader.Generic.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Json\JsonTypeSerializer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Json\JsonUtils.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Json\JsonWriter.Generic.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="JsvFormatter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Jsv\JsvDeserializeType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Jsv\JsvReader.Generic.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Jsv\JsvSerializer.Generic.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Jsv\JsvTypeSerializer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Jsv\JsvWriter.Generic.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ListExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MapExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Marc\TypeAccessor.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryStringSerializer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ReflectionExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Reflection\StaticAccessors.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StreamExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StringExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Support\AssemblyTypeDefinition.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Support\DoubleConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Support\TypePair.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SystemTime.cs" />
+    <Compile Include="Tracer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TranslateListWithElements.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TypeConfig.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TypeSerializer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TypeSerializer.Generic.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Wrapper\JsonSerializer.cs" />
+    <Compile Include="XmlSerializer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common\ParseUtils.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TextExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XLabs.Serialization\XLabs.Serialization.csproj">
+      <Project>{8E7F7522-F018-466A-AA8A-147EE9341BA0}</Project>
+      <Name>XLabs.Serialization</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Xlabs.snk" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

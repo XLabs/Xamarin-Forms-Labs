@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:sys="clr-namespace:System;assembly=mscorlib"
+			 xmlns:sco="clr-namespace:System.Collections;assembly=mscorlib"
+			 xmlns:lcon="clr-namespace:XLabs.Forms.Converter;assembly=XLabs.Forms"
+			 xmlns:lb="clr-namespace:XLabs.Forms.Behaviors;assembly=XLabs.Forms"
+			 xmlns:lc=  "clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+			 xmlns:my="clr-namespace:XLabs.Sample.Pages.Controls;assembly=XLabs.Sample"
+			 x:Class="XLabs.Sample.Pages.Controls.CarouselSample">
+
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<lc:TemplateSelector x:Key="Carouselselector">
+				<lc:TemplateSelector.Templates>
+
+					<!--Default Template used if no other match is found-->
+					<lc:DataTemplateWrapper IsDefault="true" x:TypeArguments="sys:Object">
+						<lc:DataTemplateWrapper.WrappedTemplate>
+							<DataTemplate>
+								<StackLayout>
+									<Label HorizontalOptions="Center" Text="No Template Found"/>
+									<Label HorizontalOptions="Center" Text="Model Contents:"/>
+									<Label HorizontalOptions="Center" Text="{Binding}"/>
+								</StackLayout>
+							</DataTemplate>
+						</lc:DataTemplateWrapper.WrappedTemplate>
+					</lc:DataTemplateWrapper>
+
+					<!--WorkOrder Template used if no other match is found-->
+					<lc:DataTemplateWrapper x:TypeArguments="my:WorkOrder">
+						<lc:DataTemplateWrapper.WrappedTemplate>
+							<DataTemplate>
+								<StackLayout>
+									<Label VerticalOptions="Start" HorizontalOptions="Center" Text="{Binding Title}"/>
+									<Grid lb:GridLayout.RowHeights="Auto,Auto" lb:GridLayout.ColumnWidths="Auto,*">
+										<Label Grid.Row="0" Grid.Column="0" Text="Client:"/>
+										<Label Grid.Row="1" Grid.Column="0" Text="WorkItem:"/>
+										<Label Grid.Row="0" Grid.Column="1" Text="{Binding Client}"/>
+										<Label Grid.Row="1" Grid.Column="1" Text="{Binding Description}" />
+									</Grid>
+								</StackLayout>
+							</DataTemplate>
+						</lc:DataTemplateWrapper.WrappedTemplate>
+					</lc:DataTemplateWrapper>
+
+					<!--Message Template used if no other match is found-->
+					<lc:DataTemplateWrapper x:TypeArguments="my:Message">
+						<lc:DataTemplateWrapper.WrappedTemplate>
+							<DataTemplate>
+								<StackLayout>
+									<Label VerticalOptions="Start" HorizontalOptions="Center" Text="{Binding Title}"/>
+									<Grid lb:GridLayout.RowHeights="Auto,Auto,Auto" lb:GridLayout.ColumnWidths="Auto,*">
+										<Label Grid.Row="0" Grid.Column="0" Text="Sender:"/>
+										<Label Grid.Row="1" Grid.Column="0" Text="Received:"/>
+										<Label Grid.Row="2" Grid.Column="0" Text="Messsage:"/>
+										<Label Grid.Row="0" Grid.Column="1" Text="{Binding Sender}"/>
+										<Label Grid.Row="1" Grid.Column="1" Text="{Binding Received}" />
+										<Label Grid.Row="2" Grid.Column="1" Text="{Binding Content}" />
+									</Grid>
+								</StackLayout>
+							</DataTemplate>
+						</lc:DataTemplateWrapper.WrappedTemplate>
+					</lc:DataTemplateWrapper>
+
+
+				</lc:TemplateSelector.Templates>
+			</lc:TemplateSelector>
+		</ResourceDictionary>
+	</ContentPage.Resources>
+
+	<StackLayout>
+		<StackLayout.Padding>
+			<OnPlatform x:TypeArguments="Thickness"
+						iOS="20,40,20,20"
+						Android="20,20,20,20"
+						WinPhone="20,20,20,20" />
+		</StackLayout.Padding>
+
+		<lc:CarouselView x:TypeArguments="my:PageWidget" ViewModels="{Binding Models}" TemplateSelector="{StaticResource Carouselselector}" HeightRequest="100" Padding="10,25"/>
+		<Label Text="The view obove is bound to a collection that contains workoders and message objects"/>
+		<Label Text="As you swipe back and forth the view uses it's template selector to determine which datatemplate to instantiate and bind to the current item."/>
+		<Label Text="If you have a single DataTemplate simply create the selector with one template and mark set the IsDefault property to true"/>
+	</StackLayout>
+</ContentPage>

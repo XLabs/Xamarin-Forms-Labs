@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 x:Class="XLabs.Sample.Pages.Controls.PopupPage"
+			 xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms">
+
+	<ContentPage.Content>
+		<controls:PopupLayout>
+			<controls:PopupLayout.Content>
+				<Button x:Name="OpenButton" Text="Open selector popup" />
+			</controls:PopupLayout.Content>
+		</controls:PopupLayout>
+	</ContentPage.Content>
+</ContentPage>

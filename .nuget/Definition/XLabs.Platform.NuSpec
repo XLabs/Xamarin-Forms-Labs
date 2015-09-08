@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <metadata>
+    <id>XLabs.Platform</id>
+    <title>XLabs - Platform</title>
+    <tags>Xamarin.Forms XLabs Platform</tags>
+    <version>2.0.5603</version>
+    <authors>XLabs Team</authors>
+    <licenseUrl>https://github.com/XForms/Xamarin-Forms-Labs/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/XForms/Xamarin-Forms-Labs</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/XLabs/Xamarin-Forms-Labs/master/Design/Icons/nuget/icon_nuget.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+      XLabs is a open source project that aims to provide a powerful and cross platform set of controls tailored to work with Xamarin.
+
+      This package contains the core cross-platform framework for all of XLabs.
+    </description>
+    <summary>
+      XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin.
+    </summary>
+    <releaseNotes>
+
+    </releaseNotes>
+    <language>en-US</language>
+    <dependencies>
+      <group>
+        <dependency id="ExifLib.PCL" version="1.0.1" />
+        <dependency id="XLabs.Core" version="2.0.5603" />
+      </group>
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="Mono.Android.Export" targetFramework="MonoAndroid" />
+    </frameworkAssemblies>
+    <references>
+      <!--
+      <group targetFramework="MonoAndroid">
+        <reference file="XLabs.Platform.dll"/>
+        <reference file="XLabs.Platform.Droid.dll"/>
+      </group>
+      <group targetFramework="Xamarin.iOS10">
+        <reference file="XLabs.Platform.dll"/>
+        <reference file="XLabs.Platform.iOS.dll"/>
+      </group>
+      <group targetFramework="wp8">
+        <reference file="XLabs.Platform.dll"/>
+        <reference file="XLabs.Platform.WP8.dll"/>
+      </group>
+      <group targetFramework="wpa81">
+        <reference file="XLabs.Platform.dll"/>
+        <reference file="XLabs.Platform.WP8.dll"/>
+      </group>
+      <group targetFramework="netcore45"> 
+        <reference file="XLabs.Platform.dll" /> 
+      </group>
+      -->
+    </references>
+  </metadata>
+  <files>
+
+    <file src="..\..\build\**\XLabs.Platform.dll" target="lib\portable-net45+netcore45+wpa81+wp8" />
+    <file src="..\..\build\**\XLabs.Platform.dll.mdb" target="lib\portable-net45+netcore45+wpa81+wp8" />
+    <file src="..\..\build\**\XLabs.Platform.pdb" target="lib\portable-net45+netcore45+wpa81+wp8" />
+    <file src="..\..\build\**\XLabs.Platform.xml" target="lib\portable-net45+netcore45+wpa81+wp8" />
+
+    <file src="..\..\build\**\XLabs.Platform.dll" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
+    <file src="..\..\build\**\XLabs.Platform.dll.mdb" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
+    <file src="..\..\build\**\XLabs.Platform.pdb" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
+    <file src="..\..\build\**\XLabs.Platform.xml" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
+
+    <file src="..\..\build\**\XLabs.Platform.dll" target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1" />
+    <file src="..\..\build\**\XLabs.Platform.dll.mdb" target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1" />
+    <file src="..\..\build\**\XLabs.Platform.pdb" target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1" />
+    <file src="..\..\build\**\XLabs.Platform.xml" target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1" />
+
+    <file src="..\..\build\**\XLabs.Platform.Droid.dll" target="lib\MonoAndroid" />
+    <file src="..\..\build\**\XLabs.Platform.Droid.dll.mdb" target="lib\MonoAndroid" />
+    <file src="..\..\build\**\XLabs.Platform.Droid.pdb" target="lib\MonoAndroid" />
+    <file src="..\..\build\**\XLabs.Platform.Droid.xml" target="lib\MonoAndroid" />
+    <file src="..\..\build\**\XLabs.Platform.dll" target="lib\MonoAndroid" />
+    <file src="..\..\build\**\XLabs.Platform.dll.mdb" target="lib\MonoAndroid" />
+    <file src="..\..\build\**\XLabs.Platform.pdb" target="lib\MonoAndroid" />
+    <file src="..\..\build\**\XLabs.Platform.xml" target="lib\MonoAndroid" />
+
+    <file src="..\..\build\**\XLabs.Platform.iOS.dll" target="lib\Xamarin.iOS10" />
+    <file src="..\..\build\**\XLabs.Platform.iOS.dll.mdb" target="lib\Xamarin.iOS10" />
+    <file src="..\..\build\**\XLabs.Platform.iOS.pdb" target="lib\Xamarin.iOS10" />
+    <file src="..\..\build\**\XLabs.Platform.iOS.xml" target="lib\Xamarin.iOS10" />
+    <file src="..\..\build\**\XLabs.Platform.dll" target="lib\Xamarin.iOS10" />
+    <file src="..\..\build\**\XLabs.Platform.dll.mdb" target="lib\Xamarin.iOS10" />
+    <file src="..\..\build\**\XLabs.Platform.pdb" target="lib\Xamarin.iOS10" />
+    <file src="..\..\build\**\XLabs.Platform.xml" target="lib\Xamarin.iOS10" />
+
+    <file src="..\..\build\**\XLabs.Platform.WP8.dll" target="lib\wp8" />
+    <file src="..\..\build\**\XLabs.Platform.WP8.dll.mdb" target="lib\wp8" />
+    <file src="..\..\build\**\XLabs.Platform.WP8.pdb" target="lib\wp8" />
+    <file src="..\..\build\**\XLabs.Platform.WP8.xml" target="lib\wp8" />
+    <file src="..\..\build\**\XLabs.Platform.dll" target="lib\wp8" />
+    <file src="..\..\build\**\XLabs.Platform.dll.mdb" target="lib\wp8" />
+    <file src="..\..\build\**\XLabs.Platform.pdb" target="lib\wp8" />
+    <file src="..\..\build\**\XLabs.Platform.xml" target="lib\wp8" />
+    <file src="..\..\build\**\XLabs.Platform.WinRT.winmd" target="lib\wp8" />
+
+    <file src="..\..\build\**\XLabs.Platform.WP8.dll" target="lib\wpa81" />
+    <file src="..\..\build\**\XLabs.Platform.WP8.dll.mdb" target="lib\wpa81" />
+    <file src="..\..\build\**\XLabs.Platform.WP8.pdb" target="lib\wpa81" />
+    <file src="..\..\build\**\XLabs.Platform.WP8.xml" target="lib\wpa81" />
+    <file src="..\..\build\**\XLabs.Platform.dll" target="lib\wpa81" />
+    <file src="..\..\build\**\XLabs.Platform.dll.mdb" target="lib\wpa81" />
+    <file src="..\..\build\**\XLabs.Platform.pdb" target="lib\wpa81" />
+    <file src="..\..\build\**\XLabs.Platform.xml" target="lib\wpa81" />
+    <file src="..\..\build\**\XLabs.Platform.WinRT.winmd" target="lib\wpa81" />
+
+    <!-- Source Files for Symbol Server -->
+    <file src="..\..\src\Platform\**\*.cs" target="src" />
+  </files>
+</package>

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <metadata>
+    <id>XLabs.Core</id>
+    <title>XLabs - Core</title>
+    <tags>Xamarin.Forms XLabs</tags>
+    <version>2.0.5603</version>
+    <authors>XLabs Team</authors>
+    <licenseUrl>https://github.com/XForms/Xamarin-Forms-Labs/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/XForms/Xamarin-Forms-Labs</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/XLabs/Xamarin-Forms-Labs/master/Design/Icons/nuget/icon_nuget.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+      XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.
+
+      This package contains the the core components of the XLabs Forms framework and controls.
+    </description>
+    <summary>
+      XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.
+    </summary>
+    <releaseNotes>
+
+    </releaseNotes>
+    <language>en-US</language>
+    <dependencies>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\..\build\**\XLabs.Core.dll" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
+    <file src="..\..\build\**\XLabs.Core.dll.mdb" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
+    <file src="..\..\build\**\XLabs.Core.pdb" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
+    <file src="..\..\build\**\XLabs.Core.xml" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
+
+    <file src="..\..\build\**\XLabs.Core.dll" target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1" />
+    <file src="..\..\build\**\XLabs.Core.dll.mdb" target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1" />
+    <file src="..\..\build\**\XLabs.Core.pdb" target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1" />
+    <file src="..\..\build\**\XLabs.Core.xml" target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1" />
+
+    <file src="..\..\build\**\XLabs.Core.dll" target="lib\Xamarin.iOS10" />
+    <file src="..\..\build\**\XLabs.Core.dll.mdb" target="lib\Xamarin.iOS10" />
+    <file src="..\..\build\**\XLabs.Core.pdb" target="lib\Xamarin.iOS10" />
+    <file src="..\..\build\**\XLabs.Core.xml" target="lib\Xamarin.iOS10" />
+
+    <!-- Source Files for Symbol Server -->
+    <file src="..\..\src\XLabs.Core\**\*.cs" target="src" />
+  </files>
+</package>

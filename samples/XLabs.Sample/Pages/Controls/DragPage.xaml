@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             x:Class="XLabs.Sample.Pages.Controls.DragPage">
+  <controls:DragContentView>
+    <StackLayout StyleId="Stack" Orientation="Horizontal">
+      <StackLayout.Padding>
+        <OnPlatform x:TypeArguments="Thickness"
+                  iOS="20,40,20,20"
+                  Android="20,20,20,20"
+                  WinPhone="20,20,20,20" />
+      </StackLayout.Padding>
+      <Label Text="A" StyleId="TextA" VerticalOptions="FillAndExpand" WidthRequest="20" />
+      <Label Text="B" StyleId="TextB" VerticalOptions="FillAndExpand" WidthRequest="20" />
+    </StackLayout>
+  </controls:DragContentView>
+</ContentPage>

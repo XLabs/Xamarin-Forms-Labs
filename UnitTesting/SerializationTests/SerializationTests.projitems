@@ -9,6 +9,7 @@
     <Import_RootNamespace>SerializationTests</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)CanSerializerSystemTextJson.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CanSerializerTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CanSerializerTestsJsonNet.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CanSerializerTestsServiceStack.cs" />
@@ -21,6 +22,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)DataObjects\IAnimal.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataObjects\Person.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataObjects\Primitives.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataObjects\ReadOnlyList.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataObjects\SomeKey.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CanSerializerTestsProtoBuf.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SerializerTestExtensions.cs" />

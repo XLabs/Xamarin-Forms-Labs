@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<toolkit:BaseView xmlns="http://xamarin.com/schemas/2014/forms"
+          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          xmlns:toolkit="clr-namespace:XLabs.Forms.Mvvm;assembly=XLabs.Forms"
+          xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+          x:Class="XLabs.Sample.Pages.Mvvm.CanvasWebHybrid"
+          Title="CanvasJS hybrid view">
+  <toolkit:BaseView.Content>
+    <StackLayout x:Name="Container">
+      <StackLayout.Padding>
+        <OnPlatform x:TypeArguments="Thickness"
+            iOS="0, 20, 0, 0"
+            Android="10, 0, 0, 0"
+            WinPhone="0, 0, 0, 0" />
+      </StackLayout.Padding>
+      <Label Text="{Binding Title}" />
+      <ListView x:Name="NativeList" ItemsSource="{Binding DataPoints}" WidthRequest="200" HeightRequest="200">
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <ViewCell>
+              <ViewCell.View>
+                <StackLayout HeightRequest="120">
+                  <Label Text="{Binding Label}" />
+                  <Slider Value="{Binding Y, Mode=TwoWay}" />
+                  <!--							<Slider Maximum="{Binding Max}"></Slider>-->
+                </StackLayout>
+              </ViewCell.View>
+            </ViewCell>
+
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+      <controls:HybridWebView x:Name="hybridWebView" WidthRequest="200" HeightRequest="300" />
+    </StackLayout>
+  </toolkit:BaseView.Content>
+</toolkit:BaseView>
+

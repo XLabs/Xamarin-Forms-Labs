@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<packages>
+<<<<<<< HEAD
+  <package id="ExifLib.PCL" version="1.0.0" targetFramework="wp81" />
+=======
+  <package id="ExifLib.PCL" version="1.0.1" targetFramework="wp80" />
+>>>>>>> edc72cc... References added to ExifLib.PCL & package updated to 2.0.5610.2
+</packages>

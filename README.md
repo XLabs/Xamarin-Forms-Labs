@@ -1,38 +1,42 @@
-Xamarin Forms Labs
+**Xamarin Forms Labs** [![Build status](https://ci.appveyor.com/api/projects/status/33q2u1d3dpn3abgn?svg=true)](https://ci.appveyor.com/project/xlabs/xamarin-forms-labs)
 =====================
 
-**Xamarin Forms Labs** is a open source project that aims to provide a powerful and cross platform set of controls tailored to work with [Xamarin Forms](http://xamarin.com/forms).
+[![Build status](https://ci.appveyor.com/api/projects/status/33q2u1d3dpn3abgn?svg=true)](https://ci.appveyor.com/project/xlabs/xamarin-forms-labs)
+
+**XLabs** is a open source project that aims to provide a powerful and cross platform set of services and controls tailored to work with Xamarin and [Xamarin Forms](http://xamarin.com/forms).
 
 Call for action for all Xamarin Developers, embrace this project and share your controls and services with the community, add your own control to the toolkit.
 
 **Important for developers**
-The master branch is the current development branch and the next release for 2.0.
-The v.1.2 is the stable branch.
+The master branch is the current development branch.
+The v.2.0 is the stable branch.
 
 **Available controls**
 
- - [AutoComplete (beta)](https://github.com/XForms/Xamarin-Forms-Labs/wiki/AutoComplete)
- - [Calendar Control (beta)](https://github.com/XForms/Xamarin-Forms-Labs/wiki/Calendar-Control)
- - [Checkbox (beta)](https://github.com/XForms/Xamarin-Forms-Labs/wiki/Checkbox)
- - DynamicListView (beta)
+ - [AutoCompleteView (beta)](https://github.com/XLabs/Xamarin-Forms-Labs/wiki/AutoCompleteView)
+ - [Calendar Control (beta)](https://github.com/XLabs/Xamarin-Forms-Labs/wiki/Calendar-Control)
+ - [Checkbox (beta)](https://github.com/XLabs/Xamarin-Forms-Labs/wiki/Checkbox-Control)
+ - [DynamicListView (beta)](https://github.com/XLabs/Xamarin-Forms-Labs/wiki/DynamicListView)
  - ExtendedContentView (beta) 
- - [ExtendedEntry (beta)](https://github.com/XForms/Xamarin-Forms-Labs/wiki/ExtendedEntry)
- - [ExtendedLabel (beta)](https://github.com/XForms/Xamarin-Forms-Labs/wiki/ExtendedLabel)
- - ExtendedScrollView (IOS beta)
- - ExtendedTabbedPage  
- - [ExtendedTextCell (beta)](https://github.com/XForms/Xamarin-Forms-Labs/wiki/ExtendedTextCell)
- - [ExtendedViewCell (beta)](https://github.com/XForms/Xamarin-Forms-Labs/wiki/ExtendedViewCell)
- - [HybridWebView (alpha)](https://github.com/XForms/Xamarin-Forms-Labs/wiki/HybridWebView)
- - GridView (IOS beta)
- - ImageButton (beta)
- - RepeaterView (beta)
- - [SegmentedControlView (IOS beta)](https://github.com/XForms/Xamarin-Forms-Labs/wiki/SegmentedControl)
- - Web Image (beta) 
+ - [ExtendedEntry (beta)](https://github.com/XLabs/Xamarin-Forms-Labs/wiki/ExtendedEntry)
+ - [ExtendedLabel (beta)](https://github.com/XLabs/Xamarin-Forms-Labs/wiki/ExtendedLabel)
+ - [ExtendedScrollView (beta)](https://github.com/XLabs/Xamarin-Forms-Labs/wiki/ExtendedScrollView)
+ - [ExtendedTabbedPage](https://github.com/XLabs/Xamarin-Forms-Labs/wiki/ExtendedTabbedPage)  
+ - [ExtendedTextCell (beta)](https://github.com/XLabs/Xamarin-Forms-Labs/wiki/ExtendedTextCell)
+ - [ExtendedViewCell (beta)](https://github.com/XLabs/Xamarin-Forms-Labs/wiki/ExtendedViewCell)
+ - [HybridWebView (beta)](https://github.com/XLabs/Xamarin-Forms-Labs/wiki/HybridWebView)
+ - GradientContentView (iOS/Android beta)
+ - [GridView (IOS beta)](https://github.com/XLabs/Xamarin-Forms-Labs/wiki/GridView)
+ - [ImageButton (beta)](https://github.com/XLabs/Xamarin-Forms-Labs/wiki/ImageButton)
+ - RadioButton (beta)
+ - [RepeaterView (beta)](https://github.com/XLabs/Xamarin-Forms-Labs/wiki/RepeaterView)
+ - [SegmentedControlView (IOS beta)](https://github.com/XLabs/Xamarin-Forms-Labs/wiki/SegmentedControl)
+ - [Web Image (beta)](https://github.com/XLabs/Xamarin-Forms-Labs/wiki/WebImage)
  - IconButton (IOS beta)
- - [CircleImage (IOS/Android anpha)](https://github.com/XForms/Xamarin-Forms-Labs/wiki/CircleImage)
- - HyperLinkLabel
+ - [CircleImage (IOS/Android alpha)](https://github.com/XLabs/Xamarin-Forms-Labs/wiki/CircleImage)
+ - [HyperLinkLabel](https://github.com/XLabs/Xamarin-Forms-Labs/wiki/HyperLinkLabel)
 
-**Available services (Beta)**
+**Available services**
 
  - Accelerometer
  - Cache
@@ -43,6 +47,8 @@ The v.1.2 is the stable branch.
  - Phone Service (cellular network info, make phonecalls)
  - SoundService
  - Text To Speech 
+ - Secure Storage
+ - Settings
 
 
 **Available Mvvm helpers (Beta)**
@@ -52,13 +58,13 @@ The v.1.2 is the stable branch.
  - IOC
  - IXFormsApp (application events)
 
-**Available Plugins (Beta)**
+**Available Plugins**
     
  - Serialization (ServiceStackV3, ProtoBuf, JSON.Net)
  - Caching (SQLLiteSimpleCache)
  - Dependency Injection containers (TinyIOC, Autofac, NInject, SimpleInjector, Unity)
  - Web (RestClient)
- - [Charting (Line, Bar & Pie) (Alpha)](https://github.com/XForms/Xamarin-Forms-Labs/wiki/Charting)
+ - [Charting (Line, Bar & Pie) (Alpha)](https://github.com/XLabs/Xamarin-Forms-Labs/wiki/Charting)
  
 _________________
 
@@ -69,9 +75,9 @@ _________________
 We are working in a great [wiki][1] on how to use the controls and services. 
 
 
-https://github.com/XForms/Xamarin-Forms-Labs/wiki
+https://github.com/XLabs/Xamarin-Forms-Labs/wiki
 
-
+[Good forum post helping you setup and use XLabs](http://forums.xamarin.com/discussion/35991/how-to-install-setup-and-use-xlabs#latest)
 
 Using the MVVM Helpers
 -----------
@@ -85,13 +91,13 @@ Using the controls
 -----------
 
 
-Add Xamarin.Forms.Labs.Controls reference to your projects , main pcl, ios, android, and wp.
+Add XLabs.Forms reference to your projects , main pcl, ios, android, and wp.
 
 Xaml :
 
 Reference the assembly namespace 
 
-     xmlns:controls="clr-namespace:Xamarin.Forms.Labs.Controls;assembly=Xamarin.Forms.Labs"
+     xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
 
 Render your control:
 
@@ -113,9 +119,10 @@ Or from your codebehind:
 
 Using the Services
 -----------
+
 **TextToSpeechService** 
 
-	DependencyService.Get<ITextToSpeechService>().Speak(TextToSpeak);
+	Resolver.Resolve<ITextToSpeechService>().Speak(TextToSpeak);
 	
 **Device** 
 
@@ -164,15 +171,9 @@ ________________
 **Helper**
 ======
 
-> Current version v1.2.0
-
-[v1.2.0 - Xamarin Forms Labs Framework Helper for online use](http://htmlpreview.github.io/?https://raw.githubusercontent.com/XLabs/Xamarin-Forms-Labs/master/Helper/v1.2.0/Web/Index.html)
-
-[v1.2.0 - Xamarin.Forms.Labs.chm file for offline use](https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/Helper/v1.2.0/Xamarin.Forms.Labs.chm)
-
 > Based in last developments (master)
 
-[Master- Xamarin Forms Labs Framework Helper for online use](http://htmlpreview.github.io/?https://raw.githubusercontent.com/XLabs/Xamarin-Forms-Labs/master/Helper/master/Web/Index.html)
+[Master- XLabs Framework Helper for online use](http://htmlpreview.github.io/?https://raw.githubusercontent.com/XLabs/Xamarin-Forms-Labs/master/Helper/master/Web/Index.html)
 
 [Master - Xamarin.Forms.Labs.chm file for offline use](https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/Helper/master/Xamarin.Forms.Labs.chm)
 ________________
@@ -190,53 +191,37 @@ __________________
 
 **Main Packages:**
 
-- [Xamarin.Forms.Labs](https://www.nuget.org/packages/Xamarin.Forms.Labs/)
+- [XLabs.Platform](http://www.nuget.org/packages/XLabs.Platform/)
+- [XLabs.Forms] (http://www.nuget.org/packages/XLabs.Forms/)
 
 **Plugins:**
 
-* Caching 
-
- - [Xamarin.Forms.Labs.Caching.SQLiteNet](https://www.nuget.org/packages/Xamarin.Forms.Labs.Caching.SQLiteNet/)
-
-* DI 
-
- - [Xamarin.Forms.Labs.Services.SimpleContainer](https://www.nuget.org/packages/Xamarin.Forms.Labs.Services.SimpleContainer/)
- - [Xamarin.Forms.Labs.Services.Ninject](https://www.nuget.org/packages/Xamarin.Forms.Labs.Services.Ninject/)
- - [Xamarin.Forms.Labs.Services.Autofac](https://www.nuget.org/packages/Xamarin.Forms.Labs.Services.Autofac/)
- - [Xamarin.Forms.Labs.Services.TinyIOC](https://www.nuget.org/packages/Xamarin.Forms.Labs.Services.TinyIOC/)
- 
-* Serialization
-
- - [Xamarin.Forms.Labs.Services.Serialization.ProtoBuf](https://www.nuget.org/packages/Xamarin.Forms.Labs.Services.Serialization.ProtoBuf/)
- - [Xamarin.Forms.Labs.Serialization.JsonNET](https://www.nuget.org/packages/Xamarin.Forms.Labs.Services.Serialization.JsonNET/)
-
-* Cryptography
-
- - [Xamarin.Forms.Labs.Cryptography](https://www.nuget.org/packages/Xamarin.Forms.Labs.Cryptography/)
+* To be updated...
  
 __________________
 
 **Contributions:**
 ======
- - Michael Ridland [@rid00z ](https://twitter.com/rid00z)
- - [Rui Marinho](http://ruimarinho.net/)  [@ruiespinho](https://twitter.com/ruiespinho)
- - Filip De Vos  [@foxtricks](https://twitter.com/foxtricks)
- - ThomasLebrun 
- - Sami M. Kallio 
- - [Kevin E. Ford](http://windingroadway.blogspot.com/) [@Bowman74](https://twitter.com/Bowman74)
- - Jason Smith [@jassmith87](https://twitter.com/jassmith87)
  - Shawn Anderson
- - [Sara Silva](http://saramgsilva.com) [@saramgsilva](https://twitter.com/saramgsilva)
- - Ben Ishiyama-Levy [@mrbrl](http://www.monovo.io)
- - Ryan Wischkaemper
- - [Eric Grover](http://www.ericgrover.com) [@bluechiperic](https://twitter.com/bluechiperic)
- - [Mitch Milam](http://blogs.infinite-x.net) [@mitchmilam](https://twitter.com/mitchmilam)
  - [Jim Bennett](http://www.jimbobbennett.io) [@jimbobbennett](https://twitter.com/jimbobbennett)
- - Kazuki Yasufuku
- - Petr Klíma
+ - Filip De Vos  [@foxtricks](https://twitter.com/foxtricks) 
+ - [Kevin E. Ford](http://windingroadway.blogspot.com/) [@Bowman74](https://twitter.com/Bowman74)
+ - [Eric Grover](http://www.ericgrover.com) [@bluechiperic](https://twitter.com/bluechiperic) 
+ - Ben Ishiyama-Levy [@mrbrl](http://www.monovo.io) 
+ - [Sami M. Kallio](https://www.linkedin.com/profile/view?id=4900454)
  - Bart Kardol
- - [Nicholas Rogoff](http://blog.nicholasrogoff.com/) [@nrogoff](https://twitter.com/nrogoff)
+ - Petr Klíma
+ - [Thomas Lebrun](http://blog.thomaslebrun.net/) [@thomas_lebrun](https://twitter.com/thomas_lebrun) 
+ - [Rui Marinho](http://ruimarinho.net/)  [@ruiespinho](https://twitter.com/ruiespinho)
+ - [Mitch Milam](http://blogs.infinite-x.net) [@mitchmilam](https://twitter.com/mitchmilam)
+ - [Oren Novotny](http://blog.novotny.org) [@onovotny](https://twitter.com/onovotny)
+ - Michael Ridland [@rid00z ](https://twitter.com/rid00z)
  - Chris Riesgo [@chrisriesgo](https://twitter.com/chrisriesgo)
+ - [Nicholas Rogoff](http://blog.nicholasrogoff.com/) [@nrogoff](https://twitter.com/nrogoff)
+ - [Sara Silva](http://saramgsilva.com) [@saramgsilva](https://twitter.com/saramgsilva)
+ - Jason Smith [@jassmith87](https://twitter.com/jassmith87)
+ - Ryan Wischkaemper
+ - Kazuki Yasufuku
 
  
 **Other Project Contributions:**
@@ -247,7 +232,7 @@ __________________
 **Contribute**
 ------------------
 
-Everbody is welcome to contribute with any kind of controls or features at this time. Since there's no oficial releases feel free to submit your playground controls even if they aren't perfect. 
+Everbody is welcome to contribute with any kind of controls or features at this time.
 
 Twitter hashtag : [#xflabs](https://twitter.com/search?q=xflabs)
 		
@@ -258,7 +243,7 @@ _________________
 **CHAT**
 ======
 
-[Xamarin Forms Labs Chat room online on Jabbr ](https://jabbr.net/#/rooms/Xamarin-Labs)
+[XLabs Chat room online on Jabbr ](https://jabbr.net/#/rooms/Xamarin-Labs)
 
 __________________
 
@@ -270,7 +255,7 @@ License Apache 2.0 more about that in the [LICENSE][2] file.
 
 
 
-  [1]: https://github.com/XForms/Xamarin-Forms-Labs/wiki
+  [1]: https://github.com/XLabs/Xamarin-Forms-Labs/wiki
   [2]: https://github.com/XForms/XForms-Toolkit/blob/master/LICENSE
   
   

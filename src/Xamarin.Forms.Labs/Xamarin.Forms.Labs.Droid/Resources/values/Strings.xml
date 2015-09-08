@@ -1,8 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<resources>
-	<string name="library_name">Xamarin.Forms.Labs.droid</string>
-  <string name="day_name_format">ddd</string>
-  <string name="invalid_date">Date must be between {0} and {1}.</string>
-  <string name="month_name_format">MMMM yyyy</string>
-<string name="full_date_format"></string>
-</resources>

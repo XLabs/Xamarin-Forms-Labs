@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <metadata>
+    <id>XLabs.Caching.SQLite</id>
+    <title>XLabs - Caching - SQLite</title>
+    <tags>Xamarin XLabs caching sqlite</tags>
+    <version>2.0.5603</version>
+    <authors>XLabs Team</authors>
+    <licenseUrl>https://github.com/XForms/Xamarin-Forms-Labs/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/XForms/Xamarin-Forms-Labs</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/XLabs/Xamarin-Forms-Labs/master/Design/Icons/nuget/icon_nuget.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+      XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.
+
+      This package implements the caching provider using SQLite.
+    </description>
+    <summary>
+      XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.
+    </summary>
+    <releaseNotes>
+
+    </releaseNotes>
+    <language>en-US</language>
+    <dependencies>
+      <group>
+        <dependency id="SQLite.Net.Async-PCL" version="3.0.5" />
+        <dependency id="XLabs.Caching" version="2.0.5603" />
+        <dependency id="XLabs.Serialization" version="2.0.5603" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\..\build\**\XLabs.Caching.SQLite.dll" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
+    <file src="..\..\build\**\XLabs.Caching.SQLite.dll.mdb" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
+    <file src="..\..\build\**\XLabs.Caching.SQLite.pdb" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
+    <file src="..\..\build\**\XLabs.Caching.SQLite.xml" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
+
+    <file src="..\..\build\**\XLabs.Caching.SQLite.dll" target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1" />
+    <file src="..\..\build\**\XLabs.Caching.SQLite.dll.mdb" target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1" />
+    <file src="..\..\build\**\XLabs.Caching.SQLite.pdb" target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1" />
+    <file src="..\..\build\**\XLabs.Caching.SQLite.xml" target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1" />
+    
+    <!-- Source Files for Symbol Server -->
+    <file src="..\..\src\Caching\XLabs.Caching.SQLite\**\*.cs" target="src" />
+  </files>
+</package>

@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+	<metadata>
+		<id>XLabs.IoC.Unity</id>
+		<title>XLabs - IoC - Unity</title>
+		<tags>Xamarin XLabs IoC Unity</tags>
+		<version>2.0.5603</version>
+		<authors>XLabs Team</authors>
+		<licenseUrl>https://github.com/XForms/Xamarin-Forms-Labs/blob/master/LICENSE</licenseUrl>
+		<projectUrl>https://github.com/XForms/Xamarin-Forms-Labs</projectUrl>
+		<iconUrl>https://raw.githubusercontent.com/XLabs/Xamarin-Forms-Labs/master/Design/Icons/nuget/icon_nuget.png</iconUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>
+			XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.
+
+			This package contains helpers to work with IoC and Unity
+		</description>
+		<summary>
+			XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.
+		</summary>
+		<releaseNotes>
+
+		</releaseNotes>
+		<language>en-US</language>
+		<dependencies>
+			<dependency id="Unity" version="3.5.1404" />
+			<dependency id="XLabs.IoC" version="2.0.5603" />
+		</dependencies>
+	</metadata>
+	<files>
+		<file src="..\..\build\**\XLabs.IoC.Unity.dll" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
+		<file src="..\..\build\**\XLabs.IoC.Unity.dll.mdb" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
+		<file src="..\..\build\**\XLabs.IoC.Unity.pdb" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
+		<file src="..\..\build\**\XLabs.IoC.Unity.xml" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
+
+		<file src="..\..\build\**\XLabs.IoC.Unity.dll" target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1" />
+		<file src="..\..\build\**\XLabs.IoC.Unity.dll.mdb" target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1" />
+		<file src="..\..\build\**\XLabs.IoC.Unity.pdb" target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1" />
+		<file src="..\..\build\**\XLabs.IoC.Unity.xml" target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1" />
+
+		<!-- Source Files for Symbol Server -->
+		<file src="..\..\src\IoC\XLabs.IoC.Unity\**\*.cs" target="src" />
+	</files>
+</package>

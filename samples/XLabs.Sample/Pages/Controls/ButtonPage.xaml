@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             xmlns:icons="clr-namespace:XLabs.Forms.Helpers;assembly=XLabs.Forms"
+             x:Class="XLabs.Sample.Pages.Controls.ButtonPage"
+             Title="Buttons">
+    <ScrollView>
+        <ScrollView.Padding>
+            <OnPlatform x:TypeArguments="Thickness"
+                        iOS="20,40,20,20"
+                        Android="20,20,20,20"
+                        WinPhone="20,20,20,20" />
+        </ScrollView.Padding>
+        <StackLayout>
+            <controls:ImageButton x:Name="TwitterButton" Text="Twitter" BackgroundColor="#01abdf" TextColor="#ffffff"
+                                  HeightRequest="75" WidthRequest="175" Orientation="ImageToLeft"
+                                  ImageHeightRequest="50" ImageWidthRequest="50">
+                <controls:ImageButton.Source>
+                    <OnPlatform x:TypeArguments="ImageSource">
+                        <OnPlatform.iOS>
+                            <FileImageSource File="icon_twitter.png" />
+                        </OnPlatform.iOS>
+                        <OnPlatform.Android>
+                            <FileImageSource File="icon_twitter.png" />
+                        </OnPlatform.Android>
+                        <OnPlatform.WinPhone>
+                            <FileImageSource File="Images/icon_twitter.png" />
+                        </OnPlatform.WinPhone>
+                    </OnPlatform>
+                </controls:ImageButton.Source>
+            </controls:ImageButton>
+            <controls:ImageButton x:Name="FacebookButton" Text="Facebook" BackgroundColor="#3d509f" TextColor="#ffffff"
+                                  HeightRequest="75" WidthRequest="175" Orientation="ImageToRight"
+                                  ImageHeightRequest="50" ImageWidthRequest="50">
+                <controls:ImageButton.Source>
+                    <OnPlatform x:TypeArguments="ImageSource">
+                        <OnPlatform.iOS>
+                            <FileImageSource File="icon_facebook.png" />
+                        </OnPlatform.iOS>
+                        <OnPlatform.Android>
+                            <FileImageSource File="icon_facebook.png" />
+                        </OnPlatform.Android>
+                        <OnPlatform.WinPhone>
+                            <FileImageSource File="Images/icon_facebook.png" />
+                        </OnPlatform.WinPhone>
+                    </OnPlatform>
+                </controls:ImageButton.Source>
+            </controls:ImageButton>
+            <controls:ImageButton x:Name="GoogleButton" Text="Google" BackgroundColor="#dc021e" TextColor="#ffffff"
+                                  HeightRequest="125" WidthRequest="175" Orientation="ImageOnTop"
+                                  ImageHeightRequest="100" ImageWidthRequest="100">
+                <controls:ImageButton.Source>
+                    <OnPlatform x:TypeArguments="ImageSource">
+                        <OnPlatform.iOS>
+                            <FileImageSource File="icon_google.png" />
+                        </OnPlatform.iOS>
+                        <OnPlatform.Android>
+                            <FileImageSource File="icon_google.png" />
+                        </OnPlatform.Android>
+                        <OnPlatform.WinPhone>
+                            <FileImageSource File="Images/icon_google.png" />
+                        </OnPlatform.WinPhone>
+                    </OnPlatform>
+                </controls:ImageButton.Source>
+            </controls:ImageButton>
+            <controls:ImageButton x:Name="MicrosoftButton" Text="Microsoft" BackgroundColor="#ffffff"
+                                  TextColor="#000000" HeightRequest="125" WidthRequest="175"
+                                  Orientation="ImageOnBottom" ImageHeightRequest="100" ImageWidthRequest="100">
+                <controls:ImageButton.Source>
+                    <OnPlatform x:TypeArguments="ImageSource">
+                        <OnPlatform.iOS>
+                            <FileImageSource File="icon_microsoft.png" />
+                        </OnPlatform.iOS>
+                        <OnPlatform.Android>
+                            <FileImageSource File="icon_microsoft.png" />
+                        </OnPlatform.Android>
+                        <OnPlatform.WinPhone>
+                            <FileImageSource File="Images/icon_microsoft.png" />
+                        </OnPlatform.WinPhone>
+                    </OnPlatform>
+                </controls:ImageButton.Source>
+            </controls:ImageButton>
+          
+          <StackLayout Orientation="Horizontal">
+            <Switch IsToggled="{Binding ButtonEnabled}" WidthRequest="125" MinimumHeightRequest="25"></Switch>
+            <controls:ImageButton x:Name="EnabledButton" BackgroundColor="#a2e2ef" Text="{Binding EnabledButtonTitle}"
+                      TextColor="#000000" HeightRequest="125"
+                      HorizontalOptions="FillAndExpand"
+                      IsEnabled="{Binding ButtonEnabled}"
+                      Orientation="ImageOnBottom" ImageHeightRequest="100" ImageWidthRequest="100">
+              <controls:ImageButton.Source>
+                <OnPlatform x:TypeArguments="ImageSource">
+                  <OnPlatform.iOS>
+                    <FileImageSource File="icon_twitter" />
+                  </OnPlatform.iOS>
+                  <OnPlatform.Android>
+                    <FileImageSource File="icon_google.png" />
+                  </OnPlatform.Android>
+                  <OnPlatform.WinPhone>
+                    <FileImageSource File="Images/icon_microsoft.png" />
+                  </OnPlatform.WinPhone>
+                </OnPlatform>
+              </controls:ImageButton.Source>
+              <controls:ImageButton.DisabledSource>
+                <OnPlatform x:TypeArguments="ImageSource">
+                  <OnPlatform.iOS>
+                    <FileImageSource File="imgNotAvailable.png" />
+                  </OnPlatform.iOS>
+                  <OnPlatform.Android>
+                    <FileImageSource File="imgNotAvailable.png" />
+                  </OnPlatform.Android>
+                  <OnPlatform.WinPhone>
+                    <FileImageSource File="Images/imgNotAvailable.png" />
+                  </OnPlatform.WinPhone>
+                </OnPlatform>
+              </controls:ImageButton.DisabledSource>
+            </controls:ImageButton>
+          </StackLayout>
+<!--
+            <controls:IconButton Text="Twitter + Font Awesome" BackgroundColor="#01abdf" TextColor="#ffffff"
+                                 Orientation="ImageToLeft" Icon="{x:Static icons:Icons.Twitter}" IconColor="#ffffff"
+                                 IconSize="25" />
+
+            <controls:IconButton Text="Facebook + Font Awesome" BackgroundColor="#3d509f" TextColor="#ffffff"
+                                 Orientation="ImageToRight" Icon="{x:Static icons:Icons.FacebookSquare}"
+                                 IconColor="#ffffff" IconSize="25" />
+-->
+        </StackLayout>
+
+    </ScrollView>
+</ContentPage>

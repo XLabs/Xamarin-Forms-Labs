@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 x:Class="XLabs.Sample.Pages.Services.TextToSpeechPage"
+			 Title="Text To Speech Service">
+	<ContentPage.Content>
+		<StackLayout>
+			<Entry Text="{Binding TextToSpeak, Mode=TwoWay}" />
+			<Button x:Name="BtnSpeak" Text="Speak" WidthRequest="200" HeightRequest="100" Command="{Binding SpeakCommand}" />
+		</StackLayout>
+
+	</ContentPage.Content>
+</ContentPage>
+

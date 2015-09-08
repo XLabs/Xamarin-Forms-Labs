@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+	<metadata>
+		<id>XLabs.Web</id>
+		<title>XLabs - Web</title>
+		<tags>Xamarin XLabs</tags>
+		<version>2.0.5603</version>
+		<authors>XLabs Team</authors>
+		<licenseUrl>https://github.com/XForms/Xamarin-Forms-Labs/blob/master/LICENSE</licenseUrl>
+		<projectUrl>https://github.com/XForms/Xamarin-Forms-Labs</projectUrl>
+		<iconUrl>https://raw.githubusercontent.com/XLabs/Xamarin-Forms-Labs/master/Design/Icons/nuget/icon_nuget.png</iconUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>
+			XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin mobile platforms.
+
+			This package contains Web related interfaces and services (e.g. REST client).
+		</description>
+		<summary>
+			XLabs is a open source project that aims to provide a powerfull and cross platform set of tools for Xamarin platform.
+		</summary>
+		<language>en-US</language>
+		<dependencies>
+			<group targetFramework="MonoAndroid">
+				<dependency id="XLabs.Serialization" version="2.0.5603" />
+			</group>
+			<group targetFramework="Xamarin.iOS10">
+				<dependency id="XLabs.Serialization" version="2.0.5603" />
+			</group>
+			<group targetFramework="wp8">
+				<dependency id="Microsoft.Net.Http" version="2.2.29" />
+				<dependency id="XLabs.Serialization" version="2.0.5603" />
+			</group>
+			<group targetFramework="wpa81">
+				<dependency id="Microsoft.Net.Http" version="2.2.29" />
+				<dependency id="XLabs.Serialization" version="2.0.5603" />
+			</group>
+		</dependencies>
+	</metadata>
+	<files>
+		<file src="..\..\build\**\XLabs.Web.dll" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
+		<file src="..\..\build\**\XLabs.Web.dll.mdb" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
+		<file src="..\..\build\**\XLabs.Web.pdb" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
+		<file src="..\..\build\**\XLabs.Web.xml" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
+
+		<file src="..\..\build\**\XLabs.Web.dll" target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1" />
+		<file src="..\..\build\**\XLabs.Web.dll.mdb" target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1" />
+		<file src="..\..\build\**\XLabs.Web.pdb" target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1" />
+		<file src="..\..\build\**\XLabs.Web.xml" target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1" />
+
+		<file src="..\..\build\**\XLabs.Web.iOS.dll" target="lib\Xamarin.iOS10" />
+		<file src="..\..\build\**\XLabs.Web.iOS.dll.mdb" target="lib\Xamarin.iOS10" />
+		<file src="..\..\build\**\XLabs.Web.iOS.pdb" target="lib\Xamarin.iOS10" />
+		<file src="..\..\build\**\XLabs.Web.iOS.xml" target="lib\Xamarin.iOS10" />
+		<file src="..\..\build\**\XLabs.Web.dll" target="lib\Xamarin.iOS10" />
+		<file src="..\..\build\**\XLabs.Web.dll.mdb" target="lib\Xamarin.iOS10" />
+		<file src="..\..\build\**\XLabs.Web.pdb" target="lib\Xamarin.iOS10" />
+		<file src="..\..\build\**\XLabs.Web.xml" target="lib\Xamarin.iOS10" />
+
+		<file src="..\..\build\**\XLabs.Web.Droid.dll" target="lib\MonoAndroid" />
+		<file src="..\..\build\**\XLabs.Web.Droid.dll.mdb" target="lib\MonoAndroid" />
+		<file src="..\..\build\**\XLabs.Web.Droid.pdb" target="lib\MonoAndroid" />
+		<file src="..\..\build\**\XLabs.Web.Droid.xml" target="lib\MonoAndroid" />
+		<file src="..\..\build\**\XLabs.Web.dll" target="lib\MonoAndroid" />
+		<file src="..\..\build\**\XLabs.Web.dll.mdb" target="lib\MonoAndroid" />
+		<file src="..\..\build\**\XLabs.Web.pdb" target="lib\MonoAndroid" />
+		<file src="..\..\build\**\XLabs.Web.xml" target="lib\MonoAndroid" />
+
+		<file src="..\..\build\**\XLabs.Web.WP8.dll" target="lib\wp8" />
+		<file src="..\..\build\**\XLabs.Web.WP8.dll.mdb" target="lib\wp8" />
+		<file src="..\..\build\**\XLabs.Web.WP8.pdb" target="lib\wp8" />
+		<file src="..\..\build\**\XLabs.Web.WP8.xml" target="lib\wp8" />
+		<file src="..\..\build\**\XLabs.Web.dll" target="lib\wp8" />
+		<file src="..\..\build\**\XLabs.Web.dll.mdb" target="lib\wp8" />
+		<file src="..\..\build\**\XLabs.Web.pdb" target="lib\wp8" />
+		<file src="..\..\build\**\XLabs.Web.xml" target="lib\wp8" />
+
+		<file src="..\..\build\**\XLabs.Web.WP8.dll" target="lib\wpa81" />
+		<file src="..\..\build\**\XLabs.Web.WP8.dll.mdb" target="lib\wpa81" />
+		<file src="..\..\build\**\XLabs.Web.WP8.pdb" target="lib\wpa81" />
+		<file src="..\..\build\**\XLabs.Web.WP8.xml" target="lib\wpa81" />
+		<file src="..\..\build\**\XLabs.Web.dll" target="lib\wpa81" />
+		<file src="..\..\build\**\XLabs.Web.dll.mdb" target="lib\wpa81" />
+		<file src="..\..\build\**\XLabs.Web.pdb" target="lib\wpa81" />
+		<file src="..\..\build\**\XLabs.Web.xml" target="lib\wpa81" />
+
+		<!-- Source Files for Symbol Server -->
+		<file src="..\..\src\Web\**\*.cs" target="src" />
+	</files>
+</package>

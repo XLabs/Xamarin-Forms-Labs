@@ -1,7 +1,3 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
 #if WINDOWS_PHONE
 using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
 using TestFixture = Microsoft.VisualStudio.TestPlatform.UnitTestFramework.TestClassAttribute;
@@ -12,12 +8,15 @@ using NUnit.Framework;
 
 namespace SerializationTests
 {
+    using XLabs.Serialization;
+    using XLabs.Serialization.ServiceStack;
+
     [TestFixture()]
     public class CanSerializerTestsServiceStack : CanSerializerTests
     {
-        protected override Xamarin.Forms.Labs.Services.Serialization.ISerializer Serializer
+        protected override ISerializer Serializer
         {
-            get { return new Xamarin.Forms.Labs.ServiceStackSerializer.JsonSerializer(); }
+            get { return new JsonSerializer(); }
         }
     }
 }
