@@ -5,14 +5,16 @@ using XLabs.Forms.Controls;
 namespace XLabs.Forms.Controls
 {
     using System;
-
+    using System.ComponentModel;
+    using Android.Graphics;
+    using Android.Text;
+    using Android.Text.Method;
+    using Android.Util;
     using Android.Views;
-
+    using Extensions;
     using Xamarin.Forms;
     using Xamarin.Forms.Platform.Android;
-
-    using Extensions;
-    using Android.Text;
+    using Color = Xamarin.Forms.Color;
 
     /// <summary>
     /// Class ExtendedEntryRenderer.
@@ -98,7 +100,7 @@ namespace XLabs.Forms.Controls
                         }
                         else 
                         {
-                            Android.Util.Log.Info("ExtendedEntry", "Horizontal Swipe was only " + Math.Abs(deltaX) + " long, need at least " + MinDistance);
+                            Log.Info("ExtendedEntry", "Horizontal Swipe was only " + Math.Abs(deltaX) + " long, need at least " + MinDistance);
                             return; // We don't consume the event
                         }
                     }
@@ -125,7 +127,7 @@ namespace XLabs.Forms.Controls
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="System.ComponentModel.PropertyChangedEventArgs"/> instance containing the event data.</param>
-        protected override void OnElementPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             var view = (ExtendedEntry)Element;
 

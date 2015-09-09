@@ -125,7 +125,9 @@ namespace XLabs.Platform.Services
         /// <param name="number">Number to dial.</param>
         public void DialNumber(string number)
         {
-            UIApplication.SharedApplication.OpenUrl(new NSUrl("tel:" + number));
+			if (string.IsNullOrEmpty (number))
+				return;
+			UIApplication.SharedApplication.OpenUrl(NSUrl.FromString("tel://" + number.Replace (" ", "")));
         }
 
         /// <summary>
