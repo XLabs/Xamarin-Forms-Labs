@@ -86,10 +86,6 @@
       <Project>{15d9c404-f7e2-49f0-acc9-63c4c008c860}</Project>
       <Name>XLabs.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\XLabs.Platform.WinRT\XLabs.Platform.WinRT.WindowsPhone\XLabs.Platform.WinRT.WindowsPhone.vcxproj">
-      <Project>{66bdf342-9401-4ccb-81b6-5cdb7c58f8ef}</Project>
-      <Name>XLabs.Platform.WinRT.WindowsPhone</Name>
-    </ProjectReference>
     <ProjectReference Include="..\XLabs.Platform\XLabs.Platform.csproj">
       <Project>{2a4d9dd4-326c-4824-aa3c-a9ed45cc898c}</Project>
       <Name>XLabs.Platform</Name>
@@ -103,11 +99,6 @@
     <Compile Include="Device\Wp81Device.cs" />
     <Compile Include="Extensions\VectorExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.wp81.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <SDKReference Include="Microsoft.VCLibs, Version=12.0">
-      <Name>Microsoft Visual C++ 2013 Runtime Package for Windows Phone</Name>
-    </SDKReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>
