@@ -46,6 +46,21 @@ namespace XLabs.Forms.Controls
             BindableProperty.Create("MaxLength", typeof(int), typeof(ExtendedEntry), int.MaxValue);
 
         /// <summary>
+        /// The IsPasswordRevealButtonEnabled property
+        /// </summary>
+        public static readonly BindableProperty IsPasswordRevealButtonEnabledProperty =
+            BindableProperty.Create("IsPasswordRevealButtonEnabled", typeof(bool), typeof(ExtendedEntry), false);
+
+        /// <summary>
+        /// Gets or sets if the password reveal button is visible or not
+        /// </summary>
+        public bool IsPasswordRevealButtonEnabled
+        {
+            get { return (bool)GetValue(IsPasswordRevealButtonEnabledProperty); }
+            set { SetValue(IsPasswordRevealButtonEnabledProperty, value); }
+        }
+
+        /// <summary>
         /// Gets or sets the MaxLength
         /// </summary>
         public int MaxLength
