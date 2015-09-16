@@ -3,157 +3,175 @@
 	using System;
 	using System.IO;
 
-	using ExifLib;
+	
 
 	/// <summary>
 	/// Class MediaFile. This class cannot be inherited.
 	/// </summary>
-	public sealed class MediaFile : IDisposable
-	{
-		#region Private Member Variables
+    public sealed class MediaFile : IDisposable
+    {
+        #region Private Member Variables
 
-		/// <summary>
-		/// The _dispose
-		/// </summary>
-		private readonly Action<bool> _dispose;
+        /// <summary>
+        /// The _dispose
+        /// </summary>
+        private readonly Action<bool> _dispose;
 
-		/// <summary>
-		/// The _path
-		/// </summary>
-		private readonly string _path;
+        /// <summary>
+        /// The _path
+        /// </summary>
+        private readonly string _path;
 
-		/// <summary>
-		/// The _stream getter
-		/// </summary>
-		private readonly Func<Stream> _streamGetter;
+        /// <summary>
+        /// The _stream getter
+        /// </summary>
+        private readonly Func<Stream> _streamGetter;
 
-		/// <summary>
-		/// The _is disposed
-		/// </summary>
-		private bool _isDisposed;
+        /// <summary>
+        /// The _is disposed
+        /// </summary>
+        private bool _isDisposed;
 
-		#endregion Private Member Variables
+      
 
-		#region Constructors
+        #endregion Private Member Variables
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="MediaFile" /> class.
-		/// </summary>
-		/// <param name="path">The path.</param>
-		/// <param name="streamGetter">The stream getter.</param>
-		/// <param name="dispose">The dispose.</param>
-		public MediaFile(string path, Func<Stream> streamGetter, Action<bool> dispose = null)
-		{
-			_dispose = dispose;
-			_streamGetter = streamGetter;
-			_path = path;
-		}
+        #region Constructors
 
-		/// <summary>
-		/// Finalizes an instance of the <see cref="MediaFile" /> class.
-		/// </summary>
-		~MediaFile()
-		{
-			Dispose(false);
-		}
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MediaFile" /> class.
+        /// </summary>
+        /// <param name="path">The path.</param>
+        /// <param name="streamGetter">The stream getter.</param>
+        /// <param name="dispose">The dispose.</param>
+        public MediaFile(string path, Func<Stream> streamGetter, Action<bool> dispose = null)
+        {
+            _dispose = dispose;
+            _streamGetter = streamGetter;
+            _path = path;
+        }
 
-		#endregion Constructors
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MediaFile" /> class including the ExifReader.
+        /// </summary>
+        /// <param name="path">The path.</param>
+        /// <param name="exifReader">An instance of <see cref="IExifReader"/> that will be used to populate Exif Tags values.</param>
+        /// <param name="streamGetter">The stream getter.</param>
+        /// <param name="dispose">The dispose.</param>
+        public MediaFile(string path, IJpegInfo jpegInfo, Func<Stream> streamGetter, Action<bool> dispose = null)
+        {
+            _dispose = dispose;
+            _streamGetter = streamGetter;
+            _path = path;
+            _ExifTags = jpegInfo;
+        }
 
-		#region Public Properties
+        /// <summary>
+        /// Finalizes an instance of the <see cref="MediaFile" /> class.
+        /// </summary>
+        ~MediaFile()
+        {
+            Dispose(false);
+        }
 
-		/// <summary>
-		/// Gets the path.
-		/// </summary>
-		/// <value>The path.</value>
-		/// <exception cref="System.ObjectDisposedException">null</exception>
-		public string Path
-		{
-			get
-			{
-				if (_isDisposed)
-				{
-					throw new ObjectDisposedException(null);
-				}
+        #endregion Constructors
 
-				return _path;
-			}
-		}
+        #region Public Properties
 
-		/// <summary>
-		/// Gets the stream.
-		/// </summary>
-		/// <value>The source.</value>
-		/// <exception cref="System.ObjectDisposedException">null</exception>
-		public Stream Source
-		{
-			get
-			{
-				if (_isDisposed)
-				{
+        /// <summary>
+        /// Gets the path.
+        /// </summary>
+        /// <value>The path.</value>
+        /// <exception cref="System.ObjectDisposedException">null</exception>
+        public string Path
+        {
+            get
+            {
+                if (_isDisposed)
+                {
+                    throw new ObjectDisposedException(null);
+                }
 
-					throw new ObjectDisposedException(null);
-				}
+                return _path;
+            }
+        }
 
-				return _streamGetter();
-			}
-		}
+        /// <summary>
+        /// Gets the stream.
+        /// </summary>
+        /// <value>The source.</value>
+        /// <exception cref="System.ObjectDisposedException">null</exception>
+        public Stream Source
+        {
+            get
+            {
+                if (_isDisposed)
+                {
 
-		/// <summary>
-		/// Gets the exif.
-		/// </summary>
-		/// <value>The exif.</value>
-		/// <exception cref="System.ObjectDisposedException">null</exception>
-		public JpegInfo Exif
-		{
-			get
-			{
-				if (_isDisposed)
-				{
-					throw new ObjectDisposedException(null);
-				}
+                    throw new ObjectDisposedException(null);
+                }
 
-				var result = ExifReader.ReadJpeg(Source);
+                return _streamGetter();
+            }
+        }
 
-				Source.Seek(0, SeekOrigin.Begin);
+        private IJpegInfo _ExifTags;
+        /// <summary>
+        /// Property containing all available Exif tags.
+        /// </summary>
+        public IJpegInfo ExifTags
+        {
+            get
+            {
+                if (_isDisposed)
+                {
 
-				return result;
-			}
-		}
-		#endregion Public Properties
+                    throw new ObjectDisposedException(null);
+                }
+               
+                return _ExifTags;
+            }
+        }
 
-		#region Public Methods
 
-		/// <summary>
-		/// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-		/// </summary>
-		public void Dispose()
-		{
-			Dispose(true);
-			GC.SuppressFinalize(this);
-		}
-		#endregion Public Methods
+        #endregion Public Properties
 
-		#region Private Methods
+        #region Public Methods
 
-		/// <summary>
-		/// Releases unmanaged and - optionally - managed resources.
-		/// </summary>
-		/// <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only
-		/// unmanaged resources.</param>
-		private void Dispose(bool disposing)
-		{
-			if (_isDisposed)
-			{
-				return;
-			}
 
-			_isDisposed = true;
-			if (_dispose != null)
-			{
-				_dispose(disposing);
-			}
-		}
 
-		#endregion Private Methods
-	}
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+        #endregion Public Methods
+
+        #region Private Methods
+
+        /// <summary>
+        /// Releases unmanaged and - optionally - managed resources.
+        /// </summary>
+        /// <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only
+        /// unmanaged resources.</param>
+        private void Dispose(bool disposing)
+        {
+            if (_isDisposed)
+            {
+                return;
+            }
+
+            _isDisposed = true;
+            if (_dispose != null)
+            {
+                
+                _dispose(disposing);
+            }
+        }
+
+        #endregion Private Methods
+    }
 }
