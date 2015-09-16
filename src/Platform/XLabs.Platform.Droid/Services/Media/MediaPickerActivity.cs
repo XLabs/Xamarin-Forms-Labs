@@ -175,7 +175,7 @@ namespace XLabs.Platform.Services.Media
 			outState.PutString(ExtraType, _type);
 			outState.PutString(ExtraAction, _action);
 			outState.PutInt(MediaStore.ExtraDurationLimit, _seconds);
-			outState.PutInt(MediaStore.ExtraVideoQuality, (int) _quality);
+            outState.PutInt(MediaStore.ExtraVideoQuality, (int)_quality);
 			outState.PutBoolean(ExtraTasked, _tasked);
 
 			if (_path != null)
@@ -256,7 +256,7 @@ namespace XLabs.Platform.Services.Media
 						}
 					}
 
-					_quality = (VideoQuality) b.GetInt(MediaStore.ExtraVideoQuality, (int) VideoQuality.High);
+                    _quality = (VideoQuality)b.GetInt(MediaStore.ExtraVideoQuality, (int)VideoQuality.High);
 					pickIntent.PutExtra(MediaStore.ExtraVideoQuality, GetVideoQuality(_quality));
 
 					if (!ran)
@@ -413,8 +413,15 @@ namespace XLabs.Platform.Services.Media
 					{
 						dispose = d => File.Delete(resultPath);
 					}
+                    MediaFile mf = null;
 
-					var mf = new MediaFile(resultPath, () => File.OpenRead(t.Result.Item1) , dispose);
+                    if (isPhoto)
+                    {
+                        IJpegInfo jinfo = new JpegInfo(t.Result.Item1);
+                        mf = new MediaFile(resultPath, jinfo, () => File.OpenRead(t.Result.Item1), dispose);
+                    }
+                    else
+                        mf = new MediaFile(resultPath, () => File.OpenRead(t.Result.Item1), dispose);
 
 					return new MediaPickedEventArgs(requestCode, false, mf);
 				}

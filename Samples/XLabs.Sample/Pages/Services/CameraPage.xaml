@@ -3,13 +3,55 @@
 			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 			 x:Class="XLabs.Sample.Pages.Services.CameraPage">
 	<ContentPage.Content>
-		<StackLayout>
+		 <ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand">
+        <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
 			<Button Text="Take Picture" Command="{Binding TakePictureCommand}" />
 			<Button Text="Select Image from Picture Library" Command="{Binding SelectPictureCommand}" />
 			<Button Text="Select Video from Picture Library " Command="{Binding SelectVideoCommand}" />
 			<Image Source="{Binding ImageSource}" VerticalOptions="CenterAndExpand" />
 			<Entry Text="{Binding VideoInfo}" VerticalOptions="CenterAndExpand" />
-		</StackLayout>
+     
+          <Label Text="{Binding ExifInfo.GpsLatitude, StringFormat='GpsLatitude {0}'}" HorizontalOptions="FillAndExpand" TextColor="Red" ></Label>
+          <Label Text="{Binding ExifInfo.GpsLatitudeRef, StringFormat='GpsLatitudeRef {0}'}" HorizontalOptions="FillAndExpand" TextColor="Red" ></Label>
+          <Label Text="{Binding ExifInfo.GpsLongitude, StringFormat='GpsLongitude {0}'}" HorizontalOptions="FillAndExpand" TextColor="Red" ></Label>
+          <Label Text="{Binding ExifInfo.GpsLongitudeRef, StringFormat='GpsLongitudeRef {0}'}" HorizontalOptions="FillAndExpand" TextColor="Red" ></Label>
+          <Label Text="{Binding ExifInfo.GpsAltitude, StringFormat='GpsAltitude {0}'}" HorizontalOptions="FillAndExpand" TextColor="Red" ></Label>
+          <Label Text="{Binding ExifInfo.GpsAltitudeRef, StringFormat='GpsAltitudeRef {0}'}" HorizontalOptions="FillAndExpand" TextColor="Red" ></Label>
+          <Label Text="{Binding ExifInfo.GpsDestBearing, StringFormat='GpsDestBearing {0}'}" HorizontalOptions="FillAndExpand" TextColor="Red" ></Label>
+          <Label Text="{Binding ExifInfo.GpsDestBearingRef, StringFormat='GpsDestBearingRef {0}'}" HorizontalOptions="FillAndExpand" TextColor="Red" ></Label>
+          <Label Text="{Binding ExifInfo.GPSSpeed, StringFormat='GPSSpeed {0}'}" HorizontalOptions="FillAndExpand" TextColor="Red" ></Label>
+          <Label Text="{Binding ExifInfo.GPSSpeedRef, StringFormat='GPSSpeedRef {0}'}" HorizontalOptions="FillAndExpand" TextColor="Red" ></Label>
+        
+          <Label Text="{Binding ExifInfo.PixelYDimension, StringFormat='PixelYDimension {0}'}" HorizontalOptions="FillAndExpand" TextColor="Red" ></Label>
+          <Label Text="{Binding ExifInfo.PixelXDimension, StringFormat='PixelXDimension {0}'}" HorizontalOptions="FillAndExpand" TextColor="Red" ></Label>
+        
+          <Label Text="{Binding ExifInfo.ColorSpace, StringFormat='ColorSpace {0}'}" HorizontalOptions="FillAndExpand" TextColor="Red" ></Label>
+          <Label Text="{Binding ExifInfo.DateTimeDigitized, StringFormat='DateTimeDigitized {0}'}" HorizontalOptions="FillAndExpand" TextColor="Red" ></Label>
+          <Label Text="{Binding ExifInfo.Orientation, StringFormat='Orientation {0}'}" HorizontalOptions="FillAndExpand" TextColor="Red" ></Label>
+          <Label Text="{Binding ExifInfo.XResolution, StringFormat='XResolution {0}'}" HorizontalOptions="FillAndExpand" TextColor="Red" ></Label>
+          <Label Text="{Binding ExifInfo.YResolution, StringFormat='YResolution {0}'}" HorizontalOptions="FillAndExpand" TextColor="Red" ></Label>
+          
+          <Label Text="{Binding ExifInfo.ResolutionUnit, StringFormat='ResolutionUnit {0}'}" HorizontalOptions="FillAndExpand" TextColor="Red" ></Label>
+          <Label Text="{Binding ExifInfo.DateTime, StringFormat='DateTime {0}'}" HorizontalOptions="FillAndExpand" TextColor="Red" ></Label>
+          <Label Text="{Binding ExifInfo.DateTimeOriginal, StringFormat='DateTimeOriginal {0}'}" HorizontalOptions="FillAndExpand" TextColor="Red" ></Label>
+          <Label Text="{Binding ExifInfo.ImageDescription, StringFormat='ImageDescription {0}'}" HorizontalOptions="FillAndExpand" TextColor="Red" ></Label>
+          <Label Text="{Binding ExifInfo.Make, StringFormat='Maker {0}'}" HorizontalOptions="FillAndExpand" TextColor="Red" ></Label>
+          
+        <Label Text="{Binding ExifInfo.Model, StringFormat='Model {0}'}" HorizontalOptions="FillAndExpand" TextColor="Red" ></Label>
+        <Label Text="{Binding ExifInfo.Software, StringFormat='Software {0}'}" HorizontalOptions="FillAndExpand" TextColor="Red" ></Label>
+        <Label Text="{Binding ExifInfo.Artist, StringFormat='Artist {0}'}" HorizontalOptions="FillAndExpand" TextColor="Red" ></Label>
+        <Label Text="{Binding ExifInfo.Copyright, StringFormat='Copyright {0}'}" HorizontalOptions="FillAndExpand" TextColor="Red" ></Label>
+        <Label Text="{Binding ExifInfo.UserComment, StringFormat='UserComment {0}'}" HorizontalOptions="FillAndExpand" TextColor="Red" ></Label>
+        <Label Text="{Binding ExifInfo.ExposureTime, StringFormat='ExposureTime {0}'}" HorizontalOptions="FillAndExpand" TextColor="Red" ></Label>
+        <Label Text="{Binding ExifInfo.FNumber, StringFormat='FNumber {0}'}" HorizontalOptions="FillAndExpand" TextColor="Red" ></Label>
+        
+        <Label Text="{Binding ExifInfo.Flash, StringFormat='Flash {0}'}" HorizontalOptions="FillAndExpand" TextColor="Red" ></Label>
+
+       
+  
+        </StackLayout>
+      </ScrollView>
+
 	</ContentPage.Content>
 </ContentPage>
 
