@@ -69,12 +69,18 @@
     <Compile Include="Services\IPhoneService.cs" />
     <Compile Include="Services\ISecureStorage.cs" />
     <Compile Include="Services\ITextToSpeechService.cs" />
+    <Compile Include="Services\Media\ExifTagFriendlyValues.cs" />
+    <Compile Include="Services\Media\ExifTags.cs" />
     <Compile Include="Services\Media\IAudioStream.cs" />
+    <Compile Include="Services\Media\IExifReader.cs" />
+    <Compile Include="Services\Media\IJpegInfo.cs" />
     <Compile Include="Services\Media\IMediaPicker.cs" />
     <Compile Include="Services\Media\ISoundService.cs" />
+    <Compile Include="Services\Media\MediaExifException.cs" />
     <Compile Include="Services\Media\MediaExtensions.cs" />
     <Compile Include="Services\Media\MediaFile.cs" />
     <Compile Include="Services\Media\MediaFileNoteFoundException.cs" />
+    <Compile Include="Services\Media\MediaFormatException.cs" />
     <Compile Include="Services\Media\MediaStorageOptions.cs" />
     <Compile Include="Services\Media\SoundFile.cs" />
     <Compile Include="Services\Media\SoundFinishedEventArgs.cs" />
@@ -86,16 +92,6 @@
       <Project>{15D9C404-F7E2-49F0-ACC9-63C4C008C860}</Project>
       <Name>XLabs.Core</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="ExifLib">
-      <HintPath>..\..\..\packages\ExifLib.PCL.1.0.1\lib\portable-net45+sl50+win+WindowsPhoneApp81+wp80+Xamarin.iOS10+MonoAndroid10+MonoTouch10\ExifLib.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
