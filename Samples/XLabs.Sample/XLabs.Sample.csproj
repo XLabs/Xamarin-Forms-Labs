@@ -69,6 +69,9 @@
     <Compile Include="Pages\Controls\DynamicList\DynamicListView.xaml.cs">
       <DependentUpon>DynamicListView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Controls\ExtendedTextCellPage.xaml.cs">
+      <DependentUpon>ExtendedTextCellPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Controls\ExtendedEntryPage.xaml.cs">
       <DependentUpon>ExtendedEntryPage.xaml</DependentUpon>
     </Compile>
@@ -416,6 +419,13 @@
     <EmbeddedResource Include="Pages\Controls\DragPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Controls\ExtendedTextCellPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>
+      </SubType>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="..\..\packages\Xamarin.Forms.1.4.0.6341\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.1.4.0.6341\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />

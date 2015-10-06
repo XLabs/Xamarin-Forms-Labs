@@ -214,6 +214,7 @@ namespace XLabs.Sample
                 {"CircleImage", typeof(CircleImagePage)},
                 {"DynamicListView", typeof(DynamicListView)},
                 {"DragPage", typeof(DragPage)},
+                {"ExtendedTextCell", typeof(ExtendedTextCellPage)},
                 {"ExtendedCell", typeof(ExtendedCellPage)},
                 {"ExtendedEntry", typeof(ExtendedEntryPage)},
                 {"ExtendedLabel", typeof(ExtendedLabelPage)},
@@ -302,6 +303,8 @@ namespace XLabs.Sample
                 switch (Device.OS)
                 {
                     case TargetPlatform.Android:
+                        result = ((KeyValuePair<string, Type>)e.SelectedItem).Value;
+                        break;
                     case TargetPlatform.iOS:
                         var item = (DictionaryEntry) e.SelectedItem;
                         result = (Type)item.Value;
