@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+    x:Class="XLabs.Sample.Pages.Controls.ExtendedTextCellPage"
+	  BackgroundColor="Gray"
+    Title="Extended Text Cells">
+  <ContentPage.Content>
+    <StackLayout x:Name="StkRoot">
+      <ListView ItemsSource="{Binding Images}">
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <controls:ExtendedTextCell Text="This is the text"
+                                       Detail="This is the details"
+                                       DisclousureImage="appicon.png"
+                                       ShowDisclousure="False"
+                                       SeparatorPadding="10,10,10,10"
+                                       SeparatorColor="Fuchsia"
+                                       />
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+    </StackLayout>
+  </ContentPage.Content>
+</ContentPage>
+

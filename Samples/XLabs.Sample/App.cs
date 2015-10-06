@@ -30,10 +30,10 @@ namespace XLabs.Sample
     /// </summary>
     public class App : Application
     {
-        public App ()
+        public App()
         {
-            Init ();
-            MainPage = GetMainPage ();
+            Init();
+            MainPage = GetMainPage();
         }
         /// <summary>
         /// Initializes the application.
@@ -219,6 +219,7 @@ namespace XLabs.Sample
                 {"ExtendedLabel", typeof(ExtendedLabelPage)},
                 {"ExtendedScrollView", typeof(ExtendedScrollViewPage)},
                 {"ExtendedSlider", typeof(ExtendedSliderPage)},
+                {"ExtendedTextCell", typeof(ExtendedTextCellPage)},
                 {"GridView", typeof(GridViewPage)},
                 {"HybridWebView", typeof(CanvasWebHybrid)},
                 {"WebHybridTestPage", typeof(WebHybridTestPage)},
@@ -303,7 +304,7 @@ namespace XLabs.Sample
                 {
                     case TargetPlatform.Android:
                     case TargetPlatform.iOS:
-                        var item = (DictionaryEntry) e.SelectedItem;
+                        var item = (DictionaryEntry)e.SelectedItem;
                         result = (Type)item.Value;
                         break;
                     case TargetPlatform.WinPhone:
