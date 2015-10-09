@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{762E5428-8903-4159-9A12-95217EC6797D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Xlabs.Core.Tests</RootNamespace>
+    <AssemblyName>Xlabs.Core.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataTests\ObservableObjectTests.cs" />
+    <Compile Include="ExceptionTests\InvalidNestingExceptionTests.cs" />
+    <Compile Include="ExceptionTests\NoDataTemplateMatchExceptionTests.cs" />
+    <Compile Include="ExceptionTests\PropertyNotFoundExceptionTests.cs" />
+    <Compile Include="ExceptionTests\InvalidVisualObjectExceptionTests.cs" />
+    <Compile Include="ExtensionTests\DateTimeExtensionsTests.cs" />
+    <Compile Include="ExtensionTests\IEnumerableExtensionsTests.cs" />
+    <Compile Include="ExtensionTests\NumericExtensionsTests.cs" />
+    <Compile Include="HelpersTests\BigEndianReaderTests.cs" />
+    <Compile Include="HelpersTests\EventArgs{T}Tests.cs" />
+    <Compile Include="HelpersTests\EventExtensionsTests.cs" />
+    <Compile Include="HelpersTests\GroupedListSourceTests.cs" />
+    <Compile Include="HelpersTests\IconsTests.cs" />
+    <Compile Include="HelpersTests\ListGroupTests.cs" />
+    <Compile Include="HelpersTests\TaskUtilsTests.cs" />
+    <Compile Include="HelpersTests\Vector3Tests.cs" />
+    <Compile Include="ReportingTests\DebugReportsTests.cs" />
+    <Compile Include="ReportingTests\ReportsTests.cs" />
+    <Compile Include="RelayCommandTests.cs" />
+    <Compile Include="RelayCommand{T}Tests.cs" />
+    <Compile Include="UtilitiesTests\TtfFileInfoTests.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\XLabs.Core\XLabs.Core.csproj">
+      <Project>{15D9C404-F7E2-49F0-ACC9-63C4C008C860}</Project>
+      <Name>XLabs.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DataTests\" />
+    <Folder Include="ExceptionTests\" />
+    <Folder Include="ExtensionTests\" />
+    <Folder Include="HelpersTests\" />
+    <Folder Include="ReportingTests\" />
+    <Folder Include="UtilitiesTests\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>
