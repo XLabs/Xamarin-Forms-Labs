@@ -29,10 +29,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="nunit.framework">
-      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataTests\ObservableObjectTests.cs" />
@@ -59,7 +59,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\src\XLabs.Core\XLabs.Core.csproj">
+    <ProjectReference Include="..\..\src\XLabs.Core\XLabs.Core.csproj">
       <Project>{15D9C404-F7E2-49F0-ACC9-63C4C008C860}</Project>
       <Name>XLabs.Core</Name>
     </ProjectReference>
