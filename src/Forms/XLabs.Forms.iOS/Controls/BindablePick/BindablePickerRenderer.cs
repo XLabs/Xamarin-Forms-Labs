@@ -135,7 +135,7 @@ namespace XLabs.Forms.Controls
 			entry.Started += new EventHandler (OnStarted);
 			entry.Ended += new EventHandler (OnEnded);
 			_picker = new UIPickerView {
-				DataSource = new PickerSource (e.NewElement)
+				Model = new PickerSource (e.NewElement)
 			};
 			nfloat width = UIScreen.MainScreen.Bounds.Width;
 			UIToolbar uIToolbar = new UIToolbar (new CGRect (0, 0, width, 44)) {
