@@ -31,7 +31,7 @@
     <DocumentationFile>..\..\..\build\XLabs.Serialization.AspNet.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>Xlabs.snk</AssemblyOriginatorKeyFile>

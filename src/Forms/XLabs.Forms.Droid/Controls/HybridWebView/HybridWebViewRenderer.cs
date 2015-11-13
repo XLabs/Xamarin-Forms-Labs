@@ -278,9 +278,10 @@ namespace XLabs.Forms.Controls
             public void Call(string message)
             {
                 HybridWebViewRenderer hybrid;
-                if (this.webHybrid != null && this.webHybrid.TryGetTarget(out hybrid))
+                HybridWebView webView;
+                if (this.webHybrid != null && this.webHybrid.TryGetTarget(out hybrid) && ((webView = hybrid.Element) != null))
                 {
-                    hybrid.Element.MessageReceived(message);
+                    webView.MessageReceived(message);
                 }
             }
         }

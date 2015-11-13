@@ -138,7 +138,8 @@ namespace XLabs.Forms.Controls
         /// <summary>
         /// Gets or sets the cleanup called flag.
         /// </summary>
-        public bool CleanupCalled {
+        public bool CleanupCalled 
+		{
             get { return (bool)GetValue (CleanupProperty); }
             set { SetValue (CleanupProperty, value); }
         }

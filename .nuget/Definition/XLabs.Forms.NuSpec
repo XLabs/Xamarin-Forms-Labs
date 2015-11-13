@@ -27,14 +27,14 @@
     <language>en-US</language>
     <dependencies>
       <group>
-        <dependency id="Xamarin.Forms" version="1.4.3.6376" />
+        <dependency id="Xamarin.Forms" version="1.5.1.6471" />
         <dependency id="XLabs.IoC" version="2.0.5603" />
         <dependency id="XLabs.Platform" version="2.0.5603" />
         <dependency id="XLabs.Core" version="2.0.5603" />
         <dependency id="XLabs.Serialization" version="2.0.5603" />
       </group>
       <group targetFramework="wp81">
-        <dependency id="Xamarin.Forms" version="1.4.3.6376" />
+        <dependency id="Xamarin.Forms" version="1.5.1.6471" />
         <dependency id="WPControls" version="1.5.2" />
         <dependency id="XLabs.IoC" version="2.0.5603" />
         <dependency id="XLabs.Platform" version="2.0.5603" />
@@ -42,7 +42,7 @@
         <dependency id="XLabs.Serialization" version="2.0.5603" />
       </group>
       <group targetFramework="wpa81">
-        <dependency id="Xamarin.Forms" version="1.4.3.6376" />
+        <dependency id="Xamarin.Forms" version="1.5.1.6471" />
         <dependency id="XLabs.IoC" version="2.0.5603" />
         <dependency id="XLabs.Platform" version="2.0.5603" />
         <dependency id="XLabs.Core" version="2.0.5603" />

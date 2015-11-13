@@ -13,14 +13,15 @@ namespace XLabs.Forms.Controls
     public class CalendarViewRenderer : ViewRenderer<CalendarView, CalendarMonthView>
     {
         private readonly object elementLock = new object();
-        private bool _isElementChanging;
+        private bool isElementChanging;
+        private bool disposed;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CalendarViewRenderer"/> class.
         /// </summary>
         public CalendarViewRenderer()
         {
-            _isElementChanging = false;
+            this.isElementChanging = false;
         }
 
         /// <summary>
@@ -31,31 +32,23 @@ namespace XLabs.Forms.Controls
         {
             base.OnElementChanged(e);
 
-            if (e.OldElement != null)
-            {
+            if (e.NewElement == null) return;
 
+            if (Control == null)
+            {
+                var calendarView = new CalendarMonthView(DateTime.MinValue, true, e.NewElement.ShowNavigationArrows);
+                SetNativeControl (calendarView);
+                calendarView.OnDateSelected += OnDateSelected;
+                calendarView.MonthChanged += MonthChanged;
             }
 
-            if (e.NewElement != null)
-            {
-                if (Control == null)
-                {
-                    bool showNav = this.Element.ShowNavigationArrows;
-                    var calendarView = new CalendarMonthView (DateTime.MinValue, true, showNav);
-                    SetNativeControl (calendarView);
-                    this.Control.OnDateSelected += OnDateSelected;
-                    this.Control.MonthChanged += MonthChanged;
-                }
-            }
-         
-            this.Control.HighlightDaysOfWeeks(this.Element.HighlightedDaysOfWeek);
+            this.Control.HighlightDaysOfWeeks(e.NewElement.HighlightedDaysOfWeek);
             SetColors();
             SetFonts();
 
-            this.Control.SetMinAllowedDate(this.Element.MinDate);
-            this.Control.SetMaxAllowedDate(this.Element.MaxDate);
-            this.Control.SetDisplayedMonthYear(this.Element.DisplayedMonth, false);
-
+            this.Control.SetMinAllowedDate(e.NewElement.MinDate);
+            this.Control.SetMaxAllowedDate(e.NewElement.MaxDate);
+            this.Control.SetDisplayedMonthYear(e.NewElement.DisplayedMonth, false);
         }
 
         private void MonthChanged(DateTime dateTime)
@@ -84,19 +77,19 @@ namespace XLabs.Forms.Controls
 
             lock (this.elementLock)
             {
-                changing = this._isElementChanging;
+                changing = this.isElementChanging;
             }
 
             if (changing) return;
 
             try
             {
-                this._isElementChanging = true;
+                this.isElementChanging = true;
                 action();
             }
             finally
             {
-                this._isElementChanging = false;            
+                this.isElementChanging = false;            
             }
         }
 
@@ -249,14 +242,13 @@ namespace XLabs.Forms.Controls
 
         }
 
-        bool disposed;
-		/// <summary>
-		/// Releases unmanaged and - optionally - managed resources.
-		/// </summary>
-		/// <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
-		protected override void Dispose (bool disposing)
+        /// <summary>
+        /// Releases unmanaged and - optionally - managed resources.
+        /// </summary>
+        /// <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+        protected override void Dispose (bool disposing)
         {
-            if (disposing && !disposed)
+            if (disposing && !this.disposed)
             {
                 if (this.Control != null)
                 {
@@ -264,7 +256,7 @@ namespace XLabs.Forms.Controls
                     this.Control.MonthChanged -= MonthChanged;
                     this.Control.Dispose ();
                 }
-                disposed = true;
+                this.disposed = true;
             }
             base.Dispose (disposing);
         }
