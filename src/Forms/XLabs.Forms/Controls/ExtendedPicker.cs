@@ -2,6 +2,7 @@
 using Xamarin.Forms;
 using System.Collections;
 using System.Reflection;
+using System.Collections.Specialized;
 
 namespace XLabs.Forms.Controls
 {
@@ -22,7 +23,7 @@ namespace XLabs.Forms.Controls
 		/// <summary>
 		/// Identifies the <see cref="P:XLabs.Forms.Controls.ExtendedPicker.SelectedItem" /> property.
 		/// </summary>
-		public static readonly BindableProperty SelectedItemProperty =    BindableProperty.Create("SelectedItem", typeof(object),     typeof(ExtendedPicker), null, BindingMode.OneWay, null, new BindableProperty.BindingPropertyChangedDelegate(ExtendedPicker.OnSelectedItemChanged), null, null, null);
+		public static readonly BindableProperty SelectedItemProperty =    BindableProperty.Create("SelectedItem", typeof(object),     typeof(ExtendedPicker), null, BindingMode.TwoWay , null, new BindableProperty.BindingPropertyChangedDelegate(ExtendedPicker.OnSelectedItemChanged), null, null, null);
 		/// <summary>
 		/// Identifies the <see cref="P:XLabs.Forms.Controls.ExtendedPicker.ItemSource" /> property.
 		/// </summary>
@@ -85,16 +86,20 @@ namespace XLabs.Forms.Controls
 
 		private void OnSelectedIndexChanged(object sender,EventArgs e)
 		{
-			if (SelectedIndex != -1)
+			if (SelectedIndex == -1) 
 			{
-				this.SelectedItem = ItemsSource[SelectedIndex];
+				this.SelectedItem = null;
 			}
+			else
+            {
+                 this.SelectedItem = ItemsSource[SelectedIndex];
+            }
 		}
 
 
 		private static void OnSelectedItemChanged(BindableObject bindable, object oldValue, object newValue)
 		{
-			ExtendedPicker bindablePicker = (ExtendedPicker)bindable;
+			bindablePicker = (ExtendedPicker)bindable;
 			bindablePicker.SelectedItem = newValue;
 			if (bindablePicker.ItemsSource != null && bindablePicker.SelectedItem!=null) {
 				int count = 0;
@@ -113,7 +118,7 @@ namespace XLabs.Forms.Controls
 
 			ExtendedPicker bindablePicker = (ExtendedPicker)bindable;
 			bindablePicker.DisplayProperty = (string)newValue;
-			loadItemsAndSetSelected (bindable);
+			loadItems(bindable);
 
 		}
 
@@ -123,7 +128,7 @@ namespace XLabs.Forms.Controls
 		{
 			bindablePicker = (ExtendedPicker)bindable;
 			bindablePicker.ItemsSource = (IList)newValue;
-			loadItemsAndSetSelected (bindable);
+			loadItems(bindable);
 
 			observable = newValue as INotifyCollectionChanged;
 			if (observable != null)
@@ -132,7 +137,7 @@ namespace XLabs.Forms.Controls
 			}
 
 		}
-		static void loadItemsAndSetSelected (BindableObject bindable)
+		static void loadItems(BindableObject bindable)
 		{
 			ExtendedPicker bindablePicker = (ExtendedPicker)bindable;
 			if (bindablePicker.ItemsSource as IEnumerable != null) {
@@ -166,11 +171,11 @@ namespace XLabs.Forms.Controls
 			}
 		}
 
-		static void observable_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-		{
-			bindablePicker.ItemsSource = (IList)sender;
-			loadItemsAndSetSelected(bindablePicker);
-		}
+        static void observable_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            bindablePicker.ItemsSource = (IList)sender;
+			loadItems(bindablePicker);
+        }
 	}
 
 }
