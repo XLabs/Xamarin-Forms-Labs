@@ -11,7 +11,7 @@ environment:
 install:
 - choco install doxygen.portable
 before_build:
-- nuget restore
+- nuget restore XLabs.sln
 #- appveyor RegisterXamarinLicense -Email %xamarin_email% -Password %xamarin_password% -Product iOS
 #- appveyor RegisterXamarinLicense -Email %xamarin_email% -Password %xamarin_password% -Product Android
 build:
