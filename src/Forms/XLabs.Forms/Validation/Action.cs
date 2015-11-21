@@ -4,7 +4,6 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using Xamarin.Forms;
-using XLabs.Forms.Controls;
 
 namespace XLabs.Forms.Validation
 {

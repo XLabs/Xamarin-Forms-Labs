@@ -1,4 +1,4 @@
-﻿using Xamarin.Forms.Platform.WinRT;
+﻿using Xamarin.Forms.Platform.UWP;
 using XLabs.Forms.Controls;
 
 [assembly: ExportRenderer(typeof(HybridWebView), typeof(HybridWebViewRenderer))]
@@ -7,7 +7,6 @@ namespace XLabs.Forms.Controls
 {
     using System;
     using Windows.UI.Xaml.Controls;
-    using Xamarin.Forms.Platform.WinRT;
 
     /// <summary>
     /// The hybrid web view renderer.

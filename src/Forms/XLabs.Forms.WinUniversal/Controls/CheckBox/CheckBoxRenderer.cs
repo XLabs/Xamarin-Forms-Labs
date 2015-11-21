@@ -1,5 +1,4 @@
-﻿using Xamarin.Forms;
-using Xamarin.Forms.Platform.WinRT;
+﻿using Xamarin.Forms.Platform.UWP;
 using XLabs.Forms.Controls;
 //using System.Windows.Controls;
 
@@ -10,11 +9,8 @@ namespace XLabs.Forms.Controls
     using System.ComponentModel;
     using Windows.UI.Xaml.Media;
     using Xamarin.Forms;
-    using Xamarin.Forms.Platform.WinRT;
-    using XLabs.Forms;
-
     using XLabs;
-
+    using XLabs.Forms;
     using NativeCheckBox = Windows.UI.Xaml.Controls.CheckBox;
 
     /// <summary>
