@@ -11,15 +11,16 @@ environment:
 install:
 - choco install doxygen.portable
 before_build:
-- appveyor RegisterXamarinLicense -Email %xamarin_email% -Password %xamarin_password% -Product iOS
-- appveyor RegisterXamarinLicense -Email %xamarin_email% -Password %xamarin_password% -Product Android
+- nuget restore
+#- appveyor RegisterXamarinLicense -Email %xamarin_email% -Password %xamarin_password% -Product iOS
+#- appveyor RegisterXamarinLicense -Email %xamarin_email% -Password %xamarin_password% -Product Android
 build:
   project: XLabs.sln
   verbosity: quiet
 after_build:
-- appveyor UnregisterXamarinLicense -Email %xamarin_email% -Password %xamarin_password%
+#- appveyor UnregisterXamarinLicense -Email %xamarin_email% -Password %xamarin_password%
 test: off
 on_success:
 - doxygen.exe "C:\projects\xamarin-forms-labs\Doxyfile"
 on_failure:
-- appveyor UnregisterXamarinLicense -Email %xamarin_email% -Password %xamarin_password%
+#- appveyor UnregisterXamarinLicense -Email %xamarin_email% -Password %xamarin_password%
