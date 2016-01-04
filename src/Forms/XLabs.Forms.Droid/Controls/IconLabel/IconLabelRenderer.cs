@@ -56,7 +56,7 @@ namespace XLabs.Forms.Controls
 
 
 
-                    iconFont = TrySetFont("fontawesome-webfont.ttf");
+                    iconFont = TrySetFont(iconLabel.IconFontName?? "fontawesome-webfont.ttf");
                     textFont = iconLabel.Font.ToTypeface();
                     SetText();
 
