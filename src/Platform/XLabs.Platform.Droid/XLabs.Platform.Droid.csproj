@@ -39,10 +39,6 @@
     <DocumentationFile>..\..\..\build\XLabs.Platform.Droid.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ExifLib, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\ExifLib.PCL.1.0.1\lib\portable-net45+sl50+win+WindowsPhoneApp81+wp80+Xamarin.iOS10+MonoAndroid10+MonoTouch10\ExifLib.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
     <Reference Include="System" />
@@ -73,6 +69,8 @@
     <Compile Include="Services\Geolocation\GeolocationSingleListener.cs" />
     <Compile Include="Services\Geolocation\Geolocator.cs" />
     <Compile Include="Services\KeyVaultStorage.cs" />
+    <Compile Include="Services\Media\ExifBinaryReader.cs" />
+    <Compile Include="Services\Media\JpegInfo.cs" />
     <Compile Include="Services\Media\MediaPicker.cs" />
     <Compile Include="Services\Media\MediaPickerActivity.cs" />
     <Compile Include="Services\Media\Microphone.cs" />
@@ -85,7 +83,6 @@
     <Compile Include="Services\TextToSpeechService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
   </ItemGroup>
   <ItemGroup>

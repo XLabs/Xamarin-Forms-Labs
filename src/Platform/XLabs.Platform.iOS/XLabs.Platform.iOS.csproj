@@ -54,13 +54,19 @@
     <Compile Include="Device\Pod.cs" />
     <Compile Include="Device\Simulator.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
+    <Compile Include="Extensions\NSArrayExtensions.cs" />
     <Compile Include="Extensions\NSDataStream.cs" />
+    <Compile Include="Extensions\NSObjectExtension.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\UIViewExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Email\EmailService.cs" />
     <Compile Include="Services\Geolocation\GeolocationSingleUpdateDelegate.cs" />
     <Compile Include="Services\Geolocation\Geolocator.cs" />
+    <Compile Include="Services\Media\ExifAssetsCatalogReader.cs" />
+    <Compile Include="Services\Media\ExifPhotoKitReader.cs" />
+    <Compile Include="Services\Media\ExifReaderBase.cs" />
+    <Compile Include="Services\Media\JpegInfo.cs" />
     <Compile Include="Services\Media\MediaPicker.cs" />
     <Compile Include="Services\Media\MediaPickerController.cs" />
     <Compile Include="Services\Media\MediaPickerDelegate.cs" />
@@ -84,10 +90,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="ExifLib, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\ExifLib.PCL.1.0.1\lib\portable-net45+sl50+win+WindowsPhoneApp81+wp80+Xamarin.iOS10+MonoAndroid10+MonoTouch10\ExifLib.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
