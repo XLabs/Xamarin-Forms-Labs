@@ -38,5 +38,7 @@
 
 		<!-- Source Files for Symbol Server -->
 		<file src="..\..\src\IoC\XLabs.IoC\**\*.cs" target="src" />
+
+		<file src="XLabs.IoC\*.ps1" target="tools" />
 	</files>
 </package>

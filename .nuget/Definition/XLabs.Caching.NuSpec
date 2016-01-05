@@ -38,5 +38,7 @@
 
 		<!-- Source Files for Symbol Server -->
 		<file src="..\..\src\Caching\XLabs.Caching\**\*.cs" target="src" />
+
+		<file src="XLabs.Charting\*.ps1" target="tools" />
 	</files>
 </package>

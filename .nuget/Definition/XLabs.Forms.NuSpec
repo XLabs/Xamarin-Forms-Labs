@@ -97,5 +97,7 @@
 
     <!-- Source Files for Symbol Server -->
     <file src="..\..\src\Forms\**\*.cs" target="src" />
+
+    <file src="XLabs.Forms\*.ps1" target="tools" />
   </files>
 </package>
