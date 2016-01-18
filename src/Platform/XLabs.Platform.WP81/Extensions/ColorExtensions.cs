@@ -24,7 +24,7 @@ using Windows.UI.Xaml.Media;
 
 namespace XLabs.Platform
 {
-#if WINDOWS_PHONE_APP
+#if WINDOWS_PHONE_APP || WINDOWS_UWP
     
 #else
     using System.Windows.Media;
