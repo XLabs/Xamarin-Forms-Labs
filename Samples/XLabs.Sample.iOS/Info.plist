@@ -4,8 +4,6 @@
 <dict>
 	<key>CFBundleDisplayName</key>
 	<string>XLabs.Sample.iOS</string>
-	<key>CFBundleIdentifier</key>
-	<string>com.xlabsteam.sample.ios</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
@@ -71,5 +69,7 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>CFBundleIdentifier</key>
+	<string>ca.sk.paradigm.www</string>
 </dict>
 </plist>
