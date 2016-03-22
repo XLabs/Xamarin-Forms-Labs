@@ -968,7 +968,7 @@ namespace XLabs.Forms.Controls
 			get{
 				return HighlightedDateBackgroundColor;
 			}
-		}
+		}   
 		#endregion
 
 
@@ -979,7 +979,8 @@ namespace XLabs.Forms.Controls
 		public CalendarView()
 		{
 			if(Device.OS == TargetPlatform.iOS){
-				HeightRequest = 198 + 20; //This is the size of the original iOS calendar
+				//HeightRequest = 198 + 20; //This is the size of the original iOS calendar
+                HeightRequest = 400;
 			}else if(Device.OS == TargetPlatform.Android){
 				HeightRequest = 300; //This is the size in which Android calendar renders comfortably on most devices
 			}

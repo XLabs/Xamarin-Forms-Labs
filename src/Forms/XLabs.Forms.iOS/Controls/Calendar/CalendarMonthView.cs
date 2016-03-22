@@ -95,14 +95,18 @@ namespace XLabs.Forms.Controls
         /// </summary>
         private readonly bool _showNavArrows;
 
+        ///<summary>
+        ///Screen width
+        /// </summary>
+        private readonly nfloat _screenWidth = UIScreen.MainScreen.Bounds.Width;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="CalendarMonthView"/> class.
         /// </summary>
         /// <param name="selectedDate">The selected date.</param>
         /// <param name="showHeader">if set to <c>true</c> [show header].</param>
         /// <param name="showNavArrows">if set to <c>true</c> [show nav arrows].</param>
-        /// <param name="width">The width.</param>
-        public CalendarMonthView(DateTime selectedDate, bool showHeader, bool showNavArrows, float width = 320)
+        public CalendarMonthView(DateTime selectedDate, bool showHeader, bool showNavArrows)
         {
             _showHeader = showHeader;
             _showNavArrows = showNavArrows;
@@ -120,9 +124,9 @@ namespace XLabs.Forms.Controls
                 _headerHeight = showNavArrows ? 40 : 20;
             }
 
-            Frame = _showHeader ? new CGRect(0, 0, width, 198 + _headerHeight) : new CGRect(0, 0, width, 198);
+            Frame = _showHeader ? new CGRect(0, 0, _screenWidth, 198 + _headerHeight) : new CGRect(0, 0, _screenWidth, 198);
 
-            BoxWidth = Convert.ToInt32(Math.Ceiling(width / 7));
+            BoxWidth = Convert.ToInt32(Math.Ceiling(_screenWidth / 7));
 
             BackgroundColor = UIColor.White;
 
@@ -227,7 +231,7 @@ namespace XLabs.Forms.Controls
             {
                 context.SetFillColor(StyleDescriptor.TitleBackgroundColor.CGColor);
                 //Console.WriteLine("Title background color is {0}",_styleDescriptor.TitleBackgroundColor.ToString());
-                context.FillRect(new CGRect(0, 0, 320, 18 + _headerHeight));
+                context.FillRect(new CGRect(0, 0, _screenWidth, 18 + _headerHeight));
             }
 
             DrawDayLabels(rect);
@@ -363,12 +367,12 @@ namespace XLabs.Forms.Controls
             }
 
             _scrollView = new UIScrollView
-                              {
-                                  ContentSize = new CGSize(320, 260),
-                                  ScrollEnabled = false,
-                                  Frame = new CGRect(0, 16 + _headerHeight, 320, Frame.Height - 16),
-                                  BackgroundColor = StyleDescriptor.BackgroundColor
-                              };
+            {
+                ContentSize = new CGSize(_screenWidth, 260),              
+                ScrollEnabled = false,
+                Frame = new CGRect(0, 16 + _headerHeight, _screenWidth, Frame.Height - 16),
+                BackgroundColor = StyleDescriptor.BackgroundColor
+            };
 
             //_shadow = new UIImageView(UIImage.FromBundle("Images/Calendar/shadow.png"));
 
@@ -499,7 +503,7 @@ namespace XLabs.Forms.Controls
             _leftArrow.TouchUpInside += HandlePreviousMonthTouch;
             _leftArrow.Direction = CalendarArrowView.ArrowDirection.Left;
             AddSubview(_leftArrow);
-            _rightArrow = new CalendarArrowView(new CGRect(320 - 22 - 10, 9, 18, 22))
+            _rightArrow = new CalendarArrowView(new CGRect(_screenWidth - 22 - 10, 9, 18, 22))
             {
                 Color =
                     StyleDescriptor.TitleForegroundColor
@@ -637,7 +641,7 @@ namespace XLabs.Forms.Controls
         {
             var grid = new MonthGridView(this, date) { CurrentDate = CurrentDate };
             grid.BuildGrid();
-            grid.Frame = new CGRect(0, 0, 320, Frame.Height - 16);
+            grid.Frame = new CGRect(0, 0, _screenWidth, Frame.Height - 16);
             return grid;
         }
 
@@ -665,7 +669,7 @@ namespace XLabs.Forms.Controls
         /// <param name="rect">The rect.</param>
         private void DrawMonthLabel(CGRect rect)
         {
-            var r = new CGRect(new CGPoint(0, 2), new CGSize { Width = 320, Height = _headerHeight });
+            var r = new CGRect(new CGPoint(0, 2), new CGSize { Width = _screenWidth, Height = _headerHeight });
             //			_styleDescriptor.TitleForegroundColor.SetColor();
             //			DrawString(CurrentMonthYear.ToString("MMMM yyyy"), 
             //				r, _styleDescriptor.MonthTitleFont,
