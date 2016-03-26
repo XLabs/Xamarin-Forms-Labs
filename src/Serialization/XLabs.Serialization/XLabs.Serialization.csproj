@@ -53,6 +53,7 @@
     <Compile Include="IByteSerializer.cs" />
     <Compile Include="IJsonConvert.cs" />
     <Compile Include="IJsonSerializer.cs" />
+    <Compile Include="IMsgPackSerializer.cs" />
     <Compile Include="IProtoBufSerializer.cs" />
     <Compile Include="ISerializer.cs" />
     <Compile Include="IStreamSerializer.cs" />

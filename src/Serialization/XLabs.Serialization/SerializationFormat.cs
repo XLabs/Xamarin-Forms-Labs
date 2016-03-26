@@ -28,6 +28,15 @@
         /// <summary>
         /// Custom binary format.
         /// </summary>
-        Binary
+        Binary,
+
+        /// <summary>
+        /// MessagePack format.
+        /// </summary>
+        /// <remarks>
+        /// Website: http://msgpack.org/
+        /// Specs: https://github.com/msgpack/msgpack/blob/master/spec.md
+        /// </remarks>
+        MsgPack
     }
 }
