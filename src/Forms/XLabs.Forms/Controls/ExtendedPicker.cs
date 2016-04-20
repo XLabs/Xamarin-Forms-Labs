@@ -135,19 +135,24 @@ namespace XLabs.Forms.Controls
 		private static void OnSelectedItemChanged(BindableObject bindable, object oldValue, object newValue)
 		{
 			ExtendedPicker bindablePicker = (ExtendedPicker)bindable;
-			if (!string.IsNullOrWhiteSpace(picker.KeyMemberPath))
-	            {
-	                var displayProperty = newValue.GetType().GetRuntimeProperty(picker.KeyMemberPath);
-	                if (displayProperty == null)
-	                {
-	                    throw new InvalidOperationException(String.Concat(picker.KeyMemberPath, " is not a property of ", newValue.GetType().FullName));
-	                }
-	                picker.SelectedItem = displayProperty.GetValue(newValue);
-	            }
-	            else
-	            {
-	                picker.SelectedItem = newValue;
-	            }
+			ExtendedPicker picker = bindable as ExtendedPicker;
+		            if (picker != null)
+		            {
+		                var selectedItem = picker.ItemsSource[picker.SelectedIndex];
+		                if (!string.IsNullOrWhiteSpace(picker.KeyMemberPath))
+		                {
+		                    var keyProperty = selectedItem.GetType().GetRuntimeProperty(picker.KeyMemberPath);
+		                    if (keyProperty == null)
+		                    {
+		                        throw new InvalidOperationException(String.Concat(picker.KeyMemberPath, " is not a property of ", selectedItem.GetType().FullName));
+		                    }
+		                    picker.SelectedItem = keyProperty.GetValue(selectedItem);
+		                }
+		                else
+		                {
+		                    picker.SelectedItem = selectedItem.ToString();
+		                }
+		            }
 			if (bindablePicker.ItemsSource != null && bindablePicker.SelectedItem!=null) {
 				int count = 0;
 				foreach (object obj in bindablePicker.ItemsSource) {
@@ -167,6 +172,13 @@ namespace XLabs.Forms.Controls
 			loadItemsAndSetSelected (bindable);
 
 		}
+		
+		private static void OnKeyMemberPathChanged(BindableObject bindable, object oldValue, object newValue)
+	        {
+	            ExtendedPicker picker = bindable as ExtendedPicker;
+	            picker.KeyMemberPath = newValue?.ToString();
+	        }
+		
 		private static void OnItemsSourceChanged(BindableObject bindable, object oldValue, object newValue)
 		{
 			ExtendedPicker bindablePicker = (ExtendedPicker)bindable;
