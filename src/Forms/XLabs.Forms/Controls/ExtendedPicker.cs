@@ -53,6 +53,12 @@ namespace XLabs.Forms.Controls
 		/// </summary>
 		public static readonly BindableProperty DisplayPropertyProperty = BindableProperty.Create("DisplayProperty", typeof(string),  typeof(ExtendedPicker), null, BindingMode.OneWay, null, new BindableProperty.BindingPropertyChangedDelegate(ExtendedPicker.OnDisplayPropertyChanged), null, null, null);
 
+	        /// <summary>
+	        /// Identifies the <see cref="P:XLabs.Forms.Controls.ExtendedPicker.KeyMemberPath" /> property.
+	        /// </summary>
+	        public static readonly BindableProperty KeyMemberPathProperty = BindableProperty.Create("KeyMemberPath", typeof(string), typeof(ExtendedPicker), null, BindingMode.OneWay, null, new BindableProperty.BindingPropertyChangedDelegate(ExtendedPicker.OnKeyMemberPathChanged), null, null, null);
+
+
 		/// <summary>
 		/// Accepts an <see cref="T:System.Collections.IList" /> which is used to populate the picker with data. 
 		/// By default the <see cref="System.Object.ToString"/> is displayed.
@@ -103,6 +109,22 @@ namespace XLabs.Forms.Controls
 			}
 		}
 
+		/// <summary>
+		/// A string used in reflection to identify the property to retrieve from the object. 
+		/// If this is not specified the object is returned.
+		/// </summary>
+		/// <value>The key member path property.</value>
+	        public string KeyMemberPath
+	        {
+	            get
+	            {
+	                return (string)base.GetValue(ExtendedPicker.KeyMemberPathProperty);
+	            }
+	            set
+	            {
+	                base.SetValue(ExtendedPicker.KeyMemberPathProperty, value);
+	            }
+	        }
 
 		private void OnSelectedIndexChanged(object sender,EventArgs e)
 		{
@@ -113,7 +135,19 @@ namespace XLabs.Forms.Controls
 		private static void OnSelectedItemChanged(BindableObject bindable, object oldValue, object newValue)
 		{
 			ExtendedPicker bindablePicker = (ExtendedPicker)bindable;
-			bindablePicker.SelectedItem = newValue;
+			if (!string.IsNullOrWhiteSpace(picker.KeyMemberPath))
+	            {
+	                var displayProperty = newValue.GetType().GetRuntimeProperty(picker.KeyMemberPath);
+	                if (displayProperty == null)
+	                {
+	                    throw new InvalidOperationException(String.Concat(picker.KeyMemberPath, " is not a property of ", newValue.GetType().FullName));
+	                }
+	                picker.SelectedItem = displayProperty.GetValue(newValue);
+	            }
+	            else
+	            {
+	                picker.SelectedItem = newValue;
+	            }
 			if (bindablePicker.ItemsSource != null && bindablePicker.SelectedItem!=null) {
 				int count = 0;
 				foreach (object obj in bindablePicker.ItemsSource) {
