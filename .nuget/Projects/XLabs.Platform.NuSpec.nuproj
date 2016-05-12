@@ -13,6 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\Platform\XLabs.Platform.Droid\XLabs.Platform.Droid.csproj" />
     <ProjectReference Include="..\..\src\Platform\XLabs.Platform.iOS\XLabs.Platform.iOS.csproj" />
+    <ProjectReference Include="..\..\src\Platform\XLabs.Platform.UAP\XLabs.Platform.UAP.csproj" />
     <ProjectReference Include="..\..\src\Platform\XLabs.Platform.WinUniversal\XLabs.Platform.WinUniversal.csproj" />
     <ProjectReference Include="..\..\src\Platform\XLabs.Platform.WP81\XLabs.Platform.WP81.csproj" />
     <ProjectReference Include="..\..\src\Platform\XLabs.Platform.WP8\XLabs.Platform.WP8.csproj" />
