@@ -114,7 +114,7 @@ Or from your codebehind:
     var button = new ImageButton() {
                 ImageHeightRequest = 50,
                 ImageWidthRequest = 50,
-                Orientation = Orientation.ImageToLeft,
+                Orientation = ImageOrientation.ImageToLeft,
                 Source = "icon_twitter.png",
                 Text = "Twitter"
             };

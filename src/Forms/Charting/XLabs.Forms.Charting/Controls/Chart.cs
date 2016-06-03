@@ -285,7 +285,7 @@ namespace XLabs.Forms.Charting.Controls
 				if (series.Type == ChartType.Bar)
 					noOfBars += series.Points.Count();
 
-				double tempHighestValue = series.Points.Max(p => p.Value);
+                double tempHighestValue = series.Points.Count > 0 ? series.Points.Max(p => p.Value) : 0;
 				if (highestValue < tempHighestValue)
 				{
 					highestValue = tempHighestValue;

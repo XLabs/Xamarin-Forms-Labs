@@ -52,7 +52,7 @@ namespace XLabs.Forms.Controls
         {
             base.OnElementChanged(e);
 
-            if (e.NewElement == null) return;
+            if (disposed || e.NewElement == null) return;
 
             if (Control == null)
             {

@@ -159,7 +159,9 @@ namespace XLabs.Forms.Charting.Controls
                     g.SetLineWidth(2);
                     this.Colors[i].SetFill();
                     this.Colors[i].SetStroke();
-                    g.AddArc((float)e.Data.X, (float)e.Data.Y, (float)e.Data.Size, (float)(Math.PI / 180 * totalDegrees), (float)(Math.PI / 180 * degrees), true);
+                    g.MoveTo((float)e.Data.X, (float)e.Data.Y);
+                    g.AddArc((float)e.Data.X, (float)e.Data.Y, (float)e.Data.Size,
+                        (float)MathHelper.Deg2Rad(360 - totalDegrees - degrees), (float)MathHelper.Deg2Rad(360 - totalDegrees), false);
                     g.DrawPath(CGPathDrawingMode.FillStroke);
                 }
 

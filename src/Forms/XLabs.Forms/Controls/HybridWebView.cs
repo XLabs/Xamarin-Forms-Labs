@@ -199,7 +199,7 @@ namespace XLabs.Forms.Controls
         /// </summary>
         /// <param name="name">The name of the callback.</param>
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-        public bool RegisterNativeFunction(string name)
+        public bool RemoveNativeFunction(string name)
         {
             return this.registeredFunctions.Remove(name);
         }

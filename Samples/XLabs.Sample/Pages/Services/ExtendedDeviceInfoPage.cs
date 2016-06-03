@@ -159,6 +159,98 @@ namespace XLabs.Sample.Pages.Services
             }
 
             #endregion
+            
+            #region Device Language Information
+            var languageLabel = new Label { Text = "Device Language Code:" };
+
+            var languageText = new Label();
+
+            stack.Children.Add(new Frame
+            {
+                Content = new StackLayout
+                {
+                    Children = { languageLabel, languageText }
+                }
+            });
+
+            try
+            {
+                languageText.Text = device.LanguageCode;
+
+               
+            }
+            catch (Exception ex)
+            {
+                idText.Text = ex.Message;
+            }
+
+            #endregion
+            
+             #region Network Connetctions Information
+            var networkLabel = new Label { Text = "Network Connections:" };
+
+            var networkText = new Label();
+
+            stack.Children.Add(new Frame
+            {
+                Content = new StackLayout
+                {
+                    Children = { networkLabel, networkText }
+                }
+            });
+
+            try
+            {
+                var internetConnectionStatus = device.Network.InternetConnectionStatus();
+                switch (internetConnectionStatus)
+                {
+                    case NetworkStatus.NotReachable:
+                        networkText.Text = "No Connetcions";
+                        break;
+                    case NetworkStatus.ReachableViaCarrierDataNetwork:
+                        networkText.Text = "Mobil device Internet connetions";
+                        break;
+                    case NetworkStatus.ReachableViaWiFiNetwork:
+                        networkText.Text = "Wi-fi Internet connetcions";
+                        break;
+                    case NetworkStatus.ReachableViaUnknownNetwork:
+                        networkText.Text = "Unknow connetcions";
+                        break;
+                    default:
+                        networkText.Text = "Error";
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                idText.Text = ex.Message;
+            }
+
+            #endregion
+
+            #region Hardware Version Information
+            var nameLabel = new Label { Text = "Hardware Version:" };
+
+            var nameText = new Label();
+
+            stack.Children.Add(new Frame
+            {
+                Content = new StackLayout
+                {
+                    Children = { nameLabel, nameText }
+                }
+            });
+
+            try
+            {
+                nameText.Text = device.HardwareVersion;
+            }
+            catch (Exception ex)
+            {
+                idText.Text = ex.Message;
+            }
+
+            #endregion
 
             scroll.Content = stack;
 
