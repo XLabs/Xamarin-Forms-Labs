@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+	<metadata>
+		<id>XLabs.Serialization.MsgPack</id>
+		<title>XLabs - Serialization - MsgPack.CLI</title>
+		<tags>Xamarin XLabs Serialization MsgPack.CLI</tags>
+		<version>2.0.5818</version>
+		<authors>XLabs Team</authors>
+		<licenseUrl>https://github.com/XForms/Xamarin-Forms-Labs/blob/master/LICENSE</licenseUrl>
+		<projectUrl>https://github.com/XForms/Xamarin-Forms-Labs</projectUrl>
+		<iconUrl>https://raw.githubusercontent.com/XLabs/Xamarin-Forms-Labs/master/Design/Icons/nuget/icon_nuget.png</iconUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>
+			XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.
+
+			This package contains helpers for serialization with MsgPack.CLI. Note that MsgPack.CLI requires platform specific instances in order to work
+      so you will need to install this also to your non-PCL project.
+		</description>
+		<summary>
+			XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.
+		</summary>
+		<releaseNotes>
+		</releaseNotes>
+		<dependencies>
+			<dependency id="MsgPack.Cli" version="0.6.8" />
+			<dependency id="XLabs.Serialization" version="2.0.5818" />
+		</dependencies>
+	</metadata>
+	<files>
+    <file src="..\..\build\**\XLabs.Serialization.MsgPack.dll" target="lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10" exclude="" />
+    <file src="..\..\build\**\XLabs.Serialization.MsgPack.pdb" target="lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10" exclude="" />
+    <file src="..\..\build\**\XLabs.Serialization.MsgPack.XML" target="lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10" exclude="" />
+
+		<!-- Source Files for Symbol Server -->
+		<file src="..\..\src\Serialization\XLabs.Serialization.MsgPack\**\*.cs" target="src" />
+	</files>
+</package>
