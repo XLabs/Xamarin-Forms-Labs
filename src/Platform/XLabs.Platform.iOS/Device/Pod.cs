@@ -63,6 +63,12 @@ namespace XLabs.Platform.Device
 			/// </summary>
 			[Description("iPod Touch 5G")]
 			FifthGeneration
+
+			/// <summary>
+			/// The fifth generation
+			/// </summary>
+			[Description("iPod Touch 6G")]
+			SixthGeneration
 		}
 
 		/// <summary>
@@ -72,23 +78,42 @@ namespace XLabs.Platform.Device
 		/// <param name="minorVersion">Minor version.</param>
 		public Pod(int majorVersion, int minorVersion)
 		{
-			Version = (PodVersion)majorVersion;
+			if (majorVersion < 6)
+			{
+				Version = (PodVersion)majorVersion;
+			}
+			else if(majorVersion == 7)
+			{
+				Version = PodVersion.SixthGeneration;
+			}
+
 			PhoneService = null;
 
-			Name = HardwareVersion = Version.GetDescription();
-
-			if (majorVersion > 4)
+			int width;
+			int height;
+			if (UIDevice.CurrentDevice.CheckSystemVersion(8, 0))
 			{
-				Display = new Display(1136, 640, 326, 326);
-			}
-			else if (majorVersion > 3)
-			{
-				Display = new Display(960, 640, 326, 326);
+				CoreGraphics.CGRect bounds = UIKit.UIScreen.MainScreen.NativeBounds;
+				width = (int)bounds.Width;
+				height = (int)bounds.Height;
 			}
 			else
 			{
-				Display = new Display(480, 320, 163, 163);
+				//All older devices are portrait by design so treat the default bounds as such
+				CoreGraphics.CGRect bounds = UIKit.UIScreen.MainScreen.Bounds;
+				width = Math.Min((int)bounds.Width, (int)bounds.Height);
+				height = Math.Max((int)bounds.Width, (int)bounds.Height);
 			}
+
+			width *= (int)UIKit.UIScreen.MainScreen.Scale;
+			height *= (int)UIKit.UIScreen.MainScreen.Scale;
+
+			double baseDPI = 163; //dpi from 1st Gen iPhone devices
+			double dpi = baseDPI * UIKit.UIScreen.MainScreen.Scale;
+
+			Display = new Display(height, width, dpi, dpi);
+
+			Name = HardwareVersion = Version.GetDescription();
 		}
 
 		/// <summary>

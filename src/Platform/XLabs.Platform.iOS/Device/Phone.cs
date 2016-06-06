@@ -137,6 +137,12 @@ namespace XLabs.Platform.Device
             /// </summary>
             [Description("iPhone 6S Plus")]
             IPhone6SPlus,
+
+            /// <sumary>
+            /// The iPhone SE
+            /// </sumary>
+            [Description("iPhone SE")]
+            IPhoneSE
         }
 
         /// <summary>
@@ -172,38 +178,45 @@ namespace XLabs.Platform.Device
                     Version = minorVersion == 1 ? PhoneType.IPhone6Plus : PhoneType.IPhone6;
                     break;
                 case 8:
-                    Version = minorVersion == 1 ? PhoneType.IPhone6S : PhoneType.IPhone6SPlus;
+                    if (minorVersion == 1)
+                        Version = PhoneType.IPhone6S;
+                    else if (minorVersion == 2)
+                        Version = PhoneType.IPhone6SPlus;
+                    else if (minorVersion == 4)
+                        Version = PhoneType.IPhoneSE;
                     break;
                 default:
                     Version = PhoneType.Unknown;
                     break;
             }
 
-            switch (Version)
+            int width;
+            int height;
+            if(UIDevice.CurrentDevice.CheckSystemVersion(8, 0))
             {
-                case PhoneType.IPhone6:
-                case PhoneType.IPhone6S:
-                    Display = new Display(1334, 750, 326, 326);
-                    break;
-                case PhoneType.IPhone6Plus:
-                case PhoneType.IPhone6SPlus:
-                    Display = new Display(2208, 1242, 401 * 1242 / 1080, 401 * 2208 / 1920);
-                    break;
-                default:
-                    if (majorVersion > 4)
-                    {
-                        Display = new Display(1136, 640, 326, 326);
-                    }
-                    else if (majorVersion > 2)
-                    {
-                        Display = new Display(960, 640, 326, 326);
-                    }
-                    else
-                    {
-                        Display = new Display(480, 320, 163, 163);
-                    }
-                    break;
+                CoreGraphics.CGRect bounds = UIKit.UIScreen.MainScreen.NativeBounds;
+                width = (int)bounds.Width;
+                height = (int)bounds.Height;
             }
+            else
+            {
+                //All older devices are portrait by design so treat the default bounds as such
+                CoreGraphics.CGRect bounds = UIKit.UIScreen.MainScreen.Bounds;
+                width = Math.Min((int)bounds.Width, (int)bounds.Height);
+                height = Math.Max((int)bounds.Width, (int)bounds.Height);
+            }
+
+            width *= (int)UIKit.UIScreen.MainScreen.Scale;
+            height *= (int)UIKit.UIScreen.MainScreen.Scale;
+
+            double baseDPI = 163; //dpi from 1st Gen iPhone devices
+            double dpi = baseDPI * UIKit.UIScreen.MainScreen.Scale;
+            if(Version == PhoneType.IPhone6Plus || Version == PhoneType.IPhone6SPlus)
+            {
+                dpi = 401;
+            }
+
+            Display = new Display(height, width, dpi, dpi);
 
             Name = HardwareVersion = Version.GetDescription();
         }

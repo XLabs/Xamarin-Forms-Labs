@@ -42,17 +42,17 @@ namespace XLabs.Platform.Device
         /// <summary>
         /// The iPhone expression.
         /// </summary>
-        protected const string PhoneExpression = "iPhone([1-8]),([1-4])";
+        protected const string PhoneExpression = "iPhone([0-9]+),([0-9]+)";
 
         /// <summary>
         /// The iPod expression.
         /// </summary>
-        protected const string PodExpression = "iPod([1-5]),([1])";
+        protected const string PodExpression = "iPod([0-9]+),([0-9]+)";
 
         /// <summary>
         /// The iPad expression.
         /// </summary>
-        protected const string PadExpression = "iPad([1-4]),([1-8])";
+        protected const string PadExpression = "iPad([0-9]+),([0-9]+)";
 
         /// <summary>
         /// Generic CPU/IO.
