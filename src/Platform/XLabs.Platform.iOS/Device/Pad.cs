@@ -228,7 +228,7 @@ namespace XLabs.Platform.Device
         public Pad(int majorVersion, int minorVersion)
         {
             PhoneService = null;
-            double baseDPI;
+            double baseDPI = 132;
             switch (majorVersion)
             {
                 case 1:
