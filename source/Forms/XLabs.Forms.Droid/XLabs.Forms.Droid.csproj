@@ -147,7 +147,10 @@
     <Compile Include="Pages\ExtendedMasterDetailPageRenderer.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Services\FontManager.cs" />
-    <Compile Include="XFormsApp.cs" />
+    <Compile Include="XFormsAppCompatDroid.cs" />
+    <Compile Include="XFormsApplicationCompatDroid.cs" />
+    <Compile Include="XFormsApplicationDroid.cs" />
+    <Compile Include="XFormsAppDroid.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -212,4 +215,3 @@
   </Target>
   -->
 </Project>
-
