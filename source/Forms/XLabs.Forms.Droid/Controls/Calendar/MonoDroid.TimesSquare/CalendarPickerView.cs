@@ -75,7 +75,6 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 			public OnPageChangeListener(CalendarPickerView picker)
 			{
 				this._picker = picker;
-
 			}
 
 			/// <summary>
@@ -427,11 +426,16 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 			return new FluentInitializer(this);
 		}
 
-		/// <summary>
-		/// Highlighes the days of weeks.
-		/// </summary>
-		/// <param name="daysOfWeeks">The days of weeks.</param>
-		public void HighlighDaysOfWeeks(DayOfWeek[] daysOfWeeks)
+        public void SetHighlightedDaysWithEvents(DateTime[] daysWithEvents)
+        {
+            MyAdapter.SetHighlightedDaysWithEvents(daysWithEvents);
+        }
+
+        /// <summary>
+        /// Highlighes the days of weeks.
+        /// </summary>
+        /// <param name="daysOfWeeks">The days of weeks.</param>
+        public void HighlighDaysOfWeeks(DayOfWeek[] daysOfWeeks)
 		{
 			_hlighlightedDaysOfWeek = new Dictionary<int,bool>();
 			for(int i = 0; i <= 6; i++) {
@@ -472,7 +476,7 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 					bool isSelectable = isCurrentMonth && IsBetweenDates(cal, MinDate, MaxDate);
 					bool isToday = IsSameDate(cal, Today);
 					bool isHighlighted = ContatinsDate(_highlightedCals, cal) || _hlighlightedDaysOfWeek[(int)cal.DayOfWeek];
-					int value = cal.Day;
+                    int value = cal.Day;
 
 					var rangeState = RangeState.None;
 					if(SelectedCals.Count > 1) {

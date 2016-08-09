@@ -761,33 +761,60 @@ namespace XLabs.Forms.Controls
 		/// </summary>
 		public static readonly BindableProperty HighlightedDaysOfWeekProperty = BindableProperty.Create("HighlightedDaysOfWeek", typeof(DayOfWeek[]), typeof(CalendarView), new DayOfWeek[]{}, BindingMode.OneWay, null, null, null, null);
 
-		/**
+        /**
+		 * HighlightedDaysWithEventsProperty property
+		 */
+        /// <summary>
+        /// The highlighted days with events property
+        /// </summary>
+        public static readonly BindableProperty HighlightedDaysWithEventsProperty = BindableProperty.Create("HighlightedDaysWithEvents", typeof(DateTime[]), typeof(CalendarView), new DateTime[] { }, BindingMode.OneWay, null, null, null, null);
+
+        /**
 		 * Background color of selected date in the calendar. Default color is platform specific.
 		 */
-		/// <summary>
-		/// Gets or sets the highlighted days of week.
-		/// </summary>
-		/// <value>The highlighted days of week.</value>
-		public DayOfWeek[] HighlightedDaysOfWeek {
+        /// <summary>
+        /// Gets or sets the highlighted days of week.
+        /// </summary>
+        /// <value>The highlighted days of week.</value>
+        public DayOfWeek[] HighlightedDaysOfWeek {
 			get {
 				return (DayOfWeek[])base.GetValue(CalendarView.HighlightedDaysOfWeekProperty);
 			}
 			set {
 				base.SetValue(CalendarView.HighlightedDaysOfWeekProperty, value);
 			}
-		}
+        }
+
+        /**
+		 * List of days which will have a specific background color, implying they have events scheduled.
+		 */
+        /// <summary>
+        /// Gets or sets the highlighted days of week.
+        /// </summary>
+        /// <value>The highlighted days of week.</value>
+        public DateTime[] HighlightedDaysWithEvents
+        {
+            get
+            {
+                return (DateTime[])GetValue(HighlightedDaysWithEventsProperty);
+            }
+            set
+            {
+                SetValue(HighlightedDaysWithEventsProperty, value);
+            }
+        }
 
 
 
-	
 
-		#region ColorHelperProperties
 
-		/// <summary>
-		/// Gets the actual color of the date background.
-		/// </summary>
-		/// <value>The actual color of the date background.</value>
-		public Color ActualDateBackgroundColor{
+        #region ColorHelperProperties
+
+        /// <summary>
+        /// Gets the actual color of the date background.
+        /// </summary>
+        /// <value>The actual color of the date background.</value>
+        public Color ActualDateBackgroundColor{
 			get{
 				return this.DateBackgroundColor;
 			}

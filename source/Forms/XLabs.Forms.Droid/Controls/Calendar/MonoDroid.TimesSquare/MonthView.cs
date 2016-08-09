@@ -44,17 +44,23 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 		/// The _grid
 		/// </summary>
 		private CalendarGridView _grid;
-		/// <summary>
-		/// The _click handler
-		/// </summary>
-		private ClickHandler _clickHandler;
+        /// <summary>
+        /// The _cells
+        /// </summary>
+        private List<List<MonthCellDescriptor>> _cells;
+        /// <summary>
+        /// The _click handler
+        /// </summary>
+        private ClickHandler _clickHandler;
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="MonthView"/> class.
-		/// </summary>
-		/// <param name="context">The context.</param>
-		/// <param name="attrs">The attrs.</param>
-		public MonthView(Context context, IAttributeSet attrs)
+        private List<CalendarCellView> cellViews;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MonthView"/> class.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="attrs">The attrs.</param>
+        public MonthView(Context context, IAttributeSet attrs)
 			: base(context, attrs)
 		{
 		}
@@ -167,20 +173,24 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 			_title.SetBackgroundColor(month.Style.TitleBackgroundColor);
 
 			_grid.DividerColor = month.Style.DateSeparatorColor;
+            _cells = cells;
 
-			var headerRow = (CalendarRowView)_grid.GetChildAt(0);
+            cellViews = new List<CalendarCellView>();
+
+            var headerRow = (CalendarRowView)_grid.GetChildAt(0);
 			if(headerRow != null)
 			{
 				headerRow.SetBackgroundColor(month.Style.DayOfWeekLabelBackgroundColor);
 				var week = cells[0];
 				for(int c = 0; c <= 6; c++)
 				{
-
 					var headerText = (TextView)headerRow.GetChildAt(c);
+
 					if(month.Style.ShouldHighlightDaysOfWeekLabel && week[c].IsHighlighted)
 					{
 						headerText.SetBackgroundColor(month.Style.HighlightedDateBackgroundColor);
 					}
+
 					headerText.SetTextColor(month.Style.DayOfWeekLabelForegroundColor);
 				}
 			}
@@ -210,6 +220,8 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 						cellView.RangeState = cell.RangeState;
 						cellView.Tag = cell;
 						cellView.SetStyle(month.Style);
+
+                        cellViews.Add(cellView);
 						//Logr.D("Setting cell at {0} ms", stopWatch.ElapsedMilliseconds);
 					}
 				} else
@@ -219,24 +231,44 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 			}
 			stopWatch.Stop();
 			Logr.D("MonthView.Init took {0} ms", stopWatch.ElapsedMilliseconds);
-		}
+        }
 
-		/// <summary>
-		/// Finalize inflating a view from XML.
-		/// </summary>
-		/// <since version="Added in API level 1" />
-		/// <remarks><para tool="javadoc-to-mdoc">Finalize inflating a view from XML.  This is called as the last phase
-		/// of inflation, after all child views have been added.
-		/// </para>
-		/// <para tool="javadoc-to-mdoc">Even if the subclass overrides onFinishInflate, they should always be
-		/// sure to call the super method, so that we get called.
-		/// </para>
-		/// <para tool="javadoc-to-mdoc">
-		///   <format type="text/html">
-		///     <a href="http://developer.android.com/reference/android/view/View.html#onFinishInflate()" target="_blank">[Android Documentation]</a>
-		///   </format>
-		/// </para></remarks>
-		protected override void OnFinishInflate()
+        public void SetHighlightedDaysWithEvents(DateTime[] daysWithEvents)
+        {
+            int numOfDaysWithEvents = daysWithEvents.Length;
+            int numOfDays = cellViews.Count;
+
+            for (int i = 0; i < numOfDays; i++)
+            {
+                var cellView = cellViews[i];
+
+                for(int k = 0; k < numOfDaysWithEvents; k++)
+                {
+                    if ((cellView.Tag as MonthCellDescriptor).DateTime.Date == daysWithEvents[k].Date)
+                    {
+                        cellView.SetBackgroundColor(cellView.styleDescriptor.HighlightedDateBackgroundColor);
+                        break;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Finalize inflating a view from XML.
+        /// </summary>
+        /// <since version="Added in API level 1" />
+        /// <remarks><para tool="javadoc-to-mdoc">Finalize inflating a view from XML.  This is called as the last phase
+        /// of inflation, after all child views have been added.
+        /// </para>
+        /// <para tool="javadoc-to-mdoc">Even if the subclass overrides onFinishInflate, they should always be
+        /// sure to call the super method, so that we get called.
+        /// </para>
+        /// <para tool="javadoc-to-mdoc">
+        ///   <format type="text/html">
+        ///     <a href="http://developer.android.com/reference/android/view/View.html#onFinishInflate()" target="_blank">[Android Documentation]</a>
+        ///   </format>
+        /// </para></remarks>
+        protected override void OnFinishInflate()
 		{
 			base.OnFinishInflate();
 			_title = FindViewById<TextView>(Resource.Id.title);

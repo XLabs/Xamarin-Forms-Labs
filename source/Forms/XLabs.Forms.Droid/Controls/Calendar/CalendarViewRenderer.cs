@@ -74,8 +74,9 @@ namespace XLabs.Forms.Controls
 
 		/// <summary>
 		///     The _view
+        ///     What is this for???
 		/// </summary>
-		private CalendarView _view;
+		//private CalendarView _view;
 
 		/// <summary>
 		///     Called when [element changed].
@@ -87,9 +88,8 @@ namespace XLabs.Forms.Controls
 
 			if (e.OldElement == null)
 			{
-				_view = e.NewElement;
-				var inflatorservice =
-					(LayoutInflater) Context.GetSystemService(Context.LayoutInflaterService);
+				//_view = e.NewElement;
+				var inflatorservice = (LayoutInflater) Context.GetSystemService(Context.LayoutInflaterService);
 				_containerView = inflatorservice.Inflate(Resource.Layout.calendar_picker, null);
 				_picker = _containerView.FindViewById<CalendarPickerView>(Resource.Id.calendar_view);
 				_picker.Init(Element.MinDate, Element.MaxDate, Element.HighlightedDaysOfWeek);
@@ -119,14 +119,18 @@ namespace XLabs.Forms.Controls
 		protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
 		{
 			base.OnElementPropertyChanged(sender, e);
-			ProtectFromEventCycle(() =>
-			{
-				if (e.PropertyName == CalendarView.DisplayedMonthProperty.PropertyName)
+            ProtectFromEventCycle(() =>
+            {
+                if (e.PropertyName == CalendarView.DisplayedMonthProperty.PropertyName)
 				{
 					SetDisplayedMonth(Element.DisplayedMonth);
 				}
-			});
-		}
+                else if(e.PropertyName == CalendarView.HighlightedDaysWithEventsProperty.PropertyName)
+                {
+                    _picker.SetHighlightedDaysWithEvents(Element.HighlightedDaysWithEvents);
+                }
+            });
+        }
 
 		/// <summary>
 		///     Protects from event cycle.

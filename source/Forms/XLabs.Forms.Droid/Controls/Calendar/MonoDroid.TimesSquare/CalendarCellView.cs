@@ -54,12 +54,14 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 		/// </summary>
 		private RangeState _rangeState = RangeState.None;
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="CalendarCellView"/> class.
-		/// </summary>
-		/// <param name="handle">The handle.</param>
-		/// <param name="transfer">The transfer.</param>
-		public CalendarCellView(IntPtr handle, JniHandleOwnership transfer)
+        public StyleDescriptor styleDescriptor;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CalendarCellView"/> class.
+        /// </summary>
+        /// <param name="handle">The handle.</param>
+        /// <param name="transfer">The transfer.</param>
+        public CalendarCellView(IntPtr handle, JniHandleOwnership transfer)
 			: base(handle, transfer)
 		{
 		}
@@ -150,7 +152,9 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 		/// <param name="style">The style.</param>
 		public void SetStyle(StyleDescriptor style)
 		{
-			if(style.DateLabelFont != null)
+            styleDescriptor = style;
+
+            if (style.DateLabelFont != null)
 			{
 				this.Typeface = (style.DateLabelFont);
 			}
@@ -182,7 +186,5 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 				SetTextColor(style.DateForegroundColor);
 			}
 		}
-
-
 	}
 }
