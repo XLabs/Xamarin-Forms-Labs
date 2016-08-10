@@ -247,10 +247,14 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
             {
                 var cellView = cellViews[i];
 
+                cellView.HasEvents = false;
+
                 for (int k = 0; k < numOfDaysWithEvents; k++)
                 {
                     if ((cellView.Tag as MonthCellDescriptor).DateTime.Date == datesWithEvents[k].Date)
                     {
+                        cellView.HasEvents = true;
+
                         cellView.SetBackgroundColor(_month.Style.HighlightedDatesWithEventsBackgroundColor);
                         cellView.SetTextColor(_month.Style.HighlightedDatesWithEventsForegroundColor);
                         break;

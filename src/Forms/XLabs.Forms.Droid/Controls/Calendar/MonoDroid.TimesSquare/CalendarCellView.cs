@@ -49,10 +49,14 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 		/// The _is highlighted
 		/// </summary>
 		private bool _isHighlighted;
-		/// <summary>
-		/// The _range state
-		/// </summary>
-		private RangeState _rangeState = RangeState.None;
+        /// <summary>
+        /// The _has events
+        /// </summary>
+        private bool _hasEvents;
+        /// <summary>
+        /// The _range state
+        /// </summary>
+        private RangeState _rangeState = RangeState.None;
 
         public StyleDescriptor styleDescriptor;
 
@@ -138,13 +142,24 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 			set {
 				_isHighlighted = value;
 			}
-		}
+        }
 
-		/// <summary>
-		/// Sets the state of the range.
-		/// </summary>
-		/// <value>The state of the range.</value>
-		public RangeState RangeState {
+        /// <summary>
+        /// Sets a value indicating whether this instance is highlighted.
+        /// </summary>
+        /// <value><c>true</c> if this instance is highlighted; otherwise, <c>false</c>.</value>
+        public bool HasEvents
+        {
+            set {
+                _hasEvents = value;
+            }
+        }
+
+        /// <summary>
+        /// Sets the state of the range.
+        /// </summary>
+        /// <value>The state of the range.</value>
+        public RangeState RangeState {
 			set {
 				_rangeState = value;
 			}
@@ -166,25 +181,42 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 			{
 				SetBackgroundColor(style.SelectedDateBackgroundColor);
 				SetTextColor(style.SelectedDateForegroundColor);
-			} else if(_isToday)
+			}
+            else if(_isToday)
 			{
 				SetBackgroundColor(style.TodayBackgroundColor);
 				SetTextColor(style.TodayForegroundColor);
-			} else if(_isHighlighted)
+            }
+            else if(_hasEvents)
+            {
+                SetBackgroundColor(style.HighlightedDatesWithEventsBackgroundColor);
+                if (_isCurrentMonth)
+                {
+                    SetTextColor(style.HighlightedDatesWithEventsForegroundColor);
+                }
+                else
+                {
+                    SetTextColor(style.InactiveDateForegroundColor);
+                }
+            }
+            else if(_isHighlighted)
 			{
 				SetBackgroundColor(style.HighlightedDateBackgroundColor);
 				if(_isCurrentMonth)
 				{
 					SetTextColor(style.HighlightedDateForegroundColor);
-				} else
+				}
+                else
 				{
 					SetTextColor(style.InactiveDateForegroundColor);
 				}
-			} else if(!_isCurrentMonth)
+			}
+            else if(!_isCurrentMonth)
 			{
 				SetBackgroundColor(style.InactiveDateBackgroundColor);
 				SetTextColor(style.InactiveDateForegroundColor);
-			} else
+			}
+            else
 			{
 				SetBackgroundColor(style.DateBackgroundColor);
 				SetTextColor(style.DateForegroundColor);
