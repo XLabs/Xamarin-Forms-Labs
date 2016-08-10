@@ -47,20 +47,20 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 		/// </summary>
 		private MonthView _reusableMonthView = null;
         /// <summary>
-        /// The current month view
-        /// </summary>
-        MonthView monthView = null;
-        /// <summary>
         /// The _active month views
         /// </summary>
         Dictionary<int,MonthView> _activeMonthViews;
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="MonthAdapter"/> class.
-		/// </summary>
-		/// <param name="context">The context.</param>
-		/// <param name="calendar">The calendar.</param>
-		public MonthAdapter(Context context, CalendarPickerView calendar)
+        public Dictionary<int, MonthView> ActiveMonthViews {
+            get { return _activeMonthViews; }
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MonthAdapter"/> class.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="calendar">The calendar.</param>
+        public MonthAdapter(Context context, CalendarPickerView calendar)
 		{
 			_calendar = calendar;
 			_inflater = LayoutInflater.From(context);
@@ -118,7 +118,9 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
             Java.Lang.Object obj = container;
 			var pager = obj.JavaCast<ViewPager>();
 
-			if(_reusableMonthView == null)
+            MonthView monthView = null;
+
+            if (_reusableMonthView == null)
 			{
 				monthView = MonthView.Create(pager, _inflater, _calendar.WeekdayNameFormat, _calendar.Today, _calendar.ClickHandler);
 			} else
@@ -133,11 +135,6 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 			pager.AddView(monthView);
 			_activeMonthViews[position] = monthView;
 			return monthView;
-        }
-
-        public void SetHighlightedDaysWithEvents(DateTime[] daysWithEvents)
-        {
-            monthView.SetHighlightedDaysWithEvents(daysWithEvents);
         }
 
         /// <summary>

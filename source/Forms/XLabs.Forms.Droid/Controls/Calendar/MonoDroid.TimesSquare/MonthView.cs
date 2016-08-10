@@ -53,6 +53,8 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
         /// </summary>
         private ClickHandler _clickHandler;
 
+        private MonthDescriptor _month;
+
         private List<CalendarCellView> cellViews;
 
         /// <summary>
@@ -160,8 +162,8 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 		/// <param name="cells">The cells.</param>
 		public void Init(MonthDescriptor month, List<List<MonthCellDescriptor>> cells)
 		{
-			Logr.D("Initializing MonthView ({0:d}) for {1}", GetHashCode(), month);
-			var stopWatch = new Stopwatch();
+            Logr.D("Initializing MonthView ({0:d}) for {1}", GetHashCode(), month);
+            var stopWatch = new Stopwatch();
 			stopWatch.Start();
 			
 			_title.Text = month.Label;
@@ -173,6 +175,7 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 			_title.SetBackgroundColor(month.Style.TitleBackgroundColor);
 
 			_grid.DividerColor = month.Style.DateSeparatorColor;
+            _month = month;
             _cells = cells;
 
             cellViews = new List<CalendarCellView>();
@@ -221,7 +224,9 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 						cellView.Tag = cell;
 						cellView.SetStyle(month.Style);
 
-                        cellViews.Add(cellView);
+                        if(cell.IsCurrentMonth)
+                            cellViews.Add(cellView);
+
 						//Logr.D("Setting cell at {0} ms", stopWatch.ElapsedMilliseconds);
 					}
 				} else
@@ -233,20 +238,21 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 			Logr.D("MonthView.Init took {0} ms", stopWatch.ElapsedMilliseconds);
         }
 
-        public void SetHighlightedDaysWithEvents(DateTime[] daysWithEvents)
+        public void SetHighlightedDatesWithEvents(DateTime[] datesWithEvents)
         {
-            int numOfDaysWithEvents = daysWithEvents.Length;
+            int numOfDaysWithEvents = datesWithEvents.Length;
             int numOfDays = cellViews.Count;
 
             for (int i = 0; i < numOfDays; i++)
             {
                 var cellView = cellViews[i];
 
-                for(int k = 0; k < numOfDaysWithEvents; k++)
+                for (int k = 0; k < numOfDaysWithEvents; k++)
                 {
-                    if ((cellView.Tag as MonthCellDescriptor).DateTime.Date == daysWithEvents[k].Date)
+                    if ((cellView.Tag as MonthCellDescriptor).DateTime.Date == datesWithEvents[k].Date)
                     {
-                        cellView.SetBackgroundColor(cellView.styleDescriptor.HighlightedDateBackgroundColor);
+                        cellView.SetBackgroundColor(_month.Style.HighlightedDatesWithEventsBackgroundColor);
+                        cellView.SetTextColor(_month.Style.HighlightedDatesWithEventsForegroundColor);
                         break;
                     }
                 }

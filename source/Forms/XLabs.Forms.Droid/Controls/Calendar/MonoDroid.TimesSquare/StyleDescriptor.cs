@@ -89,10 +89,19 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 		/// The highlighted date background color
 		/// </summary>
 		public Android.Graphics.Color HighlightedDateBackgroundColor = Color.FromHex("#ccffcc").ToAndroid();
-		/// <summary>
-		/// The date separator color
-		/// </summary>
-		public Android.Graphics.Color DateSeparatorColor = Color.FromHex("#ffbababa").ToAndroid();
+        /// <summary>
+        /// The highlighted dates with events foreground color
+        /// </summary>
+        public Android.Graphics.Color HighlightedDatesWithEventsForegroundColor = Color.Default.ToAndroid();
+        /// <summary>
+        /// The highlighted dates with events background color
+        /// </summary>
+        public Android.Graphics.Color HighlightedDatesWithEventsBackgroundColor = Color.Aqua.ToAndroid();
+
+        /// <summary>
+        /// The date separator color
+        /// </summary>
+        public Android.Graphics.Color DateSeparatorColor = Color.FromHex("#ffbababa").ToAndroid();
 		/// <summary>
 		/// The month title font
 		/// </summary>

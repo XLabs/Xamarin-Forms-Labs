@@ -454,13 +454,68 @@ namespace XLabs.Forms.Controls
 		}
 
 
-		/**
+        /**
+		 * HighlightedDatesWithEventsForegroundColor property
+		 */
+        /// <summary>
+        /// The highlighted dates with events foreground color property
+        /// </summary>
+        public static readonly BindableProperty HighlightedDatesWithEventsForegroundColorProperty = BindableProperty.Create("HighlightedDatesWithEventsForegroundColor", typeof(Color), typeof(CalendarView), Color.Default, BindingMode.OneWay, null, null, null, null);
+
+        /**
+		 * Foreground color of highlighted dates with events in the calendar. Default color is platform specific.
+		 */
+        /// <summary>
+        /// Gets or sets the color of the highlighted dates with events.
+        /// </summary>
+        /// <value>The color of the highlighted dates with events.</value>
+        public Color HighlightedDatesWithEventsForegroundColor
+        {
+            get
+            {
+                return (Color)base.GetValue(CalendarView.HighlightedDatesWithEventsForegroundColorProperty);
+            }
+            set
+            {
+                base.SetValue(CalendarView.HighlightedDatesWithEventsForegroundColorProperty, value);
+            }
+        }
+
+        /**
+		 * HighlightedDatesWithEventsBackgroundColor property
+		 */
+        /// <summary>
+        /// The highlighted dates with events background color property
+        /// </summary>
+        public static readonly BindableProperty HighlightedDatesWithEventsBackgroundColorProperty = BindableProperty.Create("HighlightedDatesWithEventsBackgroundColor", typeof(Color), typeof(CalendarView), Color.Default, BindingMode.OneWay, null, null, null, null);
+
+        /**
+		 * Background color of selected dates with events in the calendar. Default color is platform specific.
+		 */
+        /// <summary>
+        /// Gets or sets the color of the highlighted dates with events background.
+        /// </summary>
+        /// <value>The color of the highlighted dates with events background.</value>
+        public Color HighlightedDatesWithEventsBackgroundColor
+        {
+            get
+            {
+                return (Color)base.GetValue(CalendarView.HighlightedDatesWithEventsBackgroundColorProperty);
+            }
+            set
+            {
+                base.SetValue(CalendarView.HighlightedDatesWithEventsBackgroundColorProperty, value);
+            }
+        }
+
+
+        /**
 		 * TodayBackgroundStyle property
 		 */
-		/// <summary>
-		/// The today background style property
-		/// </summary>
-		public static readonly BindableProperty TodayBackgroundStyleProperty = BindableProperty.Create("TodayBackgroundStyle", typeof(BackgroundStyle), typeof(CalendarView), BackgroundStyle.Fill, BindingMode.OneWay, null, null, null, null);
+        /// <summary>
+        /// The today background style property
+        /// </summary>
+        public static readonly BindableProperty TodayBackgroundStyleProperty = BindableProperty.Create("TodayBackgroundStyle", typeof(BackgroundStyle), typeof(CalendarView), BackgroundStyle.Fill, BindingMode.OneWay, null, null, null, null);
 
 		/**
 		 * Background style for today cell. It is only respected on iOS for now.
@@ -767,7 +822,7 @@ namespace XLabs.Forms.Controls
         /// <summary>
         /// The highlighted days with events property
         /// </summary>
-        public static readonly BindableProperty HighlightedDaysWithEventsProperty = BindableProperty.Create("HighlightedDaysWithEvents", typeof(DateTime[]), typeof(CalendarView), new DateTime[] { }, BindingMode.OneWay, null, null, null, null);
+        public static readonly BindableProperty HighlightedDatesWithEventsProperty = BindableProperty.Create("HighlightedDatesWithEvents", typeof(DateTime[]), typeof(CalendarView), new DateTime[] { }, BindingMode.OneWay, null, null, null, null);
 
         /**
 		 * Background color of selected date in the calendar. Default color is platform specific.
@@ -786,21 +841,21 @@ namespace XLabs.Forms.Controls
         }
 
         /**
-		 * List of days which will have a specific background color, implying they have events scheduled.
+		 * List of dates which will have a specific background and text color, implying they have events scheduled.
 		 */
         /// <summary>
-        /// Gets or sets the highlighted days of week.
+        /// Gets or sets the highlighted days of week. For now, only works for Android
         /// </summary>
         /// <value>The highlighted days of week.</value>
-        public DateTime[] HighlightedDaysWithEvents
+        public DateTime[] HighlightedDatesWithEvents
         {
             get
             {
-                return (DateTime[])GetValue(HighlightedDaysWithEventsProperty);
+                return (DateTime[])GetValue(HighlightedDatesWithEventsProperty);
             }
             set
             {
-                SetValue(HighlightedDaysWithEventsProperty, value);
+                SetValue(HighlightedDatesWithEventsProperty, value);
             }
         }
 

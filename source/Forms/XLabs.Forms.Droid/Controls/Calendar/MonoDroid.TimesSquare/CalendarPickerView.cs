@@ -83,7 +83,7 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 			/// <param name="position">The position.</param>
 			public override void OnPageSelected(int position)
 			{
-				_picker.InvokeOnMonthChanged(position);
+                _picker.InvokeOnMonthChanged(position);
 
 				//base.OnPageSelected(position);
 			}
@@ -148,11 +148,16 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 		/// </summary>
 		private StyleDescriptor _styleDescriptor;
 
-		/// <summary>
-		/// Gets the style descriptor.
-		/// </summary>
-		/// <value>The style descriptor.</value>
-		public StyleDescriptor StyleDescriptor {
+        /// <summary>
+        /// The currently displayed MonthView
+        /// </summary>
+        private int _activeMonthViewPos;
+
+        /// <summary>
+        /// Gets the style descriptor.
+        /// </summary>
+        /// <value>The style descriptor.</value>
+        public StyleDescriptor StyleDescriptor {
 			get {
 				return _styleDescriptor;
 			}
@@ -234,7 +239,9 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 		protected void InvokeOnMonthChanged(int position)
 		{
 			if(this.OnMonthChanged != null) {
-				var month = this.Months[position];
+                _activeMonthViewPos = position;
+
+                var month = this.Months[position];
 				this.OnMonthChanged(this, new MonthChangedEventArgs(month.Date));
 			}
 		}
@@ -426,9 +433,11 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 			return new FluentInitializer(this);
 		}
 
-        public void SetHighlightedDaysWithEvents(DateTime[] daysWithEvents)
+        public void SetHighlightedDatesWithEvents(DateTime[] datesWithEvents)
         {
-            MyAdapter.SetHighlightedDaysWithEvents(daysWithEvents);
+            MonthView _activeMonthView = MyAdapter.ActiveMonthViews[_activeMonthViewPos];
+
+            _activeMonthView.SetHighlightedDatesWithEvents(datesWithEvents);
         }
 
         /// <summary>

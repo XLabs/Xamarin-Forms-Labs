@@ -111,6 +111,10 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 		/// </summary>
 		/// <value><c>true</c> if this instance is current month; otherwise, <c>false</c>.</value>
 		public bool IsCurrentMonth {
+            get
+            {
+                return _isCurrentMonth;
+            }
 			set {
 				_isCurrentMonth = value;
 			}
