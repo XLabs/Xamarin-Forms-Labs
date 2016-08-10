@@ -103,7 +103,10 @@ namespace XLabs.Forms.Controls
 					SetNavigationArrows();
 					ProtectFromEventCycle(() => { Element.NotifyDisplayedMonthChanged(mch.DisplayedMonth); });
 				};
-				SetDisplayedMonth(Element.DisplayedMonth);
+
+                _picker.SetHighlightedDatesWithEvents(Element.HighlightedDatesWithEvents);
+
+                SetDisplayedMonth(Element.DisplayedMonth);
 				SetNavigationArrows();
 				SetColors();
 				SetFonts();

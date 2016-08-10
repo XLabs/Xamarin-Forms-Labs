@@ -151,7 +151,7 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
         /// <summary>
         /// The currently displayed MonthView
         /// </summary>
-        private int _activeMonthViewPos;
+        private int _activeMonthViewPos = -1;
 
         /// <summary>
         /// Gets the style descriptor.
@@ -435,9 +435,12 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 
         public void SetHighlightedDatesWithEvents(DateTime[] datesWithEvents)
         {
-            MonthView _activeMonthView = MyAdapter.ActiveMonthViews[_activeMonthViewPos];
+            if(MyAdapter.ActiveMonthViews.Count > 0)
+            {
+                MonthView _activeMonthView = MyAdapter.ActiveMonthViews[_activeMonthViewPos];
 
-            _activeMonthView.SetHighlightedDatesWithEvents(datesWithEvents);
+                _activeMonthView.SetHighlightedDatesWithEvents(datesWithEvents);
+            }
         }
 
         /// <summary>
