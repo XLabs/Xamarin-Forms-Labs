@@ -127,11 +127,11 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\source\Settings\XLabs.Settings.XamSettings\XLabs.Settings.XamSettings.csproj">
+    <ProjectReference Include="..\..\..\src\Settings\XLabs.Settings.XamSettings\XLabs.Settings.XamSettings.csproj">
       <Project>{975a6560-2879-4953-aab3-47a48a92d21b}</Project>
       <Name>XLabs.Settings.XamSettings</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\source\Settings\XLabs.Settings\XLabs.Settings.csproj">
+    <ProjectReference Include="..\..\..\src\Settings\XLabs.Settings\XLabs.Settings.csproj">
       <Project>{6c71abf9-5ce3-4f13-88a1-b86d6bf1769f}</Project>
       <Name>XLabs.Settings</Name>
     </ProjectReference>

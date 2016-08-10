@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{59AD9D73-9348-4262-A869-6168057DA26A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XLabs.Forms</RootNamespace>
+    <AssemblyName>XLabs.Forms</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Behaviors\GestureCollection.cs" />
+    <Compile Include="Behaviors\GestureInterest.cs" />
+    <Compile Include="Behaviors\GestureResult.cs" />
+    <Compile Include="Behaviors\Gestures.cs" />
+    <Compile Include="Behaviors\GridLayout.cs" />
+    <Compile Include="Behaviors\IGesture.cs" />
+    <Compile Include="Behaviors\RelayGesture.cs" />
+    <Compile Include="Behaviors\RelayGestureAsync.cs" />
+    <Compile Include="Controls\AccessoryViewCell.cs" />
+    <Compile Include="Controls\AutoCompleteView.cs" />
+    <Compile Include="Controls\BindablePicker.cs" />
+    <Compile Include="Controls\ButtonGroup.cs" />
+    <Compile Include="Controls\CalendarView.cs" />
+    <Compile Include="Controls\CameraView.cs" />
+    <Compile Include="Controls\CarouselView.cs" />
+    <Compile Include="Controls\CheckBox.cs" />
+    <Compile Include="Controls\CheckboxCell.cs" />
+    <Compile Include="Controls\CircleImage.cs" />
+    <Compile Include="Controls\CollectionChangedHandle.cs" />
+    <Compile Include="Controls\ContentControl.cs" />
+    <Compile Include="Controls\DataTemplateSelector.cs" />
+    <Compile Include="Controls\DragContentView.cs" />
+    <Compile Include="Controls\DynamicListView.cs" />
+    <Compile Include="Controls\EditableListView.cs" />
+    <Compile Include="Controls\ExtendedButton.cs" />
+    <Compile Include="Controls\ExtendedContentView.cs" />
+    <Compile Include="Controls\ExtendedDatePicker.cs" />
+    <Compile Include="Controls\ExtendedEditor.cs" />
+    <Compile Include="Controls\ExtendedEntry.cs" />
+    <Compile Include="Controls\ExtendedEntryCell.cs" />
+    <Compile Include="Controls\ExtendedLabel.cs" />
+    <Compile Include="Controls\ExtendedListView.cs" />
+    <Compile Include="Controls\ExtendedPicker.cs" />
+    <Compile Include="Controls\ExtendedScrollView.cs" />
+    <Compile Include="Controls\ExtendedSlider.cs" />
+    <Compile Include="Controls\ExtendedSwitch.cs" />
+    <Compile Include="Controls\ExtendedTabbedPage.cs" />
+    <Compile Include="Controls\ExtendedTableView.cs" />
+    <Compile Include="Controls\ExtendedTextCell.cs" />
+    <Compile Include="Controls\ExtendedTimePicker.cs" />
+    <Compile Include="Controls\ExtendedViewCell.cs" />
+    <Compile Include="Controls\GesturesContentView.cs" />
+    <Compile Include="Controls\GradientContentView.cs" />
+    <Compile Include="Controls\GridView.cs" />
+    <Compile Include="Controls\HtmlLabel.cs" />
+    <Compile Include="Controls\HybridWebView.cs" />
+    <Compile Include="Controls\HyperLinkLabel.cs" />
+    <Compile Include="Controls\IAutoCompleteSearchObject.cs" />
+    <Compile Include="Controls\ICarouselView.cs" />
+    <Compile Include="Controls\IconButton.cs" />
+    <Compile Include="Controls\IconLabel.cs" />
+    <Compile Include="Controls\ImageButton.cs" />
+    <Compile Include="Controls\ImageButtonSourceConverter.cs" />
+    <Compile Include="Controls\ImageGallery.cs" />
+    <Compile Include="Controls\PopupLayout.cs" />
+    <Compile Include="Controls\RadioButton\BindableRadioGroup.cs" />
+    <Compile Include="Controls\RadioButton\CustomRadioButton.cs" />
+    <Compile Include="Controls\RepeaterView.cs" />
+    <Compile Include="Controls\SegmentControl\SegmentControl.cs" />
+    <Compile Include="Controls\SegmentControl\SegmentedControlView.cs" />
+    <Compile Include="Controls\SelectCell.cs" />
+    <Compile Include="Controls\SensorBar\SensorBarView.cs" />
+    <Compile Include="Controls\Separator.cs" />
+    <Compile Include="Controls\TemplateContentView.cs" />
+    <Compile Include="Controls\TemplateSelector.cs" />
+    <Compile Include="Controls\WebImage.cs" />
+    <Compile Include="Controls\WrapLayout.cs" />
+    <Compile Include="Converter\BooleanToColorConverter.cs" />
+    <Compile Include="Converter\CollectionEmptyToBool.cs" />
+    <Compile Include="Converter\HeightToMillimeters.cs" />
+    <Compile Include="Converter\InverseBooleanConverter.cs" />
+    <Compile Include="Converter\ObjectRefToBooleanConverter.cs" />
+    <Compile Include="Exceptions\InvalidBindableException.cs" />
+    <Compile Include="Extensions\BindableObjectExtensions.cs" />
+    <Compile Include="Extensions\CollectionTypeExtension.cs" />
+    <Compile Include="Extensions\OnPlatformList.cs" />
+    <Compile Include="Extensions\ViewExtensions.cs" />
+    <Compile Include="InternalsVisibleTo.cs" />
+    <Compile Include="Mvvm\BaseView.cs" />
+    <Compile Include="Mvvm\INavigationAware.cs" />
+    <Compile Include="Mvvm\IPage.cs" />
+    <Compile Include="Mvvm\IViewModel.cs" />
+    <Compile Include="Mvvm\NavigationAwareViewModel.cs" />
+    <Compile Include="Mvvm\NavigationView.cs" />
+    <Compile Include="Mvvm\ViewFactory.cs" />
+    <Compile Include="Mvvm\ViewModel.cs" />
+    <Compile Include="Mvvm\ViewModelNavigation.cs" />
+    <Compile Include="Pages\ExtendedMasterDetailPage.cs" />
+    <Compile Include="Pages\ModalPage.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\..\AssemblyInfo.Shared.cs">
+      <Link>Properties\AssemblyInfo.Shared.cs</Link>
+    </Compile>
+    <Compile Include="Services\IFontManager.cs" />
+    <Compile Include="Services\NavigationService.cs" />
+    <Compile Include="Validation\Action.cs" />
+    <Compile Include="Validation\Actions.cs" />
+    <Compile Include="Validation\PredicatePriority.cs" />
+    <Compile Include="Validation\PropertySetter.cs" />
+    <Compile Include="Validation\PropertySetters.cs" />
+    <Compile Include="Validation\Rule.cs" />
+    <Compile Include="Validation\RuleResult.cs" />
+    <Compile Include="Validation\Rules.cs" />
+    <Compile Include="Validation\RuleSet.cs" />
+    <Compile Include="Validation\UserValidator.cs" />
+    <Compile Include="Validation\ValidateAlphaNumeric.cs" />
+    <Compile Include="Validation\ValidateAlphaOnly.cs" />
+    <Compile Include="Validation\ValidateDateTime.cs" />
+    <Compile Include="Validation\ValidateEmailAddress.cs" />
+    <Compile Include="Validation\ValidateNumericOnly.cs" />
+    <Compile Include="Validation\ValidationSets.cs" />
+    <Compile Include="Validation\Validator.cs" />
+    <Compile Include="Validation\ValidatorPredicate.cs" />
+    <Compile Include="Validation\Validators.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\XLabs.Core.csproj">
+      <Project>{486ABBD5-9E4D-4BD2-A6FB-82E0E3B5A163}</Project>
+      <Name>XLabs.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\IOC\XLabs.IOC\XLabs.IOC.csproj">
+      <Project>{88F99257-B7A1-4C67-B134-7BDAD63AEEF1}</Project>
+      <Name>XLabs.IOC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Platform\XLabs.Platform\XLabs.Platform.csproj">
+      <Project>{7B43B9F5-7C88-42F1-B217-34A24AE925D0}</Project>
+      <Name>XLabs.Platform</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Serialization\XLabs.Serialization\XLabs.Serialization.csproj">
+      <Project>{6C5C17D3-E6E8-4201-B11F-7C50B02E8E3D}</Project>
+      <Name>XLabs.Serialization</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Forms.2.3.0.107\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Forms.2.3.0.107\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Xaml, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Forms.2.3.0.107\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <Import Project="..\..\packages\NuSpec.ReferenceGenerator.2.0.0-beta-bld01\build\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\NuSpec.ReferenceGenerator.targets" Condition="Exists('..\..\packages\NuSpec.ReferenceGenerator.2.0.0-beta-bld01\build\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\NuSpec.ReferenceGenerator.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\NuSpec.ReferenceGenerator.2.0.0-beta-bld01\build\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\NuSpec.ReferenceGenerator.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\NuSpec.ReferenceGenerator.2.0.0-beta-bld01\build\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\NuSpec.ReferenceGenerator.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Xamarin.Forms.2.3.0.107\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Forms.2.3.0.107\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets'))" />
+  </Target>
+  <Import Project="..\..\packages\Xamarin.Forms.2.3.0.107\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.0.107\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

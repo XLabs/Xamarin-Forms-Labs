@@ -128,11 +128,11 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\source\Web\XLabs.Web.UWP\XLabs.Web.UWP.csproj">
+    <ProjectReference Include="..\..\..\src\Web\XLabs.Web.UWP\XLabs.Web.UWP.csproj">
       <Project>{8e6f253e-c26b-4c1a-b98e-d6e32291a1d2}</Project>
       <Name>XLabs.Web.UWP</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\source\Web\XLabs.Web\XLabs.Web.csproj">
+    <ProjectReference Include="..\..\..\src\Web\XLabs.Web\XLabs.Web.csproj">
       <Project>{f9f8ec0b-d46d-40ec-babf-f9d499ce451a}</Project>
       <Name>XLabs.Web</Name>
     </ProjectReference>

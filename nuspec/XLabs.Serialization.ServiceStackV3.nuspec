@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>XLabs.Serialization.ServiceStackV3</id>
+    <version>2.3.0-pre02</version>
+    <title>XLabs - Serialization - ServiceStackV3</title>
+    <authors>XLabs Team</authors>
+    <owners>XLabs Team</owners>
+    <licenseUrl>https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/XLabs/Xamarin-Forms-Labs</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/XLabs/Xamarin-Forms-Labs/master/Design/Icons/nuget/icon_nuget.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>This package implements the Serialization provider contracts via ServiceStack</description>
+    <summary>XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.</summary>
+    <releaseNotes>Updated for Xamarin Forms 2.3</releaseNotes>
+    <copyright>Copyright © 2016 XLabs Team</copyright>
+    <tags>Xamarin XLabs Serialization ServiceStack</tags>
+    <dependencies>
+      <group>
+        <dependency id="XLabs.Serialization" version="[2.3.0-pre02]" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <!-- Content Files -->
+    <!-- file src="..\..\docs\XLabs.Serialization.ServiceStackV3.Readme.md" target="content" -->
+    <!-- Assemblies: .NET Core 5.0 -->
+    <!--
+    <file src="..\src\Serialization\XLabs.Serialization.ServiceStack.UWP\bin\$configuration$\XLabs.Serialization.ServiceStackV3.UWP.dll" target="lib\.NETCore50" />
+    <file src="..\src\Serialization\XLabs.Serialization.ServiceStack.UWP\bin\$configuration$\XLabs.Serialization.ServiceStackV3.UWP.pdb" target="lib\.NETCore50" />
+	-->
+    <!-- Assemblies: Android -->
+    <file src="..\src\Serialization\XLabs.Serialization.ServiceStack.Droid\bin\$configuration$\XLabs.Serialization.ServiceStackV3.Droid.dll" target="lib\monoandroid" />
+    <file src="..\src\Serialization\XLabs.Serialization.ServiceStack.Droid\bin\$configuration$\XLabs.Serialization.ServiceStackV3.Droid.pdb" target="lib\monoandroid" />
+    <!-- Assemblies: iOS -->
+    <file src="..\src\Serialization\XLabs.Serialization.ServiceStack.iOS\bin\$configuration$\XLabs.Serialization.ServiceStackV3.iOS.dll" target="lib\xamarinios" />
+    <file src="..\src\Serialization\XLabs.Serialization.ServiceStack.iOS\bin\$configuration$\XLabs.Serialization.ServiceStackV3.iOS.pdb" target="lib\xamarinios" />
+    <!-- Assemblies: Windows 8.1 -->
+    <!--
+    <file src="..\src\Serialization\XLabs.Serialization.ServiceStack.WinRT\bin\$configuration$\XLabs.Serialization.ServiceStackV3.WinRT.dll" target="lib\win81" />
+    <file src="..\src\Serialization\XLabs.Serialization.ServiceStack.WinRT\bin\$configuration$\XLabs.Serialization.ServiceStackV3.WinRT.pdb" target="lib\win81" />
+    -->
+    <!-- Assemblies: Winows Mobile 8.1 -->
+    <!--
+    <file src="..\src\Serialization\XLabs.Serialization.ServiceStack.WinRT.Phone\bin\$configuration$\XLabs.Serialization.ServiceStackV3.WinRT.Phone.dll" target="lib\wpa81" />
+    <file src="..\src\Serialization\XLabs.Serialization.ServiceStack.WinRT.Phone\bin\$configuration$\XLabs.Serialization.ServiceStackV3.WinRT.Phone.pdb" target="lib\wpa81" />
+    -->
+    <!-- Assemblies: Microsoft -->
+    <!--
+    <file src="C:\Program Files (x86)\Windows Kits\10\UnionMetadata\facade\Windows.WinMD" target="lib\.NETCore50\Windows.winmd" />
+    -->
+  </files>
+</package>

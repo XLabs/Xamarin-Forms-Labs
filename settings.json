@@ -1,0 +1,28 @@
+{
+	"version": {
+		"VersionFile": "./version.json",
+		"AssemblyInfoFile": "./src/AssemblyInfo.Shared.cs",
+		"LoadFrom": "VersionFile",
+		"AutoIncrementVersion": false,
+		"NamespaceBase": "XLabs"
+	},
+	"build": {
+		"SourcePath": "./src",
+		"SolutionFileSpec": "./src/*.sln",
+		"TreatWarningsAsErrors": false,
+		"NugetConfigPath": "./.nuget/NuGet.Config",
+		"EnableXamarinIOS": false,
+		"MacAgentIPAddress": "",
+		"MacAgentUserName": "",
+		"MacAgentUserPassword": ""
+	},
+	"nuget": {
+		"NuGetConfig": "./.nuget/NuGet.config",
+		"FeedUrl": "https://nuget.org",
+		"FeedAPIKey": "",
+		"ArtifactsPath": "./artifacts/packages",
+		"NuspecPath": "./nuspec",
+		"UpdateVersion": true,
+		"VersionDependencyForLibrary": "exact"
+	}
+}

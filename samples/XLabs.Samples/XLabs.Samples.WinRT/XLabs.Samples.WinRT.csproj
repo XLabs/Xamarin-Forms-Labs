@@ -138,125 +138,125 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\..\source\packages\Microsoft.Bcl.Async.1.0.168\lib\win8\Microsoft.Threading.Tasks.dll</HintPath>
+      <HintPath>..\..\..\src\packages\Microsoft.Bcl.Async.1.0.168\lib\win8\Microsoft.Threading.Tasks.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks.Extensions, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\..\source\packages\Microsoft.Bcl.Async.1.0.168\lib\win8\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+      <HintPath>..\..\..\src\packages\Microsoft.Bcl.Async.1.0.168\lib\win8\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\..\source\packages\Newtonsoft.Json.8.0.3\lib\portable-net45+wp80+win8+wpa81+dnxcore50\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\..\src\packages\Newtonsoft.Json.8.0.3\lib\portable-net45+wp80+win8+wpa81+dnxcore50\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="SQLite.Net, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\source\packages\SQLite.Net.Core-PCL.3.1.1\lib\portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1\SQLite.Net.dll</HintPath>
+      <HintPath>..\..\..\src\packages\SQLite.Net.Core-PCL.3.1.1\lib\portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1\SQLite.Net.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="SQLite.Net.Async, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\source\packages\SQLite.Net.Async-PCL.3.1.1\lib\portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1\SQLite.Net.Async.dll</HintPath>
+      <HintPath>..\..\..\src\packages\SQLite.Net.Async-PCL.3.1.1\lib\portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1\SQLite.Net.Async.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\..\source\packages\Microsoft.Net.Http.2.2.29\lib\win8\System.Net.Http.Extensions.dll</HintPath>
+      <HintPath>..\..\..\src\packages\Microsoft.Net.Http.2.2.29\lib\win8\System.Net.Http.Extensions.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Net.Http.Primitives, Version=4.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\..\source\packages\Microsoft.Net.Http.2.2.29\lib\win8\System.Net.Http.Primitives.dll</HintPath>
+      <HintPath>..\..\..\src\packages\Microsoft.Net.Http.2.2.29\lib\win8\System.Net.Http.Primitives.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\source\packages\Xamarin.Forms.2.2.0.45\lib\win81\Xamarin.Forms.Core.dll</HintPath>
+      <HintPath>..\..\..\src\packages\Xamarin.Forms.2.3.0.107\lib\win81\Xamarin.Forms.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.Forms.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\source\packages\Xamarin.Forms.2.2.0.45\lib\win81\Xamarin.Forms.Platform.dll</HintPath>
+      <HintPath>..\..\..\src\packages\Xamarin.Forms.2.3.0.107\lib\win81\Xamarin.Forms.Platform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.Forms.Platform.WinRT, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\source\packages\Xamarin.Forms.2.2.0.45\lib\win81\Xamarin.Forms.Platform.WinRT.dll</HintPath>
+      <HintPath>..\..\..\src\packages\Xamarin.Forms.2.3.0.107\lib\win81\Xamarin.Forms.Platform.WinRT.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.Forms.Platform.WinRT.Tablet, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\source\packages\Xamarin.Forms.2.2.0.45\lib\win81\Xamarin.Forms.Platform.WinRT.Tablet.dll</HintPath>
+      <HintPath>..\..\..\src\packages\Xamarin.Forms.2.3.0.107\lib\win81\Xamarin.Forms.Platform.WinRT.Tablet.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.Forms.Xaml, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\source\packages\Xamarin.Forms.2.2.0.45\lib\win81\Xamarin.Forms.Xaml.dll</HintPath>
+      <HintPath>..\..\..\src\packages\Xamarin.Forms.2.3.0.107\lib\win81\Xamarin.Forms.Xaml.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\..\..\source\Caching\XLabs.Caching.Sqlite\XLabs.Caching.Sqlite.csproj">
+    <ProjectReference Include="..\..\..\src\Caching\XLabs.Caching.Sqlite\XLabs.Caching.Sqlite.csproj">
       <Project>{b42f3ce5-dc7c-4ef0-8712-ed810cefda11}</Project>
       <Name>XLabs.Caching.Sqlite</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\source\Caching\XLabs.Caching\XLabs.Caching.csproj">
+    <ProjectReference Include="..\..\..\src\Caching\XLabs.Caching\XLabs.Caching.csproj">
       <Project>{da63bb22-3a83-4bdd-ac19-00904877f4fa}</Project>
       <Name>XLabs.Caching</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\source\Charting\XLabs.Forms.Charting.WinRT\XLabs.Forms.Charting.WinRT.csproj">
+    <ProjectReference Include="..\..\..\src\Charting\XLabs.Forms.Charting.WinRT\XLabs.Forms.Charting.WinRT.csproj">
       <Project>{2fc9080e-e9a1-45ca-9ed8-a4f8ffb9c43f}</Project>
       <Name>XLabs.Forms.Charting.WinRT</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\source\Charting\XLabs.Forms.Charting\XLabs.Forms.Charting.csproj">
+    <ProjectReference Include="..\..\..\src\Charting\XLabs.Forms.Charting\XLabs.Forms.Charting.csproj">
       <Project>{a94e9b67-937d-443c-aeb0-1220131b590b}</Project>
       <Name>XLabs.Forms.Charting</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\source\Core\XLabs.Core.csproj">
+    <ProjectReference Include="..\..\..\src\Core\XLabs.Core.csproj">
       <Project>{486abbd5-9e4d-4bd2-a6fb-82e0e3b5a163}</Project>
       <Name>XLabs.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\source\Cryptography\XLabs.Cryptography\XLabs.Cryptography.csproj">
+    <ProjectReference Include="..\..\..\src\Cryptography\XLabs.Cryptography\XLabs.Cryptography.csproj">
       <Project>{be2c2399-a4b7-4e9a-ad93-9b78b167895a}</Project>
       <Name>XLabs.Cryptography</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\source\Forms\XLabs.Forms.WinRT\XLabs.Forms.WinRT.csproj">
+    <ProjectReference Include="..\..\..\src\Forms\XLabs.Forms.WinRT\XLabs.Forms.WinRT.csproj">
       <Project>{54897e78-fb65-4ec5-a386-18745eae3ead}</Project>
       <Name>XLabs.Forms.WinRT</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\source\Forms\XLabs.Forms\XLabs.Forms.csproj">
+    <ProjectReference Include="..\..\..\src\Forms\XLabs.Forms\XLabs.Forms.csproj">
       <Project>{59ad9d73-9348-4262-a869-6168057da26a}</Project>
       <Name>XLabs.Forms</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\source\IOC\XLabs.IOC.Autofac\XLabs.IOC.Autofac.csproj">
+    <ProjectReference Include="..\..\..\src\IOC\XLabs.IOC.Autofac\XLabs.IOC.Autofac.csproj">
       <Project>{3a675f66-34e2-4142-bc47-5042c1de26b3}</Project>
       <Name>XLabs.IOC.Autofac</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\source\IOC\XLabs.IOC\XLabs.IOC.csproj">
+    <ProjectReference Include="..\..\..\src\IOC\XLabs.IOC\XLabs.IOC.csproj">
       <Project>{88f99257-b7a1-4c67-b134-7bdad63aeef1}</Project>
       <Name>XLabs.IOC</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\source\Platform\XLabs.Platform.WinRT\XLabs.Platform.WinRT.csproj">
+    <ProjectReference Include="..\..\..\src\Platform\XLabs.Platform.WinRT\XLabs.Platform.WinRT.csproj">
       <Project>{9e294088-90dd-4339-aba5-3bfb5078084d}</Project>
       <Name>XLabs.Platform.WinRT</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\source\Platform\XLabs.Platform\XLabs.Platform.csproj">
+    <ProjectReference Include="..\..\..\src\Platform\XLabs.Platform\XLabs.Platform.csproj">
       <Project>{7b43b9f5-7c88-42f1-b217-34a24ae925d0}</Project>
       <Name>XLabs.Platform</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\source\Serialization\XLabs.Serialization.Json.NET\XLabs.Serialization.Json.NET.csproj">
+    <ProjectReference Include="..\..\..\src\Serialization\XLabs.Serialization.Json.NET\XLabs.Serialization.Json.NET.csproj">
       <Project>{b1636d51-a05f-4957-93bc-cdceb79c2e33}</Project>
       <Name>XLabs.Serialization.Json.NET</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\source\Serialization\XLabs.Serialization\XLabs.Serialization.csproj">
+    <ProjectReference Include="..\..\..\src\Serialization\XLabs.Serialization\XLabs.Serialization.csproj">
       <Project>{6c5c17d3-e6e8-4201-b11f-7c50b02e8e3d}</Project>
       <Name>XLabs.Serialization</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\source\Settings\XLabs.Settings.XamSettings\XLabs.Settings.XamSettings.csproj">
+    <ProjectReference Include="..\..\..\src\Settings\XLabs.Settings.XamSettings\XLabs.Settings.XamSettings.csproj">
       <Project>{975a6560-2879-4953-aab3-47a48a92d21b}</Project>
       <Name>XLabs.Settings.XamSettings</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\source\Settings\XLabs.Settings\XLabs.Settings.csproj">
+    <ProjectReference Include="..\..\..\src\Settings\XLabs.Settings\XLabs.Settings.csproj">
       <Project>{6c71abf9-5ce3-4f13-88a1-b86d6bf1769f}</Project>
       <Name>XLabs.Settings</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\source\Web\XLabs.Web.WinRT\XLabs.Web.WinRT.csproj">
+    <ProjectReference Include="..\..\..\src\Web\XLabs.Web.WinRT\XLabs.Web.WinRT.csproj">
       <Project>{e7b1daab-1b86-408f-a975-fbd93e258110}</Project>
       <Name>XLabs.Web.WinRT</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\source\Web\XLabs.Web\XLabs.Web.csproj">
+    <ProjectReference Include="..\..\..\src\Web\XLabs.Web\XLabs.Web.csproj">
       <Project>{f9f8ec0b-d46d-40ec-babf-f9d499ce451a}</Project>
       <Name>XLabs.Web</Name>
     </ProjectReference>
@@ -269,13 +269,13 @@
     <VisualStudioVersion>12.0</VisualStudioVersion>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
-  <Import Project="..\..\..\source\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\..\source\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
-  <Import Project="..\..\..\source\packages\Xamarin.Forms.2.2.0.45\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\..\source\packages\Xamarin.Forms.2.2.0.45\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
+  <Import Project="..\..\..\src\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\..\src\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <Import Project="..\..\..\src\packages\Xamarin.Forms.2.3.0.107\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\..\src\packages\Xamarin.Forms.2.3.0.107\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\..\..\source\packages\Xamarin.Forms.2.2.0.45\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\source\packages\Xamarin.Forms.2.2.0.45\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets'))" />
+    <Error Condition="!Exists('..\..\..\src\packages\Xamarin.Forms.2.3.0.107\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\src\packages\Xamarin.Forms.2.3.0.107\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

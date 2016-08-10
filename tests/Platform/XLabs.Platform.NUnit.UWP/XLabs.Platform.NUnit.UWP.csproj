@@ -127,11 +127,11 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\source\Platform\XLabs.Platform.UWP\XLabs.Platform.UWP.csproj">
+    <ProjectReference Include="..\..\..\src\Platform\XLabs.Platform.UWP\XLabs.Platform.UWP.csproj">
       <Project>{ec8490d9-54f3-496a-8dc3-759d9ec53b74}</Project>
       <Name>XLabs.Platform.UWP</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\source\Platform\XLabs.Platform\XLabs.Platform.csproj">
+    <ProjectReference Include="..\..\..\src\Platform\XLabs.Platform\XLabs.Platform.csproj">
       <Project>{7b43b9f5-7c88-42f1-b217-34a24ae925d0}</Project>
       <Name>XLabs.Platform</Name>
     </ProjectReference>

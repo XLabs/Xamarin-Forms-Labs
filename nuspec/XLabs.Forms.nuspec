@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>XLabs.Forms</id>
+    <version>2.3.0-pre02</version>
+    <title>XLabs - Forms</title>
+    <authors>XLabs Team</authors>
+    <owners>XLabs Team</owners>
+    <licenseUrl>https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/XLabs/Xamarin-Forms-Labs</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/XLabs/Xamarin-Forms-Labs/master/Design/Icons/nuget/icon_nuget.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>This package contains the cross-platform XLabs Forms framework and controls.</description>
+    <summary>XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.</summary>
+    <releaseNotes>Updated for Xamarin Forms 2.3</releaseNotes>
+    <copyright>Copyright © 2016 XLabs Team</copyright>
+    <tags>Xamarin XLabs Forms Controls GridView ListView</tags>
+    <dependencies>
+      <group>
+        <dependency id="XLabs.Core" version="[2.3.0-pre02]" />
+        <dependency id="XLabs.IoC" version="[2.3.0-pre02]" />
+        <dependency id="XLabs.Platform" version="[2.3.0-pre02]" />
+        <dependency id="XLabs.Serialization" version="[2.3.0-pre02]" />
+        <dependency id="Xamarin.Forms" version="2.3.0.107" />
+      </group>
+    </dependencies>
+	<frameworkAssemblies>
+		<frameworkAssembly assemblyName="Mono.Android.Export.dll" targetFramework="monoandroid" />
+	</frameworkAssemblies>
+  </metadata>
+  <files>
+    <!-- Content Files -->
+    <!-- file src="..\..\docs\XLabs.Forms.Readme.md" target="content" -->
+    <!-- Assemblies: Portable -->
+    <file src="..\src\Forms\XLabs.Forms\bin\$configuration$\XLabs.Forms.dll" target="lib\portable-net45+netcore45+wpa81+monoandroid+MonoTouch+Xamarin.iOS10" />
+    <file src="..\src\Forms\XLabs.Forms\bin\$configuration$\XLabs.Forms.pdb" target="lib\portable-net45+netcore45+wpa81+monoandroid+MonoTouch+Xamarin.iOS10" />
+    <!-- Assemblies: Android -->
+    <file src="..\src\Forms\XLabs.Forms\bin\$configuration$\XLabs.Forms.dll" target="lib\monoandroid" />
+    <file src="..\src\Forms\XLabs.Forms\bin\$configuration$\XLabs.Forms.pdb" target="lib\monoandroid" />
+    <file src="..\src\Forms\XLabs.Forms.Droid\bin\$configuration$\XLabs.Forms.Droid.dll" target="lib\monoandroid" />
+    <file src="..\src\Forms\XLabs.Forms.Droid\bin\$configuration$\XLabs.Forms.Droid.pdb" target="lib\monoandroid" />
+    <!-- Assemblies: iOS -->
+    <file src="..\src\Forms\XLabs.Forms\bin\$configuration$\XLabs.Forms.dll" target="lib\Xamarin.iOS10" />
+    <file src="..\src\Forms\XLabs.Forms\bin\$configuration$\XLabs.Forms.pdb" target="lib\Xamarin.iOS10" />
+    <file src="..\src\Forms\XLabs.Forms.iOS\bin\$configuration$\XLabs.Forms.iOS.pdb" target="lib\Xamarin.iOS10" />
+    <file src="..\src\Forms\XLabs.Forms.iOS\bin\$configuration$\XLabs.Forms.iOS.dll" target="lib\Xamarin.iOS10" />
+    <!-- Assemblies: Windows 8.1 -->
+    <file src="..\src\Forms\XLabs.Forms\bin\$configuration$\XLabs.Forms.dll" target="lib\netcore451" />
+    <file src="..\src\Forms\XLabs.Forms\bin\$configuration$\XLabs.Forms.pdb" target="lib\netcore451" />
+    <file src="..\src\Forms\XLabs.Forms.WinRT\bin\$configuration$\XLabs.Forms.WinRT.dll" target="lib\netcore451" />
+    <file src="..\src\Forms\XLabs.Forms.WinRT\bin\$configuration$\XLabs.Forms.WinRT.pdb" target="lib\netcore451" />
+    <!-- Assemblies: Winows Mobile 8.1 -->
+    <file src="..\src\Forms\XLabs.Forms\bin\$configuration$\XLabs.Forms.dll" target="lib\wpa81" />
+    <file src="..\src\Forms\XLabs.Forms\bin\$configuration$\XLabs.Forms.pdb" target="lib\wpa81" />
+    <file src="..\src\Forms\XLabs.Forms.WinRT.Phone\bin\$configuration$\XLabs.Forms.WinRT.Phone.dll" target="lib\wpa81" />
+    <file src="..\src\Forms\XLabs.Forms.WinRT.Phone\bin\$configuration$\XLabs.Forms.WinRT.Phone.pdb" target="lib\wpa81" />
+    <!-- Assemblies: .NET Core 5.0 -->
+    <file src="..\src\Forms\XLabs.Forms\bin\$configuration$\XLabs.Forms.dll" target="lib\uap10.0" />
+    <file src="..\src\Forms\XLabs.Forms\bin\$configuration$\XLabs.Forms.pdb" target="lib\uap10.0" />
+    <file src="..\src\Forms\XLabs.Forms.UWP\bin\$configuration$\XLabs.Forms.UWP.dll" target="lib\uap10.0" />
+    <file src="..\src\Forms\XLabs.Forms.UWP\bin\$configuration$\XLabs.Forms.UWP.pdb" target="lib\uap10.0" />
+  </files>
+</package>

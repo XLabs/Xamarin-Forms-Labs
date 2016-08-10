@@ -19,23 +19,20 @@
 // ***********************************************************************
 //
 
-using System.IO;
-
 using Foundation;
+using SQLite.Net;
 using SQLite.Net.Platform.XamarinIOS;
+using System.IO;
 using UIKit;
-using XLabs.Caching;
 using XLabs.Caching.SQLite;
 using XLabs.Forms;
 using XLabs.Forms.Controls;
 using XLabs.Forms.Services;
-using XLabs.Ioc;
 using XLabs.Platform.Device;
 using XLabs.Platform.Mvvm;
 using XLabs.Platform.Services;
 using XLabs.Platform.Services.Email;
 using XLabs.Platform.Services.Media;
-using XLabs.Serialization;
 
 namespace XLabs.Samples.iOS
 {
@@ -77,7 +74,7 @@ namespace XLabs.Samples.iOS
         /// </summary>
         private void SetIoc()
         {
-            var resolverContainer = new SimpleContainer();
+            var resolverContainer = new global::XLabs.Ioc.SimpleContainer();
 
             var app = new XFormsAppiOS();
             app.Init(this);
@@ -88,19 +85,19 @@ namespace XLabs.Samples.iOS
             resolverContainer.Register<IDevice>(t => AppleDevice.CurrentDevice)
                 .Register<IDisplay>(t => t.Resolve<IDevice>().Display)
                 .Register<IFontManager>(t => new FontManager(t.Resolve<IDisplay>()))
-                .Register<IJsonSerializer, XLabs.Serialization.JsonNET.JsonSerializer>()
+                .Register<XLabs.Serialization.IJsonSerializer, XLabs.Serialization.JsonNET.JsonSerializer>()
                 //.Register<IJsonSerializer, Services.Serialization.SystemJsonSerializer>()
                 .Register<ITextToSpeechService, TextToSpeechService>()
                 .Register<IEmailService, EmailService>()
                 .Register<IMediaPicker, MediaPicker>()
                 .Register<IXFormsApp>(app)
                 .Register<ISecureStorage, SecureStorage>()
-                .Register<IDependencyContainer>(t => resolverContainer)
-                .Register<ICacheProvider>(
+                .Register<global::XLabs.Ioc.IDependencyContainer>(t => resolverContainer)
+                .Register<global::XLabs.Caching.ICacheProvider>(
                     t => new SQLiteSimpleCache(new SQLitePlatformIOS(),
-                        new SQLite.Net.SQLiteConnectionString(pathToDatabase, true), t.Resolve<IJsonSerializer>()));
+                        new SQLiteConnectionString(pathToDatabase, true), t.Resolve<global::XLabs.Serialization.IJsonSerializer>()));
 
-            Resolver.SetResolver(resolverContainer.GetResolver());
+            XLabs.Ioc.Resolver.SetResolver(resolverContainer.GetResolver());
         }
     }
 }

@@ -127,7 +127,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\source\Cryptography\XLabs.Cryptography\XLabs.Cryptography.csproj">
+    <ProjectReference Include="..\..\..\src\Cryptography\XLabs.Cryptography\XLabs.Cryptography.csproj">
       <Project>{be2c2399-a4b7-4e9a-ad93-9b78b167895a}</Project>
       <Name>XLabs.Cryptography</Name>
     </ProjectReference>

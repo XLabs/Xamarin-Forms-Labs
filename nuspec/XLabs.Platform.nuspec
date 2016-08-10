@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>XLabs.Platform</id>
+    <version>2.3.0-pre02</version>
+    <title>XLabs - Platform</title>
+    <authors>XLabs Team</authors>
+    <owners>XLabs Team</owners>
+    <licenseUrl>https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/XLabs/Xamarin-Forms-Labs</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/XLabs/Xamarin-Forms-Labs/master/Design/Icons/nuget/icon_nuget.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>This package contains the core cross-platform framework for all of XLabs across all platforms.</description>
+    <summary>XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.</summary>
+    <releaseNotes>Updated for Xamarin Forms 2.3</releaseNotes>
+    <copyright>Copyright © 2016 XLabs Team</copyright>
+    <tags>Xamarin XLabs</tags>
+    <dependencies>
+      <group>
+        <dependency id="XLabs.IoC" version="[2.3.0-pre02]" />
+        <dependency id="XLabs.Core" version="[2.3.0-pre02]" />
+        <dependency id="XLabs.Serialization" version="[2.3.0-pre02]" />
+        <dependency id="ExifLib.PCL" version="1.0.1" />
+      </group>
+      <group targetFramework="wpa81">
+        <dependency id="XLabs.IoC" version="[2.3.0-pre02]" />
+        <dependency id="XLabs.Core" version="[2.3.0-pre02]" />
+        <dependency id="XLabs.Serialization" version="[2.3.0-pre02]" />
+        <dependency id="SharpDX" version="3.0.2" />
+        <dependency id="SharpDX.Direct2D1" version="3.0.2" />
+        <dependency id="SharpDX.DXGI" version="3.0.2" />
+        <dependency id="ExifLib.PCL" version="1.0.1" />
+      </group>
+      <group targetFramework="win81">
+        <dependency id="XLabs.IoC" version="[2.3.0-pre02]" />
+        <dependency id="XLabs.Core" version="[2.3.0-pre02]" />
+        <dependency id="XLabs.Serialization" version="[2.3.0-pre02]" />
+        <dependency id="SharpDX" version="3.0.2" />
+        <dependency id="SharpDX.Direct2D1" version="3.0.2" />
+        <dependency id="SharpDX.DXGI" version="3.0.2" />
+        <dependency id="ExifLib.PCL" version="1.0.1" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <!-- Content Files -->
+    <!-- file src="..\..\docs\XLabs.Platform.Readme.md" target="content" -->
+    <!-- Assemblies: Microsoft -->
+    <file src="C:\Program Files (x86)\Windows Kits\10\UnionMetadata\facade\Windows.WinMD" target="lib\uap10\Windows.winmd" />
+    <!-- Assemblies: Portable -->
+    <file src="..\src\Platform\XLabs.Platform\bin\$configuration$\XLabs.Platform.dll" target="lib\portable-net45+netcore45+wpa81+monoandroid+MonoTouch+Xamarin.iOS10" />
+    <file src="..\src\Platform\XLabs.Platform\bin\$configuration$\XLabs.Platform.pdb" target="lib\portable-net45+netcore45+wpa81+monoandroid+MonoTouch+Xamarin.iOS10" />
+    <!-- Assemblies: Android -->
+    <file src="..\src\Platform\XLabs.Platform\bin\$configuration$\XLabs.Platform.dll" target="lib\MonoAndroid" />
+    <file src="..\src\Platform\XLabs.Platform\bin\$configuration$\XLabs.Platform.pdb" target="lib\MonoAndroid" />
+    <file src="..\src\Platform\XLabs.Platform.Droid\bin\$configuration$\XLabs.Platform.Droid.dll" target="lib\MonoAndroid" />
+    <file src="..\src\Platform\XLabs.Platform.Droid\bin\$configuration$\XLabs.Platform.Droid.pdb" target="lib\MonoAndroid" />
+    <!-- Assemblies: iOS -->
+    <file src="..\src\Platform\XLabs.Platform\bin\$configuration$\XLabs.Platform.dll" target="lib\Xamarin.iOS10" />
+    <file src="..\src\Platform\XLabs.Platform\bin\$configuration$\XLabs.Platform.pdb" target="lib\Xamarin.iOS10" />
+    <file src="..\src\Platform\XLabs.Platform.iOS\bin\$configuration$\XLabs.Platform.iOS.dll" target="lib\Xamarin.iOS10" />
+    <file src="..\src\Platform\XLabs.Platform.iOS\bin\$configuration$\XLabs.Platform.iOS.pdb" target="lib\Xamarin.iOS10" />
+    <!-- Assemblies: Windows 8.1 -->
+    <file src="..\src\Platform\XLabs.Platform\bin\$configuration$\XLabs.Platform.dll" target="lib\netcore45" />
+    <file src="..\src\Platform\XLabs.Platform\bin\$configuration$\XLabs.Platform.pdb" target="lib\netcore45" />
+    <file src="..\src\Platform\XLabs.Platform.WinRT\bin\$configuration$\XLabs.Platform.WinRT.dll" target="lib\netcore45" />
+    <file src="..\src\Platform\XLabs.Platform.WinRT\bin\$configuration$\XLabs.Platform.WinRT.pdb" target="lib\netcore45" />
+    <!-- Assemblies: Winows Mobile 8.1 -->
+    <file src="..\src\Platform\XLabs.Platform\bin\$configuration$\XLabs.Platform.dll" target="lib\wpa81" />
+    <file src="..\src\Platform\XLabs.Platform\bin\$configuration$\XLabs.Platform.pdb" target="lib\wpa81" />
+    <file src="..\src\Platform\XLabs.Platform.WinRT.Phone\bin\$configuration$\XLabs.Platform.WinRT.Phone.dll" target="lib\wpa81" />
+    <file src="..\src\Platform\XLabs.Platform.WinRT.Phone\bin\$configuration$\XLabs.Platform.WinRT.Phone.pdb" target="lib\wpa81" />
+    <!-- Assemblies: .NET Core 5.0 -->
+    <file src="..\src\Platform\XLabs.Platform\bin\$configuration$\XLabs.Platform.dll" target="lib\uap10.0" />
+    <file src="..\src\Platform\XLabs.Platform\bin\$configuration$\XLabs.Platform.pdb" target="lib\uap10.0" />
+    <file src="..\src\Platform\XLabs.Platform.UWP\bin\$configuration$\XLabs.Platform.UWP.dll" target="lib\uap10.0" />
+    <file src="..\src\Platform\XLabs.Platform.UWP\bin\$configuration$\XLabs.Platform.UWP.pdb" target="lib\uap10.0" />
+  </files>
+</package>

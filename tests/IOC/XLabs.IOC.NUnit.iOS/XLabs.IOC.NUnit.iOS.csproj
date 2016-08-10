@@ -117,74 +117,66 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\..\..\source\packages\Autofac.3.5.2\lib\portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\Autofac.dll</HintPath>
+      <HintPath>..\..\..\src\packages\Autofac.3.5.2\lib\portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\Autofac.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\source\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <HintPath>..\..\..\src\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Practices.Unity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
-      <HintPath>..\..\..\source\packages\Unity.4.0.1\lib\portable-net45+wp80+win8+wpa81+MonoAndroid10+MonoTouch10\Microsoft.Practices.Unity.dll</HintPath>
+      <HintPath>..\..\..\src\packages\Unity.4.0.1\lib\portable-net45+wp80+win8+wpa81+MonoAndroid10+MonoTouch10\Microsoft.Practices.Unity.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="nunit.framework, Version=3.0.5813.39035, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\..\..\source\packages\NUnit.3.0.1\lib\dotnet\nunit.framework.dll</HintPath>
+      <HintPath>..\..\..\src\packages\NUnit.3.0.1\lib\dotnet\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="nunit.runner.iOS, Version=3.0.5815.33123, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\source\packages\nunit.xamarin.3.0.1\lib\Xamarin.iOS\nunit.runner.iOS.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="SimpleInjector, Version=3.1.4.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
-      <HintPath>..\..\..\source\packages\SimpleInjector.3.1.4\lib\dotnet\SimpleInjector.dll</HintPath>
+      <HintPath>..\..\..\src\packages\nunit.xamarin.3.0.1\lib\Xamarin.iOS\nunit.runner.iOS.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\source\packages\Xamarin.Forms.2.2.0.45\lib\Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
+      <HintPath>..\..\..\src\packages\Xamarin.Forms.2.3.0.107\lib\Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.Forms.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\source\packages\Xamarin.Forms.2.2.0.45\lib\Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
+      <HintPath>..\..\..\src\packages\Xamarin.Forms.2.3.0.107\lib\Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.Forms.Platform.iOS, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\source\packages\Xamarin.Forms.2.2.0.45\lib\Xamarin.iOS10\Xamarin.Forms.Platform.iOS.dll</HintPath>
+      <HintPath>..\..\..\src\packages\Xamarin.Forms.2.3.0.107\lib\Xamarin.iOS10\Xamarin.Forms.Platform.iOS.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.Forms.Xaml, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\source\packages\Xamarin.Forms.2.2.0.45\lib\Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
+      <HintPath>..\..\..\src\packages\Xamarin.Forms.2.3.0.107\lib\Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\source\IOC\XLabs.IOC.Autofac\XLabs.IOC.Autofac.csproj">
+    <ProjectReference Include="..\..\..\src\IOC\XLabs.IOC.Autofac\XLabs.IOC.Autofac.csproj">
       <Project>{3a675f66-34e2-4142-bc47-5042c1de26b3}</Project>
       <Name>XLabs.IOC.Autofac</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\source\IOC\XLabs.IOC.Ninject\XLabs.IOC.Ninject.csproj">
+    <ProjectReference Include="..\..\..\src\IOC\XLabs.IOC.Ninject\XLabs.IOC.Ninject.csproj">
       <Project>{95559c0f-3aba-4d68-8e3e-5b9230887ed1}</Project>
       <Name>XLabs.IOC.Ninject</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\source\IOC\XLabs.IOC.SimpleInjector\XLabs.IOC.SimpleInjector.csproj">
-      <Project>{6e550f02-4666-4d37-962f-d2a990e9f2a7}</Project>
-      <Name>XLabs.IOC.SimpleInjector</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\source\IOC\XLabs.IOC.TinyIOC.iOS\XLabs.IOC.TinyIOC.iOS.csproj">
+    <ProjectReference Include="..\..\..\src\IOC\XLabs.IOC.TinyIOC.iOS\XLabs.IOC.TinyIOC.iOS.csproj">
       <Project>{68e59ea0-b902-43b9-9b40-9f10fe8bfca0}</Project>
       <Name>XLabs.IOC.TinyIOC.iOS</Name>
       <IsAppExtension>false</IsAppExtension>
       <IsWatchApp>false</IsWatchApp>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\source\IOC\XLabs.IOC.Unity\XLabs.IOC.Unity.csproj">
+    <ProjectReference Include="..\..\..\src\IOC\XLabs.IOC.Unity\XLabs.IOC.Unity.csproj">
       <Project>{e426afa6-c141-4a21-963d-ff5a7a111757}</Project>
       <Name>XLabs.IOC.Unity</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\source\IOC\XLabs.IOC\XLabs.IOC.csproj">
+    <ProjectReference Include="..\..\..\src\IOC\XLabs.IOC\XLabs.IOC.csproj">
       <Project>{88f99257-b7a1-4c67-b134-7bdad63aeef1}</Project>
       <Name>XLabs.IOC</Name>
     </ProjectReference>
@@ -194,11 +186,11 @@
   </ItemGroup>
   <Import Project="..\XLabs.IOC.NUnit.Shared\XLabs.IOC.NUnit.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
-  <Import Project="..\..\..\source\packages\Xamarin.Forms.2.2.0.45\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\..\source\packages\Xamarin.Forms.2.2.0.45\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
+  <Import Project="..\..\..\src\packages\Xamarin.Forms.2.3.0.107\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\..\src\packages\Xamarin.Forms.2.3.0.107\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\..\..\source\packages\Xamarin.Forms.2.2.0.45\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\source\packages\Xamarin.Forms.2.2.0.45\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets'))" />
+    <Error Condition="!Exists('..\..\..\src\packages\Xamarin.Forms.2.3.0.107\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\src\packages\Xamarin.Forms.2.3.0.107\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets'))" />
   </Target>
 </Project>

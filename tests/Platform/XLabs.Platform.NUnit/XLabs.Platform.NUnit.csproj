@@ -31,7 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="nunit.framework, Version=3.0.5813.39031, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\..\..\source\packages\NUnit.3.0.1\lib\net45\nunit.framework.dll</HintPath>
+      <HintPath>..\..\..\src\packages\NUnit.3.0.1\lib\net45\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -43,7 +43,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\source\Platform\XLabs.Platform\XLabs.Platform.csproj">
+    <ProjectReference Include="..\..\..\src\Platform\XLabs.Platform\XLabs.Platform.csproj">
       <Project>{7b43b9f5-7c88-42f1-b217-34a24ae925d0}</Project>
       <Name>XLabs.Platform</Name>
     </ProjectReference>

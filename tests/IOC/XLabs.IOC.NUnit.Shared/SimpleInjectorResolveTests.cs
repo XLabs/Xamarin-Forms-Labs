@@ -7,7 +7,7 @@ using NUnit.Framework;
 #endif
 
 // SimpleInjector does not work with MonoAndroid60, because of its dependencies
-#if !__ANDROID__
+#if NETFX_CORE || WINDOWS_UWP || WINDOWS_PHONE_APP || WINDOWS_PHONE
 namespace IocTests
 {
     using SimpleInjector;

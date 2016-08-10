@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>XLabs.Serialization.JSON</id>
+    <version>2.3.0-pre02</version>
+    <title>XLabs - Serialization - JSON</title>
+    <authors>XLabs Team</authors>
+    <owners>XLabs Team</owners>
+    <licenseUrl>https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/XLabs/Xamarin-Forms-Labs</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/XLabs/Xamarin-Forms-Labs/master/Design/Icons/nuget/icon_nuget.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>This package implements the Serialization provider contracts via Json.NET</description>
+    <summary>XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.</summary>
+    <releaseNotes>Updated for Xamarin Forms 2.3</releaseNotes>
+    <copyright>Copyright © 2016 XLabs Team</copyright>
+    <tags>Xamarin XLabs Serialization json json.net</tags>
+    <dependencies>
+      <group>
+        <dependency id="XLabs.Serialization" version="[2.3.0-pre02]" />
+        <dependency id="Newtonsoft.Json" version="8.0.3" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <!-- Content Files -->
+    <!-- file src="..\..\docs\XLabs.Serialization.JsonNET.Readme.md" target="content" -->
+    <!-- Assemblies: Portable -->
+    <file src="..\src\Serialization\XLabs.Serialization.Json.NET\bin\$configuration$\XLabs.Serialization.Json.NET.dll" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
+    <file src="..\src\Serialization\XLabs.Serialization.Json.NET\bin\$configuration$\XLabs.Serialization.Json.NET.pdb" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
+  </files>
+</package>

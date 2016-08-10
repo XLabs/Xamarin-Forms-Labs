@@ -31,7 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="nunit.framework, Version=3.0.5813.39031, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\..\..\source\packages\NUnit.3.0.1\lib\net45\nunit.framework.dll</HintPath>
+      <HintPath>..\..\..\src\packages\NUnit.3.0.1\lib\net45\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -43,11 +43,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\source\Settings\XLabs.Settings.XamSettings\XLabs.Settings.XamSettings.csproj">
+    <ProjectReference Include="..\..\..\src\Settings\XLabs.Settings.XamSettings\XLabs.Settings.XamSettings.csproj">
       <Project>{975a6560-2879-4953-aab3-47a48a92d21b}</Project>
       <Name>XLabs.Settings.XamSettings</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\source\Settings\XLabs.Settings\XLabs.Settings.csproj">
+    <ProjectReference Include="..\..\..\src\Settings\XLabs.Settings\XLabs.Settings.csproj">
       <Project>{6c71abf9-5ce3-4f13-88a1-b86d6bf1769f}</Project>
       <Name>XLabs.Settings</Name>
     </ProjectReference>

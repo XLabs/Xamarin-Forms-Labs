@@ -127,7 +127,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\source\Core\XLabs.Core.csproj">
+    <ProjectReference Include="..\..\..\src\Core\XLabs.Core.csproj">
       <Project>{486abbd5-9e4d-4bd2-a6fb-82e0e3b5a163}</Project>
       <Name>XLabs.Core</Name>
     </ProjectReference>

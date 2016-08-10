@@ -127,19 +127,19 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\source\Caching\XLabs.Caching.Sqlite\XLabs.Caching.Sqlite.csproj">
+    <ProjectReference Include="..\..\..\src\Caching\XLabs.Caching.Sqlite\XLabs.Caching.Sqlite.csproj">
       <Project>{b42f3ce5-dc7c-4ef0-8712-ed810cefda11}</Project>
       <Name>XLabs.Caching.Sqlite</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\source\Caching\XLabs.Caching\XLabs.Caching.csproj">
+    <ProjectReference Include="..\..\..\src\Caching\XLabs.Caching\XLabs.Caching.csproj">
       <Project>{da63bb22-3a83-4bdd-ac19-00904877f4fa}</Project>
       <Name>XLabs.Caching</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\source\Serialization\XLabs.Serialization.Json.NET\XLabs.Serialization.Json.NET.csproj">
+    <ProjectReference Include="..\..\..\src\Serialization\XLabs.Serialization.Json.NET\XLabs.Serialization.Json.NET.csproj">
       <Project>{b1636d51-a05f-4957-93bc-cdceb79c2e33}</Project>
       <Name>XLabs.Serialization.Json.NET</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\source\Serialization\XLabs.Serialization\XLabs.Serialization.csproj">
+    <ProjectReference Include="..\..\..\src\Serialization\XLabs.Serialization\XLabs.Serialization.csproj">
       <Project>{6c5c17d3-e6e8-4201-b11f-7c50b02e8e3d}</Project>
       <Name>XLabs.Serialization</Name>
     </ProjectReference>

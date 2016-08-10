@@ -128,79 +128,79 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\source\Caching\XLabs.Caching.Sqlite\XLabs.Caching.Sqlite.csproj">
+    <ProjectReference Include="..\..\src\Caching\XLabs.Caching.Sqlite\XLabs.Caching.Sqlite.csproj">
       <Project>{b42f3ce5-dc7c-4ef0-8712-ed810cefda11}</Project>
       <Name>XLabs.Caching.Sqlite</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\source\Caching\XLabs.Caching\XLabs.Caching.csproj">
+    <ProjectReference Include="..\..\src\Caching\XLabs.Caching\XLabs.Caching.csproj">
       <Project>{da63bb22-3a83-4bdd-ac19-00904877f4fa}</Project>
       <Name>XLabs.Caching</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\source\Core\XLabs.Core.csproj">
+    <ProjectReference Include="..\..\src\Core\XLabs.Core.csproj">
       <Project>{486abbd5-9e4d-4bd2-a6fb-82e0e3b5a163}</Project>
       <Name>XLabs.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\source\Cryptography\XLabs.Cryptography\XLabs.Cryptography.csproj">
+    <ProjectReference Include="..\..\src\Cryptography\XLabs.Cryptography\XLabs.Cryptography.csproj">
       <Project>{be2c2399-a4b7-4e9a-ad93-9b78b167895a}</Project>
       <Name>XLabs.Cryptography</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\source\IOC\XLabs.IOC.Autofac\XLabs.IOC.Autofac.csproj">
+    <ProjectReference Include="..\..\src\IOC\XLabs.IOC.Autofac\XLabs.IOC.Autofac.csproj">
       <Project>{3a675f66-34e2-4142-bc47-5042c1de26b3}</Project>
       <Name>XLabs.IOC.Autofac</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\source\IOC\XLabs.IOC.Ninject\XLabs.IOC.Ninject.csproj">
+    <ProjectReference Include="..\..\src\IOC\XLabs.IOC.Ninject\XLabs.IOC.Ninject.csproj">
       <Project>{95559c0f-3aba-4d68-8e3e-5b9230887ed1}</Project>
       <Name>XLabs.IOC.Ninject</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\source\IOC\XLabs.IOC.SimpleInjector\XLabs.IOC.SimpleInjector.csproj">
+    <ProjectReference Include="..\..\src\IOC\XLabs.IOC.SimpleInjector\XLabs.IOC.SimpleInjector.csproj">
       <Project>{6e550f02-4666-4d37-962f-d2a990e9f2a7}</Project>
       <Name>XLabs.IOC.SimpleInjector</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\source\IOC\XLabs.IOC.TinyIOC.UWP\XLabs.IOC.TinyIOC.UWP.csproj">
+    <ProjectReference Include="..\..\src\IOC\XLabs.IOC.TinyIOC.UWP\XLabs.IOC.TinyIOC.UWP.csproj">
       <Project>{cec89311-8922-4bcd-a3a4-bdd87f727809}</Project>
       <Name>XLabs.IOC.TinyIOC.UWP</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\source\IOC\XLabs.IOC.Unity\XLabs.IOC.Unity.csproj">
+    <ProjectReference Include="..\..\src\IOC\XLabs.IOC.Unity\XLabs.IOC.Unity.csproj">
       <Project>{e426afa6-c141-4a21-963d-ff5a7a111757}</Project>
       <Name>XLabs.IOC.Unity</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\source\IOC\XLabs.IOC\XLabs.IOC.csproj">
+    <ProjectReference Include="..\..\src\IOC\XLabs.IOC\XLabs.IOC.csproj">
       <Project>{88f99257-b7a1-4c67-b134-7bdad63aeef1}</Project>
       <Name>XLabs.IOC</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\source\Platform\XLabs.Platform.UWP\XLabs.Platform.UWP.csproj">
+    <ProjectReference Include="..\..\src\Platform\XLabs.Platform.UWP\XLabs.Platform.UWP.csproj">
       <Project>{ec8490d9-54f3-496a-8dc3-759d9ec53b74}</Project>
       <Name>XLabs.Platform.UWP</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\source\Platform\XLabs.Platform\XLabs.Platform.csproj">
+    <ProjectReference Include="..\..\src\Platform\XLabs.Platform\XLabs.Platform.csproj">
       <Project>{7b43b9f5-7c88-42f1-b217-34a24ae925d0}</Project>
       <Name>XLabs.Platform</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\source\Serialization\XLabs.Serialization.Json.NET\XLabs.Serialization.Json.NET.csproj">
+    <ProjectReference Include="..\..\src\Serialization\XLabs.Serialization.Json.NET\XLabs.Serialization.Json.NET.csproj">
       <Project>{b1636d51-a05f-4957-93bc-cdceb79c2e33}</Project>
       <Name>XLabs.Serialization.Json.NET</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\source\Serialization\XLabs.Serialization.ProtoBuf\XLabs.Serialization.ProtoBuf.csproj">
+    <ProjectReference Include="..\..\src\Serialization\XLabs.Serialization.ProtoBuf\XLabs.Serialization.ProtoBuf.csproj">
       <Project>{324a8036-71ca-441c-8549-102f7eaf3331}</Project>
       <Name>XLabs.Serialization.ProtoBuf</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\source\Serialization\XLabs.Serialization\XLabs.Serialization.csproj">
+    <ProjectReference Include="..\..\src\Serialization\XLabs.Serialization\XLabs.Serialization.csproj">
       <Project>{6c5c17d3-e6e8-4201-b11f-7c50b02e8e3d}</Project>
       <Name>XLabs.Serialization</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\source\Settings\XLabs.Settings.XamSettings\XLabs.Settings.XamSettings.csproj">
+    <ProjectReference Include="..\..\src\Settings\XLabs.Settings.XamSettings\XLabs.Settings.XamSettings.csproj">
       <Project>{975a6560-2879-4953-aab3-47a48a92d21b}</Project>
       <Name>XLabs.Settings.XamSettings</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\source\Settings\XLabs.Settings\XLabs.Settings.csproj">
+    <ProjectReference Include="..\..\src\Settings\XLabs.Settings\XLabs.Settings.csproj">
       <Project>{6c71abf9-5ce3-4f13-88a1-b86d6bf1769f}</Project>
       <Name>XLabs.Settings</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\source\Web\XLabs.Web.UWP\XLabs.Web.UWP.csproj">
+    <ProjectReference Include="..\..\src\Web\XLabs.Web.UWP\XLabs.Web.UWP.csproj">
       <Project>{8e6f253e-c26b-4c1a-b98e-d6e32291a1d2}</Project>
       <Name>XLabs.Web.UWP</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\source\Web\XLabs.Web\XLabs.Web.csproj">
+    <ProjectReference Include="..\..\src\Web\XLabs.Web\XLabs.Web.csproj">
       <Project>{f9f8ec0b-d46d-40ec-babf-f9d499ce451a}</Project>
       <Name>XLabs.Web</Name>
     </ProjectReference>

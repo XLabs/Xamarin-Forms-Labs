@@ -127,27 +127,27 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\source\IOC\XLabs.IOC.Autofac\XLabs.IOC.Autofac.csproj">
+    <ProjectReference Include="..\..\..\src\IOC\XLabs.IOC.Autofac\XLabs.IOC.Autofac.csproj">
       <Project>{3a675f66-34e2-4142-bc47-5042c1de26b3}</Project>
       <Name>XLabs.IOC.Autofac</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\source\IOC\XLabs.IOC.Ninject\XLabs.IOC.Ninject.csproj">
+    <ProjectReference Include="..\..\..\src\IOC\XLabs.IOC.Ninject\XLabs.IOC.Ninject.csproj">
       <Project>{95559c0f-3aba-4d68-8e3e-5b9230887ed1}</Project>
       <Name>XLabs.IOC.Ninject</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\source\IOC\XLabs.IOC.SimpleInjector\XLabs.IOC.SimpleInjector.csproj">
+    <ProjectReference Include="..\..\..\src\IOC\XLabs.IOC.SimpleInjector\XLabs.IOC.SimpleInjector.csproj">
       <Project>{6e550f02-4666-4d37-962f-d2a990e9f2a7}</Project>
       <Name>XLabs.IOC.SimpleInjector</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\source\IOC\XLabs.IOC.TinyIOC.UWP\XLabs.IOC.TinyIOC.UWP.csproj">
+    <ProjectReference Include="..\..\..\src\IOC\XLabs.IOC.TinyIOC.UWP\XLabs.IOC.TinyIOC.UWP.csproj">
       <Project>{cec89311-8922-4bcd-a3a4-bdd87f727809}</Project>
       <Name>XLabs.IOC.TinyIOC.UWP</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\source\IOC\XLabs.IOC.Unity\XLabs.IOC.Unity.csproj">
+    <ProjectReference Include="..\..\..\src\IOC\XLabs.IOC.Unity\XLabs.IOC.Unity.csproj">
       <Project>{e426afa6-c141-4a21-963d-ff5a7a111757}</Project>
       <Name>XLabs.IOC.Unity</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\source\IOC\XLabs.IOC\XLabs.IOC.csproj">
+    <ProjectReference Include="..\..\..\src\IOC\XLabs.IOC\XLabs.IOC.csproj">
       <Project>{88f99257-b7a1-4c67-b134-7bdad63aeef1}</Project>
       <Name>XLabs.IOC</Name>
     </ProjectReference>

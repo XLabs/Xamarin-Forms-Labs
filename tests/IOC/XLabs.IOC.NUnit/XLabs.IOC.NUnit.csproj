@@ -31,15 +31,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\..\..\source\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+      <HintPath>..\..\..\src\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="nunit.framework, Version=3.0.5813.39031, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\..\..\source\packages\NUnit.3.0.1\lib\net45\nunit.framework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="SimpleInjector, Version=3.1.4.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
-      <HintPath>..\..\..\source\packages\SimpleInjector.3.1.4\lib\net45\SimpleInjector.dll</HintPath>
+      <HintPath>..\..\..\src\packages\NUnit.3.0.1\lib\net45\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -51,30 +47,33 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\source\IOC\XLabs.IOC.Autofac\XLabs.IOC.Autofac.csproj">
+    <ProjectReference Include="..\..\..\src\IOC\XLabs.IOC.Autofac\XLabs.IOC.Autofac.csproj">
       <Project>{3a675f66-34e2-4142-bc47-5042c1de26b3}</Project>
       <Name>XLabs.IOC.Autofac</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\source\IOC\XLabs.IOC.Ninject\XLabs.IOC.Ninject.csproj">
+    <ProjectReference Include="..\..\..\src\IOC\XLabs.IOC.Ninject\XLabs.IOC.Ninject.csproj">
       <Project>{95559c0f-3aba-4d68-8e3e-5b9230887ed1}</Project>
       <Name>XLabs.IOC.Ninject</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\source\IOC\XLabs.IOC.SimpleInjector\XLabs.IOC.SimpleInjector.csproj">
+    <ProjectReference Include="..\..\..\src\IOC\XLabs.IOC.SimpleInjector\XLabs.IOC.SimpleInjector.csproj">
       <Project>{6e550f02-4666-4d37-962f-d2a990e9f2a7}</Project>
       <Name>XLabs.IOC.SimpleInjector</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\source\IOC\XLabs.IOC.TinyIOC.Net45\XLabs.IOC.TinyIOC.Net45.csproj">
+    <ProjectReference Include="..\..\..\src\IOC\XLabs.IOC.TinyIOC.Net45\XLabs.IOC.TinyIOC.Net45.csproj">
       <Project>{eb37d7b5-a0cd-4447-b655-1430f7e919e9}</Project>
       <Name>XLabs.IOC.TinyIOC.Net45</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\source\IOC\XLabs.IOC.Unity\XLabs.IOC.Unity.csproj">
+    <ProjectReference Include="..\..\..\src\IOC\XLabs.IOC.Unity\XLabs.IOC.Unity.csproj">
       <Project>{e426afa6-c141-4a21-963d-ff5a7a111757}</Project>
       <Name>XLabs.IOC.Unity</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\source\IOC\XLabs.IOC\XLabs.IOC.csproj">
+    <ProjectReference Include="..\..\..\src\IOC\XLabs.IOC\XLabs.IOC.csproj">
       <Project>{88f99257-b7a1-4c67-b134-7bdad63aeef1}</Project>
       <Name>XLabs.IOC</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="..\XLabs.IOC.NUnit.Shared\XLabs.IOC.NUnit.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

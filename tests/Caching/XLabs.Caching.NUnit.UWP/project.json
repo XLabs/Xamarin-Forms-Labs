@@ -1,12 +1,12 @@
 ﻿{
   "dependencies": {
-    "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
+    "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
     "Newtonsoft.Json": "8.0.3",
     "NUnit": "3.0.1",
     "nunit.xamarin": "3.0.1",
     "SQLite.Net.Async-PCL": "3.1.1",
     "SQLite.Net.Core-PCL": "3.1.1",
-    "Xamarin.Forms": "2.2.0.45"
+    "Xamarin.Forms": "2.3.0.107"
   },
   "frameworks": {
     "uap10.0": {}

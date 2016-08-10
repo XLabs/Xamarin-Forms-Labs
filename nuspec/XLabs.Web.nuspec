@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>XLabs.Web</id>
+    <version>2.3.0-pre02</version>
+    <title>XLabs - Web</title>
+    <authors>XLabs Team</authors>
+    <owners>XLabs Team</owners>
+    <licenseUrl>https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/XLabs/Xamarin-Forms-Labs</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/XLabs/Xamarin-Forms-Labs/master/Design/Icons/nuget/icon_nuget.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>This package contains Web related interfaces and services (e.g. REST client).</description>
+    <summary>XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.</summary>
+    <releaseNotes>Updated for Xamarin Forms 2.3</releaseNotes>
+    <copyright>Copyright © 2016 XLabs Team</copyright>
+    <tags>Xamarin XLabs Web REST</tags>
+    <dependencies>
+      <group>
+        <dependency id="Microsoft.Bcl" version="1.1.10" />
+        <dependency id="Microsoft.Bcl.Async" version="1.0.168" />
+        <dependency id="Microsoft.Bcl.Build" version="1.0.21" />
+        <dependency id="Microsoft.Net.Http" version="2.2.29" />
+        <dependency id="XLabs.Core" version="[2.3.0-pre02]" />
+        <dependency id="XLabs.Serialization" version="[2.3.0-pre02]" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <!-- Content Files -->
+    <!-- file src="..\..\docs\XLabs.Settings.Web.Readme.md" target="content" -->
+    <!-- Assemblies: Portable -->
+    <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.dll" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
+    <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.pdb" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
+    <!-- Assemblies: Android -->
+    <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.dll" target="lib\monoandroid" />
+    <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.pdb" target="lib\monoandroid" />
+    <file src="..\src\Web\XLabs.Web.Droid\bin\$configuration$\XLabs.Web.Droid.dll" target="lib\monoandroid" />
+    <file src="..\src\Web\XLabs.Web.Droid\bin\$configuration$\XLabs.Web.Droid.pdb" target="lib\monoandroid" />
+    <!-- Assemblies: iOS -->
+    <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.dll" target="lib\xamarinios" />
+    <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.pdb" target="lib\xamarinios" />
+    <file src="..\src\Web\XLabs.Web.iOS\bin\$configuration$\XLabs.Web.iOS.dll" target="lib\xamarinios" />
+    <file src="..\src\Web\XLabs.Web.iOS\bin\$configuration$\XLabs.Web.iOS.pdb" target="lib\xamarinios" />
+    <!-- Assemblies: Microsoft -->
+    <file src="C:\Program Files (x86)\Windows Kits\10\UnionMetadata\facade\Windows.WinMD" target="lib\.NETCore50\Windows.winmd" />
+    <!-- Assemblies: .NET Core 5.0 -->
+    <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.dll" target="lib\.NETCore50" />
+    <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.pdb" target="lib\.NETCore50" />
+    <file src="..\src\Web\XLabs.Web.UWP\bin\$configuration$\XLabs.Web.UWP.dll" target="lib\.NETCore50" />
+    <file src="..\src\Web\XLabs.Web.UWP\bin\$configuration$\XLabs.Web.UWP.pdb" target="lib\.NETCore50" />
+    <!-- Assemblies: .NET 4.5 -->
+    <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.dll" target="lib\net45" />
+    <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.pdb" target="lib\net45" />
+    <file src="..\src\Web\XLabs.Web.Net45\bin\$configuration$\XLabs.Web.Net45.dll" target="lib\net45" />
+    <file src="..\src\Web\XLabs.Web.Net45\bin\$configuration$\XLabs.Web.Net45.pdb" target="lib\net45" />
+    <!-- Assemblies: Windows 8.1 -->
+    <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.dll" target="lib\win81" />
+    <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.pdb" target="lib\win81" />
+    <file src="..\src\Web\XLabs.Web.WinRT\bin\$configuration$\XLabs.Web.WinRT.dll" target="lib\win81" />
+    <file src="..\src\Web\XLabs.Web.WinRT\bin\$configuration$\XLabs.Web.WinRT.pdb" target="lib\win81" />
+    <!-- Assemblies: Winows Mobile 8.1 -->
+    <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.dll" target="lib\wpa81" />
+    <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.pdb" target="lib\wpa81" />
+    <file src="..\src\Web\XLabs.Web.WinRT.Phone\bin\$configuration$\XLabs.Web.WinRT.Phone.dll" target="lib\wpa81" />
+    <file src="..\src\Web\XLabs.Web.WinRT.Phone\bin\$configuration$\XLabs.Web.WinRT.Phone.pdb" target="lib\wpa81" />
+  </files>
+</package>
