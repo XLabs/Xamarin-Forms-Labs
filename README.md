@@ -239,7 +239,7 @@ _________________
 **CHAT**
 ======
 
-[XLabs Chat room online on Jabbr ](https://jabbr.net/#/rooms/Xamarin-Labs)
+[XLabs Chat room online on Gitter](https://gitter.im/XLabs/home)
 
 __________________
 
