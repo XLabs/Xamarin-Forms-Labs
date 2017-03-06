@@ -72,24 +72,24 @@ namespace XLabs.Forms.Controls
 		/// </summary>
 		private CalendarArrowView _rightArrow;
 
-		/// <summary>
-		///     The _view
-		/// </summary>
-		private CalendarView _view;
+        /// <summary>
+        ///     The _view
+        ///     What is this for???
+        /// </summary>
+        private CalendarView _view;
 
-		/// <summary>
-		///     Called when [element changed].
-		/// </summary>
-		/// <param name="e">The e.</param>
-		protected override void OnElementChanged(ElementChangedEventArgs<CalendarView> e)
+        /// <summary>
+        ///     Called when [element changed].
+        /// </summary>
+        /// <param name="e">The e.</param>
+        protected override void OnElementChanged(ElementChangedEventArgs<CalendarView> e)
 		{
 			base.OnElementChanged(e);
 
 			if (e.OldElement == null)
 			{
-				_view = e.NewElement;
-				var inflatorservice =
-					(LayoutInflater) Context.GetSystemService(Context.LayoutInflaterService);
+                _view = e.NewElement;
+                var inflatorservice = (LayoutInflater) Context.GetSystemService(Context.LayoutInflaterService);
 				_containerView = inflatorservice.Inflate(Resource.Layout.calendar_picker, null);
 				_picker = _containerView.FindViewById<CalendarPickerView>(Resource.Id.calendar_view);
 				_picker.Init(Element.MinDate, Element.MaxDate, Element.HighlightedDaysOfWeek);
@@ -103,7 +103,10 @@ namespace XLabs.Forms.Controls
 					SetNavigationArrows();
 					ProtectFromEventCycle(() => { Element.NotifyDisplayedMonthChanged(mch.DisplayedMonth); });
 				};
-				SetDisplayedMonth(Element.DisplayedMonth);
+
+                _picker.SetHighlightedDatesWithEvents(Element.HighlightedDatesWithEvents);
+
+                SetDisplayedMonth(Element.DisplayedMonth);
 				SetNavigationArrows();
 				SetColors();
 				SetFonts();
@@ -119,14 +122,20 @@ namespace XLabs.Forms.Controls
 		protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
 		{
 			base.OnElementPropertyChanged(sender, e);
-			ProtectFromEventCycle(() =>
-			{
-				if (e.PropertyName == CalendarView.DisplayedMonthProperty.PropertyName)
+
+            if (e.PropertyName == CalendarView.HighlightedDatesWithEventsProperty.PropertyName)
+            {
+                _picker.SetHighlightedDatesWithEvents(Element.HighlightedDatesWithEvents);
+            }
+
+            ProtectFromEventCycle(() =>
+            {
+                if (e.PropertyName == CalendarView.DisplayedMonthProperty.PropertyName)
 				{
 					SetDisplayedMonth(Element.DisplayedMonth);
 				}
-			});
-		}
+            });
+        }
 
 		/// <summary>
 		///     Protects from event cycle.
@@ -324,11 +333,23 @@ namespace XLabs.Forms.Controls
 			{
 				var andColor = Element.ActualHighlightedDateForegroundColor.ToAndroid();
 				_picker.StyleDescriptor.HighlightedDateForegroundColor = andColor;
-			}
+            }
+
+            //Highlighted dates with events color
+            if (Element.HighlightedDatesWithEventsBackgroundColor != Xamarin.Forms.Color.Default)
+            {
+                var andColor = Element.HighlightedDatesWithEventsBackgroundColor.ToAndroid();
+                _picker.StyleDescriptor.HighlightedDatesWithEventsBackgroundColor = andColor;
+            }
+            if (Element.HighlightedDatesWithEventsForegroundColor != Xamarin.Forms.Color.Default)
+            {
+                var andColor = Element.HighlightedDatesWithEventsForegroundColor.ToAndroid();
+                _picker.StyleDescriptor.HighlightedDatesWithEventsForegroundColor = andColor;
+            }
 
 
-			//Selected date
-			if (Element.ActualSelectedDateBackgroundColor != Xamarin.Forms.Color.Default)
+            //Selected date
+            if (Element.ActualSelectedDateBackgroundColor != Xamarin.Forms.Color.Default)
 				_picker.StyleDescriptor.SelectedDateBackgroundColor = Element.ActualSelectedDateBackgroundColor.ToAndroid();
 			if (Element.ActualSelectedDateForegroundColor != Xamarin.Forms.Color.Default)
 				_picker.StyleDescriptor.SelectedDateForegroundColor = Element.ActualSelectedDateForegroundColor.ToAndroid();

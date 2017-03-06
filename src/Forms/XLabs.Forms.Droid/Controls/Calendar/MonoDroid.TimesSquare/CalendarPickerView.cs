@@ -75,7 +75,6 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 			public OnPageChangeListener(CalendarPickerView picker)
 			{
 				this._picker = picker;
-
 			}
 
 			/// <summary>
@@ -84,7 +83,7 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 			/// <param name="position">The position.</param>
 			public override void OnPageSelected(int position)
 			{
-				_picker.InvokeOnMonthChanged(position);
+                _picker.InvokeOnMonthChanged(position);
 
 				//base.OnPageSelected(position);
 			}
@@ -149,11 +148,16 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 		/// </summary>
 		private StyleDescriptor _styleDescriptor;
 
-		/// <summary>
-		/// Gets the style descriptor.
-		/// </summary>
-		/// <value>The style descriptor.</value>
-		public StyleDescriptor StyleDescriptor {
+        /// <summary>
+        /// The currently displayed MonthView
+        /// </summary>
+        private int _activeMonthViewPos = -1;
+
+        /// <summary>
+        /// Gets the style descriptor.
+        /// </summary>
+        /// <value>The style descriptor.</value>
+        public StyleDescriptor StyleDescriptor {
 			get {
 				return _styleDescriptor;
 			}
@@ -235,7 +239,9 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 		protected void InvokeOnMonthChanged(int position)
 		{
 			if(this.OnMonthChanged != null) {
-				var month = this.Months[position];
+                _activeMonthViewPos = position;
+
+                var month = this.Months[position];
 				this.OnMonthChanged(this, new MonthChangedEventArgs(month.Date));
 			}
 		}
@@ -427,11 +433,21 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 			return new FluentInitializer(this);
 		}
 
-		/// <summary>
-		/// Highlighes the days of weeks.
-		/// </summary>
-		/// <param name="daysOfWeeks">The days of weeks.</param>
-		public void HighlighDaysOfWeeks(DayOfWeek[] daysOfWeeks)
+        public void SetHighlightedDatesWithEvents(DateTime[] datesWithEvents)
+        {
+            if(MyAdapter.ActiveMonthViews.Count > 0)
+            {
+                MonthView _activeMonthView = MyAdapter.ActiveMonthViews[_activeMonthViewPos];
+
+                _activeMonthView.SetHighlightedDatesWithEvents(datesWithEvents);
+            }
+        }
+
+        /// <summary>
+        /// Highlighes the days of weeks.
+        /// </summary>
+        /// <param name="daysOfWeeks">The days of weeks.</param>
+        public void HighlighDaysOfWeeks(DayOfWeek[] daysOfWeeks)
 		{
 			_hlighlightedDaysOfWeek = new Dictionary<int,bool>();
 			for(int i = 0; i <= 6; i++) {
@@ -472,7 +488,7 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 					bool isSelectable = isCurrentMonth && IsBetweenDates(cal, MinDate, MaxDate);
 					bool isToday = IsSameDate(cal, Today);
 					bool isHighlighted = ContatinsDate(_highlightedCals, cal) || _hlighlightedDaysOfWeek[(int)cal.DayOfWeek];
-					int value = cal.Day;
+                    int value = cal.Day;
 
 					var rangeState = RangeState.None;
 					if(SelectedCals.Count > 1) {

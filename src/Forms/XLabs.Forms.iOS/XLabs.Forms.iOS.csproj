@@ -96,6 +96,7 @@
     <Compile Include="Controls\GridView\GridViewCell.cs" />
     <Compile Include="Controls\GridView\GridViewDelegate.cs" />
     <Compile Include="Controls\GridView\GridViewRenderer.cs" />
+    <Compile Include="Controls\HtmlLabel\HtmlLabelRenderer.cs" />
     <Compile Include="Controls\HybridWebView\HybridWebViewRenderer.cs" />
     <Compile Include="Controls\HyperLinkLabel\HyperLinkLabelRenderer.cs" />
     <Compile Include="Controls\IconButton\IconButtonRenderer.cs" />

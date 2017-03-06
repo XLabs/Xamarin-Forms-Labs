@@ -127,6 +127,7 @@
     <Compile Include="Controls\GesturesContentView\GesturesContentViewRenderer.cs" />
     <Compile Include="Controls\GradientContentView\GradientContentViewRenderer.cs" />
     <Compile Include="Controls\GridView\GridViewRenderer.cs" />
+    <Compile Include="Controls\HtmlLabel\HtmlLabelRenderer.cs" />
     <Compile Include="Controls\HybridWebView\HybridWebViewRenderer.cs" />
     <Compile Include="Controls\HyperLinkLabel\HyperLinkLabelRenderer.cs" />
     <Compile Include="Controls\IconButton\CustomTypeFaceSpan.cs" />

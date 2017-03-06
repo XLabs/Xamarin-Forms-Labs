@@ -24,6 +24,8 @@ using Android.Content;
 using Android.Support.V4.View;
 using Android.Views;
 using Java.Interop;
+using System;
+using System.Diagnostics;
 
 namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 {
@@ -44,17 +46,21 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 		/// The _reusable month view
 		/// </summary>
 		private MonthView _reusableMonthView = null;
-		/// <summary>
-		/// The _active month views
-		/// </summary>
-		Dictionary<int,MonthView> _activeMonthViews;
+        /// <summary>
+        /// The _active month views
+        /// </summary>
+        Dictionary<int,MonthView> _activeMonthViews;
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="MonthAdapter"/> class.
-		/// </summary>
-		/// <param name="context">The context.</param>
-		/// <param name="calendar">The calendar.</param>
-		public MonthAdapter(Context context, CalendarPickerView calendar)
+        public Dictionary<int, MonthView> ActiveMonthViews {
+            get { return _activeMonthViews; }
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MonthAdapter"/> class.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="calendar">The calendar.</param>
+        public MonthAdapter(Context context, CalendarPickerView calendar)
 		{
 			_calendar = calendar;
 			_inflater = LayoutInflater.From(context);
@@ -107,33 +113,34 @@ namespace XLabs.Forms.Controls.MonoDroid.TimesSquare
 		/// <param name="container">The container.</param>
 		/// <param name="position">The position.</param>
 		/// <returns>Java.Lang.Object.</returns>
-		public override Java.Lang.Object InstantiateItem(Android.Views.View container, int position)
-		{
+		public override Java.Lang.Object InstantiateItem(ViewGroup container, int position)
+        {
+            Java.Lang.Object obj = container;
+			var pager = obj.JavaCast<ViewPager>();
 
-			Java.Lang.Object obj = container;
-			var pager = obj.JavaCast<Android.Support.V4.View.ViewPager>();
-			MonthView monthView = null;
-			if(_reusableMonthView == null)
+            MonthView monthView = null;
+
+            if (_reusableMonthView == null)
 			{
-				monthView = MonthView.Create(pager, _inflater, _calendar.WeekdayNameFormat, _calendar.Today,
-					_calendar.ClickHandler);
+				monthView = MonthView.Create(pager, _inflater, _calendar.WeekdayNameFormat, _calendar.Today, _calendar.ClickHandler);
 			} else
 			{
 				monthView = _reusableMonthView;
 				_reusableMonthView = null;
 			}
+            
 			monthView.Init(_calendar.Months[position], _calendar.Cells[position]);
 			//monthView.SetBackgroundColor(global::Android.Graphics.Color.Orange);
 
 			pager.AddView(monthView);
 			_activeMonthViews[position] = monthView;
 			return monthView;
-		}
+        }
 
-		/// <summary>
-		/// Notifies the data set changed.
-		/// </summary>
-		public override void NotifyDataSetChanged()
+        /// <summary>
+        /// Notifies the data set changed.
+        /// </summary>
+        public override void NotifyDataSetChanged()
 		{
 
 			foreach(var position in _activeMonthViews.Keys)
