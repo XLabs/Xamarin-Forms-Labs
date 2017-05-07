@@ -32,22 +32,26 @@ namespace XLabs.Forms.Controls
         /// <summary>
         /// The content template property
         /// </summary>
-        public static readonly BindableProperty ContentTemplateProperty = BindableProperty.Create<ContentControl, DataTemplate>(x => x.ContentTemplate, null, propertyChanged: OnContentTemplateChanged);
+        public static readonly BindableProperty ContentTemplateProperty = BindableProperty.Create<ContentControl, DataTemplate>(x => x.ContentTemplate, null);
 
-        private static void OnContentTemplateChanged(BindableObject bindable, object oldvalue, object newvalue)
+        protected override void OnBindingContextChanged()
         {
-            var cp = (ContentControl)bindable;
+          var template = ContentTemplate;
 
-            var template = cp.ContentTemplate;
-            if (template != null)
-            {
-                var content = (View)template.CreateContent();
-                cp.Content = content;
-            }
-            else
-            {
-                cp.Content = null;
-            }
+          if (template == null)
+          {
+            Content = null;
+            return;
+          }
+
+          var dts = template as DataTemplateSelector;
+          if (dts != null)
+          {
+            var item = GetValue(BindingContextProperty);
+            template = dts.SelectTemplate(item, this);
+          }          
+          
+          Content = (View)template.CreateContent();                      
         }
 
         /// <summary>
