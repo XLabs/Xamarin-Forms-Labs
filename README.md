@@ -197,7 +197,7 @@ __________________
 **Main Packages:**
 
 - [XLabs.Platform](http://www.nuget.org/packages/XLabs.Platform/)
-- [XLabs.Forms] (http://www.nuget.org/packages/XLabs.Forms/)
+- [XLabs.Forms](http://www.nuget.org/packages/XLabs.Forms/)
 
 **Plugins:**
 
