@@ -151,5 +151,12 @@ namespace XLabs.Forms.Controls
         /// <value>The identifier.</value>
         public int Id { get; set; }
 #pragma warning restore CS0108 // Member hides inherited member; missing new keyword
+
+        public readonly string GroupName;
+
+        public CustomRadioButton(string groupName = "")
+        {
+            GroupName = groupName;
+        }
     }
 }

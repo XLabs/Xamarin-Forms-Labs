@@ -49,9 +49,10 @@ namespace XLabs.Forms.Controls
             if (e.OldElement != null)
             {
                 e.OldElement.CheckedChanged -= CheckedChanged;
+                e.OldElement.PropertyChanged -= ElementOnPropertyChanged;
             }
 
-            if(e.NewElement == null)
+            if (e.NewElement == null)
             {
                 return;
             }
@@ -59,14 +60,35 @@ namespace XLabs.Forms.Controls
             if (Control == null)
             {
                 var radioButton = new NativeRadioButton();
-                radioButton.Checked += (s, args) => Element.Checked = true;
-                radioButton.Unchecked += (s, args) => Element.Checked = false;
+                radioButton.GroupName = Element.GroupName;
+
+                radioButton.Checked += (s, args) =>
+                {
+                    CustomRadioButton element = Element;
+
+                    if (element != null)
+                    {
+                        element.Checked = true;
+                    }
+                };
+
+                radioButton.Unchecked += (s, args) =>
+                {
+                    CustomRadioButton element = Element;
+
+                    if (element != null)
+                    {
+                        element.Checked = false;
+                    }
+                };
 
                 SetNativeControl(radioButton);
             }
 
-            Control.Content = e.NewElement.Text;
-            Control.IsChecked = e.NewElement.Checked;
+            SetControlProperties(Control);
+
+            Control.Content = Element.Text;
+            Control.IsChecked = Element.Checked;
 
             UpdateFont();
 
@@ -74,34 +96,26 @@ namespace XLabs.Forms.Controls
             Element.PropertyChanged += ElementOnPropertyChanged;
         }
 
-        private void ElementOnPropertyChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs)
+        private void SetControlProperties(NativeRadioButton control)
         {
-            NativeRadioButton control = Control;
-
-            if (control == null)
+            if(control == null)
             {
                 return;
             }
 
-            switch (propertyChangedEventArgs.PropertyName)
+            Device.BeginInvokeOnMainThread(() =>
             {
-                case "Checked":
-                    control.IsChecked = Element.Checked;
-                    break;
-                case "TextColor":
-                    control.Foreground = Element.TextColor.ToBrush();
-                    break;
-                case "FontName":
-                case "FontSize":
-                    UpdateFont();
-                    break;
-                case "Text":
-                    control.Content = Element.Text;
-                    break;
-                default:
-                    System.Diagnostics.Debug.WriteLine("Property change for {0} has not been implemented.", propertyChangedEventArgs.PropertyName);
-                    break;
-            }
+                control.IsChecked = Element.Checked;
+                control.Foreground = Element.TextColor.ToBrush();
+                control.Content = Element.Text;
+
+                UpdateFont();
+            });
+        }
+
+        private void ElementOnPropertyChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs)
+        {
+            SetControlProperties(Control);
         }
 
         private void CheckedChanged(object sender, EventArgs<bool> eventArgs)

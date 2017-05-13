@@ -31,7 +31,10 @@ namespace XLabs.Forms.Controls
     /// Class BindableRadioGroup.
     /// </summary>
     public class BindableRadioGroup : StackLayout
-    { 
+    {
+        private static int CurrentRadioGroupId;
+
+        private readonly int GroupId;
 
         /// <summary>
         /// The items
@@ -43,6 +46,8 @@ namespace XLabs.Forms.Controls
         /// </summary>
         public BindableRadioGroup()
         {
+            GroupId = CurrentRadioGroupId++;
+
             Items = new ObservableCollection<CustomRadioButton>();
         }
 
@@ -214,7 +219,7 @@ namespace XLabs.Forms.Controls
 
             foreach (var item in radButtons.ItemsSource)
             {
-                var button = new CustomRadioButton
+                var button = new CustomRadioButton(radButtons.GroupId.ToString())
                 {
                     Text = item.ToString(),
                     Id = radIndex++,
