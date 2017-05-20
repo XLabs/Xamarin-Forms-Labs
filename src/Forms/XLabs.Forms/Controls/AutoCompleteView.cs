@@ -734,6 +734,7 @@ namespace XLabs.Forms.Controls
 
             if (control != null)
             {
+                control._entText.Text = newPlaceHolderValue;
                 control._btnSearch.IsEnabled = !string.IsNullOrEmpty(newPlaceHolderValue);
 
                 var cleanedNewPlaceHolderValue = Regex.Replace((newPlaceHolderValue ?? string.Empty).ToLowerInvariant(), @"\s+", string.Empty);
