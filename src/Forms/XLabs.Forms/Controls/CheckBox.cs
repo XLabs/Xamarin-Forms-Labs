@@ -101,7 +101,8 @@ namespace XLabs.Forms.Controls
 			{
 				if(this.Checked != value) {
 					this.SetValue(CheckedProperty, value);
-					this.CheckedChanged.Invoke(this, value);
+					if(this.CheckedChanged != null)
+						this.CheckedChanged.Invoke(this, value);
 				}
 			}
 		}
