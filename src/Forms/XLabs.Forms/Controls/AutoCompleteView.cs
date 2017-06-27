@@ -202,13 +202,13 @@ namespace XLabs.Forms.Controls
                     SearchCommand.Execute(Text);
                 }
             };
-            _lstSuggestions.ItemSelected += (s, e) =>
+            _lstSuggestions.ItemTapped += (s, e) =>
             {
-                _entText.Text = e.SelectedItem.ToString();
+                _entText.Text = e.Item.ToString();
 
                 _availableSuggestions.Clear();
                 ShowHideListbox(false);
-                OnSelectedItemChanged(e.SelectedItem);
+                OnSelectedItemChanged(e.Item);
 
                 if (ExecuteOnSuggestionClick
                    && SearchCommand != null
